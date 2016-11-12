@@ -1,0 +1,981 @@
+2016-07-17 16:28:22	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-07-17 16:28:22	--	Topic for #emacs is "The Emacs Philosophy: Do everything, do it bizarrely, and do it incompatibly. | Sixth Emacs 25 pretest is here; submit bug reports and proofread the manuals | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-07-17 16:28:22	--	Topic set by aidalgol (~aidalgol@pdpc/supporter/student/aidalgol) on Sat, 16 Jul 2016 04:33:37
+2016-07-17 16:28:23	--	Channel #emacs: 929 nicks (1 op, 0 voices, 928 normals)
+2016-07-17 16:28:23	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-07-17 16:28:24	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-07-17 16:28:29	NapoleonWils0n	hi all
+2016-07-17 16:28:42	NapoleonWils0n	just switched to the dark side
+2016-07-17 16:28:58	didi	Using a dark theme?
+2016-07-17 16:29:10	NapoleonWils0n	yes if that helps
+2016-07-17 16:29:15	didi	Cool.
+2016-07-17 16:29:26	tali713	so, what brought you over from atom?
+2016-07-17 16:29:31	NapoleonWils0n	my shift key works with evil in org mode with the gui but not in the terminal
+2016-07-17 16:29:39	NapoleonWils0n	vim user
+2016-07-17 16:30:10	didi	Some of us are vim users too.
+2016-07-17 16:30:10	NapoleonWils0n	no gui's for me, terminal and a browser thats it
+2016-07-17 16:30:11	<--	bmf1 (~bmf1@216.252.65.182) has quit (Quit: WeeChat 1.0.1)
+2016-07-17 16:30:15	tali713	NapoleonWils0n: org doesn't like terminals very much.
+2016-07-17 16:30:28	NapoleonWils0n	ah ok that explains the issue
+2016-07-17 16:30:36	NapoleonWils0n	so best to use org with the gui
+2016-07-17 16:31:11	tali713	NapoleonWils0n: I was teasing, fwiw.  I didn't really think you used atom. :)
+2016-07-17 16:31:19	-->	Extremeadin (~user@c-73-167-56-99.hsd1.ma.comcast.net) has joined #emacs
+2016-07-17 16:31:24	didi	I would go further and say best to use Emacs with the gui.
+2016-07-17 16:31:27	tali713	NapoleonWils0n: well, there is a long story version, if you like.
+2016-07-17 16:31:31	tali713	,terminals
+2016-07-17 16:31:32	fsbot	terminals: [0] Terminals do weird thing to your keyboard input: http://catern.com/posts/terminal_quirks.html
+2016-07-17 16:31:32	fsbot	[1]  Terminals have limitations compared to the graphical windows; it's advisable to use "graphical" Emacs unless one has a good reason not to. See ,betterdefaults for disabling scroll bars, tool bars, etc.
+2016-07-17 16:31:32	fsbot	[2] You're going to be poorly supported by most themes, keys, graphics, fonts, ...
+2016-07-17 16:31:57	NapoleonWils0n	thx guys, only moved to the dark side yesterday
+2016-07-17 16:31:59	tali713	NapoleonWils0n: you don't notice with vim, but tty's are actually pretty limited when it comes to keybindings.
+2016-07-17 16:32:27	NapoleonWils0n	have to pimp the emacs gui theme so its not so jarring
+2016-07-17 16:32:39	-->	madjestic (~madjestic@92.110.198.44) has joined #emacs
+2016-07-17 16:32:45	didi	I use the default theme.
+2016-07-17 16:32:47	NapoleonWils0n	big icon city
+2016-07-17 16:32:47	<--	romerocesar (~cesar@2601:602:9300:6000:cd54:2cba:b7da:376c) has quit (Ping timeout: 258 seconds)
+2016-07-17 16:32:47	tali713	NapoleonWils0n: now, that being said, many of us aren't a huge fan of gui chrome, it is quite possible in emacs to turn off most of the gui stuff.
+2016-07-17 16:32:48	didi	:-(
+2016-07-17 16:33:00	tali713	NapoleonWils0n: lol, no.  just make the widgets go away.
+2016-07-17 16:33:25	tali713	(tool-bar-mode -1)(menu-bar-mode -1) and if you like (scroll-bar-mode -1)
+2016-07-17 16:33:40	NapoleonWils0n	cheers will add to my notes
+2016-07-17 16:33:42	 *	bremner would leave the menu as online help
+2016-07-17 16:33:46	tali713	run it in full screen and you'll hardly notice you left your terminal.
+2016-07-17 16:34:17	tali713	you can always access them via M-`, though I suppose with evil, I have no clue.
+2016-07-17 16:34:39	 *	didi agrees with bremner 
+2016-07-17 16:34:47	-->	fossrox (~fossrox@unaffiliated/fossrox) has joined #emacs
+2016-07-17 16:35:25	<--	Extremeadin (~user@c-73-167-56-99.hsd1.ma.comcast.net) has quit (Client Quit)
+2016-07-17 16:35:34	NapoleonWils0n	installed the surround plugin, looking for emmet and vim-pandoc and vim-pandoc-syntax ports next
+2016-07-17 16:35:47	<--	przl (~przlrkt@p57922CA8.dip0.t-ipconnect.de) has quit (Ping timeout: 264 seconds)
+2016-07-17 16:35:54	bremner	is there a convenient way to toggle the menu interactively in GUI emacs?
+2016-07-17 16:36:13	didi	M-x menu-bar-mode
+2016-07-17 16:36:45	<--	Chloe (~Chloe@unaffiliated/chloe) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2016-07-17 16:36:53	didi	NapoleonWils0n: Emacs comes with a ton of stuff built-in.
+2016-07-17 16:36:56	NapoleonWils0n	another one for my notes
+2016-07-17 16:37:17	-->	Chloe (~Chloe@unaffiliated/chloe) has joined #emacs
+2016-07-17 16:37:26	bremner	didi: I guess I was thinking of a keybinding, but fair enough.
+2016-07-17 16:37:31	<--	cyan__ (~cyan@d155-68.icpnet.pl) has quit (Remote host closed the connection)
+2016-07-17 16:37:41	didi	bremner: You are never satisfied, are you?
+2016-07-17 16:37:50	bremner	basically, no.
+2016-07-17 16:38:23	didi	NapoleonWils0n: Also, the manual is awesome.
+2016-07-17 16:38:32	didi	C-h r
+2016-07-17 16:38:34	rocx	oh dang. filter functions. think i found the answer to my problem.
+2016-07-17 16:38:39	NapoleonWils0n	always rtfm
+2016-07-17 16:39:02	NapoleonWils0n	totally off topic but i have some scripts to record videos from Kodi
+2016-07-17 16:39:03	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory
+2016-07-17 16:39:18	NapoleonWils0n	youtube channel: https://www.youtube.com/channel/UCriRR_CzOny-akXyk1R-oDQ
+2016-07-17 16:40:04	didi	Cool. :-)
+2016-07-17 16:40:15	-->	przl (~przlrkt@p57922CA8.dip0.t-ipconnect.de) has joined #emacs
+2016-07-17 16:40:33	NapoleonWils0n	they work on mac osx, windows, arch, ubuntu, ubuntu mate, linux mint and debian
+2016-07-17 16:40:47	-->	favadi (~favadi@14.177.14.82) has joined #emacs
+2016-07-17 16:40:49	NapoleonWils0n	trying to get bash scripts to work on windows is a major pita
+2016-07-17 16:40:58	-->	rumbler31 (~rumbler31@41.189.255.35) has joined #emacs
+2016-07-17 16:40:58	didi	I am not into watching video tutorials myself, but they are very popular.
+2016-07-17 16:41:12	NapoleonWils0n	not as bad as trying to give tech support to windows users though
+2016-07-17 16:41:17	-->	wavekidsjp (~wavekidsj@h175-177-077-183.catv02.itscom.jp) has joined #emacs
+2016-07-17 16:41:20	rocx	NapoleonWils0n: tell me about it.
+2016-07-17 16:41:29	NapoleonWils0n	would have been to much work to do screenshots
+2016-07-17 16:41:48	rocx	when windows 8 came out, the start screen made a lot of customers mad.
+2016-07-17 16:42:02	NapoleonWils0n	eveb simple things like adding a file to a folder is beyound most windows users
+2016-07-17 16:42:53	rocx	sad but true.
+2016-07-17 16:43:41	NapoleonWils0n	i actually managed to switch a couple of windows users to linux
+2016-07-17 16:44:00	NapoleonWils0n	scripts i made take about 45 mins to install on windows but 5 mins on linux
+2016-07-17 16:45:29	-->	jaafar (~quassel@76-218-204-163.lightspeed.sntcca.sbcglobal.net) has joined #emacs
+2016-07-17 16:45:58	<--	Wizek_ (~Wizek@catv-89-132-132-110.catv.broadband.hu) has quit (Ping timeout: 260 seconds)
+2016-07-17 16:47:13	tali713	bremner: sounds like a good candidate for M-` if you don't otherwise use it for displaying the keyboard menu.
+2016-07-17 16:47:46	rocx	NapoleonWils0n: heh. liar.
+2016-07-17 16:47:58	rocx	there's no way you could convince anyone to go from their comfort zone.
+2016-07-17 16:48:02	<--	ekinmur (~ekinmur@98.204.177.40) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-07-17 16:48:20	<--	Jarcode (~user@fatwire-201-74.uniserve.ca) has quit (Remote host closed the connection)
+2016-07-17 16:48:20	bremner	tali713: hmm. maybe. I'll try it next time I'm working on a small screen a lot.
+2016-07-17 16:48:47	-->	Jarcode (~user@fatwire-201-74.uniserve.ca) has joined #emacs
+2016-07-17 16:48:56	tali713	rocx: it has been my experience that getting people to move away from something is very difficult, but convincing them to move to something just takes finesse.
+2016-07-17 16:49:14	tali713	and it being better for what they need to do.
+2016-07-17 16:49:16	-->	edgrey (~edgrey@178.204.86.66) has joined #emacs
+2016-07-17 16:49:17	--	quart is now known as malign
+2016-07-17 16:49:35	NapoleonWils0n	had a user who spent over 5 hours trying to install scripts on windows, switched to linux and set everything up in a couple of mins
+2016-07-17 16:49:40	rocx	i'm still calling it poppycock. people are hostile about it even when you're not trying to convince them.
+2016-07-17 16:49:56	rocx	s/poppycock/a load of croque/
+2016-07-17 16:50:01	tali713	rocx: yeah, trying to convince people is usually a losing strategy.
+2016-07-17 16:50:14	rocx	tali713: it's always people telling me to go back.
+2016-07-17 16:50:14	NapoleonWils0n	actually got an old age pensioner to install all the scripts on windows 7
+2016-07-17 16:50:30	-->	weld (~weld@p3EE2BC98.dip0.t-ipconnect.de) has joined #emacs
+2016-07-17 16:50:43	rocx	who are you people and can i live in your alternate universes where people don't get mad because you use something different?
+2016-07-17 16:50:45	-->	ype (~ype@genld-224-230.t-mobile.co.uk) has joined #emacs
+2016-07-17 16:51:00	<--	ack006 (~user@524B56FB.cm-4-4b.dynamic.ziggo.nl) has quit (Remote host closed the connection)
+2016-07-17 16:51:01	rocx	i can get an alternate-universal passport in ten minutes tops.
+2016-07-17 16:51:13	<--	przl (~przlrkt@p57922CA8.dip0.t-ipconnect.de) has quit (Ping timeout: 260 seconds)
+2016-07-17 16:51:14	NapoleonWils0n	youd be suprised people are willing to switch if there something they actually want thats easier to do on linux
+2016-07-17 16:51:17	tali713	rocx: right, so far you have mentioned too very weak strategies, trying to get people to not use what they like, and convincing someone that another things is better.  if it's better, then you don't need to convince, just dangle it in front of them and keep telling them they can't have it.
+2016-07-17 16:51:21	<--	ynanm (~quassel@2001:8a0:62fe:2f01:38c9:de9:4b3d:a986) has quit (Ping timeout: 272 seconds)
+2016-07-17 16:51:46	NapoleonWils0n	like brexit in the uk 
+2016-07-17 16:52:01	rocx	heh. again, i'm not trying to convince people. i'm mostly getting fussed at because "i go out of my way to inconvenience myself".
+2016-07-17 16:52:32	rocx	but let's drop it. this is #emacs, not #rocxslifetroubles.
+2016-07-17 16:52:46	NapoleonWils0n	theres a channel for that too
+2016-07-17 16:53:03	-->	przl (~przlrkt@p57922CA8.dip0.t-ipconnect.de) has joined #emacs
+2016-07-17 16:53:15	<--	NeXTSUN (~textual@c-50-166-214-235.hsd1.nj.comcast.net) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-07-17 16:53:26	NapoleonWils0n	thx for the tips time to rtfm
+2016-07-17 16:53:29	--	irc: disconnected from server
+2016-07-17 20:55:09	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-07-17 20:55:09	--	Topic for #emacs is "The Emacs Philosophy: Do everything, do it bizarrely, and do it incompatibly. | Sixth Emacs 25 pretest is here; submit bug reports and proofread the manuals | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-07-17 20:55:09	--	Topic set by aidalgol (~aidalgol@pdpc/supporter/student/aidalgol) on Sat, 16 Jul 2016 04:33:37
+2016-07-17 20:55:09	--	Channel #emacs: 941 nicks (0 ops, 0 voices, 941 normals)
+2016-07-17 20:55:09	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-07-17 20:55:09	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-07-17 20:55:18	z0d	there is elscreen
+2016-07-17 20:55:20	NapoleonWils0n	hi all
+2016-07-17 20:55:30	z0d	but a bit different than GNU screen
+2016-07-17 20:55:44	NapoleonWils0n	figured out i need to use emacs.el for evil mode to work in the gui
+2016-07-17 20:55:56	-->	smerdyakow (~user1@S0106c8fb26403dcb.vc.shawcable.net) has joined #emacs
+2016-07-17 20:56:12	wasamasa	wat
+2016-07-17 20:56:17	NapoleonWils0n	when i find file is there a way to set case insensitive search
+2016-07-17 20:56:20	<--	der_landgraf (~der_landg@cpe-66-8-186-100.hawaii.res.rr.com) has quit (Remote host closed the connection)
+2016-07-17 20:56:30	NapoleonWils0n	so i can search for desktop and not Desktop 
+2016-07-17 20:56:47	-->	ur5us (~ur5us@118-92-149-217.dsl.dyn.ihug.co.nz) has joined #emacs
+2016-07-17 20:56:57	John[Lisbeth]	Well my m-x packate-install ret elscreen ret didn't go so smoothly
+2016-07-17 20:57:05	<--	holomorph (~holomorph@unaffiliated/holomorph) has quit (Quit: holomorph)
+2016-07-17 20:57:31	cobreadmonster	Guys, can emacs access and download a remote repository?
+2016-07-17 20:57:54	cobreadmonster	Like, I'm trying to get emacs to run a bunch of commands when I open it, one of which is to fetch the news.
+2016-07-17 20:57:59	wasamasa	I'm pretty sure this happens every time someone installs a package from melpa
+2016-07-17 20:58:05	cobreadmonster	wasamasa: touche.
+2016-07-17 20:58:25	wasamasa	maybe we're all brains in a vat, believing we're connected to melpa...
+2016-07-17 20:58:48	didi	That explains why I am so buggy.
+2016-07-17 20:58:51	John[Lisbeth]	there is no spoon
+2016-07-17 20:59:21	-->	python476 (~user@225.158.70.86.rev.sfr.net) has joined #emacs
+2016-07-17 20:59:55	<--	yrk (~user@pdpc/supporter/student/yrk) has quit (Read error: Connection reset by peer)
+2016-07-17 21:00:11	-->	manjaroi3 (~manjaro-i@109.94.198.70) has joined #emacs
+2016-07-17 21:00:57	-->	MiF (~hack@mm-218-146-122-178.brest.dynamic.pppoe.byfly.by) has joined #emacs
+2016-07-17 21:01:08	-->	jeffers-media (~jeffers-m@2605:e000:84d6:1300:915a:e5a9:5525:610d) has joined #emacs
+2016-07-17 21:01:19	--	irc: disconnected from server
+2016-07-27 21:26:36	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-07-27 21:26:36	--	Topic for #emacs is "Hoc quoque exiguum est ad capere foro emacs –Pierre de Fermat | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-07-27 21:26:36	--	Topic set by wgreenhouse (~wgreenhou@fsf/member/wgreenhouse) on Mon, 25 Jul 2016 17:15:10
+2016-07-27 21:26:36	--	Channel #emacs: 959 nicks (0 ops, 0 voices, 959 normals)
+2016-07-27 21:26:36	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-07-27 21:26:38	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-07-27 21:26:42	NapoleonWils0n	hi all
+2016-07-27 21:26:42	benaiah	wasamasa: lol
+2016-07-27 21:26:47	-->	mutbuerger (~user@2a02:8388:a80:c180:4cbe:18f5:1751:6f82) has joined #emacs
+2016-07-27 21:26:55	hanDerPeder	forcer: that's surprising.. and quite sad. thanks 
+2016-07-27 21:27:13	-->	ur5us (~ur5us@118-92-149-217.dsl.dyn.ihug.co.nz) has joined #emacs
+2016-07-27 21:27:19	NapoleonWils0n	im using markdown mode and when i promote a heading it adds extra # at the end of the line
+2016-07-27 21:27:20	benaiah	wasamasa: yeah i think the wrong imperative was one of the mistakes
+2016-07-27 21:27:30	benaiah	wasamasa: such a funny scene
+2016-07-27 21:27:40	NapoleonWils0n	so ## title becomes ### title ###
+2016-07-27 21:27:44	jlf	link or it wasn't filmed
+2016-07-27 21:27:53	<--	cyan__ (~cyan@217.170.162.68) has quit (Remote host closed the connection)
+2016-07-27 21:28:02	benaiah	my favorite is still the "you are all individuals" scene though
+2016-07-27 21:28:03	wasamasa	benaiah: apparently he draws the blade for not using the locative...
+2016-07-27 21:28:08	wasamasa	oh well
+2016-07-27 21:28:10	-->	e1f_ (~e1f@141.117.116.100) has joined #emacs
+2016-07-27 21:28:23	benaiah	ah
+2016-07-27 21:29:01	benaiah	wasamasa: locative is also the dative, right? or is it the ablative?
+2016-07-27 21:29:12	wasamasa	the locative is *not* the dative
+2016-07-27 21:29:26	benaiah	it's been way too long since i did any latin
+2016-07-27 21:29:35	<--	SusWombat (~suspiciou@ipbcc3c28b.dynamic.kabel-deutschland.de) has quit (Remote host closed the connection)
+2016-07-27 21:29:49	wasamasa	while pretty much all "modern" languages just use the dative, latin introduces the locative...
+2016-07-27 21:30:00	-->	angstbear (~angstbear@216.50.142.194) has joined #emacs
+2016-07-27 21:30:04	tali713	This is why I'm glad I speak English, just throw stuff at the wall and see what sticks, congratulation you can grammar.
+2016-07-27 21:30:19	JordiGH	Hm? Locative isn't a Latin-only craziness.
+2016-07-27 21:30:31	JordiGH	It's super-common in Slavic languages too.
+2016-07-27 21:31:19	benaiah	I was too lazy in high school to memorize the declensions and conjugations, so translation was always miserable and took forever
+2016-07-27 21:31:40	benaiah	my latin book was *destroyed* by the time i finished
+2016-07-27 21:31:54	NapoleonWils0n	emacs markdown mode is more robust than vim, just need to work out why it adds # all other the place
+2016-07-27 21:32:13	ryouma	i do not remember any latin to speak of but took 3y
+2016-07-27 21:32:39	jlf	wheelock?
+2016-07-27 21:32:48	tali713	lol, I still have my copy.
+2016-07-27 21:32:53	benaiah	jlf: that's what I had
+2016-07-27 21:32:58	jlf	heh, me too
+2016-07-27 21:33:06	jlf	best channel ever
+2016-07-27 21:33:16	benaiah	o/
+2016-07-27 21:33:22	jlf	\o
+2016-07-27 21:33:29	e1f_	so you latin lovers must be in your 60s by now
+2016-07-27 21:33:57	-->	yrk (~user@c-50-189-99-166.hsd1.nh.comcast.net) has joined #emacs
+2016-07-27 21:34:07	benaiah	e1f_: man that was a fast 39 years
+2016-07-27 21:34:09	jlf	for some radices
+2016-07-27 21:34:11	-->	drkyle (~user@80-62-117-153-mobile.dk.customer.tdc.net) has joined #emacs
+2016-07-27 21:34:20	--	irc: disconnected from server
+2016-08-04 20:46:02	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-08-04 20:46:03	--	Topic for #emacs is ""Everything in emacs is simple, but the simplest thing is difficult." - Carl von Clausewitz | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-04 20:46:03	--	Topic set by kodein (1710@fukushima.lysator.liu.se) on Thu, 28 Jul 2016 16:43:53
+2016-08-04 20:46:03	--	Channel #emacs: 940 nicks (0 ops, 0 voices, 940 normals)
+2016-08-04 20:46:03	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-04 20:46:03	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-04 20:46:07	NapoleonWils0n	hi all
+2016-08-04 20:46:13	ryouma	tina is not an acronym
+2016-08-04 20:46:30	NapoleonWils0n	im trying to get org capture html working with chrome
+2016-08-04 20:46:40	-->	piling_ (~piling@unaffiliated/piling) has joined #emacs
+2016-08-04 20:46:52	NapoleonWils0n	but it just opens a new chrome window, get the same issue with javascript and chrome extemsion
+2016-08-04 20:47:18	<--	piling (~piling@unaffiliated/piling) has quit (Ping timeout: 244 seconds)
+2016-08-04 20:47:39	<--	rgrinberg (~rgrinberg@205.189.187.4) has quit (Ping timeout: 244 seconds)
+2016-08-04 20:49:25	-->	shackra (~shackra@186.177.4.166) has joined #emacs
+2016-08-04 20:49:32	-->	mejja (~user@c-2b08e353.023-518-73746f7.cust.bredbandsbolaget.se) has joined #emacs
+2016-08-04 20:50:45	<--	Mon_Ouie (~Mon_Ouie@subtle/user/MonOuie) has quit (Ping timeout: 244 seconds)
+2016-08-04 20:51:12	<--	e1f_ (~e1f@141.117.116.239) has quit (Quit: Mutter: http://www.mutterirc.com)
+2016-08-04 20:51:24	-->	e1f_ (~e1f@141.117.116.239) has joined #emacs
+2016-08-04 20:51:44	<--	xadi (~azochniak@user-94-254-241-35.play-internet.pl) has quit (Quit: Leaving.)
+2016-08-04 20:52:13	adastra	how to turn on evil?
+2016-08-04 20:52:21	adastra	viper is only for xemacns
+2016-08-04 20:52:27	wasamasa	wat
+2016-08-04 20:52:38	-->	xadi (~azochniak@user-94-254-241-35.play-internet.pl) has joined #emacs
+2016-08-04 20:52:40	adastra	how to turn on vim emulation
+2016-08-04 20:52:48	wasamasa	please don't call graphical emacs "xemacs", that's just wrong
+2016-08-04 20:53:03	adastra	I want to load a .tex file right away
+2016-08-04 20:53:27	wasamasa	M-x evil-mode
+2016-08-04 20:53:42	--	irc: disconnected from server
+2016-08-07 01:45:13	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-08-07 01:45:13	--	Topic for #emacs is ""They coded all manner of things — everything that begins with a (" | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-07 01:45:13	--	Topic set by jlf (~user@pdpc/supporter/active/jlf) on Fri, 05 Aug 2016 22:03:14
+2016-08-07 01:45:14	--	Channel #emacs: 900 nicks (0 ops, 0 voices, 900 normals)
+2016-08-07 01:45:14	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-07 01:45:14	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-07 01:45:22	NapoleonWils0n	hi all
+2016-08-07 01:45:52	NapoleonWils0n	im trying to set up an archive file for done tasks
+2016-08-07 01:46:51	NapoleonWils0n	can anyone tell me the command i need to add to my ~/.emacs file to specify an archive file
+2016-08-07 01:47:12	NapoleonWils0n	been trying to google and find an emacs config
+2016-08-07 01:48:12	<--	ur5us (~ur5us@118-93-162-1.dsl.dyn.ihug.co.nz) has quit (Remote host closed the connection)
+2016-08-07 01:48:20	-->	hel-io (~helio@177.9.136.163) has joined #emacs
+2016-08-07 01:48:23	gastove	NapoleonWils0n: for org-mode, yeah? 
+2016-08-07 01:48:46	-->	ur5us (~ur5us@118-93-162-1.dsl.dyn.ihug.co.nz) has joined #emacs
+2016-08-07 01:48:46	NapoleonWils0n	yes mate 
+2016-08-07 01:48:50	gastove	You get an archive file by default -- it'll be named something like <original_file_name>_archive
+2016-08-07 01:48:53	NapoleonWils0n	bit of a emacs noob
+2016-08-07 01:49:07	gastove	If you want to change it, you can change the value of the variable `org-archive-location`
+2016-08-07 01:49:10	NapoleonWils0n	right
+2016-08-07 01:49:18	NapoleonWils0n	thats what i was looking for
+2016-08-07 01:49:25	gastove	(C-h v <ret> org-archive-location <ret> to view its docstring)
+2016-08-07 01:49:27	-->	wavekidsjp (~wavekidsj@h175-177-077-183.catv02.itscom.jp) has joined #emacs
+2016-08-07 01:49:32	NapoleonWils0n	thx guys
+2016-08-07 01:49:40	gastove	No problem!
+2016-08-07 01:49:43	<--	nando293921 (~fernando@cpe-76-185-143-123.satx.res.rr.com) has quit (Ping timeout: 250 seconds)
+2016-08-07 01:49:48	NapoleonWils0n	so can i set org-archive-location to a single archive file
+2016-08-07 01:51:35	NapoleonWils0n	something like (setq org-archive-location '(("~/org/archive.org")))
+2016-08-07 01:52:44	<--	_AnK (~AnK@pool-173-71-120-27.cmdnnj.fios.verizon.net) has quit (Quit: _AnK)
+2016-08-07 01:53:06	<--	hel-io (~helio@177.9.136.163) has quit (Ping timeout: 265 seconds)
+2016-08-07 01:53:35	<--	ur5us (~ur5us@118-93-162-1.dsl.dyn.ihug.co.nz) has quit (Ping timeout: 265 seconds)
+2016-08-07 01:54:06	NapoleonWils0n	no worries i quite like the default 
+2016-08-07 01:54:12	NapoleonWils0n	thx guys
+2016-08-07 01:54:16	--	irc: disconnected from server
+2016-08-07 16:53:59	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-08-07 16:53:59	--	Topic for #emacs is ""They coded all manner of things — everything that begins with a (" | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-07 16:53:59	--	Topic set by jlf (~user@pdpc/supporter/active/jlf) on Fri, 05 Aug 2016 22:03:14
+2016-08-07 16:53:59	--	Channel #emacs: 898 nicks (0 ops, 0 voices, 898 normals)
+2016-08-07 16:54:00	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-07 16:54:00	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-07 16:54:16	-->	random-nick (~random-ni@95.180.77.194) has joined #emacs
+2016-08-07 16:54:17	NapoleonWils0n	hi all
+2016-08-07 16:54:34	<--	kundry_wag (~andre0991@189.110.213.125) has quit (Ping timeout: 260 seconds)
+2016-08-07 16:54:47	NapoleonWils0n	im trying to start emacs server on mac osx without much success
+2016-08-07 16:55:25	NapoleonWils0n	starting the server from the emacs config or using m-x start-server doesnt work when you try to connect with emacsclient
+2016-08-07 16:55:53	random-nick	is it printing any errors?
+2016-08-07 16:55:56	NapoleonWils0n	tried using lauchagent didnt work
+2016-08-07 16:56:10	NapoleonWils0n	emacsclient cant find socket
+2016-08-07 16:56:28	-->	TheAdversary (~adversary@unaffiliated/hasimir/bot/theadversary) has joined #emacs
+2016-08-07 16:56:48	NapoleonWils0n	install emacs from emacsformacosx
+2016-08-07 16:57:05	wasamasa	it always displays that
+2016-08-07 16:57:07	<--	Gamayun (~Gamayun@79.79.64.61) has quit (Ping timeout: 250 seconds)
+2016-08-07 16:57:21	-->	Hasimir (~hfenring@unaffiliated/hasimir) has joined #emacs
+2016-08-07 16:57:22	<--	quigonjinn (~quigonjin@62.1.19.1.dsl.dyn.forthnet.gr) has quit (Read error: Connection reset by peer)
+2016-08-07 16:57:43	NapoleonWils0n	i have org capture set up with chromium on linux with i3wm working like a charm
+2016-08-07 16:57:46	-->	e1f__ (~e1f@199.119.232.223) has joined #emacs
+2016-08-07 16:57:53	NapoleonWils0n	trying to do the same on the mac
+2016-08-07 16:58:35	<--	shrysr (~user@120.61.58.49) has quit (Remote host closed the connection)
+2016-08-07 16:58:47	NapoleonWils0n	reminds me why i switch from macosx to linux
+2016-08-07 16:58:56	-->	shrysr (~user@120.61.58.49) has joined #emacs
+2016-08-07 16:59:57	-->	Kaligule (~Kaligule@2001:a62:1a1:a01:5e51:4fff:fe9f:fe57) has joined #emacs
+2016-08-07 17:00:44	-->	phaebz (~fps@80-110-92-52.cgn.dynamic.surfer.at) has joined #emacs
+2016-08-07 17:00:53	<--	fossrox (~fossrox@unaffiliated/fossrox) has quit (Ping timeout: 244 seconds)
+2016-08-07 17:01:05	<--	shrysr (~user@120.61.58.49) has quit (Read error: Connection reset by peer)
+2016-08-07 17:01:15	<--	johnstorey (~somebody@71-85-3-48.dhcp.buft.sc.charter.com) has quit (Ping timeout: 258 seconds)
+2016-08-07 17:02:01	-->	f6k (~f6k@189.215.154.170.cable.dyn.cableonline.com.mx) has joined #emacs
+2016-08-07 17:02:12	<--	Laurenzo (lauriru@shell.metropolia.fi) has quit (Ping timeout: 276 seconds)
+2016-08-07 17:02:49	f6k	heya o/
+2016-08-07 17:03:23	Hasimir	NapoleonWils0n, if you get that working, put the details somewhere
+2016-08-07 17:03:41	-->	Gamayun (~Gamayun@host-92-3-206-255.as43234.net) has joined #emacs
+2016-08-07 17:03:56	-->	romerocesar (~cesar@2601:602:9300:6000:59d3:90bf:e3ff:219) has joined #emacs
+2016-08-07 17:04:11	-->	seangrove (~user@c-50-174-77-118.hsd1.ca.comcast.net) has joined #emacs
+2016-08-07 17:04:12	-->	hel-io (~helio@177.9.136.163) has joined #emacs
+2016-08-07 17:04:38	phaebz	How can I kill a buffer (with a running process) from elisp without it asking me y/n?
+2016-08-07 17:05:20	-->	shrysr (~user@120.61.58.49) has joined #emacs
+2016-08-07 17:05:47	NapoleonWils0n	Hasimin will do mate, reying exporting emacs as an editor 
+2016-08-07 17:06:41	<--	zacts (~zacts@dragora/developer/zacts) has quit (Quit: WeeChat 1.4)
+2016-08-07 17:06:43	<--	nravic (~scire@94.207.125.209) has quit (Read error: Connection reset by peer)
+2016-08-07 17:07:03	--	Denommus` is now known as Denommus
+2016-08-07 17:07:04	-->	edvorg (~edvorg@14.169.57.10) has joined #emacs
+2016-08-07 17:07:08	-->	zacts (~zacts@dragora/developer/zacts) has joined #emacs
+2016-08-07 17:07:16	-->	nravic (~scire@8a.48.caa1.ip4.static.sl-reverse.com) has joined #emacs
+2016-08-07 17:07:21	-->	rkfb (~rkfb@cpc78643-glfd7-2-0-cust101.6-2.cable.virginm.net) has joined #emacs
+2016-08-07 17:08:00	<--	shrysr (~user@120.61.58.49) has quit (Remote host closed the connection)
+2016-08-07 17:08:04	NapoleonWils0n	they should have renamed macosx to mac osx fisher price
+2016-08-07 17:08:09	-->	zhangkun (~ec2-user@ec2-52-79-36-189.ap-northeast-2.compute.amazonaws.com) has joined #emacs
+2016-08-07 17:08:18	-->	shrysr (~user@120.61.58.49) has joined #emacs
+2016-08-07 17:08:18	-->	Laurenzo (lauriru@shell.metropolia.fi) has joined #emacs
+2016-08-07 17:08:27	<--	e1f__ (~e1f@199.119.232.223) has quit (Ping timeout: 244 seconds)
+2016-08-07 17:08:29	<--	rkfb (~rkfb@cpc78643-glfd7-2-0-cust101.6-2.cable.virginm.net) has quit (Client Quit)
+2016-08-07 17:08:34	<--	shrysr (~user@120.61.58.49) has quit (Remote host closed the connection)
+2016-08-07 17:09:24	jlf	NapoleonWils0n: what, just because you're flailing around helplessly?
+2016-08-07 17:09:49	NapoleonWils0n	no long experience of using macs not just today
+2016-08-07 17:09:52	<--	edvorg (~edvorg@14.169.57.10) has quit (Remote host closed the connection)
+2016-08-07 17:09:53	Hasimir	yeah, os x is going down hill on the usefulness front, but still better than many alternatives ... returning to linux or a bsd for my workstation or laptop isn't necessary quite yet
+2016-08-07 17:10:21	NapoleonWils0n	you would have to pry linux from my cold dead hands
+2016-08-07 17:10:37	Hasimir	servers are different, of course
+2016-08-07 17:10:58	NapoleonWils0n	takes about 3 seconds on the mac to switch desktops with all the page animations
+2016-08-07 17:11:01	John[Lisbeth]	dat unix-based technology tho
+2016-08-07 17:11:10	John[Lisbeth]	dat form factor
+2016-08-07 17:11:15	John[Lisbeth]	ability to run windows dual boot
+2016-08-07 17:11:20	loke_`	Hasimir: I reache the point of going back to Linux about one year ago.
+2016-08-07 17:11:24	NapoleonWils0n	i run arch on a macair
+2016-08-07 17:11:38	NapoleonWils0n	and use a macmini as pfsense router
+2016-08-07 17:11:53	loke_`	Hasimir: It might not have gotten t that point for you yet, but if they continue on their current trajectory you'll be there before long.
+2016-08-07 17:12:36	<--	nravic (~scire@8a.48.caa1.ip4.static.sl-reverse.com) has quit (Ping timeout: 276 seconds)
+2016-08-07 17:12:42	Hasimir	yeah, but even though all the apps I need to run for my little project(s) run on both, it is slightly easier to rally the troops for help when necessary on os x
+2016-08-07 17:13:22	NapoleonWils0n	im trying to get my 70 year dad to use emacs on macosx
+2016-08-07 17:13:23	<--	threh (~threh@2602:30a:2c55:a0c0:be85:56ff:fede:e712) has quit (Ping timeout: 250 seconds)
+2016-08-07 17:13:28	Hasimir	and I don't want to be spending my time doing that anyway, I want to be doing the real work
+2016-08-07 17:13:29	offby1	NapoleonWils0n: I haven't read scrollback ... but I use the emacs server on OS X with no trouble.  You said you tried "m-x start-server" but the function is actually named server-start
+2016-08-07 17:13:44	-->	desmovalvo (~val@host134-185-dynamic.57-82-r.retail.telecomitalia.it) has joined #emacs
+2016-08-07 17:13:56	NapoleonWils0n	tried mx server-start
+2016-08-07 17:14:11	NapoleonWils0n	also tried lauchagent and adding server-start to emacs config
+2016-08-07 17:14:54	Hasimir	hmm, is this to use emacs to fill out text boxes on chrome like it's all text does for firefox?  because I do have that working already
+2016-08-07 17:15:08	NapoleonWils0n	specifed the exact path to emacsclient inside /Applications/Emacs.app/contents/MacOS/bin/emacsclient
+2016-08-07 17:15:10	-->	e1f__ (~e1f@199-7-156-134.eng.wind.ca) has joined #emacs
+2016-08-07 17:15:44	-->	shrysr (~user@120.61.58.49) has joined #emacs
+2016-08-07 17:15:47	NapoleonWils0n	Hasimir im using org-protocol-capture-html with chrome on linux
+2016-08-07 17:15:55	Hasimir	and I've got an emacs app icon in the dock specifically for launching the server version
+2016-08-07 17:16:15	Hasimir	ah, yeah, I don't use org-mode much
+2016-08-07 17:16:21	<--	Gamayun (~Gamayun@host-92-3-206-255.as43234.net) has quit (Ping timeout: 244 seconds)
+2016-08-07 17:16:32	NapoleonWils0n	so you need to make a launcher to start emacs in daemon mode
+2016-08-07 17:16:36	Hasimir	I've got it because other projects use it, but I find it annoying
+2016-08-07 17:17:42	<--	shrysr (~user@120.61.58.49) has quit (Remote host closed the connection)
+2016-08-07 17:17:46	<--	e1f__ (~e1f@199-7-156-134.eng.wind.ca) has quit (Read error: Connection reset by peer)
+2016-08-07 17:17:48	<--	nikhgupta (~user@43.239.82.3) has quit (Ping timeout: 276 seconds)
+2016-08-07 17:18:03	-->	shrysr (~user@120.61.58.49) has joined #emacs
+2016-08-07 17:18:45	NapoleonWils0n	will have to google a bit
+2016-08-07 17:18:48	NapoleonWils0n	cheers guys
+2016-08-07 17:18:50	--	irc: disconnected from server
+2016-08-07 23:01:31	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-08-07 23:01:31	--	Topic for #emacs is ""They coded all manner of things — everything that begins with a (" | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-07 23:01:31	--	Topic set by jlf (~user@pdpc/supporter/active/jlf) on Fri, 05 Aug 2016 22:03:14
+2016-08-07 23:01:31	--	Channel #emacs: 913 nicks (0 ops, 0 voices, 913 normals)
+2016-08-07 23:01:31	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-07 23:01:31	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-07 23:01:35	NapoleonWils0n	hi all
+2016-08-07 23:01:44	NapoleonWils0n	making progress with emacs on macosx
+2016-08-07 23:02:03	NapoleonWils0n	but i cant get org-protocol to work in any browser
+2016-08-07 23:02:25	NapoleonWils0n	tried chrome, firefox and safari with bookmarklets and extensions
+2016-08-07 23:02:30	cluck	aidalgol: i know, that's why i didn't teach you metalurgy instead to make a proper poking rod
+2016-08-07 23:02:46	cluck	aidalgol: you're welcome
+2016-08-07 23:02:55	tali713	cmattrex: because, presumably your opponant is wearing armor and/or carrying a shield.  we can't have your blade break the moment you start really using it.
+2016-08-07 23:03:13	cmattrex	tali713: what do you consider light? most swords are not heavier than ~1kg
+2016-08-07 23:03:48	-->	basphemy (~basphemy@unaffiliated/basphemy) has joined #emacs
+2016-08-07 23:05:23	cluck	hahahahah
+2016-08-07 23:05:44	cluck	1kg? what's that? a play stick
+2016-08-07 23:06:03	<--	Demosthenex (~Demosthen@5ED25635.cm-7-3b.dynamic.ziggo.nl) has quit (Ping timeout: 240 seconds)
+2016-08-07 23:06:05	Derperperd	hey people. i uploaded a video about how i use org to schedule my week. check it out: https://www.youtube.com/watch?v=--J-ns3c3cw
+2016-08-07 23:06:24	hohum	cluck is obviously the expert here
+2016-08-07 23:06:24	Derperperd	its for beginners but i hope it helps at least one person
+2016-08-07 23:06:32	hohum	he's got a diploma in swordsmanship and everything
+2016-08-07 23:06:41	hohum	did you graduate from Blade University?
+2016-08-07 23:06:41	cmattrex	NapoleonWils0n: what's the exact problem?
+2016-08-07 23:06:42	tali713	cmattrex: uh, that's median weight, so yesish.  some people mistakenly go for ripple that.
+2016-08-07 23:07:00	tali713	tripple*
+2016-08-07 23:07:15	<--	jatt (~user@unaffiliated/jatt) has quit (Remote host closed the connection)
+2016-08-07 23:07:15	NapoleonWils0n	cmattrex im trying to use org capture from a browser on mac osx and its not working
+2016-08-07 23:07:27	tbrad99	good carbon knives literally weight 40 g
+2016-08-07 23:07:29	tbrad99	with a rubber handle
+2016-08-07 23:07:41	tbrad99	swords weight like 1-2kg
+2016-08-07 23:07:43	-->	madjestic (~madjestic@31.173.85.141) has joined #emacs
+2016-08-07 23:07:46	tbrad99	with wooden handles
+2016-08-07 23:07:46	NapoleonWils0n	have org capture working on linux with a bookmarklet
+2016-08-07 23:08:31	cmattrex	not working = what exactly? nothing is happening?
+2016-08-07 23:08:51	NapoleonWils0n	when i click the bookmarklet it doesnt open emacs
+2016-08-07 23:09:02	tali713	tbrad99: swords vs knives, different tool, different required material properties, "sharpened clubs" are yet another category (machete, large Bowie knives, larger kukri)
+2016-08-07 23:09:21	NapoleonWils0n	im using org capture html, which has a shell script that you can pipe html into that works
+2016-08-07 23:09:22	<--	madjestic (~madjestic@31.173.85.141) has quit (Read error: Connection reset by peer)
+2016-08-07 23:09:26	-->	aburgess (~aburgess@host86-165-30-37.range86-165.btcentralplus.com) has joined #emacs
+2016-08-07 23:09:40	tbrad99	i am just comparing
+2016-08-07 23:09:42	cluck	hohum: not an expert but i happen to know this guy's sword was 15kg https://en.wikipedia.org/wiki/Afonso_I_of_Portugal
+2016-08-07 23:09:46	tbrad99	knvives are feathers
+2016-08-07 23:09:56	tbrad99	while swords are a bit heavier but not as heavy as people think
+2016-08-07 23:10:17	cmattrex	"There are mythical stories that it took 10 men to carry his sword, and that Afonso wanted to engage other monarchs in personal combat, but no one would dare accept his challenge."
+2016-08-07 23:10:26	tali713	tbrad99: yup, the key element in a sword is blade length vs width and weight mean that many suitable knife materials are simply too brittle (at that length/weight/thickness)
+2016-08-07 23:10:54	cmattrex	NapoleonWils0n: what's in the bookmarklet? you can manually check the content and see if its formed properly
+2016-08-07 23:11:03	tali713	cmattrex: there are such swords.  they are more intimidating than they are practical.
+2016-08-07 23:11:07	cluck	hohum: as a certain historian put it, he didn't fight, he went clubbing and idiots just stood there in front of him to seal the deal :D
+2016-08-07 23:11:16	tali713	and calling them swords bight be a bit of a stretch.
+2016-08-07 23:11:16	tbrad99	swords are mostly low carbon steel
+2016-08-07 23:11:19	tbrad99	hard and tough
+2016-08-07 23:11:24	<--	bhiliyam (~diffvoodo@173.32.164.57) has quit (Ping timeout: 260 seconds)
+2016-08-07 23:11:25	tbrad99	but dont retain edge to well
+2016-08-07 23:11:25	NapoleonWils0n	https://github.com/alphapapa/org-protocol-capture-html#bookmarklets
+2016-08-07 23:11:27	tbrad99	*too
+2016-08-07 23:11:42	cmattrex	hand and a half swords are 1.5kg, no more
+2016-08-07 23:11:47	cmattrex	2kg is the upper extreme
+2016-08-07 23:11:50	-->	Trebuchette (~Trebuchet@216.98.202.119) has joined #emacs
+2016-08-07 23:12:01	tali713	cmattrex: yup, only certain claymores top that.
+2016-08-07 23:12:35	tali713	and the absurd "formation busting" swords, that aren't /really/ swords.
+2016-08-07 23:13:02	--	irc: disconnected from server
+2016-08-08 01:11:47	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #emacs
+2016-08-08 01:11:48	--	Topic for #emacs is ""They coded all manner of things — everything that begins with a (" | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-08 01:11:48	--	Topic set by jlf (~user@pdpc/supporter/active/jlf) on Fri, 05 Aug 2016 22:03:14
+2016-08-08 01:11:48	--	Channel #emacs: 910 nicks (0 ops, 0 voices, 910 normals)
+2016-08-08 01:11:48	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-08 01:11:48	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-08 01:11:52	NapoleonWils0n	hi all
+2016-08-08 01:12:03	bigMouthCommie1	screen preinstalled with useful configs
+2016-08-08 01:12:07	bigMouthCommie1	hi NapoleonWils0n
+2016-08-08 01:12:10	cmattrex	so, let's start with removing the wp installation you pulled from the repo
+2016-08-08 01:12:12	<--	threh (~threh@2602:30a:2c55:a0c0:be85:56ff:fede:e712) has quit (Ping timeout: 250 seconds)
+2016-08-08 01:12:20	bigMouthCommie1	DONE
+2016-08-08 01:12:24	<--	neosloth (~user@192.157.112.240) has quit (Read error: Connection reset by peer)
+2016-08-08 01:12:31	NapoleonWils0n	i have just managed to get org protocol capture html working with chrome on mac osx
+2016-08-08 01:12:39	bigMouthCommie1	:P (that's what #wordpress had me do before telling me to go learn dbs somewhere else)
+2016-08-08 01:12:48	cmattrex	https://www.ibm.com/support/knowledgecenter/SSGSCT_9.1.3/install_guide/pac_createdbschema_mysql_noha.html
+2016-08-08 01:12:49	rudybot	http://teensy.info/QzSA4cqXEQ
+2016-08-08 01:12:54	cmattrex	create a db manually
+2016-08-08 01:13:07	bigMouthCommie1	can you give me a bash line for that?
+2016-08-08 01:13:16	bigMouthCommie1	or 3 . or whatever it takes
+2016-08-08 01:13:19	NapoleonWils0n	so you can clip content from webpages from chrome into org mode
+2016-08-08 01:13:33	cmattrex	the article i linked is pretty straightforward
+2016-08-08 01:13:36	aidalgol	OK, there's an on-topic question, and this is getting noisy, so it might be time to take this out of channel.
+2016-08-08 01:13:38	bigMouthCommie1	cmattrex: perfect
+2016-08-08 01:13:39	bigMouthCommie1	ty
+2016-08-08 01:13:57	aidalgol	er, at least I *thought* that was a question...
+2016-08-08 01:14:23	bigMouthCommie1	i understand
+2016-08-08 01:14:25	aidalgol	On my MSDN page: "Over 11 terabytes of Microsoft Products are available to you"
+2016-08-08 01:14:32	aidalgol	what kind of selling point is *that*?
+2016-08-08 01:14:34	NapoleonWils0n	i will create a read me on how to set up org capture on linux and mac with chrome
+2016-08-08 01:14:44	aidalgol	oh, goooodie, tons of datas.
+2016-08-08 01:15:03	aidalgol	except most of that is variations of the same few installers and ISOs
+2016-08-08 01:15:13	NapoleonWils0n	you have to create a mac application with the script editor to launch emacsclient 
+2016-08-08 01:15:26	leupold	Quick question, in Emacs, how can I see which directory I'm in at the moment, and how can I move to another directory? i.e. to save a file
+2016-08-08 01:15:43	cmattrex	C-x C-f
+2016-08-08 01:15:50	-->	sekki (~sekki@vpnpool-130-126-153-20.near.illinois.edu) has joined #emacs
+2016-08-08 01:15:51	cmattrex	,dk C-x C-f
+2016-08-08 01:15:51	fsbot	find-file is an interactive compiled Lisp function in `files.el'.
+2016-08-08 01:15:51	fsbot	It is bound to <open>, C-x C-f, <menu-bar> <file> <new-file>.
+2016-08-08 01:15:51	fsbot	(find-file FILENAME &optional WILDCARDS)
+2016-08-08 01:15:51	fsbot	Edit file FILENAME. ;;[ ,more/ ,dump]
+2016-08-08 01:16:05	ht	M-x pwd
+2016-08-08 01:16:10	<--	_AnK (~AnK@pool-173-71-120-27.cmdnnj.fios.verizon.net) has quit (Quit: _AnK)
+2016-08-08 01:16:14	cmattrex	also the directory is usually displayed in the mode line
+2016-08-08 01:16:15	NapoleonWils0n	i do miss ranger, what evil ranger like
+2016-08-08 01:16:38	aidalgol	cmattrex: It... it is?
+2016-08-08 01:16:50	bremner	leupold: you can use M-x cd
+2016-08-08 01:17:01	cmattrex	in smart-mode-line yeah
+2016-08-08 01:17:22	bremner	fsvo usually.
+2016-08-08 01:17:27	aidalgol	leupold: You shouldn't need to change directory to save a file in that directory, though.
+2016-08-08 01:17:30	NapoleonWils0n	is it bad to set visual line mode
+2016-08-08 01:17:44	NapoleonWils0n	im used to wrapping
+2016-08-08 01:17:53	aidalgol	NapoleonWils0n: No.
+2016-08-08 01:18:27	NapoleonWils0n	i was only seduced by the dark side about a week ago, so still a noob
+2016-08-08 01:18:51	NapoleonWils0n	find myself using ctl + x +s in vim now
+2016-08-08 01:19:08	aidalgol	I mean, if you want to have hard line-wrapping in your text files, then don't use visual-line-mode.
+2016-08-08 01:19:08	NapoleonWils0n	and wondering why its not working
+2016-08-08 01:19:55	NapoleonWils0n	aidalgol is there a nice one liner to enable visual-line-mode, still finding my way thru the manual
+2016-08-08 01:20:10	aidalgol	NapoleonWils0n: M-x visual-line-mode RET
+2016-08-08 01:20:20	aidalgol	(That toggles it.)
+2016-08-08 01:20:26	NapoleonWils0n	right, can i set it in my .emacs
+2016-08-08 01:20:38	aidalgol	Uh, trickier...
+2016-08-08 01:20:40	NapoleonWils0n	do you do that with setq
+2016-08-08 01:20:49	NapoleonWils0n	ah ok 
+2016-08-08 01:20:52	ryouma	leupold: m-x pwd
+2016-08-08 01:20:56	aidalgol	You want to add it to the mode hook for the modes you want it enabled in.
+2016-08-08 01:20:58	NapoleonWils0n	i can just toggle it
+2016-08-08 01:21:16	aidalgol	e.g. (add-hook 'text-mode-hook 'visual-line-mode)
+2016-08-08 01:21:32	NapoleonWils0n	ok will try
+2016-08-08 01:22:01	ryouma	16:56 <bigMouthCommie1> hey all! i have been shuffled out of one irc channel already, and i know this has only tangential connection to emacs, but can anyone point me to a good guide on setting up wordpress, including hand-holding for database configs? -- the connection to emacs being?  :)
+2016-08-08 01:22:09	ryouma	you want a wp mode?
+2016-08-08 01:22:15	<--	johnchalekson (~platoscav@68.135.41.66) has quit (Quit: #UNHACKABLE #UNJACKABLE 10^10^78 https://www.youtube.com/watch?v=WIxNHrNM8So&list=RDlCLduR5AGRU&index=4 UNIVERSAL HISTORICAL TIME FROM THA ASHES WISE FROM THE WORD)
+2016-08-08 01:22:36	cmattrex	can anyone with zenburn verify that the parens mode paren highlighting is very subtle and only adds a blue-ish tint (without actually highlighting them)?
+2016-08-08 01:22:41	ryouma	there are some
+2016-08-08 01:23:10	tali713	cluck: that was most of the discussion.
+2016-08-08 01:23:13	basphemy	cmattrex: highlights it fully for me
+2016-08-08 01:23:22	NapoleonWils0n	seems to work cheers mate
+2016-08-08 01:23:29	basphemy	but im on an old zenburn maybe it's changed since
+2016-08-08 01:23:41	cmattrex	just wanted to ask which version you're using
+2016-08-08 01:23:46	tali713	aidalgol: long bow is about power and distance, so mostly luck, but yes, also punching through lighter armor.
+2016-08-08 01:23:47	basphemy	sec
+2016-08-08 01:23:51	aidalgol	basphemy: you must be UPGRADED
+2016-08-08 01:24:26	basphemy	2.3-cvs
+2016-08-08 01:24:46	basphemy	heh
+2016-08-08 01:24:48	aidalgol	Who the hell is still using CVS?? O_o
+2016-08-08 01:25:10	basphemy	i have fond memories of pserverd
+2016-08-08 01:25:12	tali713	aidalgol: now, the mongolian horseback archers used a recurve, so power and accuracy, they shot for naked parts.
+2016-08-08 01:25:29	<--	sekki (~sekki@vpnpool-130-126-153-20.near.illinois.edu) has quit (Quit: sekki)
+2016-08-08 01:25:30	NapoleonWils0n	used to use svn and litter evry folder with .svn folders
+2016-08-08 01:25:36	-->	Derperperd (~anonymous@ool-4578e4ee.dyn.optonline.net) has joined #emacs
+2016-08-08 01:25:51	--	irc: disconnected from server
+2016-08-17 17:27:21	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #emacs
+2016-08-17 17:27:21	--	Topic for #emacs is ""Learning an editor represents training in the delusions of that editor." | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-17 17:27:21	--	Topic set by wgreenhouse (~wgreenhou@fsf/member/wgreenhouse) on Wed, 17 Aug 2016 15:38:24
+2016-08-17 17:27:22	--	Channel #emacs: 969 nicks (0 ops, 0 voices, 969 normals)
+2016-08-17 17:27:22	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-17 17:27:22	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-17 17:27:29	NapoleonWils0n	hi all
+2016-08-17 17:27:48	NapoleonWils0n	i have org capture working on linux and mac
+2016-08-17 17:28:04	<--	mcmillhj (~huntermcm@216.30.182.202) has quit (Ping timeout: 264 seconds)
+2016-08-17 17:28:16	NapoleonWils0n	is it possible to clip images from webpages and store in a local file ?
+2016-08-17 17:28:58	<--	nikki93 (~nikki93@c-71-204-170-79.hsd1.ca.comcast.net) has quit (Ping timeout: 252 seconds)
+2016-08-17 17:29:04	paluche	Fernando-Basso: backward-kill-sentence is bound there, but if you don't need it, feel free to rebind it.
+2016-08-17 17:29:54	-->	mcmillhj (~huntermcm@216.30.182.202) has joined #emacs
+2016-08-17 17:30:20	-->	ryouma (~user@unaffiliated/ryouma) has joined #emacs
+2016-08-17 17:30:44	Fernando-Basso	I prefer not to touch if it is already used (C-h k showed it indeed is). It seems C-c Backspace is not.
+2016-08-17 17:31:01	<--	tomtix (~tomtix@2a01:e35:8bc0:8af0:518a:8bdc:d414:ae56) has quit (Remote host closed the connection)
+2016-08-17 17:31:04	<--	Ginja (~well@mail.heartinternet.co.uk) has quit (Quit: Leaving)
+2016-08-17 17:31:08	ryouma	what is the reasoning behind making some of the output of commands in shell mode read-only?  if there is a reason for this, why is it only some and not all?
+2016-08-17 17:32:09	-->	nando293921 (~fernando@cpe-76-185-143-123.satx.res.rr.com) has joined #emacs
+2016-08-17 17:32:23	<--	son0p_ (~ff@181.134.22.152) has quit (Ping timeout: 244 seconds)
+2016-08-17 17:34:15	<--	nschoe (~nschoe@AStLambert-651-1-161-230.w82-120.abo.wanadoo.fr) has quit (Quit: Program. Terminated.)
+2016-08-17 17:34:42	-->	Sixmsj (~Sixmsj@c-73-189-102-185.hsd1.ca.comcast.net) has joined #emacs
+2016-08-17 17:35:09	wasamasa	isn't it only the prompt?
+2016-08-17 17:37:00	<--	grettke (~textual@cpe-65-28-162-236.wi.res.rr.com) has quit (Read error: Connection reset by peer)
+2016-08-17 17:37:34	-->	tomtix (~tomtix@2a01:e35:8bc0:8af0:518a:8bdc:d414:ae56) has joined #emacs
+2016-08-17 17:39:02	-->	grettke (~textual@cpe-65-28-162-236.wi.res.rr.com) has joined #emacs
+2016-08-17 17:39:08	<--	wapiflapi (~Wapi@ctl.ovh) has quit (Ping timeout: 244 seconds)
+2016-08-17 17:39:09	<--	cybrNaut (cybrNaut@2001:0:53aa:64c:28b7:8df9:bcca:66c4) has quit (Changing host)
+2016-08-17 17:39:09	-->	cybrNaut (cybrNaut@unaffiliated/cybrnaut) has joined #emacs
+2016-08-17 17:40:41	-->	slackorama (~user@2606:2800:4033:197:7cf5:4536:c8f:3f4a) has joined #emacs
+2016-08-17 17:40:59	<--	vikid` (~vukini@217-162-41-200.dynamic.hispeed.ch) has quit (Ping timeout: 258 seconds)
+2016-08-17 17:42:00	-->	_KaLiF (~kalif101@154.126.66.114) has joined #emacs
+2016-08-17 17:42:18	--	irc: disconnected from server
+2016-08-18 00:14:47	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #emacs
+2016-08-18 00:14:47	--	Topic for #emacs is ""Learning an editor represents training in the delusions of that editor." | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-18 00:14:47	--	Topic set by wgreenhouse (~wgreenhou@fsf/member/wgreenhouse) on Wed, 17 Aug 2016 15:38:23
+2016-08-18 00:14:47	--	Channel #emacs: 938 nicks (0 ops, 0 voices, 938 normals)
+2016-08-18 00:14:47	<--	Rawriful (~Rawriful@host-92-20-10-210.as13285.net) has quit (Quit: WeeChat 1.3)
+2016-08-18 00:14:47	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-18 00:14:47	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-18 00:14:52	NapoleonWils0n	hi all
+2016-08-18 00:15:01	benaiah	,greet NapoleonWils0n 
+2016-08-18 00:15:01	fsbot	Chào bạn NapoleonWils0n.
+2016-08-18 00:15:07	-->	nanoyak (~nanoyak@c-50-184-211-187.hsd1.ca.comcast.net) has joined #emacs
+2016-08-18 00:15:11	NapoleonWils0n	is it possible to export org attachments
+2016-08-18 00:15:13	e1f_	benaiah: are you working in a mental asylum, perchance?
+2016-08-18 00:15:25	benaiah	e1f_: feels like it sometimes
+2016-08-18 00:15:30	Sixmsj	didnt realize fsbot was vietnamese
+2016-08-18 00:15:40	benaiah	,greeting-list
+2016-08-18 00:15:40	fsbot	benaiah: Even your right hand broke up with you,
+2016-08-18 00:15:48	e1f_	fsbot is the united nations
+2016-08-18 00:15:55	benaiah	Sixmsj: there's a list of greetings somewhere
+2016-08-18 00:16:03	-->	phschwartz (~phschwart@162.253.55.154) has joined #emacs
+2016-08-18 00:17:27	NapoleonWils0n	when i do an org export to html is it possible to add the text from the attachment
+2016-08-18 00:18:10	<--	oscarafone (~oscarafon@pal-210-106-68.itap.purdue.edu) has quit (Ping timeout: 258 seconds)
+2016-08-18 00:18:14	benaiah	I'm beginning to understand the programmers I've met who have just given up on giving a shit
+2016-08-18 00:18:22	e1f_	arent the greetings from the hello page?
+2016-08-18 00:18:24	benaiah	it's really tempting sometimes
+2016-08-18 00:18:56	Welkin	benaiah: well if your workplace sucks
+2016-08-18 00:19:38	-->	der-landgraf (~der-landg@cpe-66-8-186-100.hawaii.res.rr.com) has joined #emacs
+2016-08-18 00:19:38	<--	der-landgraf (~der-landg@cpe-66-8-186-100.hawaii.res.rr.com) has quit (Changing host)
+2016-08-18 00:19:38	-->	der-landgraf (~der-landg@unaffiliated/der-landgraf) has joined #emacs
+2016-08-18 00:21:36	<--	tgunr (~davec@cpe-66-91-34-168.hawaii.res.rr.com) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2016-08-18 00:21:41	defanor	hm, i knew programmers who never cared, and the ones who did, but not recalling anyone who turned from one side to another
+2016-08-18 00:23:30	zenspider	Sixmsj: yeah. the original dev is AWOL so I took it over once I realized I had all the patches gathered in one place
+2016-08-18 00:23:47	zenspider	curretnly not in melpa stable even tho I used to be... something is wrong with my package metadata or something
+2016-08-18 00:24:21	--	irc: disconnected from server
+2016-08-18 19:32:52	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #emacs
+2016-08-18 19:32:52	--	Topic for #emacs is ""Learning an editor represents training in the delusions of that editor." | Please test Emacs 25.1-rc1 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-18 19:32:52	--	Topic set by wgreenhouse (~wgreenhou@fsf/member/wgreenhouse) on Wed, 17 Aug 2016 15:38:24
+2016-08-18 19:32:52	--	Channel #emacs: 970 nicks (0 ops, 0 voices, 970 normals)
+2016-08-18 19:32:53	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-18 19:32:53	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-18 19:32:56	NapoleonWils0n	hi all
+2016-08-18 19:32:57	-->	neanderslob (~quassel@c-50-168-247-73.hsd1.ut.comcast.net) has joined #emacs
+2016-08-18 19:33:02	defanor	https://en.wikipedia.org/wiki/Web_Mercator#Formulas – the formula for x is wrong there, isn't it? looks like it'd be 512 with zoom = 1 and longitude = 180° = π, while should be 256
+2016-08-18 19:33:08	wgreenhouse	,greet NapoleonWils0n
+2016-08-18 19:33:08	fsbot	Здравствуйте NapoleonWils0n!
+2016-08-18 19:33:16	NapoleonWils0n	i have texlive installed but org mode export to pdf fails on linux
+2016-08-18 19:33:17	-->	mrBen2k2k2k (~logstash@ec2-52-90-90-33.compute-1.amazonaws.com) has joined #emacs
+2016-08-18 19:33:32	wgreenhouse	NapoleonWils0n: what happens exactly
+2016-08-18 19:33:43	<--	lacrymology (~lacrymolo@223-192.dsl.iskon.hr) has quit (Ping timeout: 252 seconds)
+2016-08-18 19:33:54	NapoleonWils0n	just get an error saying pdf wasnt created, latex export works
+2016-08-18 19:34:10	NapoleonWils0n	not very descriptive error 
+2016-08-18 19:34:16	-->	BusFactor1 (~textual@adsk-nat-ip3.autodesk.com) has joined #emacs
+2016-08-18 19:34:21	wgreenhouse	NapoleonWils0n: try C-x b *Org TAB
+2016-08-18 19:34:26	NapoleonWils0n	ok
+2016-08-18 19:34:29	NapoleonWils0n	will do
+2016-08-18 19:34:38	-->	nanoyak (~nanoyak@c-50-184-211-187.hsd1.ca.comcast.net) has joined #emacs
+2016-08-18 19:34:41	wgreenhouse	there is often an "org latex pdf output" buffer in case of errors
+2016-08-18 19:34:48	-->	shorberg (~shorberg@94.254.51.244) has joined #emacs
+2016-08-18 19:34:54	wgreenhouse	should have the complete console from pdflatex
+2016-08-18 19:35:13	NapoleonWils0n	no match
+2016-08-18 19:35:24	<--	irregular (~user@65.246.174.98) has quit (Ping timeout: 260 seconds)
+2016-08-18 19:35:34	wgreenhouse	I might be getting the name slightly wrong
+2016-08-18 19:35:37	NapoleonWils0n	i have pdflatex installed, maybe emacs cant find the binary
+2016-08-18 19:35:41	-->	lacrymology (~lacrymolo@141-136-192-140.dsl.iskon.hr) has joined #emacs
+2016-08-18 19:35:52	wgreenhouse	you can try M-x executable-find RET pdflatex RET
+2016-08-18 19:36:03	NapoleonWils0n	cheers mate
+2016-08-18 19:36:11	<--	mrBen2k2k2k (~logstash@ec2-52-90-90-33.compute-1.amazonaws.com) has quit (Max SendQ exceeded)
+2016-08-18 19:36:54	NapoleonWils0n	get no match for executable-find
+2016-08-18 19:36:54	-->	ubuntu-mate (~ubuntu-ma@194.219.215.185.dsl.dyn.forthnet.gr) has joined #emacs
+2016-08-18 19:36:58	<--	jlf (~user@pdpc/supporter/active/jlf) has quit (Ping timeout: 250 seconds)
+2016-08-18 19:37:09	wgreenhouse	oh sorry, that's not an executable command
+2016-08-18 19:37:17	wgreenhouse	M-: (executable-find "pdflatex") RET
+2016-08-18 19:37:33	<--	ubuntu-mate (~ubuntu-ma@194.219.215.185.dsl.dyn.forthnet.gr) has quit (Client Quit)
+2016-08-18 19:38:18	<--	rebra (4d28bab4@gateway/web/freenode/ip.77.40.186.180) has quit
+2016-08-18 19:38:48	NapoleonWils0n	so M-X then (executable-fin "pdflatex") RET
+2016-08-18 19:39:01	NapoleonWils0n	find
+2016-08-18 19:39:01	paluche	no, M-:
+2016-08-18 19:39:21	-->	firstdayonthejob (~firstdayo@cpc99346-croy26-2-0-cust153.19-2.cable.virginm.net) has joined #emacs
+2016-08-18 19:39:29	-->	rebra2 (~reidar@s71-00037.dsl.no.powertech.net) has joined #emacs
+2016-08-18 19:39:31	NapoleonWils0n	sorry bit of an emacs noob, meta and -
+2016-08-18 19:39:36	-->	dwilc_ (~dwilc@2601:4a:c000:8990::4) has joined #emacs
+2016-08-18 19:39:49	paluche	meta and colon.
+2016-08-18 19:39:58	-->	mrBen2k2k2k (~logstash@ec2-52-90-90-33.compute-1.amazonaws.com) has joined #emacs
+2016-08-18 19:40:04	<--	cdg (~cdg@157.166.175.129) has quit (Ping timeout: 264 seconds)
+2016-08-18 19:40:20	NapoleonWils0n	gotcha
+2016-08-18 19:40:48	paluche	"M-:", that is, M dash colon, means to press colon while holding meta.
+2016-08-18 19:40:53	<--	dwilc (~dwilc@2601:4a:c000:8990:b02e:5f1b:3c90:c9ba) has quit (Ping timeout: 250 seconds)
+2016-08-18 19:41:15	macrobat	helsinki is rolling out robot busses. will these be our evil robot busses??
+2016-08-18 19:41:15	fsbot	Signs point to yes!
+2016-08-18 19:41:17	NapoleonWils0n	right
+2016-08-18 19:41:41	wgreenhouse	macrobat: Helsinki is exactly where I'd expect to see something like that, given that the populace gets nervous if the tram is 30sec late
+2016-08-18 19:41:52	<--	enderby (~user@c-68-80-18-101.hsd1.pa.comcast.net) has quit (Quit: ERC (IRC client for Emacs 24.5.1))
+2016-08-18 19:42:03	NapoleonWils0n	ok that works and it finds the pdflatex binary at /usr/bin/pdflatex
+2016-08-18 19:42:24	wgreenhouse	ok then the error is something other than emacs not knowing where the compiler is
+2016-08-18 19:42:42	NapoleonWils0n	i dont have any latex headings in my org file, does that matter
+2016-08-18 19:43:06	wgreenhouse	no, org itself adds a bunch of default packages and a document type to latex export
+2016-08-18 19:43:23	wgreenhouse	you could try just running pdflatex on the generated .tex file and seeing what happens
+2016-08-18 19:43:27	wgreenhouse	could be missing packages
+2016-08-18 19:43:55	<--	duggiefresh (~duggiefre@97-126-28-89.tukw.qwest.net) has quit (Remote host closed the connection)
+2016-08-18 19:44:03	NapoleonWils0n	someone on stckover said installing texlive-latexextra worked for them
+2016-08-18 19:44:04	macrobat	I read that finnish law doesn't demand that vehicles have drivers
+2016-08-18 19:44:17	NapoleonWils0n	stackoverflow
+2016-08-18 19:44:30	-->	duggiefresh (~duggiefre@97-126-28-89.tukw.qwest.net) has joined #emacs
+2016-08-18 19:44:33	ijp	macrobat: do most countries require that?
+2016-08-18 19:44:36	<--	lacrymology (~lacrymolo@141-136-192-140.dsl.iskon.hr) has quit (Ping timeout: 258 seconds)
+2016-08-18 19:44:42	ijp	it seems like the sort of thing that would be left unsaid
+2016-08-18 19:44:48	<--	mrBen2k2k2k (~logstash@ec2-52-90-90-33.compute-1.amazonaws.com) has quit (Max SendQ exceeded)
+2016-08-18 19:45:30	-->	lacrymology (~lacrymolo@178-82.dsl.iskon.hr) has joined #emacs
+2016-08-18 19:45:35	wgreenhouse	in Finland you get a tophat and sword for defending your Ph.D.
+2016-08-18 19:45:37	NapoleonWils0n	will try install textlive-latexextra and see if that works
+2016-08-18 19:45:49	NapoleonWils0n	and a herring
+2016-08-18 19:45:53	macrobat	no knowledge of that. perhaps elsewhewre the assumption isn't clearly stated
+2016-08-18 19:45:56	wgreenhouse	NapoleonWils0n: that might work; as I say the error is likely to be missing packages
+2016-08-18 19:46:09	ijp	wgreenhouse: Yeah, I heard about the sword thing from a finnish friend
+2016-08-18 19:46:15	NapoleonWils0n	cheers mate thx for the help, will have a play around
+2016-08-18 19:46:29	<--	rebra2 (~reidar@s71-00037.dsl.no.powertech.net) has quit (Ping timeout: 260 seconds)
+2016-08-18 19:46:30	<--	jmares (~user@84.red-88-14-201.dynamicip.rima-tde.net) has quit (Ping timeout: 276 seconds)
+2016-08-18 19:46:43	ijp	finns make up a surprisingly large part of my social circle
+2016-08-18 19:46:49	wgreenhouse	ijp: frighteningly, this means that the candidate defending their dissertation is unarmed before a bunch of people known to already possess swords
+2016-08-18 19:46:52	NapoleonWils0n	i noticed converting org mode with pandoc to markdown isnt as good as exporting from emacs
+2016-08-18 19:46:58	-->	MiF (~hack@mm-154-72-122-178.brest.dynamic.pppoe.byfly.by) has joined #emacs
+2016-08-18 19:47:11	<--	twainwek (~user@104.233.121.62) has quit (Ping timeout: 244 seconds)
+2016-08-18 19:47:18	-->	rebra2 (~reidar@77.40.186.180) has joined #emacs
+2016-08-18 19:47:51	wgreenhouse	NapoleonWils0n: not surprising, pandoc is a swiss army knife in both the good and bad senses of the word
+2016-08-18 19:48:05	wgreenhouse	it'll export an org file, but not as well as org does
+2016-08-18 19:48:33	<--	duggiefresh (~duggiefre@97-126-28-89.tukw.qwest.net) has quit (Ping timeout: 240 seconds)
+2016-08-18 19:48:37	-->	mrBen2k2k2k (~logstash@ec2-52-90-90-33.compute-1.amazonaws.com) has joined #emacs
+2016-08-18 19:49:08	-->	visl (~visl@2001:19f0:4009:1423::64) has joined #emacs
+2016-08-18 19:49:41	NapoleonWils0n	yes it mangle a lot of > and < and excaped them all
+2016-08-18 19:50:10	<--	sdegutis (~sdegutis@unaffiliated/sdegutis) has left #emacs
+2016-08-18 19:51:11	-->	punchagan (~user@unaffiliated/punchagan) has joined #emacs
+2016-08-18 19:51:17	<--	rebra2 (~reidar@77.40.186.180) has quit (Client Quit)
+2016-08-18 19:51:23	<--	dcl (~root@freecode-project/hacker/spiderbyte) has quit (Quit: WeeChat 1.0.1)
+2016-08-18 19:52:09	<--	jatt (~user@unaffiliated/jatt) has quit (Remote host closed the connection)
+2016-08-18 19:52:43	-->	doomlord (~textual@host81-147-72-23.range81-147.btcentralplus.com) has joined #emacs
+2016-08-18 19:54:05	eephyne	ok I search a control binding that is not used by emacs to bind it to tmux
+2016-08-18 19:54:14	-->	dcl (~root@freecode-project/hacker/spiderbyte) has joined #emacs
+2016-08-18 19:54:39	<--	Luke (~Luke@unaffiliated/luke) has quit (Quit: sleep)
+2016-08-18 19:55:14	-->	Luke (~Luke@unaffiliated/luke) has joined #emacs
+2016-08-18 19:55:14	<--	mrBen2k2k2k (~logstash@ec2-52-90-90-33.compute-1.amazonaws.com) has quit (Max SendQ exceeded)
+2016-08-18 19:55:23	JordiGH	Is there some sort of "wtf is docker" text out there?
+2016-08-18 19:55:24	Sketch	F13
+2016-08-18 19:55:30	wgreenhouse	eephyne: I just leave it at default; you can still type a C-a in emacs by C-a a to tmux
+2016-08-18 19:55:34	JordiGH	I feel like I can ignore docker no longer.
+2016-08-18 19:55:46	Sketch	wgreenhouse: pretty sure the default is C-b in tmux, which is even more annoying ;)
+2016-08-18 19:55:55	wgreenhouse	oh, how silly
+2016-08-18 19:55:56	Sketch	(but that's what i do with screen, i'm used to C-a a by now)
+2016-08-18 19:56:03	wgreenhouse	yeah, my .tmux.conf moves it to C-a
+2016-08-18 19:56:13	wgreenhouse	I use grml's comfy dotfiles
+2016-08-18 19:56:15	Sketch	if i was going to start over, i would probably use C-z or C-q
+2016-08-18 19:56:26	wgreenhouse	C-z is a good choice. it's almost never what I actually want
+2016-08-18 19:56:29	<--	iclon (~iclon@38.140.23.90) has quit (Quit: Leaving)
+2016-08-18 19:56:55	-->	whittle (~user@207.41.188.209) has joined #emacs
+2016-08-18 19:57:05	eephyne	C-b is default in tmux but I know i can leave it
+2016-08-18 19:57:15	eephyne	but I need to press it twice to use it in emacs
+2016-08-18 19:57:21	eephyne	not efficient at all
+2016-08-18 19:57:26	<--	Luke (~Luke@unaffiliated/luke) has quit (Client Quit)
+2016-08-18 19:57:27	eephyne	c-z is usd
+2016-08-18 19:57:50	Sketch	why do you need to suspend emacs when you are in tmux? ;)
+2016-08-18 19:57:55	Sketch	just open a new terminal...
+2016-08-18 19:58:12	eephyne	you mark a point
+2016-08-18 19:58:13	wgreenhouse	I unbind suspend-emacs anyway
+2016-08-18 19:58:16	wgreenhouse	it's an antifeature
+2016-08-18 19:58:26	s00pcan	well, I have no use for it either
+2016-08-18 19:58:29	NapoleonWils0n	i think the error was in a particular org file, unmatched $ or something
+2016-08-18 19:58:33	<--	doomlord (~textual@host81-147-72-23.range81-147.btcentralplus.com) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2016-08-18 19:58:34	Sketch	yeah, it's rare that i actually want to suspend emacs
+2016-08-18 19:58:46	eephyne	but another issue
+2016-08-18 19:58:48	Sketch	maybe if it's hung and C-g is not working
+2016-08-18 19:58:50	-->	JZA (JZA@gateway/shell/elitebnc/x-bdjpkptyvaeumhxz) has joined #emacs
+2016-08-18 19:58:54	eephyne	on my layout Z is far away
+2016-08-18 19:58:54	NapoleonWils0n	just exported todo.org to pdf so issue was with particulat org file
+2016-08-18 19:59:08	eephyne	near enter at the first line
+2016-08-18 19:59:14	-->	hahuang61 (~hahuang65@2601:647:4000:d7:14b1:e273:8100:c608) has joined #emacs
+2016-08-18 19:59:22	wgreenhouse	NapoleonWils0n: you can just run pdflatex at console if you want to actually find out what the problem is instead of guessing :)
+2016-08-18 19:59:26	paluche	if C-g doesn't work, how do you expect to run suspend-emacs? =)
+2016-08-18 19:59:42	-->	mrBen2k2k2k (~logstash@ec2-52-90-90-33.compute-1.amazonaws.com) has joined #emacs
+2016-08-18 20:00:20	NapoleonWils0n	if i export to tex and then convert with pandoc it works, i can live with that
+2016-08-18 20:00:30	NapoleonWils0n	thx for the help mate
+2016-08-18 20:00:30	Sketch	paluche: i think when emacs is hanging, the shell suspend works, sometimes. maybe.
+2016-08-18 20:00:46	Sketch	it's not something i do very often
+2016-08-18 20:00:50	-->	Luke (~Luke@unaffiliated/luke) has joined #emacs
+2016-08-18 20:00:52	--	irc: disconnected from server
+2016-08-24 22:58:54	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #emacs
+2016-08-24 22:58:54	--	Topic for #emacs is ""Learning an editor represents training in the delusions of that editor." | Please test Emacs 25.1-rc2 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-24 22:58:54	--	Topic set by kodein (1710@fukushima.lysator.liu.se) on Mon, 22 Aug 2016 07:46:47
+2016-08-24 22:58:55	--	Channel #emacs: 959 nicks (0 ops, 0 voices, 959 normals)
+2016-08-24 22:58:55	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-24 22:58:56	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-24 22:59:04	<--	quickoats (~quaker@dyn-dsl-to-76-75-107-160.nexicom.net) has quit (Ping timeout: 240 seconds)
+2016-08-24 22:59:06	NapoleonWils0n	hi all
+2016-08-24 22:59:07	-->	tod-51561 (~tod-51561@46.33.129.2) has joined #emacs
+2016-08-24 22:59:38	tali713	JordiGH: you can just keep flipping back and force, though I'm not sure of the long term effects of cognitively manipulating your interpretation of perception.
+2016-08-24 22:59:45	tali713	probably nothing to worry about.
+2016-08-24 22:59:55	bremner	is that a slur?
+2016-08-24 23:00:18	NapoleonWils0n	im using ox-pandoc and have to reload org otherwise using #TITLE stops the export 
+2016-08-24 23:00:38	NapoleonWils0n	if i reload org then ox-pandoc export works with the #TITLE
+2016-08-24 23:01:42	tali713	SpiderPig: probably bad timing, why not flyspell-mode?
+2016-08-24 23:01:57	<--	paluche (~user@71-13-7-218.static.ftbg.wi.charter.com) has quit (Ping timeout: 276 seconds)
+2016-08-24 23:02:02	<--	scottj (~scott@unaffiliated/scottj) has left #emacs
+2016-08-24 23:02:05	<--	rumbler31 (~rumbler31@41.189.250.11) has quit (Remote host closed the connection)
+2016-08-24 23:02:14	<--	Judge_Dredd (~Judge_Dre@unaffiliated/judge-dredd/x-2170742) has quit (Quit: Leaving.)
+2016-08-24 23:02:24	<--	mstevens (~mstevens@fsf/member/pdpc.active.mstevens) has quit (Quit: leaving)
+2016-08-24 23:02:30	<--	tromey (~tromey@75-171-190-201.hlrn.qwest.net) has quit (Quit: ERC (IRC client for Emacs 25.1.3))
+2016-08-24 23:02:33	aidalgol	tali713: What'd you think of The Force Awakens?
+2016-08-24 23:02:49	tali713	aidalgol: I thought it was excellent.
+2016-08-24 23:02:58	<--	BusFactor1 (~textual@S0106a0639172137a.cg.shawcable.net) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-08-24 23:03:14	aidalgol	For reference, did you like the prequel trilogy?
+2016-08-24 23:03:18	SpiderPig	tali713: That starts succesfully from a hook.  I just wanted to also initially hilight preexisting spelling errors. You know, in case one of my coworkers made a spelling mistake.
+2016-08-24 23:03:28	tali713	aidalgol: no.
+2016-08-24 23:03:52	-->	nanoyak (~nanoyak@c-50-184-211-187.hsd1.ca.comcast.net) has joined #emacs
+2016-08-24 23:04:09	<--	flav (~flav@220.33.204.77.rev.sfr.net) has quit (Ping timeout: 250 seconds)
+2016-08-24 23:04:11	tali713	aidalgol: it could have been good, but there were too many errors.  the phantom menace was decent, not great but decent.
+2016-08-24 23:04:49	aidalgol	IIRC, my parents' reaction to that one was, "what the fuck was THAT?" and then they didn't bother seeing the next two.
+2016-08-24 23:05:46	<--	grettke (~textual@cpe-65-28-162-236.wi.res.rr.com) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-08-24 23:05:48	<--	rgrinberg (~rgrinberg@24-246-56-85.cable.teksavvy.com) has quit (Ping timeout: 244 seconds)
+2016-08-24 23:05:52	tali713	but choosing not to persue the plot of jarjar the sith lord, combined with metacalorics and the poorly executed romance and fall of anakin, made it weak, at best.
+2016-08-24 23:06:03	<--	stef204 (~stef204@unaffiliated/stef-204/x-384198) has quit (Quit: WeeChat 1.5)
+2016-08-24 23:06:12	-->	__acher__ (~user@65.254.97.40) has joined #emacs
+2016-08-24 23:06:23	NapoleonWils0n	star wars with howard the duck
+2016-08-24 23:06:29	aidalgol	jarjar was a sith?  as in, the bad/evil/dark side?
+2016-08-24 23:06:45	aidalgol	jarjar binks the horrendously annoying CG thing?
+2016-08-24 23:06:51	bremner	no u
+2016-08-24 23:07:01	<--	cow_2001 (~weechat@unaffiliated/wabisabi) has quit (Quit: cow_2001)
+2016-08-24 23:07:05	bremner	me defendum jarjar.
+2016-08-24 23:07:09	 *	aidalgol reskins bremner
+2016-08-24 23:07:11	tali713	meanwhile force awakens is properly samurai fantasy, with space wizards and operatic scale.  it got the vision right, better than lucas, imo.  I don't care that's just recycled story, all kungfu samurai fantasy is.
+2016-08-24 23:07:13	-->	zacts (~zacts@dragora/developer/zacts) has joined #emacs
+2016-08-24 23:07:23	-->	Atomic_i7iWg2 (~atomic@174-23-41-4.slkc.qwest.net) has joined #emacs
+2016-08-24 23:07:36	aidalgol	lol "kungfu samurai"
+2016-08-24 23:07:42	tali713	aidalgol: yes, I thought that was obvious from the first viewing of the phantom menace.
+2016-08-24 23:07:57	--	irc: disconnected from server
+2016-08-25 20:10:59	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #emacs
+2016-08-25 20:10:59	--	Topic for #emacs is ""Learning an editor represents training in the delusions of that editor." | Please test Emacs 25.1-rc2 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-25 20:10:59	--	Topic set by kodein (1710@fukushima.lysator.liu.se) on Mon, 22 Aug 2016 07:46:47
+2016-08-25 20:10:59	--	Channel #emacs: 965 nicks (0 ops, 0 voices, 965 normals)
+2016-08-25 20:10:59	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-25 20:11:02	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-25 20:11:09	NapoleonWils0n	hi all
+2016-08-25 20:11:15	-->	crelix (~crelix@192.81.209.188) has joined #emacs
+2016-08-25 20:11:20	NapoleonWils0n	anyone using ox-pandoc
+2016-08-25 20:11:32	-->	nando293921 (~fernando@64.189.57.203) has joined #emacs
+2016-08-25 20:11:32	didi	riceandbeans: wfm Like I said, maybe you are unfamiliar with the UI.
+2016-08-25 20:11:36	<--	onmyo (onmyo@2600:3c01::f03c:91ff:fec8:2a48) has quit (Max SendQ exceeded)
+2016-08-25 20:11:51	NapoleonWils0n	ox-pandoc doesnt seem to export toc with html
+2016-08-25 20:11:56	wasamasa	belak: I'm not sure why you're not going by the strategy of other theme macros
+2016-08-25 20:12:10	wasamasa	belak: which just use a huge let with the colors inside
+2016-08-25 20:12:12	belak	Which ones are those?
+2016-08-25 20:12:13	-->	onmyo (onmyo@2600:3c01::f03c:91ff:fec8:2a48) has joined #emacs
+2016-08-25 20:12:18	<--	jdt (~jdt@208.85.233.130) has quit (Read error: Connection reset by peer)
+2016-08-25 20:12:41	belak	Ah, "zenburn-with-color-variables"?
+2016-08-25 20:12:45	wasamasa	yeah
+2016-08-25 20:12:50	-->	jdt (~jdt@208.85.233.130) has joined #emacs
+2016-08-25 20:12:50	wasamasa	it's fairly clean
+2016-08-25 20:13:14	-->	madjestic (~madjestic@92.110.198.44) has joined #emacs
+2016-08-25 20:13:16	wasamasa	downside is that you still need to write boilerplate declarations
+2016-08-25 20:13:36	wasamasa	I went for a macroless route to have that
+2016-08-25 20:13:43	belak	I was trying to avoid requiring that all the themes were regenerated when a face was changed.
+2016-08-25 20:13:44	<--	crelix (~crelix@192.81.209.188) has quit (Client Quit)
+2016-08-25 20:13:44	wasamasa	see https://github.com/wasamasa/gotham-theme/blob/master/gotham-theme.el
+2016-08-25 20:13:52	-->	crelix (~crelix@192.81.209.188) has joined #emacs
+2016-08-25 20:14:05	wasamasa	doesn't work for setting variables though :P
+2016-08-25 20:14:05	<--	nando293921 (~fernando@64.189.57.203) has quit (Read error: Connection reset by peer)
+2016-08-25 20:14:09	-->	Denommus (~user@unaffiliated/denommus) has joined #emacs
+2016-08-25 20:14:10	wasamasa	or rather, I haven't bothered yet
+2016-08-25 20:14:12	<--	to1ne (~toon@94-227-10-94.access.telenet.be) has quit (Remote host closed the connection)
+2016-08-25 20:14:20	-->	nando293921 (~fernando@64.189.57.203) has joined #emacs
+2016-08-25 20:14:39	<--	pbgc (~pbgc@bl17-141-17.dsl.telepac.pt) has quit (Quit: Computer has gone to sleep.)
+2016-08-25 20:14:48	Fernando-Basso	didi: M-i does what I need (and seems to be producing spaces, acording to describe-char).
+2016-08-25 20:15:03	Fernando-Basso	Thank you very much, mister.
+2016-08-25 20:15:04	didi	Fernando-Basso: It's handy. You can configure it.
+2016-08-25 20:15:12	<--	e1f_ (~e1f@141.117.116.162) has quit (Remote host closed the connection)
+2016-08-25 20:15:33	didi	Fernando-Basso: :-P
+2016-08-25 20:16:44	--	irc: disconnected from server
+2016-08-26 22:29:40	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #emacs
+2016-08-26 22:29:40	--	Topic for #emacs is ""Learning an editor represents training in the delusions of that editor." | Please test Emacs 25.1-rc2 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-26 22:29:40	--	Topic set by kodein (1710@fukushima.lysator.liu.se) on Mon, 22 Aug 2016 07:46:47
+2016-08-26 22:29:40	--	Channel #emacs: 933 nicks (0 ops, 0 voices, 933 normals)
+2016-08-26 22:29:40	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-26 22:29:42	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-26 22:29:46	NapoleonWils0n	hi all
+2016-08-26 22:29:52	laurus	forcer, because it isn't a circular reference?
+2016-08-26 22:29:56	laurus	So they are all different?
+2016-08-26 22:29:59	NapoleonWils0n	i have an org document with  #+STARTUP: content
+2016-08-26 22:29:59	wasamasa	if you look at the implementation, you'll see that it basically does (setq ret (cons init ret)) until it's done
+2016-08-26 22:30:09	forcer	laurus: Circular references are irrelevant here
+2016-08-26 22:30:16	NapoleonWils0n	but when i open the file its always set to showall
+2016-08-26 22:30:22	<--	iFire (~fire@unaffiliated/ifire) has quit (Remote host closed the connection)
+2016-08-26 22:30:23	laurus	wasamasa, so it's like integers, where each integer is only a single object?
+2016-08-26 22:30:28	NapoleonWils0n	eg all headlines are expanded
+2016-08-26 22:30:54	<--	mcmillhj (~huntermcm@67.130.46.134) has quit (Ping timeout: 276 seconds)
+2016-08-26 22:31:22	wasamasa	laurus: no, you're repeatedly putting the same object into a list
+2016-08-26 22:31:33	laurus	Oh okay. I didn't know you could do that
+2016-08-26 22:31:35	forcer	laurus: (list (cons 'a 'b) (cons 'a 'b) (cons 'a 'b)) creates a list of three conses, all different. (let ((obj (cons 'a 'b))) (list obj obj obj)) creates a list of three conses, all identical. `make-list' does the latter, not the former.
+2016-08-26 22:31:53	wasamasa	so if you compare their identities, they will be the same
+2016-08-26 22:32:02	wasamasa	there is a similar caveat for `make-vector'
+2016-08-26 22:32:03	laurus	I see. Thanks forcer and wasamasa
+2016-08-26 22:32:14	wasamasa	don't use it with "complex" objects
+2016-08-26 22:32:26	-->	mcmillhj (~huntermcm@216.30.179.54) has joined #emacs
+2016-08-26 22:32:42	NapoleonWils0n	are there any good alternatives to ditaa that dont use java
+2016-08-26 22:33:07	wasamasa	draw.io is surprisingly great
+2016-08-26 22:33:14	wasamasa	if you're feeling masochistic, use tikz
+2016-08-26 22:33:23	NapoleonWils0n	ill have a look cheers mate
+2016-08-26 22:33:30	forcer	yed
+2016-08-26 22:33:32	-->	iFire (~fire@unaffiliated/ifire) has joined #emacs
+2016-08-26 22:33:37	forcer	Oh, "don't" use java. Never mind.
+2016-08-26 22:33:40	wasamasa	there's also an emacs mode for some proprietary web service by jostein
+2016-08-26 22:34:10	wasamasa	https://github.com/josteink/wsd-mode
+2016-08-26 22:34:24	wasamasa	some people use dia for their ER diagrams
+2016-08-26 22:34:24	NapoleonWils0n	cheers
+2016-08-26 22:34:25	 *	gnomon googles ditaa
+2016-08-26 22:34:26	-->	tjackson (~user@97-124-23-43.phnx.qwest.net) has joined #emacs
+2016-08-26 22:34:38	wasamasa	like, one of the trainees at work :>
+2016-08-26 22:34:42	gnomon	Oh, you want the pic submodule to plug into your troff pipeline.
+2016-08-26 22:34:44	 *	benaiah is disappointed that the AGPL doesn't get used more
+2016-08-26 22:34:50	NapoleonWils0n	looks like overkill http://www.dia.mil/
+2016-08-26 22:35:05	wasamasa	I'm fairly sure that's not it
+2016-08-26 22:35:19	wasamasa	https://wiki.gnome.org/action/show/Apps/Dia?action=show&redirect=Dia
+2016-08-26 22:36:06	<--	kritzcreek (uid114400@gateway/web/irccloud.com/x-izligarmyladcpvt) has quit (Quit: Connection closed for inactivity)
+2016-08-26 22:36:37	laurus	forcer, so correct me if I'm wrong, but just looking at the printed representations it's impossible to tell if one (a b) and another (a b) are the same or different objects?
+2016-08-26 22:36:41	laurus	(generally speaking)
+2016-08-26 22:36:45	NapoleonWils0n	org-crypt is nice, probably not a good idea to keep the file in a git repo
+2016-08-26 22:36:51	forcer	laurus: Correct
+2016-08-26 22:37:07	laurus	forcer, how is that not a bad thing? :)
+2016-08-26 22:37:07	forcer	laurus: They are always `equal', but not always `eq'.
+2016-08-26 22:37:08	<--	adamdecaf (~adamdecaf@38.108.133.158) has quit (Ping timeout: 244 seconds)
+2016-08-26 22:37:09	<--	mcmillhj (~huntermcm@216.30.179.54) has quit (Ping timeout: 250 seconds)
+2016-08-26 22:37:12	<--	zjason (~user@111-248-43-116.dynamic.hinet.net) has quit (Ping timeout: 240 seconds)
+2016-08-26 22:37:41	<--	Luke (~Luke@unaffiliated/luke) has quit (Quit: sleep)
+2016-08-26 22:37:50	benaiah	laurus: how *is* it a bad thing? that's rarely a concern, certainly not often enough to output it in the default printed representation
+2016-08-26 22:37:50	<--	wraithm (~textual@205.197.160.100) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-08-26 22:37:52	gnomon	NapoleonWils0n, when you say "the file" do you mean the org-mode file or the gpg private key file?
+2016-08-26 22:38:04	benaiah	it's not like they're indistinguishable completely
+2016-08-26 22:38:15	NapoleonWils0n	the text.org.gpg file
+2016-08-26 22:38:52	gnomon	NapoleonWils0n, because it's incompressible, so git is unable to do its delta/diff thing?  Or for some other reason?
+2016-08-26 22:39:00	laurus	benaiah, it just seems strange to me
+2016-08-26 22:39:14	wasamasa	laurus: it's rarely a concern, so unless you're mutating data structures...
+2016-08-26 22:39:23	NapoleonWils0n	when the org file is encrypted it has a gpg file entension, and would be stored as a binary blob in git
+2016-08-26 22:39:45	forcer	laurus: You should only very rarely use `eq' for anything but symbols.
+2016-08-26 22:39:46	laurus	It's just interesting because it's so different from what I've seen before
+2016-08-26 22:39:55	-->	panka21 (~user@50.233.24.222) has joined #emacs
+2016-08-26 22:39:58	forcer	It's the same in every language.
+2016-08-26 22:40:02	benaiah	rudybot: seen Fuco
+2016-08-26 22:40:02	rudybot	benaiah: Fuco was seen in #emacs forty weeks ago, saying "taylan: well you need to become a budhist monk first", and then Fuco was seen in #emacs forty weeks ago, saying "no you don't :D"
+2016-08-26 22:40:02	NapoleonWils0n	just thought for security
+2016-08-26 22:40:20	gnomon	NapoleonWils0n, right; and are you saying it's bad to keep that in git because it prevents git from being intelligent, or because it presents security concerns?
+2016-08-26 22:40:32	NapoleonWils0n	security 
+2016-08-26 22:40:40	gnomon	NapoleonWils0n, ah.  Can you articulate your concerns about how that might cause security issues?
+2016-08-26 22:40:45	panka21	Hello All, I was wondering who here runs gnus with gmail but through some local offline backup. I'm experimenting setting up offlineimap, dovecot and gnus but just wanted to see what would be best
+2016-08-26 22:40:46	laurus	forcer, I guess so, never mind
+2016-08-26 22:40:54	laurus	panka21, I use offlineimap and dovecot
+2016-08-26 22:41:00	NapoleonWils0n	mutt
+2016-08-26 22:41:11	NapoleonWils0n	and abook
+2016-08-26 22:41:29	-->	yimis (~Thunderbi@183.240.19.250) has joined #emacs
+2016-08-26 22:41:32	gnomon	panka21, personally I use mbsync + dovecot + mutt right now.  Haven't moved to notmuch yet.
+2016-08-26 22:41:55	<--	andrei-n (~andrei-n@91.179.245.243) has quit (Ping timeout: 250 seconds)
+2016-08-26 22:42:06	panka21	gnomon: NapoleonWils0n: So mutt is a terminal application no? 
+2016-08-26 22:42:14	panka21	do you use this within emacs?
+2016-08-26 22:42:17	NapoleonWils0n	yes mutt is a terminal app
+2016-08-26 22:42:26	NapoleonWils0n	no outside emacs
+2016-08-26 22:42:27	<--	johnh (~johnh@fsf/staff/johnh) has quit (Ping timeout: 244 seconds)
+2016-08-26 22:42:33	gnomon	panka21, mutt is a terminal application, yes.  I do not use it within emacs, I use it beside emacs - in a different screen buffer.
+2016-08-26 22:42:41	NapoleonWils0n	havent completly weaned myself off the terminal
+2016-08-26 22:43:21	<--	SabreWolfy (~manta@pdpc/supporter/student/sabrewolfy) has quit (Quit: leaving)
+2016-08-26 22:43:33	-->	cvandusen (~user@68-90-30-246.ded.swbell.net) has joined #emacs
+2016-08-26 22:44:06	<--	stormogu` (~user@c-94-255-198-31.cust.bredband2.com) has quit (Ping timeout: 265 seconds)
+2016-08-26 22:44:11	benaiah	isn't there a more up-to-date version of litable somewhere that someone forked?
+2016-08-26 22:44:13	NapoleonWils0n	is it possible to use org mode to schedule bash commands to be run at a certain time, i use the at command at the moment
+2016-08-26 22:44:16	parsnip	panka21: i think generally folks don't use ncurses apps in emacs. 
+2016-08-26 22:44:24	benaiah	ie not the one at github.com/Fuco1/litable
+2016-08-26 22:44:43	-->	cyan__ (~cyan@217.170.162.68) has joined #emacs
+2016-08-26 22:44:49	benaiah	panka21: there's at least two emacs frontends for notmuch
+2016-08-26 22:44:54	benaiah	if you want something in emacs
+2016-08-26 22:45:00	NapoleonWils0n	i use the at command to schedule video recordings, just wondering if org mode can run a bash script at a certain time
+2016-08-26 22:45:02	<--	TheAdversary (~adversary@unaffiliated/hasimir/bot/theadversary) has quit (Disconnected by services)
+2016-08-26 22:45:47	-->	Khayman (~hfenring@unaffiliated/hasimir) has joined #emacs
+2016-08-26 22:45:59	-->	duggiefresh (~duggiefre@97-126-34-89.tukw.qwest.net) has joined #emacs
+2016-08-26 22:46:48	-->	TheAdversary (~adversary@unaffiliated/hasimir/bot/theadversary) has joined #emacs
+2016-08-26 22:47:06	<--	Hasimir (~hfenring@unaffiliated/hasimir) has quit (Ping timeout: 240 seconds)
+2016-08-26 22:47:26	--	Khayman is now known as Hasimir
+2016-08-26 22:47:43	-->	defaultxr (~defaultxr@24-148-36-245.c3-0.grn-ubr1.chi-grn.il.cable.rcn.com) has joined #emacs
+2016-08-26 22:48:13	<--	bernalex (~alexander@149.223.189.109.customer.cdi.no) has quit (Changing host)
+2016-08-26 22:48:13	-->	bernalex (~alexander@gentoo/developer/fsf.member.bernalex) has joined #emacs
+2016-08-26 22:48:30	<--	aconole (user@nat/redhat/x-hqqmedntnymcrvkm) has quit (Remote host closed the connection)
+2016-08-26 22:49:20	wasamasa	benaiah: Fuco started some sort of rewrite
+2016-08-26 22:49:47	wasamasa	benaiah: bestest name ever: https://github.com/Fuco1/blablabla
+2016-08-26 22:50:13	<--	duggiefresh (~duggiefre@97-126-34-89.tukw.qwest.net) has quit (Ping timeout: 244 seconds)
+2016-08-26 22:50:16	<--	Rome (~Roman@159.203.4.106) has quit (Changing host)
+2016-08-26 22:50:16	-->	Rome (~Roman@unaffiliated/rome) has joined #emacs
+2016-08-26 22:50:16	benaiah	wasamasa: lmao nice
+2016-08-26 22:50:40	laurus	forcer, here's the reason why it seems different. After you do this, (setq trees '(pine oak)) (setq more-trees (append '(maple birch) trees)) and you look at more-trees later, you just see (maple birch pine oak), so how would you ever know that (pine oak) is actually trees itself?
+2016-08-26 22:50:47	<--	wuOz (~wuOz@unaffiliated/wuoz) has quit (Quit: ZNC - 1.6.0 - http://znc.in)
+2016-08-26 22:50:58	--	irc: disconnected from server
+2016-08-29 22:30:05	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #emacs
+2016-08-29 22:30:05	--	Topic for #emacs is ""Learning an editor represents training in the delusions of that editor." | Please test Emacs 25.1-rc2 from http://alpha.gnu.org/gnu/emacs/pretest/ | Emacs questions trump offtopic chatter, so ask! | Treat people with respect. No sexism, racism, homophobia or other asshattery | No public logging! What happens in #emacs stays in #emacs"
+2016-08-29 22:30:05	--	Topic set by kodein (1710@fukushima.lysator.liu.se) on Mon, 22 Aug 2016 07:46:47
+2016-08-29 22:30:05	--	Channel #emacs: 937 nicks (0 ops, 0 voices, 937 normals)
+2016-08-29 22:30:05	--	URL for #emacs: http://www.emacswiki.org/EmacsChannel
+2016-08-29 22:30:07	--	Channel created on Sun, 26 Nov 2006 06:42:33
+2016-08-29 22:30:09	NapoleonWils0n	hi all
+2016-08-29 22:30:21	defanor	,greet NapoleonWils0n
+2016-08-29 22:30:21	fsbot	Tjenare, NapoleonWils0n, hur är det fatt? Hvar är din harpa? Hvar är din hatt
+2016-08-29 22:30:31	NapoleonWils0n	im using babel and graphviz to create svg files
+2016-08-29 22:30:55	NapoleonWils0n	is it possible to have babel insert the svg code below result instead of in a file
+2016-08-29 22:30:57	-->	rm200910 (uid182622@gateway/web/irccloud.com/x-dbmyrpnvgasurdoc) has joined #emacs
+2016-08-29 22:31:01	<--	aconole (user@nat/redhat/x-apzwyhjomaneqxol) has quit (Remote host closed the connection)
+2016-08-29 22:31:30	<--	Sixmsj (~Sixmsj@c-73-223-134-226.hsd1.ca.comcast.net) has quit (Client Quit)
+2016-08-29 22:31:30	NapoleonWils0n	since svg is just xml no point keeping it in an external 
+2016-08-29 22:31:40	NapoleonWils0n	file
+2016-08-29 22:31:50	-->	Sixmsj (~Sixmsj@c-73-223-134-226.hsd1.ca.comcast.net) has joined #emacs
+2016-08-29 22:32:20	-->	rm200910_ (uid182622@gateway/web/irccloud.com/x-bdqcgchjijfrzdqx) has joined #emacs
+2016-08-29 22:32:57	NapoleonWils0n	would i use this :results output instead of :file
+2016-08-29 22:33:03	-->	zacts (~zacts@dragora/developer/zacts) has joined #emacs
+2016-08-29 22:34:03	<--	paluche (~user@71-13-7-218.static.ftbg.wi.charter.com) has quit (Ping timeout: 276 seconds)
+2016-08-29 22:36:04	<--	terrycojones (~textual@global-184-3.nat-1.net.cam.ac.uk) has quit (Ping timeout: 260 seconds)
+2016-08-29 22:36:19	<--	rm200910_ (uid182622@gateway/web/irccloud.com/x-bdqcgchjijfrzdqx) has left #emacs
+2016-08-29 22:36:28	<--	fro0g (~user@94-137-103-166.customers.ownit.se) has quit (Ping timeout: 244 seconds)
+2016-08-29 22:36:57	-->	rm200910_ (uid182622@gateway/web/irccloud.com/x-bdqcgchjijfrzdqx) has joined #emacs
+2016-08-29 22:37:10	aidalgol	jlf: synergy, man
+2016-08-29 22:37:24	--	rm200910_ is now known as rm20010
+2016-08-29 22:37:33	<--	jmignault (~jmignault@rrcs-50-74-108-74.nyc.biz.rr.com) has quit (Ping timeout: 240 seconds)
+2016-08-29 22:37:36	-->	cdg (~cdg@c-69-94-206-50.hs.gigamonster.net) has joined #emacs
+2016-08-29 22:37:40	<--	rm20010 (uid182622@gateway/web/irccloud.com/x-bdqcgchjijfrzdqx) has quit
+2016-08-29 22:37:46	<--	rm200910 (uid182622@gateway/web/irccloud.com/x-dbmyrpnvgasurdoc) has quit
+2016-08-29 22:39:07	wasamasa	C-Keen: I don't get it
+2016-08-29 22:39:13	wasamasa	C-Keen: is that a new topic suggestion?
+2016-08-29 22:39:59	-->	rm200910 (uid182622@gateway/web/irccloud.com/x-qnltoyvxyierrdqb) has joined #emacs
+2016-08-29 22:41:29	-->	seangrove (~user@c-67-169-95-188.hsd1.ca.comcast.net) has joined #emacs
+2016-08-29 22:43:24	NapoleonWils0n	i can use dot to send svg to stdout, need to work out how to di the same with babel
+2016-08-29 22:43:29	<--	rgrinberg (~rgrinberg@205.189.187.4) has quit (Ping timeout: 250 seconds)
+2016-08-29 22:43:33	NapoleonWils0n	dot -Tsvg file.dot
+2016-08-29 22:49:03	<--	stormogulen (~user@c-94-255-198-31.cust.bredband2.com) has quit (Ping timeout: 264 seconds)
+2016-08-29 22:49:12	<--	Gamayun (~Gamayun@host-92-0-150-123.as43234.net) has quit (Ping timeout: 240 seconds)
+2016-08-29 22:49:39	EvanR	maybe its my older version of emacs, 22 something
+2016-08-29 22:49:58	EvanR	this thing says starting with version 23 support is "relatively" complete
+2016-08-29 22:50:09	-->	Gamayun (~Gamayun@host-92-0-150-123.as43234.net) has joined #emacs
+2016-08-29 22:50:34	-->	tjackson (~user@97-124-23-43.phnx.qwest.net) has joined #emacs
+2016-08-29 22:50:43	-->	nanoyak (~nanoyak@c-50-184-211-187.hsd1.ca.comcast.net) has joined #emacs
+2016-08-29 22:51:20	<--	ekinmur (~ekinmur@va01.cvent.com) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-08-29 22:51:34	<--	Luke (~Luke@unaffiliated/luke) has quit (Quit: sleep)
+2016-08-29 22:52:24	--	irc: disconnected from server

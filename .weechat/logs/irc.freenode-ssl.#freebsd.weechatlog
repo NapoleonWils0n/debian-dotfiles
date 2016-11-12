@@ -1,0 +1,32 @@
+2016-10-17 02:00:32	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined #freebsd
+2016-10-17 02:00:32	--	Topic for #freebsd is "Welcome to #FreeBSD! | Have fun, be civilized, respect people, stay on-topic else { #freebsd-social } | /join #freebsd-irc for channel assistance"
+2016-10-17 02:00:32	--	Topic set by koobs on Sat, 09 Jul 2016 12:42:04
+2016-10-17 02:00:32	--	Channel #freebsd: 621 nicks (0 ops, 0 voices, 621 normals)
+2016-10-17 02:00:32	--	Channel created on Sun, 03 Aug 2003 22:25:41
+2016-10-17 02:00:32	--	PvNotice(ChanServ): Please check the FreeBSD Handbook and Manual Pages first: http://freebsd.org/handbook - http://freebsd.org/cgi/man.cgi | Use a pastebin for more than 4 lines: https://dpaste.de/ | Other FreeBSD IRC Channels: https://wiki.freebsd.org/IrcChannels
+2016-10-17 02:00:38	NapoleonWils0n	hi all
+2016-10-17 02:01:17	NapoleonWils0n	was wondering about installing freebsd on a macair
+2016-10-17 02:01:36	-->	tdy3 (~tdy@unaffiliated/tdy) has joined #freebsd
+2016-10-17 02:01:43	NapoleonWils0n	good or bad idea, anyone know what the hardware support is like
+2016-10-17 02:01:53	NapoleonWils0n	wifi, thunderbolt
+2016-10-17 02:03:04	WrinkledCheese	Helio-, that's awesome
+2016-10-17 02:03:14	Helio-	https://wiki.freebsd.org/Laptops/Apple_MacBookAir4,2
+2016-10-17 02:03:25	NapoleonWils0n	cheers 
+2016-10-17 02:04:32	-->	fstd_ (~fstd@unaffiliated/fisted) has joined #freebsd
+2016-10-17 02:04:44	<--	fstd (~fstd@unaffiliated/fisted) has quit (Read error: Connection reset by peer)
+2016-10-17 02:04:51	--	fstd_ is now known as fstd
+2016-10-17 02:04:56	NapoleonWils0n	i have installed openbsd on a macbook before, and run pfsense on a macmini
+2016-10-17 02:05:42	NapoleonWils0n	tried partition drive on mac sierra, then wouldnt boot and offered to reinstall lion
+2016-10-17 02:06:22	NapoleonWils0n	lion was released in 2010
+2016-10-17 02:07:04	Helio-	dunno, I have an older macbook, that barely runs lion
+2016-10-17 02:07:33	<--	tdy3 (~tdy@unaffiliated/tdy) has quit (Ping timeout: 245 seconds)
+2016-10-17 02:07:40	NapoleonWils0n	trust me you dont want to try sierra
+2016-10-17 02:07:51	Helio-	which I barely use now because it doesn't have a lot of power, even though I put an ssd in and doubled the ram, an older core duo can only do so much
+2016-10-17 02:08:02	NapoleonWils0n	every time you close the lid you have to reboot by pressing power button for 10 seconds
+2016-10-17 02:08:15	NapoleonWils0n	sierra wont resume from sleep
+2016-10-17 02:09:44	-->	svm_invictvs (~patrick@unaffiliated/svminvictvs/x-938456) has joined #freebsd
+2016-10-17 02:09:56	<--	blackmesa (~blackmesa@aftr-37-201-227-42.unity-media.net) has quit (Ping timeout: 244 seconds)
+2016-10-17 02:10:02	Helio-	lovely
+2016-10-17 02:11:27	NapoleonWils0n	and there is no way to reinstall without downloading a new installer on another mac and then creating a bootbale drive
+2016-10-17 02:12:18	NapoleonWils0n	thx for the link will look into it
+2016-10-17 02:12:21	--	irc: disconnected from server

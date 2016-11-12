@@ -1,12 +1,27 @@
 set from = "danieljwilcox@gmail.com"
 set realname = "Daniel J Wilcox"
 
-# make mutt work with solarized theme
+# mutt colours
 color normal default default
+color hdrdefault black green
+color quoted default default
+color signature default default
+color attachment default default
+color message default default
+color error default default
+color indicator default default
+color status black green
+color tree default default
+color normal default default
+color markers default default
+color search default default
+color tilde default default
+color index default default ~F
+color index default default "~N|~O"
+
 set imap_user = "danieljwilcox@gmail.com"
 set smtp_url = "smtp://danieljwilcox@smtp.gmail.com:587/"
-#source "gpg -d ~/.mutt/mutt-passwords.gpg |"
-source "~/.mutt/mutt-gmail.txt"
+source "gpg -d ~/.mutt/mutt-passwords.gpg |"
 
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+Inbox"
@@ -80,11 +95,11 @@ set pgp_clearsign_command="gpg --no-verbose --batch --quiet --output - %?p?--pas
 
 # create a pgp/mime encrypted attachment
 # set pgp_encrypt_only_command="pgpewrap gpg-2comp -v --batch --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
-set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_only_command="/usr/bin/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
 
 # create a pgp/mime encrypted and signed attachment
 # set pgp_encrypt_sign_command="pgpewrap gpg-2comp %?p?--passphrase-fd 0? -v --batch --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
-set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/bin/pgpewrap gpg --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
 
 # import a key into the public key ring
 set pgp_import_command="gpg --no-verbose --import %f"

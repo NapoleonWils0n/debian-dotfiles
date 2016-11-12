@@ -1,0 +1,13 @@
+2016-03-03 17:39:00	-->	NapoleonWils0n (~weechat@host-84-9-196-15.dslgb.com) has joined #debian-next
+2016-03-03 17:39:00	--	Topic for #debian-next is "Unprivileged Xorg is here! /msg dpkg xorg root | Avoid stretch if you don't like reporting bugs | sid faq: http://deb.li/sidfaq | ongoing transitions: http://deb.li/xns | multiarch fun: /msg dpkg multiarch failures | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic → #debian-offtopic | oldstable, stable → #debian "
+2016-03-03 17:39:00	--	Topic set by themill (~stuart@themill.user.oftc.net) on Mon, 16 Nov 2015 10:24:19
+2016-03-03 17:39:00	--	Channel #debian-next: 305 nicks (0 ops, 0 voices, 305 normals)
+2016-03-03 17:39:00	--	PvNotice(ChanServ): Welcome to #debian-next! This channel is for supporting users of debian's upcoming releases. Please make sure you have checked the bug tracking system (http://bugs.debian.org/) to see if your problem is already known.
+2016-03-03 17:39:02	--	Channel created on Fri, 06 May 2011 18:36:54
+2016-03-03 17:39:04	NapoleonWils0n	hi all
+2016-03-03 17:39:28	NapoleonWils0n	i get a black screen trying to play any video with vlc
+2016-03-03 17:39:55	NapoleonWils0n	enabled non free during the install and have ffmpeg, mplayer and mpv installed
+2016-03-03 17:40:39	-->	Ryushin (chris@0001f4e5.user.oftc.net) has joined #debian-next
+2016-03-03 17:42:05	<--	drupal (~blank@4MJAAC8D9.tor-irc.dnsbl.oftc.net) has quit
+2016-03-03 17:42:07	-->	dux0r (~pepzi@76GAACYWP.tor-irc.dnsbl.oftc.net) has joined #debian-next
+2016-03-03 17:47:10	--	irc: disconnected from server

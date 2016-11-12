@@ -1,0 +1,371 @@
+2016-09-19 14:25:24	-->	NapoleonWils0n (~weechat@host86-155-48-44.range86-155.btcentralplus.com) has joined #bash
+2016-09-19 14:25:24	--	Topic for #bash is "FAQ: http://mywiki.wooledge.org/BashFAQ | Guide: http://mywiki.wooledge.org/BashGuide | Ref: http://gnu.org/s/bash/manual | http://wiki.bash-hackers.org/ | http://mywiki.wooledge.org/Quotes | Check your script: http://www.shellcheck.net/ | Mailing list: https://lists.gnu.org/mailman/listinfo/help-bash | Devel: http://xrl.us/bmodjy"
+2016-09-19 14:25:24	--	Topic set by pgas on Wed, 18 Feb 2015 11:43:30
+2016-09-19 14:25:24	--	Channel #bash: 1123 nicks (1 op, 0 voices, 1122 normals)
+2016-09-19 14:25:24	--	PvNotice(ChanServ): Welcome to #bash, we discuss the GNU bash shell.  Be explicit if your question is about another shell.  Don't trust the Internet on bash, learn from the resources in the topic instead.
+2016-09-19 14:25:26	--	Channel created on Sun, 26 Nov 2006 06:42:44
+2016-09-19 14:25:35	NapoleonWils0n	hi all
+2016-09-19 14:26:24	NapoleonWils0n	i have a set of bash scripts that use ffmpeg to record video url using a case statement and some regex's
+2016-09-19 14:26:42	NapoleonWils0n	just looking at way to improve the scripts
+2016-09-19 14:26:44	-->	Alci (~monad@68.83.23.127) has joined #bash
+2016-09-19 14:26:58	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/rip-record
+2016-09-19 14:27:04	-->	In33dt0kn0w (uid167702@gateway/web/irccloud.com/x-uzkkrdsygurphllo) has joined #bash
+2016-09-19 14:27:15	geirha	He wants to play a movie on four monitors I think; each playing a quarter of it
+2016-09-19 14:27:16	NapoleonWils0n	just read the bash advanced scripting guide
+2016-09-19 14:27:39	geirha	NapoleonWils0n: Sorry to hear
+2016-09-19 14:27:50	NapoleonWils0n	got some videos about the scripts here
+2016-09-19 14:27:51	NapoleonWils0n	https://www.youtube.com/channel/UCriRR_CzOny-akXyk1R-oDQ
+2016-09-19 14:27:57	-->	compeman (~compeman@88.247.45.8) has joined #bash
+2016-09-19 14:28:02	NapoleonWils0n	and the git repo
+2016-09-19 14:28:08	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory
+2016-09-19 14:29:24	NapoleonWils0n	any feedback on how to improve the case statements and code in general
+2016-09-19 14:29:49	geirha	VIDEOFILE M3U8 etc are never set
+2016-09-19 14:30:13	<--	p0werc1ick (~p0werc1ic@51.36.9.136) has quit (Read error: Connection reset by peer)
+2016-09-19 14:30:29	geirha	oh there's a source on line 6
+2016-09-19 14:30:32	NapoleonWils0n	it sources a regex file with the vars
+2016-09-19 14:30:41	geirha	case doesn't do regex
+2016-09-19 14:30:56	<--	enki (~enki@dynamic-213-198-255-24.adsl.eunet.rs) has quit (Ping timeout: 244 seconds)
+2016-09-19 14:31:01	NapoleonWils0n	the case matches a regex then runs an ffmpeg command
+2016-09-19 14:31:02	geirha	also, you appear to use them as filenames as well
+2016-09-19 14:31:17	geirha	no, case uses glob patterns, not regexes
+2016-09-19 14:31:41	NapoleonWils0n	heres the regex
+2016-09-19 14:31:42	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/video-regex.sh
+2016-09-19 14:31:55	Soliton	you're using grep there.
+2016-09-19 14:32:24	NapoleonWils0n	yes i grep for url and then switch on the case statement when they match then run ffmpeg
+2016-09-19 14:32:47	NapoleonWils0n	eg VIDEOFILE matches mp4's then runs ffmpeg command to record the mp4
+2016-09-19 14:33:44	-->	stefuNz (~textual@pD9F93A1B.dip0.t-ipconnect.de) has joined #bash
+2016-09-19 14:33:56	geirha	looks overcomplicated
+2016-09-19 14:34:08	Soliton	looks like that works by accident.
+2016-09-19 14:34:18	NapoleonWils0n	it works on linux, mac and windows
+2016-09-19 14:35:11	Soliton	do you have any idea what all those greps produce and what case does with the output?
+2016-09-19 14:35:55	NapoleonWils0n	i have a url that gets matched by the regex using grep then stored in a variable
+2016-09-19 14:36:02	geirha	and why would you use printf | grep instead of just using bash?
+2016-09-19 14:36:40	geirha	and why does VIDEOURL contain garbage that need to be filtered out in the first place?
+2016-09-19 14:37:14	-->	TanPy_ (~tanpy@tst-ext.thestreet.com) has joined #bash
+2016-09-19 14:37:16	NapoleonWils0n	the urls are from Kodi which doesnt use proper video urls so to speak
+2016-09-19 14:37:19	<--	TanPy (~tanpy@tst-ext.thestreet.com) has quit (Read error: Connection reset by peer)
+2016-09-19 14:37:19	<--	TanPy_ (~tanpy@tst-ext.thestreet.com) has quit (Remote host closed the connection)
+2016-09-19 14:37:45	-->	enki (~enki@dynamic-78-30-156-27.adsl.eunet.rs) has joined #bash
+2016-09-19 14:37:46	-->	TanPy (~tanpy@tst-ext.thestreet.com) has joined #bash
+2016-09-19 14:38:48	Soliton	i'd be very surprised if there'd be no unexpected behaviour with certain urls.
+2016-09-19 14:39:20	<--	guampa (~guampa@unaffiliated/guampa) has quit (Quit: quit)
+2016-09-19 14:39:23	geirha	It's certainly a weird way to solve whatever you're trying to solve
+2016-09-19 14:39:28	NapoleonWils0n	i manage to catch about 95% of urls
+2016-09-19 14:39:44	<--	todd_dsmw (~todd_dsmw@74.112.21.215) has quit (Quit: Leaving)
+2016-09-19 14:39:46	NapoleonWils0n	maybe more to do with how Kodi creates the urls and i have to process them
+2016-09-19 14:40:11	-->	TanPy_ (~tanpy@tst-ext.thestreet.com) has joined #bash
+2016-09-19 14:40:25	<--	TanPy (~tanpy@tst-ext.thestreet.com) has quit (Read error: Connection reset by peer)
+2016-09-19 14:40:26	<--	TanPy_ (~tanpy@tst-ext.thestreet.com) has quit (Remote host closed the connection)
+2016-09-19 14:40:45	geirha	a more typical thing to do would be   mapfile -t videourls < "$1"; for url in "${videourls[@]}"; do case $url in *.@(mkv|mp4|avi|flv)) ...
+2016-09-19 14:41:58	NapoleonWils0n	will have to read up on mapfile
+2016-09-19 14:42:24	-->	Tanta (~tanta@50-201-37-70-static.hfc.comcastbusiness.net) has joined #bash
+2016-09-19 14:42:33	geirha	It was introduced 10 years ago and ABS is pretty outdated
+2016-09-19 14:42:54	NapoleonWils0n	gotcha goog to know
+2016-09-19 14:43:16	NapoleonWils0n	good
+2016-09-19 14:43:39	<--	compeman (~compeman@88.247.45.8) has quit (Changing host)
+2016-09-19 14:43:39	-->	compeman (~compeman@unaffiliated/compeman) has joined #bash
+2016-09-19 14:43:40	geirha	There's a reason it's not listed in the topic
+2016-09-19 14:44:08	<--	wandering_vagran (~wandering@157.119.106.173) has quit (Read error: Connection reset by peer)
+2016-09-19 14:44:35	<--	anyofyou (~anyofyou@27.0.232.139) has quit (Ping timeout: 248 seconds)
+2016-09-19 14:44:54	<--	sam325 (~sam325@unaffiliated/sam325) has quit (Ping timeout: 265 seconds)
+2016-09-19 14:44:55	-->	wandering_vagran (~wandering@157.119.106.173) has joined #bash
+2016-09-19 14:44:57	geirha	On another note, avoid using uppercase variable names and don't put .sh extension on bash scripts
+2016-09-19 14:45:02	geirha	sh is not bash, so .sh is misleading
+2016-09-19 14:45:26	NapoleonWils0n	video-regex.sh is only one with an extension
+2016-09-19 14:45:58	NapoleonWils0n	can remove extension, Earnestly on Arch irc already mentioned i should be using lowercase for vars
+2016-09-19 14:46:48	-->	enet (~enet@87.229.213.94) has joined #bash
+2016-09-19 14:47:21	NapoleonWils0n	so i should be looking at mapfile then for and do case
+2016-09-19 14:47:28	-->	polymorphisme (~Icedove@2a01:e35:2421:ea10:7627:eaff:fe50:a29b) has joined #bash
+2016-09-19 14:47:49	-->	AaronMT (~textual@2607:fea8:3ca0:2:3cc8:a48f:3af2:4089) has joined #bash
+2016-09-19 14:48:04	geirha	well, you could use a while read loop instead; having it read the file directly
+2016-09-19 14:48:29	NapoleonWils0n	im doing this at the moment
+2016-09-19 14:48:43	NapoleonWils0n	printf "%s\n" "$VIDEOURL" | while read url; do source regex file
+2016-09-19 14:48:47	geirha	no, you're reading the file into a variable first, then feeding that, which is pointless
+2016-09-19 14:48:59	NapoleonWils0n	cheers mate
+2016-09-19 14:49:09	geirha	but beware of a common gotcha with ffmpeg
+2016-09-19 14:49:10	geirha	!faq ffmpeg
+2016-09-19 14:49:10	greybot	http://mywiki.wooledge.org/BashFAQ/089 -- I'm reading a file line by line and running ssh or ffmpeg, only the first line gets processed!
+2016-09-19 14:49:35	NapoleonWils0n	cheers greybot bookmarked
+2016-09-19 14:50:34	<--	enki (~enki@dynamic-78-30-156-27.adsl.eunet.rs) has quit (Ping timeout: 244 seconds)
+2016-09-19 14:50:41	-->	hollowpo1nt (~textual@c-69-242-76-233.hsd1.pa.comcast.net) has joined #bash
+2016-09-19 14:50:58	<--	sbine (~sbine@unaffiliated/sbine) has quit (Read error: Connection reset by peer)
+2016-09-19 14:52:29	<--	kaldoran (~kaldoran@cable-192.222.223.163.electronicbox.net) has quit (Ping timeout: 244 seconds)
+2016-09-19 14:54:06	-->	anonymuse (~anonymuse@65.209.61.114) has joined #bash
+2016-09-19 14:54:37	-->	jetchisel (~jetchisel@opensuse/member/jetchisel) has joined #bash
+2016-09-19 14:55:33	icelesstea	!bot > NapoleonWils0n
+2016-09-19 14:55:34	greybot	NapoleonWils0n: I know I am, but what are you?
+2016-09-19 14:55:34	-->	concerti (~concerti@69.176.152.153) has joined #bash
+2016-09-19 14:55:38	<--	blizzow (~jburns@2601:284:8200:e200:7e7a:91ff:fe14:9b91) has quit (Ping timeout: 250 seconds)
+2016-09-19 14:56:03	-->	ewet (~ewet@unaffiliated/ewet) has joined #bash
+2016-09-19 14:56:13	NapoleonWils0n	didnt see the the exclamation mark doh
+2016-09-19 14:56:28	<--	it_ (~it_@212.243.190.164) has quit (Quit: Nettalk6 - www.ntalk.de)
+2016-09-19 14:56:30	NapoleonWils0n	used to different bot name
+2016-09-19 14:57:14	emg	# echo 'who, me?'
+2016-09-19 14:57:15	shbot	emg: who, me?
+2016-09-19 14:57:29	<--	ByteStorm (~Peter@117.194.193.47) has quit (Ping timeout: 240 seconds)
+2016-09-19 14:57:47	-->	enki (~enki@dynamic-109-121-88-9.adsl.eunet.rs) has joined #bash
+2016-09-19 14:58:18	-->	kaldoran (~kaldoran@cable-192.222.223.163.electronicbox.net) has joined #bash
+2016-09-19 14:58:34	-->	a3Dman (~3Dman@unaffiliated/a3dman) has joined #bash
+2016-09-19 14:58:51	ewet	hi, is there a nice way to get the verb+address part to the end of the line for this: `curl -iX {HTTP-VERB} {ADDRESS} 2>/dev/null` ? So I can change this easier.
+2016-09-19 14:59:03	<--	AquaL1te (~AquaL1te@unaffiliated/aqual1te) has quit (Quit: leaving)
+2016-09-19 14:59:57	-->	guampa (~guampa@unaffiliated/guampa) has joined #bash
+2016-09-19 15:00:00	geirha	the redirection can be anywhere in the line
+2016-09-19 15:00:17	geirha	or just use -s
+2016-09-19 15:01:06	<--	wrath0r (~wrath0r@38.97.106.132) has quit (Ping timeout: 264 seconds)
+2016-09-19 15:01:13	<--	kimitux (~michael@p5497E042.dip0.t-ipconnect.de) has quit (Quit: Konversation terminated!)
+2016-09-19 15:01:55	NapoleonWils0n	geirha so can i do the matching in the case statement
+2016-09-19 15:02:15	Soliton	that's the idea.
+2016-09-19 15:02:16	ewet	geirha: thanks
+2016-09-19 15:02:24	geirha	# help case
+2016-09-19 15:02:24	shbot	geirha: case: case WORD in [PATTERN [| PATTERN]...) COMMANDS ;;]... esac -- http://ix.io/aSe
+2016-09-19 15:03:03	NapoleonWils0n	cheers guys, really appreciate the help
+2016-09-19 15:03:33	-->	greggerz (~greggerz@unaffiliated/greggerz) has joined #bash
+2016-09-19 15:04:14	NapoleonWils0n	so dont store everything in VIDEOURL and then grep
+2016-09-19 15:04:46	NapoleonWils0n	use bash globbing in the case statemnt instead
+2016-09-19 15:04:47	Soliton	store in a variable is fine and then use case on that variable.
+2016-09-19 15:05:15	emg	NapoleonWils0n: while read....done < file
+2016-09-19 15:05:25	Soliton	you just need to translate the grep regex to patterns.
+2016-09-19 15:05:49	geirha	I'd simplify them regardless
+2016-09-19 15:05:56	NapoleonWils0n	the only issue is making sure the code works on linux mac and windows
+2016-09-19 15:06:13	emg	I hope you mean you have bash on windows?
+2016-09-19 15:06:21	NapoleonWils0n	cygwin
+2016-09-19 15:06:31	NapoleonWils0n	https://www.youtube.com/channel/UCriRR_CzOny-akXyk1R-oDQ
+2016-09-19 15:06:36	<--	tdy (~tdy@unaffiliated/tdy) has quit (Ping timeout: 244 seconds)
+2016-09-19 15:06:46	NapoleonWils0n	videos accompaning the scripts
+2016-09-19 15:07:03	geirha	making sure the urls contain only "valid characters" is pointless, unless ffmpeg has some vulnerability in its url parsing
+2016-09-19 15:07:50	<--	norkle (~fig@unaffiliated/norkle) has quit (Ping timeout: 260 seconds)
+2016-09-19 15:08:09	NapoleonWils0n	the issue is the urls im taking in arent proper urls for ffmpeg, so i have to chop them up and rearrange the code
+2016-09-19 15:08:31	NapoleonWils0n	eg http://example.com/video.mp4|user-agent=foo
+2016-09-19 15:08:55	geirha	url=${url%%|*}
+2016-09-19 15:08:55	NapoleonWils0n	have to mathch the link to the mp4 excluding the | and then match the user-agent
+2016-09-19 15:09:23	geirha	or you can do the splitting with read
+2016-09-19 15:09:24	emg	or IFS='|' read -r url useragent
+2016-09-19 15:09:25	<--	ewet (~ewet@unaffiliated/ewet) has quit (Quit: Leaving)
+2016-09-19 15:09:57	<--	aliasd (~adee@pa49-182-139-6.pa.nsw.optusnet.com.au) has quit (Ping timeout: 265 seconds)
+2016-09-19 15:10:04	NapoleonWils0n	but the issue is the urls also use other seperator like & as well
+2016-09-19 15:10:25	NapoleonWils0n	or can have both | and & in the same url
+2016-09-19 15:10:31	geirha	& would be part of the url, surely
+2016-09-19 15:10:36	emg	sound like crapy urls :-P
+2016-09-19 15:10:43	<--	bash1235_ (~bash12351@77.245.22.67) has quit (Ping timeout: 244 seconds)
+2016-09-19 15:11:22	-->	dfib (~textual@50.233.26.214) has joined #bash
+2016-09-19 15:11:22	<--	KiloJuliet (~gplgeek@pdpc/supporter/student/GPLGeek) has quit (Read error: Connection reset by peer)
+2016-09-19 15:11:31	NapoleonWils0n	no the & and | arent part of the url, they are used only by Kodi to play the video
+2016-09-19 15:11:52	<--	lars361 (~lars@46-227-67-158.pool.ovpn.se) has quit (Quit: Bye)
+2016-09-19 15:12:04	geirha	regardless, bash can do regex matching too, no point in setting up a pipe, and spawn three subshells for every single regex
+2016-09-19 15:12:09	NapoleonWils0n	so have to match different parts of the url and extract them and then create the ffmpeg command
+2016-09-19 15:12:35	geirha	while IFS='|&' read -ra url; do ...
+2016-09-19 15:13:19	NapoleonWils0n	the urls also use ? as well as |&
+2016-09-19 15:13:31	NapoleonWils0n	not proper urls thats part of the issue
+2016-09-19 15:14:06	geirha	yikes
+2016-09-19 15:14:42	<--	tom99 (~tom99@38.120.10.99) has quit (Read error: Connection reset by peer)
+2016-09-19 15:14:51	Soliton	if you're afraid to change your url parsing at least remove the case you're using on the grep output.
+2016-09-19 15:15:12	Soliton	and just check whether your variables are empty or not.
+2016-09-19 15:15:38	NapoleonWils0n	gotcha
+2016-09-19 15:15:53	<--	jass93 (~ifillj@rrcs-24-39-217-250.nys.biz.rr.com) has quit (Ping timeout: 240 seconds)
+2016-09-19 15:16:14	NapoleonWils0n	but in pricipal i should try and convert the regex to bash globs and have those in the case statements
+2016-09-19 15:16:18	Soliton	or just check the grep exit code.
+2016-09-19 15:16:55	Soliton	yeah, that'd be best.
+2016-09-19 15:16:57	NapoleonWils0n	idea is to match the url, then chop up the url and rearrange into a proper ffmpeg command
+2016-09-19 15:17:06	<--	emg (~emg@74-123-189-254.static.wiline.com) has quit (Quit: emg)
+2016-09-19 15:17:32	NapoleonWils0n	so i match the whole url, then match the user-agent inside the url which i then use in the ffmpeg command
+2016-09-19 15:18:00	-->	tdy (~tdy@unaffiliated/tdy) has joined #bash
+2016-09-19 15:18:09	NapoleonWils0n	so cant just match the url and switch on it, have to extract stuff from inside the url as well
+2016-09-19 15:18:57	Soliton	surely kodi has some documentation on how those urls work...
+2016-09-19 15:19:07	NapoleonWils0n	you would think so
+2016-09-19 15:19:17	-->	mmazing (~mmazing@unaffiliated/mmazing) has joined #bash
+2016-09-19 15:19:41	geirha	source code is documentation too :p
+2016-09-19 15:19:42	<--	mmazing (~mmazing@unaffiliated/mmazing) has quit (Max SendQ exceeded)
+2016-09-19 15:19:42	NapoleonWils0n	i sort of reverse enigineered the urls and converted to ffmpeg commands
+2016-09-19 15:19:53	<--	rnd (~rnd@62.4.55.193) has quit (Remote host closed the connection)
+2016-09-19 15:20:45	NapoleonWils0n	yes i could add some comments to the code, but i have written a shitload of docs about installing everything
+2016-09-19 15:21:00	geirha	I mean kodi's source code
+2016-09-19 15:21:05	<--	ronator (~ronator@185.28.184.90) has quit (Quit: Leaving ...)
+2016-09-19 15:21:18	Soliton	plot twist: NapoleonWils0n is the kodi dev.
+2016-09-19 15:21:36	<--	wandering_vagran (~wandering@157.119.106.173) has quit (Read error: Connection reset by peer)
+2016-09-19 15:21:37	-->	tom99 (~tom99@38.120.10.99) has joined #bash
+2016-09-19 15:21:53	<--	axiom_1 (~axiom_1@2601:7c0:8301:3a08:fd3e:be9f:1d70:938) has quit (Quit: Leaving)
+2016-09-19 15:22:12	<--	vliu (~vliu@37.0.7.2) has quit (Quit: WeeChat 1.5)
+2016-09-19 15:23:05	-->	todd_dsmw (~todd_dsmw@74.112.21.215) has joined #bash
+2016-09-19 15:23:11	-->	vliu (~vliu@37.0.7.2) has joined #bash
+2016-09-19 15:23:33	NapoleonWils0n	im not sure using bash globbing in the case statement would work for the scripts, as i have to extract stuff from inside the urls
+2016-09-19 15:23:54	-->	wandering_vagran (~wandering@157.119.106.173) has joined #bash
+2016-09-19 15:24:05	-->	bowhunter (~textual@168-215-167-148.static.twtelecom.net) has joined #bash
+2016-09-19 15:24:14	geirha	how are you grabbing these urls from kodi in the first place?
+2016-09-19 15:24:36	NapoleonWils0n	kodi use a text file called playercorefactory.xml where you can set up external players
+2016-09-19 15:24:46	todd_dsmw	I'm looking at a script with shebang: '#!/bin/sh -eux'; where are eux described?
+2016-09-19 15:24:49	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/linux/combined/playercorefactory.xml
+2016-09-19 15:25:16	todd_dsmw	I did a man bash and searched for shell options but that doesn't appear to be it.
+2016-09-19 15:25:27	NapoleonWils0n	i figured out you could redirect the url to grab it
+2016-09-19 15:25:29	Soliton	# help set # todd_dsmw
+2016-09-19 15:25:32	shbot	Soliton: set: set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]
+2016-09-19 15:25:32	shbot	Soliton:     Set or unset values of shell options and positional parameters.
+2016-09-19 15:25:32	shbot	Soliton: etc... ( http://ix.io/1ooI )
+2016-09-19 15:25:40	geirha	but you're reading a file
+2016-09-19 15:25:55	-->	whippythellama (~whippythe@cpe-45-37-33-183.nc.res.rr.com) has joined #bash
+2016-09-19 15:26:21	NapoleonWils0n	the scripts can either take a url from kodi, passed as an argument to the script or from a text file
+2016-09-19 15:26:44	NapoleonWils0n	eg rip-record http://example.com/video.mp4
+2016-09-19 15:26:59	NapoleonWils0n	or rip-record video-url.txt with the link inside the text file
+2016-09-19 15:27:04	todd_dsmw	thanks
+2016-09-19 15:27:10	-->	sbine (~sbine@unaffiliated/sbine) has joined #bash
+2016-09-19 15:27:54	geirha	weird
+2016-09-19 15:28:10	-->	wrath0r (~wrath0r@38.97.106.134) has joined #bash
+2016-09-19 15:28:12	NapoleonWils0n	there is a method in my madness believe it or not
+2016-09-19 15:28:57	<--	roentgen (~roentgen@unaffiliated/roentgen) has quit (Ping timeout: 248 seconds)
+2016-09-19 15:28:58	NapoleonWils0n	i store the whole url in VIDEOURL then grep inside it for things like user agent, referrer etc
+2016-09-19 15:29:13	<--	eduardas_m (~eduardas_@213.197.143.19) has quit (Quit: Leaving)
+2016-09-19 15:29:24	NapoleonWils0n	then switch on the whole url, and add in the extracted user agent to the ffmpeg command that gets run
+2016-09-19 15:29:37	geirha	If this contains the token {0} then this is replaced with the full URI of the item to be played (note that this is, in many cases, Kodi-specific and your external player won't understand it).
+2016-09-19 15:29:41	-->	roentgen (~roentgen@unaffiliated/roentgen) has joined #bash
+2016-09-19 15:30:01	NapoleonWils0n	yes thats it exactly 
+2016-09-19 15:30:14	geirha	what about {1} ?
+2016-09-19 15:30:16	<--	Ad1 (~adrian@sirius.ccig.pl) has quit (Remote host closed the connection)
+2016-09-19 15:30:24	NapoleonWils0n	doesnt work either
+2016-09-19 15:30:43	NapoleonWils0n	the kodi urls wont work in external players like mpv, vlc or using ffmpeg
+2016-09-19 15:31:11	NapoleonWils0n	so i store the whole url, chop it up and rearrange the pieces into a proper command
+2016-09-19 15:31:42	-->	chan20 (~quassel@124.123.81.196) has joined #bash
+2016-09-19 15:31:49	NapoleonWils0n	matching user-agent, referrer, x-forward, rtmp streams etc
+2016-09-19 15:32:04	-->	cowl (~sean@128.163.8.25) has joined #bash
+2016-09-19 15:32:09	<--	qdk (~qdk@93.176.70.6) has quit (Ping timeout: 276 seconds)
+2016-09-19 15:32:17	geirha	"Let's invent a custom format and not document it anywhere."
+2016-09-19 15:32:34	-->	lstieb (~lstieb@80-110-32-172.static.upcbusiness.at) has joined #bash
+2016-09-19 15:32:45	<--	wandering_vagran (~wandering@157.119.106.173) has quit (Read error: Connection reset by peer)
+2016-09-19 15:32:52	NapoleonWils0n	thats it in a nutshell
+2016-09-19 15:33:21	-->	sam325 (~sam325@unaffiliated/sam325) has joined #bash
+2016-09-19 15:33:22	-->	Tanta_G (~tanta@50-201-37-70-static.hfc.comcastbusiness.net) has joined #bash
+2016-09-19 15:34:03	-->	moby (~moby@189.105.30.255) has joined #bash
+2016-09-19 15:34:58	NapoleonWils0n	geirha does my mad way of doing things make a bit more sense now
+2016-09-19 15:35:16	-->	zrts (~zrts@unaffiliated/zrts) has joined #bash
+2016-09-19 15:35:40	NapoleonWils0n	not sure i can just use bash glob in the case statement to match the url, as i need to grep inside the url for user-agent etc
+2016-09-19 15:35:47	<--	Tanta (~tanta@50-201-37-70-static.hfc.comcastbusiness.net) has quit (Ping timeout: 248 seconds)
+2016-09-19 15:35:54	<--	zrts (~zrts@unaffiliated/zrts) has quit (Quit: ZNC 1.6.3 - http://znc.in)
+2016-09-19 15:35:54	geirha	sort-of. If it was done per url
+2016-09-19 15:36:02	geirha	but still, use bash
+2016-09-19 15:36:04	<--	concerti (~concerti@69.176.152.153) has quit (Remote host closed the connection)
+2016-09-19 15:36:11	-->	zrts (~zrts@unaffiliated/zrts) has joined #bash
+2016-09-19 15:36:29	geirha	use bash rather than grep -o, I mean
+2016-09-19 15:36:50	-->	whytrytofly (~whytrytof@dslb-092-078-191-085.092.078.pools.vodafone-ip.de) has joined #bash
+2016-09-19 15:36:51	Soliton	!regex
+2016-09-19 15:36:51	greybot	Regular Expressions are used to *match* certain patterns in strings. They come in several flavors (BRE, ERE, PCRE, and more). Bash only supports EREs (using [[ string =~ pattern ]]). Sed uses BREs. See !ere, !bre, !pcre, http://mywiki.wooledge.org/RegularExpression
+2016-09-19 15:36:57	<--	kaldoran (~kaldoran@cable-192.222.223.163.electronicbox.net) has quit (Ping timeout: 248 seconds)
+2016-09-19 15:36:57	whytrytofly	hi
+2016-09-19 15:37:13	<--	zrts (~zrts@unaffiliated/zrts) has quit (Client Quit)
+2016-09-19 15:37:13	whytrytofly	how can i use pictures in bash
+2016-09-19 15:37:18	NapoleonWils0n	cheers guys given me some food for thought
+2016-09-19 15:37:26	-->	mmazing (~mmazing@unaffiliated/mmazing) has joined #bash
+2016-09-19 15:37:38	Soliton	what should bash do with a picture?
+2016-09-19 15:37:46	whytrytofly	i wanna add symbols to my systray which oinly consists of bash output
+2016-09-19 15:37:48	<--	wrath0r (~wrath0r@38.97.106.134) has quit (Read error: Connection reset by peer)
+2016-09-19 15:37:54	geirha	And remember, stay away from tldp.org when it comes to bash
+2016-09-19 15:37:57	-->	wandering_vagran (~wandering@157.119.106.173) has joined #bash
+2016-09-19 15:38:00	-->	DomeMasterYolo (~iain@31.24.222.62) has joined #bash
+2016-09-19 15:38:08	DomeMasterYolo	Ive got something weird heh
+2016-09-19 15:38:08	NapoleonWils0n	really
+2016-09-19 15:38:09	-->	zrts (~zrts@unaffiliated/zrts) has joined #bash
+2016-09-19 15:38:17	whytrytofly	like a battery icon and a wifi icon
+2016-09-19 15:38:23	DomeMasterYolo	I kill a process and it becomes a zombie as expected
+2016-09-19 15:38:29	DomeMasterYolo	but for some reason SIGCHLD is not being sent to parent
+2016-09-19 15:38:39	DomeMasterYolo	anyway using "ps" I can see the process is in zombie mode
+2016-09-19 15:38:48	DomeMasterYolo	when I look at parent process pending in /proc/pid/status
+2016-09-19 15:38:53	DomeMasterYolo	there are no pending signals?
+2016-09-19 15:39:43	<--	chan20 (~quassel@124.123.81.196) has quit (Remote host closed the connection)
+2016-09-19 15:40:17	Soliton	whytrytofly: find apps that display battery and wifi icons in your systray.
+2016-09-19 15:40:55	-->	anyofyou (~anyofyou@27.0.232.139) has joined #bash
+2016-09-19 15:41:05	-->	HallaSurvivor (~HallaSurv@128.237.169.7) has joined #bash
+2016-09-19 15:41:19	whytrytofly	i  dont want a systray...
+2016-09-19 15:41:42	-->	wrath0r (~wrath0r@38.97.106.134) has joined #bash
+2016-09-19 15:42:05	<--	wandering_vagran (~wandering@157.119.106.173) has quit (Read error: Connection reset by peer)
+2016-09-19 15:42:45	whytrytofly	http://imgur.com/oicUySu
+2016-09-19 15:42:48	whytrytofly	just an example
+2016-09-19 15:42:53	-->	wandering_vagran (~wandering@157.119.106.173) has joined #bash
+2016-09-19 15:42:56	whytrytofly	there are small symbols
+2016-09-19 15:43:06	whytrytofly	which definitely do not belong to some app
+2016-09-19 15:43:28	whytrytofly	so what you are saying is that i cannopt use bash for this!?
+2016-09-19 15:43:44	-->	aliasd (~adee@pa49-182-139-6.pa.nsw.optusnet.com.au) has joined #bash
+2016-09-19 15:44:01	Soliton	no, bash has nothing to do with whatever it is you're trying to do.
+2016-09-19 15:44:13	whytrytofly	thank you!
+2016-09-19 15:45:11	<--	vliu (~vliu@37.0.7.2) has quit (Ping timeout: 244 seconds)
+2016-09-19 15:45:32	-->	emg (~emg@74-123-189-254.static.wiline.com) has joined #bash
+2016-09-19 15:45:55	--	emg is now known as Guest98825
+2016-09-19 15:45:58	<--	hollowpo1nt (~textual@c-69-242-76-233.hsd1.pa.comcast.net) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-09-19 15:46:08	-->	vliu (~vliu@37.0.7.2) has joined #bash
+2016-09-19 15:46:17	<--	djam90 (~djam90@client-213-106-96-160.lfd-bng-12.adsl.virginm.net) has quit (Ping timeout: 265 seconds)
+2016-09-19 15:46:21	-->	devians (~devians@2002:3a60:211d:0:4c66:fe3c:f8d4:d7b8) has joined #bash
+2016-09-19 15:47:14	<--	devians (~devians@2002:3a60:211d:0:4c66:fe3c:f8d4:d7b8) has quit (Client Quit)
+2016-09-19 15:48:35	<--	fred1807 (~fred1807@189.123.247.67) has quit (Quit: fred1807)
+2016-09-19 15:48:38	-->	skweek (~skweek@2607:fe50:0:810b:a414:1cf9:8eb8:f755) has joined #bash
+2016-09-19 15:48:45	Reincarnate	i think you want #archlinux whytrytofly
+2016-09-19 15:49:02	skered	Is it a matter of style to use && or || inside a [[ or valid reasons not to?  ex: [[ test1 && test2 ]] vs [[ test1 ]] && [[ test2 ]]
+2016-09-19 15:49:07	whytrytofly	my answer was, that this was an icon font
+2016-09-19 15:49:16	whytrytofly	so it is still  bash
+2016-09-19 15:49:24	whytrytofly	Reincarnate, but thanks!
+2016-09-19 15:49:40	<--	storge (~storge@c-73-26-2-9.hsd1.nm.comcast.net) has quit (Ping timeout: 265 seconds)
+2016-09-19 15:50:01	--	irc: disconnected from server
+2016-09-20 21:13:12	-->	NapoleonWils0n (~weechat@host86-155-51-98.range86-155.btcentralplus.com) has joined #bash
+2016-09-20 21:13:12	--	Topic for #bash is "FAQ: http://mywiki.wooledge.org/BashFAQ | Guide: http://mywiki.wooledge.org/BashGuide | Ref: http://gnu.org/s/bash/manual | http://wiki.bash-hackers.org/ | http://mywiki.wooledge.org/Quotes | Check your script: http://www.shellcheck.net/ | Mailing list: https://lists.gnu.org/mailman/listinfo/help-bash | Devel: http://xrl.us/bmodjy"
+2016-09-20 21:13:12	--	Topic set by pgas on Wed, 18 Feb 2015 11:43:30
+2016-09-20 21:13:13	--	Channel #bash: 1136 nicks (1 op, 0 voices, 1135 normals)
+2016-09-20 21:13:13	--	PvNotice(ChanServ): Welcome to #bash, we discuss the GNU bash shell.  Be explicit if your question is about another shell.  Don't trust the Internet on bash, learn from the resources in the topic instead.
+2016-09-20 21:13:13	--	Channel created on Sun, 26 Nov 2006 06:42:44
+2016-09-20 21:13:15	NapoleonWils0n	hi all
+2016-09-20 21:13:34	larryv	hello
+2016-09-20 21:13:45	NapoleonWils0n	im trying to match file extension in a case statement, i have this so far
+2016-09-20 21:13:46	NapoleonWils0n	https://github.com/NapoleonWils0n/cerberus/blob/master/dev/rip-record-dev
+2016-09-20 21:14:09	greycat	case $file in *.jpg) ...;; *.png) ...;; esac
+2016-09-20 21:14:46	NapoleonWils0n	more like this *.@(mp4|mkv|avi|flv))
+2016-09-20 21:15:06	-->	Rustica (~Rustica@5.79.80.104) has joined #bash
+2016-09-20 21:15:08	greycat	make sure you turn on extglob if you insist on doing it that way
+2016-09-20 21:15:22	bradfordli123	I have a program i am running and I want to email the results to myself. However, this program takes about 40 minutes to finish. Would this command be enough to email the output to myself? "./jre_bah/bin/java -jar aap.jar -d 1 -t uncompressed-test | mail -s "subject" email@gmail.com "
+2016-09-20 21:15:32	NapoleonWils0n	you mean add shopt -s extglob to the script
+2016-09-20 21:15:33	larryv	NapoleonWils0n: can avoid extglob if you just do *.mp4 | *.mkv | *.avi | *.flv)
+2016-09-20 21:15:35	<--	jeffreylevesque (~chatzilla@129.6.45.20) has quit (Ping timeout: 260 seconds)
+2016-09-20 21:16:04	greycat	bradfordli123: that will send stdout to your email
+2016-09-20 21:16:18	bradfordli123	greycat: even if it takes 40 minutes to finish?
+2016-09-20 21:16:26	bradfordli123	or does it send chunks of teh output at a time
+2016-09-20 21:16:27	greycat	Sure.
+2016-09-20 21:16:34	greycat	No, it's all one stream.
+2016-09-20 21:16:47	bradfordli123	got it thanks! giving it a try!
+2016-09-20 21:17:13	-->	hollowpo1nt (~textual@c-68-82-93-99.hsd1.pa.comcast.net) has joined #bash
+2016-09-20 21:17:16	NapoleonWils0n	looking to replace this regex grep -Eo '(http|https)://[a-zA-Z0-9:0-9./?=_@%-]*\.(mkv|mp4|avi|flv)'
+2016-09-20 21:17:41	<--	telex (teletype@freeshell.de) has quit (Remote host closed the connection)
+2016-09-20 21:17:45	NapoleonWils0n	is is possible to use that in a case statement
+2016-09-20 21:17:52	<--	relaxed (~relaxed@unaffiliated/relaxed) has quit (Quit: ⠠⠵)
+2016-09-20 21:18:26	greycat	What is the *input* you are parsing with that?
+2016-09-20 21:18:32	-->	telex (teletype@freeshell.de) has joined #bash
+2016-09-20 21:18:44	NapoleonWils0n	greycat video urls 
+2016-09-20 21:18:55	NapoleonWils0n	this is my current script
+2016-09-20 21:18:57	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/rip-record
+2016-09-20 21:19:03	greycat	Then why is it using GNU grep -o?
+2016-09-20 21:19:06	NapoleonWils0n	using external regex file
+2016-09-20 21:19:07	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/video-regex.sh
+2016-09-20 21:19:17	greycat	Is there stuff *after* the .mkv that you are stripping off?
+2016-09-20 21:19:21	<--	lsrp (~lsrp@91.214.169.69) has quit (Ping timeout: 248 seconds)
+2016-09-20 21:19:30	-->	cdg (~cdg@157.166.173.5) has joined #bash
+2016-09-20 21:19:59	-->	pokalyis (~nerium@banan.olf.sgsnet.se) has joined #bash
+2016-09-20 21:20:02	fred1807	I can make at command work inside my script , I am clueless how to debug whats the fault
+2016-09-20 21:20:27	NapoleonWils0n	no just matching urls that end with those extensions
+2016-09-20 21:20:46	<--	logosftw (~O@91.214.169.69) has quit (Quit: ZNC - http://znc.in)
+2016-09-20 21:20:48	fred1807	at 17:22 </myscript    does work, but the joa appears at atq
+2016-09-20 21:20:50	greycat	So the -o is a red herring?  You aren't really slicing and dicing and separating yolks?
+2016-09-20 21:20:55	fred1807	*does not work
+2016-09-20 21:21:06	-->	sag3 (~O@91.214.169.69) has joined #bash
+2016-09-20 21:21:18	NapoleonWils0n	no for the urls that end with those extensions, but i am with other video urls
+2016-09-20 21:21:50	greycat	Can you skip all the stupid-complex crap, then, and just do   case $url in *.mkv|*.mp4|...) blah;; esac
+2016-09-20 21:21:51	NapoleonWils0n	using grep and sed to extract parts from the url like user-agent to add to ffmpeg command
+2016-09-20 21:21:53	-->	snthsnth (~snthsnth@mbp.dynamic.ucsd.edu) has joined #bash
+2016-09-20 21:22:33	NapoleonWils0n	greycat it needs to be really specfic otherwise it will match the wrong urls
+2016-09-20 21:22:56	greycat	...
+2016-09-20 21:23:29	-->	holier-than-thou (~o@2a00:4802:3af:9800:583e:b1cd:a805:864b) has joined #bash
+2016-09-20 21:23:29	NapoleonWils0n	cant repeat the entire regex between |, or the code will get to long
+2016-09-20 21:23:42	<--	step1step2 (~step1step@p54B914A5.dip0.t-ipconnect.de) has quit (Ping timeout: 244 seconds)
+2016-09-20 21:23:45	greycat	No, the issue is you can't use regexes in case *at all*.
+2016-09-20 21:24:13	NapoleonWils0n	right ok that rules that method out
+2016-09-20 21:24:24	NapoleonWils0n	barking up the wrong tree
+2016-09-20 21:24:48	-->	Jobava (uid133806@gateway/web/irccloud.com/x-shbqziczhlbddeou) has joined #bash
+2016-09-20 21:25:08	<--	nibble_zero (~chatzilla@37.244.233.170) has quit (Quit: ChatZilla 0.9.92 [Firefox 48.0.2/20160823121617])
+2016-09-20 21:25:09	NapoleonWils0n	at the moment im matching using grep, then storing result in a variable which i use in the case statement
+2016-09-20 21:25:38	<--	lifecrisis (~jf@104.160.61.199) has quit (Quit: leaving)
+2016-09-20 21:26:07	<--	Vivekananda (~varun@pool-71-244-202-115.bltmmd.fios.verizon.net) has quit (Quit: Leaving)
+2016-09-20 21:27:05	-->	Ad1_RN (~Ad1_RnR@public-gprs394140.centertel.pl) has joined #bash
+2016-09-20 21:28:25	<--	Ad1_RnR (~Adrian@public-gprs384399.centertel.pl) has quit (Ping timeout: 248 seconds)
+2016-09-20 21:29:21	-->	Ad1 (~Adrian@public-gprs394140.centertel.pl) has joined #bash
+2016-09-20 21:29:34	--	irc: disconnected from server

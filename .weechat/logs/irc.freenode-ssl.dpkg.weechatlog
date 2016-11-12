@@ -1,0 +1,2 @@
+2016-10-29 17:21:58	dpkg	abrotman wants you to know: apt-get is a program (part of the apt package) used as a simple command line tool to libapt.  apt-get is the original frontend for <apt>, but <aptitude> is now the recommended tool for managing packages.  See also <why aptitude>, <reference>, <synaptic>, <apt-cache>, <gdebi>.  http://wiki.debian.org/apt-get  http://tinyurl.com/3g4d4d9
+2016-10-29 17:39:37	--	irc: disconnected from server

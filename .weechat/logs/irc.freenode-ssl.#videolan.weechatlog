@@ -1,0 +1,30 @@
+2016-01-26 23:23:30	-->	NapoleonWils0n (~weechat@host-84-9-25-180.dslgb.com) has joined #videolan
+2016-01-26 23:23:30	--	Topic for #videolan is "VLC for ever | http://www.videolan.org/ | Merry 2016"
+2016-01-26 23:23:30	--	Topic set by j-b on Tue, 05 Jan 2016 11:14:40
+2016-01-26 23:23:30	--	Channel #videolan: 336 nicks (0 ops, 0 voices, 336 normals)
+2016-01-26 23:23:30	--	PvNotice(ChanServ): Welcome to #videolan. Please ask your question if you want an answer. Don't forget to check www.videolan.org/doc, wiki.videolan.org and forum.videolan.org
+2016-01-26 23:23:30	--	URL for #videolan: http://www.videolan.org/
+2016-01-26 23:23:32	--	Channel created on Sun, 26 Nov 2006 06:42:58
+2016-01-26 23:23:35	NapoleonWils0n	hi all
+2016-01-26 23:23:59	NapoleonWils0n	trying to figure out how to get vlc to display fullscreen on my second display on linux
+2016-01-26 23:24:20	NapoleonWils0n	i can drag the window across manually and put the video into fullscreen
+2016-01-26 23:24:32	<--	Mombius (~Mombius@83.149.125.151.static-nl.twistednetworks.net) has quit (Ping timeout: 256 seconds)
+2016-01-26 23:24:52	NapoleonWils0n	tried using the x y coordinates but it didnt move the screen position
+2016-01-26 23:25:42	<--	Lunatrius (~Lunatrius@cpe-77.38.103.182.cable.t-1.si) has quit (Quit: In theory, there is no difference between theory and practice. But, in practice, there is.)
+2016-01-26 23:26:40	<--	fraxinas (~quassel@p5B2A3EB4.dip0.t-ipconnect.de) has quit (Ping timeout: 260 seconds)
+2016-01-26 23:26:51	Draco_	NapoleonWils0n, I belive you can select the right screen in Preferences -> Video -> there is a dropdown menu
+2016-01-26 23:27:55	NapoleonWils0n	i know there is something like that on mac osx but cant find it on linux will double check
+2016-01-26 23:28:23	<--	Oatmeal (~Suzeanne@75-103-145-152.ccrtc.com) has quit (Ping timeout: 264 seconds)
+2016-01-26 23:28:44	NapoleonWils0n	only have an option for output which is set to automatic
+2016-01-26 23:29:38	Draco_	yeah, I can see now that option is under "DirectX", you obliviously don't have that one on linux ... can't help you there
+2016-01-26 23:30:47	NapoleonWils0n	yes its more of a linux issue
+2016-01-26 23:31:01	Draco_	you can try showing all settings, going in Video -> Exit Modules -> check whatever you are using as exit module
+2016-01-26 23:31:05	<--	Zoolooc (~cevreiba@ppp-46-244-239-211.dynamic.mnet-online.de) has quit (Quit: Leaving)
+2016-01-26 23:31:16	NapoleonWils0n	on a side not i have made a bash script for vlc that works with kodi
+2016-01-26 23:31:31	NapoleonWils0n	so you can use vlc as an external player with kodi
+2016-01-26 23:31:58	NapoleonWils0n	https://www.youtube.com/watch?v=41AlZY_f6l8
+2016-01-26 23:32:47	Draco_	I honestly don't even know what kodi is, I'm no expert, just came here looking for help with playback issues ...
+2016-01-26 23:32:56	<--	Aison (~Foobar@ip.room1.alvhaus.ch) has quit (Quit: Leaving)
+2016-01-26 23:33:35	NapoleonWils0n	Draco_ http://kodi.tv/
+2016-01-26 23:34:07	-->	Aspen11 (~Aspen@39.32.173.164) has joined #videolan
+2016-01-26 23:34:28	--	irc: disconnected from server

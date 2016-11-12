@@ -1,0 +1,1437 @@
+2016-10-19 00:16:27	-->	NapoleonWils0n (~weechat@host86-155-51-92.range86-155.btcentralplus.com) has joined #debian
+2016-10-19 00:16:27	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-10-19 00:16:27	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-10-19 00:16:28	--	Channel #debian: 1614 nicks (2 ops, 0 voices, 1612 normals)
+2016-10-19 00:16:28	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-10-19 00:16:28	--	URL for #debian: http://www.debian.org
+2016-10-19 00:16:28	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-10-19 00:16:31	NapoleonWils0n	hi all
+2016-10-19 00:16:43	NapoleonWils0n	just installed debian on a mac air
+2016-10-19 00:17:10	-->	damentz (~damentz@cpe-70-122-17-194.austin.res.rr.com) has joined #debian
+2016-10-19 00:17:28	NapoleonWils0n	i have a xkbcomp command that i want to run without using startx, im using gnome, wheres the best place to put the command
+2016-10-19 00:17:54	NapoleonWils0n	should i create a startup item, use my bashrc or xesssions
+2016-10-19 00:18:34	-->	hele (~hele@91-159-249-16.elisa-laajakaista.fi) has joined #debian
+2016-10-19 00:20:00	-->	surfist (~surfist@122.200.0.2) has joined #debian
+2016-10-19 00:21:40	somiaj	NapoleonWils0n: sure you can use the autorun scripts that gnome runs and put it there. I forget where it is located though.
+2016-10-19 00:21:46	-->	klow (~textual@96-81-150-137-static.hfc.comcastbusiness.net) has joined #debian
+2016-10-19 00:22:05	NapoleonWils0n	cheers somiaj
+2016-10-19 00:22:09	somiaj	NapoleonWils0n: it might need to be a .desktop file as opposed to a script for gnome though
+2016-10-19 00:22:23	NapoleonWils0n	right thought you might need a desktop file
+2016-10-19 00:22:33	<--	_InsertNameHere_ (~linus@c83-255-45-109.bredband.comhem.se) has quit (Ping timeout: 245 seconds)
+2016-10-19 00:22:34	-->	Goddesspapa (~goddesspa@73.77.248.67) has joined #debian
+2016-10-19 00:22:37	NapoleonWils0n	going to try xsession first and see if that works
+2016-10-19 00:23:39	somiaj	NapoleonWils0n: be careful, .xsession might not be sourced under the gnome session. You may need to edit the gnome session in /etc/X11/sessions or something liek that
+2016-10-19 00:23:57	somiaj	NapoleonWils0n: .desktop files are farily easy to write, just look up the syntax.
+2016-10-19 00:24:35	NapoleonWils0n	xsession doesnt work just returns me gdm login
+2016-10-19 00:24:45	<--	surfist (~surfist@122.200.0.2) has quit (Ping timeout: 252 seconds)
+2016-10-19 00:25:25	somiaj	yea if it sources .xsession you would also need to run gnome from that
+2016-10-19 00:25:41	NapoleonWils0n	forgot how you bring up bring up a terminal from gdm login screen
+2016-10-19 00:25:59	<--	gasull (~gasull@46.166.190.150) has quit (Ping timeout: 244 seconds)
+2016-10-19 00:26:14	<--	fax (~fax@91-159-153-77.elisa-laajakaista.fi) has quit (Quit: Konversation terminated!)
+2016-10-19 00:26:37	<--	civillian (~nick@174.202.49.122-static.velocitynet.com.au) has quit (Ping timeout: 260 seconds)
+2016-10-19 00:26:38	<--	debalance_ (~debalance@aftr-88-153-6-30.unity-media.net) has quit (Remote host closed the connection)
+2016-10-19 00:27:30	NapoleonWils0n	fixed will use desktop file
+2016-10-19 00:28:00	--	Mode #debian [+l 1628] by debhelper
+2016-10-19 00:28:31	-->	civillian (~nick@174.202.49.122-static.velocitynet.com.au) has joined #debian
+2016-10-19 00:28:52	-->	Incanus_ (~Inc@97e56f8d.skybroadband.com) has joined #debian
+2016-10-19 00:29:20	<--	ocbtec (~ocbtec@dslb-088-075-066-222.088.075.pools.vodafone-ip.de) has quit (Quit: leaving)
+2016-10-19 00:30:02	-->	paw (~afong@24-212-185-238.cable.teksavvy.com) has joined #debian
+2016-10-19 00:30:16	<--	nighty (~nighty@s229123.ppp.asahi-net.or.jp) has quit (Quit: Disappears in a puff of smoke)
+2016-10-19 00:30:31	-->	surfist (~surfist@122.200.0.2) has joined #debian
+2016-10-19 00:30:32	<--	Smold3r (uid78229@gateway/web/irccloud.com/x-zcxlkudmtdsttqdp) has quit (Quit: Connection closed for inactivity)
+2016-10-19 00:30:35	-->	verm1n (~verm1n@209-6-236-59.c3-0.wrx-ubr1.sbo-wrx.ma.cable.rcn.com) has joined #debian
+2016-10-19 00:30:37	NapoleonWils0n	i have some bash scripts to record from kodi and made debian set up video
+2016-10-19 00:30:38	<--	Incanus__ (~Inc@97e56f8d.skybroadband.com) has quit (Ping timeout: 244 seconds)
+2016-10-19 00:30:39	NapoleonWils0n	https://www.youtube.com/watch?v=m3tLSDK0cXY
+2016-10-19 00:30:48	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory
+2016-10-19 00:31:24	-->	dread_ (458c81bf@gateway/web/freenode/ip.69.140.129.191) has joined #debian
+2016-10-19 00:31:33	dread_	hey
+2016-10-19 00:31:41	dread_	anyone here?
+2016-10-19 00:31:49	<--	Almtesh (~Almtesh@unaffiliated/almtesh) has quit (Remote host closed the connection)
+2016-10-19 00:33:30	-->	nktn (~nktn___@181.46.158.157) has joined #debian
+2016-10-19 00:33:32	--	irc: disconnected from server
+2016-10-19 15:17:15	-->	NapoleonWils0n (~weechat@host86-155-51-92.range86-155.btcentralplus.com) has joined #debian
+2016-10-19 15:17:15	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-10-19 15:17:15	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-10-19 15:17:15	--	Channel #debian: 1679 nicks (2 ops, 0 voices, 1677 normals)
+2016-10-19 15:17:15	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-10-19 15:17:15	--	URL for #debian: http://www.debian.org
+2016-10-19 15:17:16	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-10-19 15:17:20	NapoleonWils0n	hi all
+2016-10-19 15:18:06	NapoleonWils0n	im trying to run xkbcomp after gnome starts up
+2016-10-19 15:18:24	NapoleonWils0n	tried creating desktop file, xsession and using bashrc
+2016-10-19 15:19:34	<--	dionysus69 (~Thunderbi@unaffiliated/dionysus69) has quit (Ping timeout: 256 seconds)
+2016-10-19 15:19:52	<--	heurist (heurist@unaffiliated/heurist) has quit (Ping timeout: 250 seconds)
+2016-10-19 15:20:02	-->	pdo_fn14 (~Guess@180.242.36.114) has joined #debian
+2016-10-19 15:21:00	<--	corsibu (~corsibu@171.20.68.68) has quit (Remote host closed the connection)
+2016-10-19 15:21:40	bolt	juslintek: do you have a source on the apache project recommending against mpm-itk?
+2016-10-19 15:22:04	-->	teclo-_ (~teclo-@77.109.102.121) has joined #debian
+2016-10-19 15:22:11	<--	teclo-_ (~teclo-@77.109.102.121) has quit (Client Quit)
+2016-10-19 15:22:25	<--	effeerre (~effeerre@93.56.166.176) has quit (Quit: http://subdimensions.com)
+2016-10-19 15:22:29	<--	xiaodong (~xiaodong@114.111.167.247) has quit (Remote host closed the connection)
+2016-10-19 15:22:58	<--	teclo- (42@unaffiliated/teclo) has quit (Ping timeout: 245 seconds)
+2016-10-19 15:23:39	juslintek	bolt, can't find it, guess I'll try it out. :-)
+2016-10-19 15:23:43	NapoleonWils0n	guess ill have to disable gdm and use startx and xinitrc
+2016-10-19 15:23:43	-->	halbomin (~textual@93.174.24.114) has joined #debian
+2016-10-19 15:23:50	NapoleonWils0n	or not use gnome
+2016-10-19 15:25:01	<--	aricz (~aricz@82.194.220.89) has quit (Quit: leaving)
+2016-10-19 15:25:57	-->	towo` (~towo@unaffiliated/towo/x-4064351) has joined #debian
+2016-10-19 15:26:44	-->	Vmj (~Vmj@AAubervilliers-151-1-16-139.w83-114.abo.wanadoo.fr) has joined #debian
+2016-10-19 15:27:30	<--	overlord_tm (~andraz@5-255-217-91.xlab.si) has quit (Ping timeout: 256 seconds)
+2016-10-19 15:27:57	-->	teclo- (42@unaffiliated/teclo) has joined #debian
+2016-10-19 15:28:12	NapoleonWils0n	i can run thexkbcomp command in the teminal and it works just a pain to have to do it manuallly after login
+2016-10-19 15:28:27	-->	xiaodong (~xiaodong@114.111.167.247) has joined #debian
+2016-10-19 15:28:30	<--	gshrikant (~gshrikant@122.174.63.243) has quit (Quit: WeeChat 1.6)
+2016-10-19 15:28:45	<--	Drzacek (~Drzacek@dslb-092-073-027-158.092.073.pools.vodafone-ip.de) has quit (Quit: Leaving)
+2016-10-19 15:29:10	bolt	NapoleonWils0n: i was pretty certain gnome had a functioning autostart feature
+2016-10-19 15:29:29	teraflops	NapoleonWils0n: tried ~/.xprofile?
+2016-10-19 15:30:02	NapoleonWils0n	allright teraflops
+2016-10-19 15:30:11	NapoleonWils0n	will try .xprofile
+2016-10-19 15:30:34	-->	keltim (~keltim@173.212.48.130) has joined #debian
+2016-10-19 15:30:41	teraflops	NapoleonWils0n: also when you say desktop file, where do you put it? ~/.config/autostart? /etc/xdg/autostart?
+2016-10-19 15:30:52	sn0wmonster	is there anything special required to run an AppImage from the terminal?
+2016-10-19 15:30:56	NapoleonWils0n	~/.config/autostart
+2016-10-19 15:31:42	sn0wmonster	im trying and it's saying "No such File or Directory"
+2016-10-19 15:32:19	-->	marijnfs (~smuxi@33.219.eduroam.dynamic.rbg.tum.de) has joined #debian
+2016-10-19 15:32:22	babilen	And what are you actually trying to do?
+2016-10-19 15:32:22	-->	babak (uid19622@gateway/web/irccloud.com/x-jzeveyxqxhfcpjdy) has joined #debian
+2016-10-19 15:32:24	NapoleonWils0n	xprofile doesnt work either
+2016-10-19 15:32:58	-->	xiaodong_ (~xiaodong@114.111.167.247) has joined #debian
+2016-10-19 15:33:17	<--	xiaodong (~xiaodong@114.111.167.247) has quit (Ping timeout: 256 seconds)
+2016-10-19 15:33:30	<--	humbot (~unkraut@unaffiliated/humbag) has quit (Quit: WeeChat 1.0.1)
+2016-10-19 15:33:50	teraflops	NapoleonWils0n: it's ~/.xprofile, also what's the command you're running?
+2016-10-19 15:33:50	<--	MoonkYang (~moonkyang@de.bbido.com.yang.red) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2016-10-19 15:33:59	teraflops	the *exact* command
+2016-10-19 15:34:10	<--	davimore (~davimore@253-148-045-062.dynamic.caiway.nl) has quit (Ping timeout: 250 seconds)
+2016-10-19 15:34:33	NapoleonWils0n	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keymap.xkb $DISPLAY
+2016-10-19 15:34:59	<--	daniel-s (~daniel-s@bla31-1-82-241-231-138.fbx.proxad.net) has quit (Read error: Connection reset by peer)
+2016-10-19 15:34:59	NapoleonWils0n	im remapping crl to alt, alt to super and super to ctrl
+2016-10-19 15:35:11	NapoleonWils0n	works in the terminal and with xinitrc from startx
+2016-10-19 15:35:41	<--	teclo- (42@unaffiliated/teclo) has quit (Ping timeout: 260 seconds)
+2016-10-19 15:35:44	-->	Incanus_ (~Inc@97e56f8d.skybroadband.com) has joined #debian
+2016-10-19 15:36:04	-->	dionysus69 (~Thunderbi@unaffiliated/dionysus69) has joined #debian
+2016-10-19 15:36:04	<--	izua (~temp@86.126.29.173) has quit (Read error: Connection reset by peer)
+2016-10-19 15:36:19	-->	teclo- (42@unaffiliated/teclo) has joined #debian
+2016-10-19 15:36:38	<--	tex0 (~tex@ip5b408c45.dynamic.kabel-deutschland.de) has quit (Quit: leaving)
+2016-10-19 15:36:57	-->	izua (~temp@86.126.29.173) has joined #debian
+2016-10-19 15:37:04	NapoleonWils0n	trying xprofile
+2016-10-19 15:37:16	-->	effeerre (~effeerre@93.56.166.176) has joined #debian
+2016-10-19 15:37:35	<--	Ishaq (~Ishaq@budgetnode/management) has quit (Excess Flood)
+2016-10-19 15:37:57	<--	GeorgeJipa (~admin@unaffiliated/georgejipa) has quit (Ping timeout: 248 seconds)
+2016-10-19 15:38:06	NapoleonWils0n	xprofile not working either
+2016-10-19 15:38:10	-->	daniel-s (~daniel-s@bla31-1-82-241-231-138.fbx.proxad.net) has joined #debian
+2016-10-19 15:38:23	<--	Incanus__ (~Inc@97e56f8d.skybroadband.com) has quit (Ping timeout: 256 seconds)
+2016-10-19 15:38:32	-->	Incanus__ (~Inc@97e56f8d.skybroadband.com) has joined #debian
+2016-10-19 15:38:49	-->	Ishaq (~Ishaq@budgetnode/management) has joined #debian
+2016-10-19 15:38:49	babilen	NapoleonWils0n: ~/.xsessionrc ?
+2016-10-19 15:39:19	NapoleonWils0n	tried that as well didnt work
+2016-10-19 15:39:25	-->	Masterphi (~Masterphi@199.192.105.248) has joined #debian
+2016-10-19 15:39:57	NapoleonWils0n	tried ~/.xprofile, ~/.xsession, desktop autostart file, ~/.bashrc 
+2016-10-19 15:39:58	<--	Incanus_ (~Inc@97e56f8d.skybroadband.com) has quit (Ping timeout: 250 seconds)
+2016-10-19 15:40:10	teraflops	NapoleonWils0n: that's weird gdm sources ~/.xprofile so if the very same command you pasted above works pasted from terminal I have no idea
+2016-10-19 15:40:11	-->	GeorgeJipa (~admin@86.127.250.255) has joined #debian
+2016-10-19 15:40:11	<--	GeorgeJipa (~admin@86.127.250.255) has quit (Changing host)
+2016-10-19 15:40:11	-->	GeorgeJipa (~admin@unaffiliated/georgejipa) has joined #debian
+2016-10-19 15:40:11	NapoleonWils0n	do desktop autostart files need to be executable
+2016-10-19 15:40:29	teraflops	NapoleonWils0n: nope afaik
+2016-10-19 15:40:37	<--	the_mib_ (~mib@79.245-243-81.adsl-static.isp.belgacom.be) has left #debian ("Leaving")
+2016-10-19 15:40:38	-->	blu__ (~bluenemo@unaffiliated/bluenemo) has joined #debian
+2016-10-19 15:40:39	NapoleonWils0n	didnt think so
+2016-10-19 15:40:58	<--	eumel (~eumel@p4FDF1F41.dip0.t-ipconnect.de) has quit (Quit: bye)
+2016-10-19 15:41:01	NapoleonWils0n	guess ill have to disable gdm login and use startx with xinitrc
+2016-10-19 15:41:02	<--	bluenemo (~bluenemo@unaffiliated/bluenemo) has quit (Quit: Leaving)
+2016-10-19 15:41:16	teraflops	NapoleonWils0n: are you sure the very same command you pasted above works from terminal, including the env vars?
+2016-10-19 15:41:27	NapoleonWils0n	yes works like a charm
+2016-10-19 15:41:46	NapoleonWils0n	even if you log out and back in again the change persists
+2016-10-19 15:41:47	<--	atomi (~atomi@71-83-179-177.dhcp.lnbh.ca.charter.com) has quit (Ping timeout: 252 seconds)
+2016-10-19 15:41:47	teraflops	NapoleonWils0n: then I guess gdm is doing something there
+2016-10-19 15:41:57	tobiasBora	Hello,
+2016-10-19 15:42:20	tobiasBora	In xkb, I would like to remap the "Enter" key of a remote control device.
+2016-10-19 15:42:34	NapoleonWils0n	i used dconf to override the gnome desktop settings with []
+2016-10-19 15:42:39	tobiasBora	I would like to use this script : http://www.pixelbeat.org/docs/xkb_remap/
+2016-10-19 15:42:47	-->	atomi (~atomi@71-83-179-177.dhcp.lnbh.ca.charter.com) has joined #debian
+2016-10-19 15:43:17	tobiasBora	However I don't knot how to find the keylabel (for example <FK10>) of my key. I just know it's displayed as Enter in my screen
+2016-10-19 15:43:28	NapoleonWils0n	i know gnome can override setkbmap
+2016-10-19 15:43:44	tobiasBora	And xen gives me : state 0x10, keycode 36 (keysym 0xff0d, Return), same_screen YES,
+2016-10-19 15:44:26	NapoleonWils0n	you mean xev
+2016-10-19 15:44:33	-->	idts (~lxuser@unaffiliated/tdis) has joined #debian
+2016-10-19 15:44:35	tobiasBora	yes xev sorry
+2016-10-19 15:44:57	<--	pkv (~pkv@87-231-36-164.rev.numericable.fr) has quit (Ping timeout: 252 seconds)
+2016-10-19 15:45:07	NapoleonWils0n	you can dump the keyboard mapping with xkbcomp i think
+2016-10-19 15:45:13	babilen	NapoleonWils0n: So you didn't try ~/.xsessionrc ?
+2016-10-19 15:46:10	-->	CQ (~chatzilla@p57AE994C.dip0.t-ipconnect.de) has joined #debian
+2016-10-19 15:46:11	babilen	NapoleonWils0n: And you might also want to try hardcoding $HOME in there for testing
+2016-10-19 15:46:16	-->	arcsky (~arcsky@87.117.231.108) has joined #debian
+2016-10-19 15:46:22	NapoleonWils0n	i reied ~/.xsessionrc as well
+2016-10-19 15:46:40	NapoleonWils0n	i was using $HOME maybe need to hardcode
+2016-10-19 15:46:50	-->	th0r (~th0r@tx-184-7-56-237.dhcp.embarqhsd.net) has joined #debian
+2016-10-19 15:46:51	babilen	Which DM are you using?
+2016-10-19 15:47:10	teraflops	NapoleonWils0n: tried double quoting The env vars?
+2016-10-19 15:47:13	NapoleonWils0n	using gnome
+2016-10-19 15:47:15	CQ	hello, my machine hangs on shutdown... how can I figure out what's causing it? I haven't seen anything strange in messages, syslog etc. yet... what should i be looking for?
+2016-10-19 15:47:19	-->	greycat (~wooledg@remote.wooledge.org) has joined #debian
+2016-10-19 15:47:21	babilen	NapoleonWils0n: So that's gdm3 then?
+2016-10-19 15:47:33	NapoleonWils0n	yup
+2016-10-19 15:47:52	th0r	CQ, do you have network drives mounted at shutdown?
+2016-10-19 15:47:55	babilen	NapoleonWils0n: I'd make the script as simple as possible and call it in ~/.xsessionrc -- Once that works you can make it more generic
+2016-10-19 15:48:09	-->	OS-24695 (~OS-24695@27.5.69.9) has joined #debian
+2016-10-19 15:48:13	CQ	th0r: samba shares, yes (usually at least)
+2016-10-19 15:48:39	th0r	CQ, I found they will cause a long delay at shutdown. Try unmounting them first and see if the shutdown is any quicker
+2016-10-19 15:48:50	<--	xiaodong_ (~xiaodong@114.111.167.247) has quit (Quit: Lost terminal)
+2016-10-19 15:49:07	CQ	th0r: let me try that now, thanks... bbiab then. Need to reboot anyway
+2016-10-19 15:49:12	NapoleonWils0n	changed $HOME to hardcoded path and rebooting
+2016-10-19 15:49:17	<--	CQ (~chatzilla@p57AE994C.dip0.t-ipconnect.de) has quit (Quit: ChatZilla 0.9.92 [Firefox 49.0/20161002043611])
+2016-10-19 15:49:27	<--	shodan` (~shodan`@static-131-97-100-159.thenetworkfactory.nl) has quit (Remote host closed the connection)
+2016-10-19 15:49:34	<--	tux_ (~tux@183.202.209.59) has quit (Quit: Leaving)
+2016-10-19 15:51:20	<--	markovh (zncuser@unaffiliated/markovh) has quit (Ping timeout: 244 seconds)
+2016-10-19 15:51:33	NapoleonWils0n	changed xkbcomp to /usr/bin/xkbcomp and hardcoded home path and rebooting
+2016-10-19 15:51:41	<--	_ADN_ (~ADN@212.161.49.106) has quit (Quit: Leaving)
+2016-10-19 15:52:13	<--	polemic (~polemic@185.86.151.164) has quit (Remote host closed the connection)
+2016-10-19 15:52:17	<--	hualet (~hualet@183.94.113.153) has quit (Remote host closed the connection)
+2016-10-19 15:52:17	<--	conformist (~conformis@46.211.207.48) has quit (Quit: WeeChat 1.5)
+2016-10-19 15:52:24	NapoleonWils0n	doesnt work with .xprofile
+2016-10-19 15:52:40	babilen	~/.xsessionrc
+2016-10-19 15:52:41	apt	it has been said that /.xsessionrc is outside their purview and should still work
+2016-10-19 15:52:57	babilen	apt: thanks
+2016-10-19 15:52:57	apt	bitte, babilen
+2016-10-19 15:53:10	<--	karimb (~karimb@89.107.183.7) has quit (Quit: Karim has gone to sleep. ZZZzzz…)
+2016-10-19 15:53:40	tobiasBora	NapoleonWils0n: I tried to but key 36 {[space]} but I got errors...
+2016-10-19 15:53:44	teraflops	NapoleonWils0n: or just pipe the command outpu you run from .xprofile to > whatever and then look at it. or make a script with set -x at top of it and call it from. xprofile
+2016-10-19 15:54:01	-->	markovh (zncuser@unaffiliated/markovh) has joined #debian
+2016-10-19 15:54:13	-->	noahmg123 (2fc416e1@gateway/web/cgi-irc/kiwiirc.com/ip.47.196.22.225) has joined #debian
+2016-10-19 15:54:46	NapoleonWils0n	xsessionrc doesnt work either
+2016-10-19 15:54:56	NapoleonWils0n	will try your sugesstion teraflops
+2016-10-19 15:55:08	<--	Wyzard (~mike@pool-71-244-251-17.bltmmd.fios.verizon.net) has quit (Ping timeout: 250 seconds)
+2016-10-19 15:55:10	noahmg123	how can i get chrome text inputs to trigger the on screen keyboard ?
+2016-10-19 15:55:43	greycat	dpkg, .xsessionrc is <reply>~/.xsessionrc is read by startx and by all display managers, before starting the X session. See <https://wiki.debian.org/EnvironmentVariables> and <https://wiki.debian.org/Xsession>.
+2016-10-19 15:55:44	dpkg	okay, greycat
+2016-10-19 15:55:50	<--	cybiko123 (~cybiko123@unaffiliated/cybiko123) has quit (Quit: Leaving.)
+2016-10-19 15:56:24	<--	effeerre (~effeerre@93.56.166.176) has quit (Ping timeout: 260 seconds)
+2016-10-19 15:56:34	-->	joncrunchbang_ (~joncrunch@cm-84.210.9.247.getinternet.no) has joined #debian
+2016-10-19 15:56:41	-->	shinnya (~shinnya@245.144.137.133.dy.bbexcite.jp) has joined #debian
+2016-10-19 15:56:51	-->	Incanus_ (~Inc@97e56f8d.skybroadband.com) has joined #debian
+2016-10-19 15:57:07	<--	GandalfTheWizar1 (~Emma@112.10.170.129) has quit (Quit: Leaving.)
+2016-10-19 15:58:27	<--	chele (~chele@ip5b40c1c7.dynamic.kabel-deutschland.de) has quit (Quit: Leaving)
+2016-10-19 15:59:01	<--	Incanus__ (~Inc@97e56f8d.skybroadband.com) has quit (Ping timeout: 252 seconds)
+2016-10-19 15:59:09	NapoleonWils0n	tried your suggestion teraflops no dice
+2016-10-19 15:59:14	-->	derphilipp_ (~derphilip@p54AAD818.dip0.t-ipconnect.de) has joined #debian
+2016-10-19 15:59:20	-->	xiaodong (~xiaodong@114.111.167.247) has joined #debian
+2016-10-19 15:59:23	<--	clmsy (~eoz@ringring.dpl.mendix.net) has quit (Ping timeout: 252 seconds)
+2016-10-19 15:59:28	greycat	NapoleonWils0n: I missed the start of this.  What are you trying to do?
+2016-10-19 15:59:32	NapoleonWils0n	seems like only way is to disable gdm login and use startx
+2016-10-19 15:59:36	NapoleonWils0n	hi greycat
+2016-10-19 15:59:43	teraflops	NapoleonWils0n: what's the output?
+2016-10-19 15:59:46	-->	shodan` (~shodan`@static-131-97-100-159.thenetworkfactory.nl) has joined #debian
+2016-10-19 16:00:00	NapoleonWils0n	greycat trying to run this command after login 
+2016-10-19 16:00:01	NapoleonWils0n	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keymap.xkb $DISPLAY
+2016-10-19 16:00:26	greycat	So is your problem "this works, but GNOME overrides it later"?
+2016-10-19 16:00:34	NapoleonWils0n	yes greycat
+2016-10-19 16:00:35	-->	jonah (~jonah@5751acb3.skybroadband.com) has joined #debian
+2016-10-19 16:00:35	teraflops	NapoleonWils0n: how did you tried then? is there any output?
+2016-10-19 16:00:43	greycat	I can't help you with making GNOME stop doing stuff. :(
+2016-10-19 16:00:51	-->	mdim (~mdim@c-67-182-215-39.hsd1.ut.comcast.net) has joined #debian
+2016-10-19 16:00:54	<--	vannorden (~vannorden@193.144.127.12) has quit (Read error: Connection reset by peer)
+2016-10-19 16:01:07	NapoleonWils0n	created script with set -x and then command and started from .profile
+2016-10-19 16:01:12	NapoleonWils0n	didnt do anything
+2016-10-19 16:01:17	greycat	.profile is not used by gdm3 logins
+2016-10-19 16:01:21	tobiasBora	I found the solution, it was RTRN !
+2016-10-19 16:01:27	teraflops	.xprofile
+2016-10-19 16:01:31	greycat	.xprofile is not even a THING
+2016-10-19 16:01:46	greycat	I think Arch uses that.  Or maybe it's specific to some DE.
+2016-10-19 16:01:46	<--	knidos (~knidos@88.248.225.13) has quit (Quit: knidos)
+2016-10-19 16:01:56	NapoleonWils0n	gotcha
+2016-10-19 16:02:09	teraflops	greycat: gdm3 sources ~/.xprofile
+2016-10-19 16:02:13	greycat	Ah.
+2016-10-19 16:02:29	teraflops	lightdm too
+2016-10-19 16:03:07	teraflops	NapoleonWils0n: but told the script to redirect output to a file?
+2016-10-19 16:03:09	<--	Vmj (~Vmj@AAubervilliers-151-1-16-139.w83-114.abo.wanadoo.fr) has quit (Remote host closed the connection)
+2016-10-19 16:03:11	greycat	I ... if lightdm does that, it sure as hell isn't *documented*.
+2016-10-19 16:03:12	<--	ojoa (~zetagi@91.236.116.233) has quit (Ping timeout: 250 seconds)
+2016-10-19 16:03:25	NapoleonWils0n	missed that bit my bad mate
+2016-10-19 16:03:31	greycat	Not that lightdm has any documentation.  "Lightdm is a display manager."
+2016-10-19 16:03:50	jonah	Hi can anyone help with a spare server I have. I have made a "hotswap" server as a backup box, so if I get a hardware failure on a different machine I can stick the drives in the spare/hotswap and boot that. Now it does boot great when testing with my debian jessie hard drives - BUT the Network card doesn't work as it has a different one to the other systems. I just wondered how I can enable the network card to work with debian jessie if I need to
+2016-10-19 16:03:50	teraflops	greycat: I tried to find out where is it documented but no luck
+2016-10-19 16:03:51	jonah	use this backup box... Thanks for any help?
+2016-10-19 16:04:11	<--	juslintek (~juslintek@85.206.105.157) has quit (Read error: Connection reset by peer)
+2016-10-19 16:04:14	greycat	Reverse engineering the DM madness requires actually installing the DMs, unfortunately.
+2016-10-19 16:04:29	-->	juslintek (~juslintek@85.206.105.157) has joined #debian
+2016-10-19 16:04:36	teraflops	hehe
+2016-10-19 16:04:49	petn-randall	jonah: Do you mean the network card of the backup box gets a different interface name assigned?
+2016-10-19 16:04:50	jonah	the card in the working server uses eth0, but when I boot the spare with a livecd (ubuntu) it uses enp2s0. The spare's card is Qualcomm Atheros QCA8171
+2016-10-19 16:05:05	-->	ojoa (~zetagi@91.236.116.233) has joined #debian
+2016-10-19 16:05:10	<--	valerio (~valerio`@unaffiliated/valerio/x-9242161) has quit (Remote host closed the connection)
+2016-10-19 16:05:27	NapoleonWils0n	ill just disable gdm and use startx and xinitrc
+2016-10-19 16:05:35	NapoleonWils0n	im a startx kind og guy
+2016-10-19 16:05:36	teraflops	heh
+2016-10-19 16:05:38	--	rafalcpp is now known as rafalcpp_
+2016-10-19 16:05:45	 *	greycat uses startx too
+2016-10-19 16:05:46	derphilipp_	I set up my raspi as a wifi -> internet router, but I need to deny access to Lan as it shall be a guest wifi; What firewall rule do I have to add?
+2016-10-19 16:05:54	teraflops	but you miss the debugging fun
+2016-10-19 16:06:02	NapoleonWils0n	lifes too short
+2016-10-19 16:06:02	-->	valerio (~valerio`@unaffiliated/valerio/x-9242161) has joined #debian
+2016-10-19 16:06:17	-->	codfection (~codfectio@unaffiliated/codfection) has joined #debian
+2016-10-19 16:06:20	teraflops	NapoleonWils0n: nah. I do startx too
+2016-10-19 16:06:21	ChrisH	jonah: then I assume you have two options. 1. get the same card into the spare box. 2. dokument the difference and put a second network config file in and show how they have to be replaced in case a switch happens
+2016-10-19 16:07:04	<--	chrstphrchvz (sid104796@gateway/web/irccloud.com/x-tysafelejxiorufg) has quit (Ping timeout: 260 seconds)
+2016-10-19 16:07:06	NapoleonWils0n	sudo systemctl disable gdm, something like that
+2016-10-19 16:07:06	petn-randall	3. change the udev config to assign both cards the same interface name. The only case it won't work is when both devices ever get put into the same machine.
+2016-10-19 16:07:10	greycat	dpkg, xsessionrc is <reply>see .xsessionrc
+2016-10-19 16:07:10	dpkg	greycat: okay
+2016-10-19 16:07:11	teraflops	the funny thing is that you can source. xprofile from
+2016-10-19 16:07:15	-->	nylon-stoat (~Nylon@47.269.dsl.mel.iprimus.net.au) has joined #debian
+2016-10-19 16:07:25	teraflops	xinitrc too
+2016-10-19 16:07:27	teraflops	oops
+2016-10-19 16:07:37	jonah	ChrisH: yeah i unfortunately can't use the same network card due to it being a small itx form factor on the spare, but a seperate config file would suit me. I tried just putting enp2s0 in the network interfaces file but that didn't work...
+2016-10-19 16:07:50	teraflops	will that work? :P
+2016-10-19 16:07:51	-->	chrstphrchvz (sid104796@gateway/web/irccloud.com/x-hvzvhmscchwnrqvo) has joined #debian
+2016-10-19 16:08:12	-->	Wyzard (~mike@pool-71-244-251-17.bltmmd.fios.verizon.net) has joined #debian
+2016-10-19 16:08:27	--	canopus_ is now known as canopus
+2016-10-19 16:08:33	greycat	teraflops: Everything I've discovered so far is on https://wiki.debian.org/EnvironmentVariables and https://wiki.debian.org/Xsession
+2016-10-19 16:09:10	NapoleonWils0n	i tend to check the arch wiki even if im using a differnt distro to be honest
+2016-10-19 16:09:14	NapoleonWils0n	best wiki bar none
+2016-10-19 16:09:17	<--	zykotick9 (~zykotick9@fsf/member/zykotick9) has quit (Ping timeout: 252 seconds)
+2016-10-19 16:09:18	-->	CQ (~chatzilla@p57AE994C.dip0.t-ipconnect.de) has joined #debian
+2016-10-19 16:09:40	greycat	The arch wiki is good for certain things, but dot files are unique to distros.  Debian made ~/.xsessionrc so you won't see that on the Arch wiki.
+2016-10-19 16:09:41	teraflops	greycat: hmm. well I'm pretty sure it sources .xprofile in debian jessie
+2016-10-19 16:09:51	greycat	teraflops: what's "it"?
+2016-10-19 16:09:52	-->	tatalazo (~tatalazo@2607:fb90:a6ab:7bee:3f13:af64:d3d9:c7fc) has joined #debian
+2016-10-19 16:09:56	teraflops	gdm3
+2016-10-19 16:09:56	<--	marijnfs (~smuxi@33.219.eduroam.dynamic.rbg.tum.de) has quit (Ping timeout: 260 seconds)
+2016-10-19 16:10:00	greycat	That may be true.
+2016-10-19 16:10:00	<--	tatalazo (~tatalazo@2607:fb90:a6ab:7bee:3f13:af64:d3d9:c7fc) has quit (Max SendQ exceeded)
+2016-10-19 16:10:08	<--	Caplain (~shayne@d14-69-32-57.try.wideopenwest.com) has quit (Read error: Connection reset by peer)
+2016-10-19 16:10:29	greycat	I am absolutely certain that startx does not.
+2016-10-19 16:10:39	-->	karimb (~karimb@89.107.183.7) has joined #debian
+2016-10-19 16:10:40	NapoleonWils0n	debian wiki blocks you if you use privateinternetacess vpn
+2016-10-19 16:10:41	-->	Caplain (~shayne@d14-69-32-57.try.wideopenwest.com) has joined #debian
+2016-10-19 16:10:45	teraflops	yeah that's true
+2016-10-19 16:10:57	<--	ToBeCloud (uid51591@wikimedia/ToBeFree) has quit (Quit: Connection closed for inactivity)
+2016-10-19 16:11:02	-->	phystau (~phystau@50.28.139.156) has joined #debian
+2016-10-19 16:11:10	-->	shann (~shann@130.193.24.135) has joined #debian
+2016-10-19 16:11:14	teraflops	but I said that you can source it from .xinitrc not that it sources it by default
+2016-10-19 16:11:16	-->	zykotick9 (~zykotick9@fsf/member/zykotick9) has joined #debian
+2016-10-19 16:11:42	<--	OtakuSenpai (~Peter@45.250.59.160) has quit (Ping timeout: 256 seconds)
+2016-10-19 16:11:45	NapoleonWils0n	is this the correct command to disable gdm
+2016-10-19 16:11:46	NapoleonWils0n	# systemctl set-default multi-user.target
+2016-10-19 16:11:46	greycat	You could also source ~/.nanonano from ~/.xsession but I'm only concerned with the defaults.
+2016-10-19 16:11:54	teraflops	yeah hehe
+2016-10-19 16:12:06	greycat	NapoleonWils0n: I'd just use "systemctl disable gdm3"
+2016-10-19 16:12:08	teraflops	I meant yeah for greycat
+2016-10-19 16:12:21	NapoleonWils0n	cheers greycat
+2016-10-19 16:12:25	greycat	This whole "make believe we're still using sysvinit on Red Hat and have run levels" thing is weird.
+2016-10-19 16:12:30	<--	Pent (~pant@S01061c1b689d60c9.cg.shawcable.net) has quit (Read error: Connection reset by peer)
+2016-10-19 16:12:36	--	derphilipp_ is now known as derphilipp
+2016-10-19 16:13:39	teraflops	NapoleonWils0n: nope. just systemctl disable the thing
+2016-10-19 16:13:55	jelly	systemd's targets can probably emulate "3" or "5" or even "s" quite well
+2016-10-19 16:14:06	greycat	The other way probably works too, but I've never tried it, and it seems like drastic overkill.
+2016-10-19 16:14:15	NapoleonWils0n	greycat that didnt disable gdm login
+2016-10-19 16:14:23	greycat	If it's already running you also have to stop it.
+2016-10-19 16:14:27	<--	tvm (~tvm@static-84-242-71-62.net.upcbroadband.cz) has quit (Quit: leaving)
+2016-10-19 16:14:33	greycat	Disable just prevents it from starting at boot.
+2016-10-19 16:14:35	NapoleonWils0n	should be gdm
+2016-10-19 16:14:38	teraflops	NapoleonWils0n: because disable is not stop
+2016-10-19 16:14:39	greycat	Oh?  Weird.
+2016-10-19 16:14:48	<--	endstille (~endstille@mail01.grolman-group.com) has quit (Quit: KVIrc 4.2.0 Equilibrium http://www.kvirc.net/)
+2016-10-19 16:14:59	jelly	greycat: note that disable doesn't actually disable a service, if something else depends on it and wants it started... it gets started.  Just not on its own
+2016-10-19 16:15:23	th0r	CQ, the boot go quicker
+2016-10-19 16:15:36	NapoleonWils0n	no that didnt work either
+2016-10-19 16:15:54	greycat	what are you getting from "systemctl status gdm" and/or "systemctl status gdm3"?
+2016-10-19 16:16:11	th0r	CQ, the shutdown rather...did it go faster ?
+2016-10-19 16:16:27	NapoleonWils0n	no its running
+2016-10-19 16:17:56	-->	tatalazo (~tatalazo@76.14.67.20) has joined #debian
+2016-10-19 16:18:13	-->	Incanus__ (~Inc@97e56f8d.skybroadband.com) has joined #debian
+2016-10-19 16:18:30	<--	conta (~Thunderbi@94.112.251.98.static.b2b.upcbusiness.cz) has quit (Ping timeout: 256 seconds)
+2016-10-19 16:18:37	<--	CQ (~chatzilla@p57AE994C.dip0.t-ipconnect.de) has quit (Ping timeout: 256 seconds)
+2016-10-19 16:18:39	NapoleonWils0n	i give up on gnome too much hasle will just using i3m-wm
+2016-10-19 16:18:51	-->	humbot (~unkraut@unaffiliated/humbag) has joined #debian
+2016-10-19 16:19:08	<--	de-facto (~de-facto@gateway/tor-sasl/de-facto) has quit (Remote host closed the connection)
+2016-10-19 16:19:16	-->	Ayatollah (jiggawattz@w0000.net) has joined #debian
+2016-10-19 16:19:21	Ayatollah	Hello
+2016-10-19 16:19:27	Ayatollah	When is systemd coming to Debian GNU/Hurd?
+2016-10-19 16:19:27	<--	Incanus__ (~Inc@97e56f8d.skybroadband.com) has quit (Read error: Connection reset by peer)
+2016-10-19 16:19:48	greycat	Does HURD have cgroups?  I think systemd depends on those.
+2016-10-19 16:19:49	petn-randall	Ayatollah: It's linux only, so it's never coming.
+2016-10-19 16:19:54	-->	Incanus__ (~Inc@97e56f8d.skybroadband.com) has joined #debian
+2016-10-19 16:20:05	<--	ocbtec (~ocbtec@dslb-088-075-066-222.088.075.pools.vodafone-ip.de) has quit (Quit: leaving)
+2016-10-19 16:20:11	-->	de-facto (~de-facto@gateway/tor-sasl/de-facto) has joined #debian
+2016-10-19 16:20:11	Ayatollah	fack
+2016-10-19 16:20:16	<--	Incanus_ (~Inc@97e56f8d.skybroadband.com) has quit (Ping timeout: 250 seconds)
+2016-10-19 16:20:24	Ayatollah	Debian should have the same init system across platforms
+2016-10-19 16:20:25	Ayatollah	that's goofy
+2016-10-19 16:20:33	<--	andrewm87 (~andrewm87@151.75.146.224) has quit (Quit: andrewm87)
+2016-10-19 16:20:41	greycat	There are things that depend heavily on an architecture or a kernel.
+2016-10-19 16:20:47	teraflops	!bug 749374
+2016-10-19 16:20:52	teraflops	!bug #749374
+2016-10-19 16:20:53	judd	Bug http://bugs.debian.org/749374 in gdm3 (closed): «gdm3: Disable gdm3 service for systemd doesn't work»; severity: normal; opened: 2014-05-26; last modified: 2015-08-03.
+2016-10-19 16:20:57	greycat	E.g. you don't have LILO or GRUB on the esoteric platforms.
+2016-10-19 16:20:57	Ayatollah	greycat: true
+2016-10-19 16:21:10	NapoleonWils0n	# systemctl set-default multi-user.target does disable the gdm login
+2016-10-19 16:21:21	jonah	ChrisH: I'm installing debian now on the spare, but when you say have a second network config file, can I not just add enp2s0 to the /etc/network/interfaces file with the same entries as eth0 has - I tried this but it didn't work for some reason?
+2016-10-19 16:21:25	NapoleonWils0n	but now its not running the command in .xinitrc with startx
+2016-10-19 16:21:39	teraflops	NapoleonWils0n: mask it, read the bug I pasted
+2016-10-19 16:22:08	NapoleonWils0n	as in sticky back plastic like blue peter
+2016-10-19 16:22:35	-->	SlaGTaTs (~bilbo@cpc103414-donc13-2-0-cust213.17-1.cable.virginm.net) has joined #debian
+2016-10-19 16:22:45	greycat	.xsession has been preferred over .xinitrc in Debian for like 15 years
+2016-10-19 16:23:27	NapoleonWils0n	ok will try .xessions
+2016-10-19 16:23:34	<--	afx_ (~afx_@adsl-7.37.6.247.tellas.gr) has quit (Ping timeout: 250 seconds)
+2016-10-19 16:23:35	teraflops	NapoleonWils0n: again are you sure is not related to what you run? that's why I suggested sex -x and/or 2>&1 to a file
+2016-10-19 16:23:36	-->	lethu_ (~lethu@unaffiliated/lethu) has joined #debian
+2016-10-19 16:23:38	<--	patterson (~patterson@73.93.141.171) has quit (Read error: Connection reset by peer)
+2016-10-19 16:23:44	<--	killian99 (~killian99@jol13-4-78-235-25-248.fbx.proxad.net) has quit (Quit: Quitte)
+2016-10-19 16:24:17	<--	DomaMuffin (~DomaMuffi@93-136-110-96.adsl.net.t-com.hr) has quit (Read error: Connection reset by peer)
+2016-10-19 16:24:24	NapoleonWils0n	will try renaming xinitrc to xsession
+2016-10-19 16:24:32	teraflops	ಠ_ಠ
+2016-10-19 16:24:57	-->	sh00p (~sh00p@84.216.39.31) has joined #debian
+2016-10-19 16:25:08	greycat	I second the suggestion to *log* what your dot files are doing.
+2016-10-19 16:25:27	-->	githogori (~githogori@c-73-70-12-67.hsd1.ca.comcast.net) has joined #debian
+2016-10-19 16:26:05	NapoleonWils0n	sex -x thats a new one teraflops you getting jiggy with your laptop
+2016-10-19 16:26:08	teraflops	oops s/sex/set
+2016-10-19 16:26:14	teraflops	heh
+2016-10-19 16:26:18	teraflops	sorry
+2016-10-19 16:26:21	NapoleonWils0n	freudion slip mate
+2016-10-19 16:26:22	teraflops	pheeewww
+2016-10-19 16:26:55	<--	bolovanos (~bolovanos@91.201.22.5) has quit (Ping timeout: 262 seconds)
+2016-10-19 16:26:55	<--	lethu (~lethu@unaffiliated/lethu) has quit (Ping timeout: 295 seconds)
+2016-10-19 16:27:03	-->	nktn (~nktn___@181.46.158.157) has joined #debian
+2016-10-19 16:27:21	-->	maesrin (~maesrin@2a02:587:2503:9800:6af7:28ff:fed0:db3) has joined #debian
+2016-10-19 16:28:00	--	Mode #debian [+l 1685] by debhelper
+2016-10-19 16:28:24	-->	patterson (~patterson@73.93.141.43) has joined #debian
+2016-10-19 16:28:47	NapoleonWils0n	thinks it not working because of xkbcomp errors no symbol defined for key
+2016-10-19 16:29:38	<--	fguide (~fguide@unaffiliated/fguide) has quit (Ping timeout: 250 seconds)
+2016-10-19 16:29:50	-->	DomaMuffin (~DomaMuffi@93-136-110-96.adsl.net.t-com.hr) has joined #debian
+2016-10-19 16:30:23	-->	lowin (~lowin@151.245.124.222) has joined #debian
+2016-10-19 16:30:28	<--	gtrotcko (~Thunderbi@bzq-82-81-213-77.cablep.bezeqint.net) has quit (Quit: gtrotcko)
+2016-10-19 16:30:28	<--	teclo- (42@unaffiliated/teclo) has quit (Ping timeout: 260 seconds)
+2016-10-19 16:31:45	-->	teclo- (~teclo-@unaffiliated/teclo) has joined #debian
+2016-10-19 16:31:53	NapoleonWils0n	i did see that error when googling, seems like it wont work at login with those errors but works in the terminal
+2016-10-19 16:32:08	NapoleonWils0n	strange works perfectly on Arch with startx
+2016-10-19 16:32:31	greycat	(Back when the display manager of choice was xdm, when dinosaurs roamed the earth and we had CRTs, xinit used to read .xinitrc and xdm used to read .xsession.  And Debian was like "this is crap" and made them both read .xsession.)
+2016-10-19 16:32:57	<--	idts (~lxuser@unaffiliated/tdis) has quit (Quit: "You picked the wrong kite to run away with!")
+2016-10-19 16:33:45	-->	overlord_tm (~andraz@213.172.234.141) has joined #debian
+2016-10-19 16:33:51	Hello71	implying that people don't still use xdm
+2016-10-19 16:33:53	-->	acidtech (acid@2001:19f0:9002:12b::500) has joined #debian
+2016-10-19 16:34:00	greycat	It's no longer the DM of choice.
+2016-10-19 16:34:06	greycat	lightdm seems to have taken over that role
+2016-10-19 16:34:06	Hello71	eh, alright.
+2016-10-19 16:34:17	derphilipp	What do I need to modify in my ruleset to disallow traffic to local network of eth0 _but_ allow access to the internet in this ruleset: http://pastebin.com/TcajV1HC
+2016-10-19 16:34:27	NapoleonWils0n	yup bug from 2009
+2016-10-19 16:34:36	<--	daniel-s (~daniel-s@bla31-1-82-241-231-138.fbx.proxad.net) has quit (Ping timeout: 260 seconds)
+2016-10-19 16:34:39	-->	PseudoNoob (~PseudoNoo@unaffiliated/pseudonoob) has joined #debian
+2016-10-19 16:34:44	NapoleonWils0n	and 2006
+2016-10-19 16:35:10	-->	HarveyPwca (~HarveyPwc@ip-64-134-172-109.public.wayport.net) has joined #debian
+2016-10-19 16:35:11	-->	KaiserAres (~KaiserAre@unaffiliated/kaiserares) has joined #debian
+2016-10-19 16:35:31	-->	ruied_ (~ruied@192.61.136.95.rev.vodafone.pt) has joined #debian
+2016-10-19 16:35:48	-->	BlueByte_ (~walther@dslb-094-220-150-251.094.220.pools.vodafone-ip.de) has joined #debian
+2016-10-19 16:35:50	<--	xiaodong (~xiaodong@114.111.167.247) has quit (Remote host closed the connection)
+2016-10-19 16:35:59	-->	deeb (~dee@a85-139-8-162.cpe.netcabo.pt) has joined #debian
+2016-10-19 16:36:41	-->	woshty (~irc@HSI-KBW-078-043-004-147.hsi4.kabel-badenwuerttemberg.de) has joined #debian
+2016-10-19 16:37:13	NapoleonWils0n	came across suggestion to: dpkg-reconfigure xserver-xorg
+2016-10-19 16:37:26	-->	afx_ (~afx_@adsl-118.37.6.247.tellas.gr) has joined #debian
+2016-10-19 16:38:00	woshty	Connecting a usb floppy drive, it does get assigned sdx device name. How to get it to be fd0?
+2016-10-19 16:38:01	--	Mode #debian [+l 1693] by debhelper
+2016-10-19 16:38:14	-->	endstille (~endstille@mail01.grolman-group.com) has joined #debian
+2016-10-19 16:38:52	<--	BlueByte (~walther@grimbart.blackx.net) has quit (Ping timeout: 260 seconds)
+2016-10-19 16:39:16	-->	Incanus_ (~Inc@97e56f8d.skybroadband.com) has joined #debian
+2016-10-19 16:39:20	-->	SuperTramp83 (~user@unaffiliated/supertramp83) has joined #debian
+2016-10-19 16:39:33	<--	frankie (~frankie@lugbari/people/frankie) has quit (Ping timeout: 268 seconds)
+2016-10-19 16:39:44	-->	bolovanos (~bolovanos@91.201.22.5) has joined #debian
+2016-10-19 16:40:07	<--	MicroCheapFx_ (~quassel@62.102.229.129) has quit (Read error: Connection reset by peer)
+2016-10-19 16:40:13	<--	valerio (~valerio`@unaffiliated/valerio/x-9242161) has quit (Remote host closed the connection)
+2016-10-19 16:40:43	-->	valerio (~valerio`@unaffiliated/valerio/x-9242161) has joined #debian
+2016-10-19 16:41:02	-->	Ricardo__ (~rick@201.37.161.74) has joined #debian
+2016-10-19 16:41:02	<--	Ricardo__ (~rick@201.37.161.74) has quit (Changing host)
+2016-10-19 16:41:02	-->	Ricardo__ (~rick@unaffiliated/ricardo--/x-7903455) has joined #debian
+2016-10-19 16:41:07	-->	Joufflu (~Joufflu@2600:8807:c180:2d4:2473:adbf:4989:6ebb) has joined #debian
+2016-10-19 16:41:13	-->	hfr (~textual@5ED5B54B.cm-7-6c.dynamic.ziggo.nl) has joined #debian
+2016-10-19 16:41:34	<--	magyar (~magyar@unaffiliated/magyar) has quit (Quit: Riding the split)
+2016-10-19 16:41:47	<--	Incanus__ (~Inc@97e56f8d.skybroadband.com) has quit (Ping timeout: 265 seconds)
+2016-10-19 16:41:50	-->	xiaodong (~xiaodong@114.111.167.247) has joined #debian
+2016-10-19 16:43:00	-->	zlatan (~Zlatan@188.124.194.247) has joined #debian
+2016-10-19 16:43:09	<--	zlatan (~Zlatan@188.124.194.247) has left #debian
+2016-10-19 16:44:06	-->	|DM| (~|DM|@79.101.135.1) has joined #debian
+2016-10-19 16:44:24	-->	davimore (~davimore@253-148-045-062.dynamic.caiway.nl) has joined #debian
+2016-10-19 16:45:14	<--	towo` (~towo@unaffiliated/towo/x-4064351) has quit (Ping timeout: 250 seconds)
+2016-10-19 16:45:32	<--	xiaodong (~xiaodong@114.111.167.247) has quit (Remote host closed the connection)
+2016-10-19 16:45:51	-->	Twinkletoes (~chatzilla@cpc69053-oxfd25-2-0-cust887.4-3.cable.virginm.net) has joined #debian
+2016-10-19 16:46:41	<--	Gaiseric (~Eex8oo@unaffiliated/gaiseric) has quit (Ping timeout: 252 seconds)
+2016-10-19 16:48:10	-->	fguide (~fguide@unaffiliated/fguide) has joined #debian
+2016-10-19 16:48:32	-->	Gaiseric (~Eex8oo@unaffiliated/gaiseric) has joined #debian
+2016-10-19 16:48:41	-->	Zvmdyv (~Zvmdyv@unaffiliated/zvmdyv) has joined #debian
+2016-10-19 16:49:47	<--	blimpy (~jacob@S010600fc8d455bf3.vs.shawcable.net) has quit (Remote host closed the connection)
+2016-10-19 16:50:47	-->	wobelingers (~wobelinge@p54B191A1.dip0.t-ipconnect.de) has joined #debian
+2016-10-19 16:52:01	--	irc: disconnected from server
+2016-10-19 23:26:54	-->	NapoleonWils0n (~weechat@host86-155-51-92.range86-155.btcentralplus.com) has joined #debian
+2016-10-19 23:26:54	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-10-19 23:26:54	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-10-19 23:26:55	--	Channel #debian: 1642 nicks (2 ops, 0 voices, 1640 normals)
+2016-10-19 23:26:55	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-10-19 23:26:55	--	URL for #debian: http://www.debian.org
+2016-10-19 23:26:55	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-10-19 23:26:55	-->	nidr0x (~z4.30i@nidr0x.ddns.jazztel.es) has joined #debian
+2016-10-19 23:26:57	NapoleonWils0n	hi all
+2016-10-19 23:27:15	NapoleonWils0n	just installed rxvt-unicode-256color
+2016-10-19 23:27:22	CutMeOwnThroat	but you should know if it boots into your resumed state/session or a new one easily
+2016-10-19 23:27:28	NapoleonWils0n	cant seem to change the font size
+2016-10-19 23:27:52	NapoleonWils0n	its not picking up the inconsolata for powerline and the font size
+2016-10-19 23:28:08	<--	tristero (~al.f.zero@unaffiliated/transfinite) has quit (Quit: WeeChat 1.6)
+2016-10-19 23:28:16	aaro	NapoleonWils0n, how are you trying yo change it?
+2016-10-19 23:28:18	<--	LNJ2GO (~lnj@x55b2d57c.dyn.telefonica.de) has quit (Remote host closed the connection)
+2016-10-19 23:28:35	Resilience	jmcnaught,  I have a sesion running (this one) but I am not sure how to kow if it is a fresh boot (it starts trying to load an image, then it fsck's, and then it boot the machine as alwys, loosing all session image, and restarting t as if it was powered up, is it a "fresh" boot?)
+2016-10-19 23:28:39	NapoleonWils0n	i manually installed inconsolata in fonts and ran fs-cache
+2016-10-19 23:29:08	NapoleonWils0n	also tried sudo dpkg-reconfigure console-setup
+2016-10-19 23:29:24	dviv	jmcnaught: other programs starts fine, opening okular alone takes just as long apparently. running xfce right now
+2016-10-19 23:29:37	NapoleonWils0n	but inconsolata isnt listed as a terminal font, and if i use apt to install inconsolata it doesnt show up either
+2016-10-19 23:30:04	dviv	does not matter the filetype i try to open, it is slow
+2016-10-19 23:30:15	-->	spronk (~spronkey@118.148.89.22) has joined #debian
+2016-10-19 23:30:36	jmcnaught	Resilience: it sounds like it is failing to resume then. If you're on Debian 8 with systemd you can run "journalctl" as root to see log entries for the current boot. There might be messages about this problem at the start of this log.
+2016-10-19 23:30:59	aaro	NapoleonWils0n, you need to create an .Xresources file and set the urxvt config there, or if you just want to config the font the use the -fn and -fb options
+2016-10-19 23:31:18	<--	maotm (~mao@81.24.87.134) has quit (Ping timeout: 245 seconds)
+2016-10-19 23:31:20	jmcnaught	dviv: is the problem happening with other KDE programs? It's not clear what it's trying to authenticate.
+2016-10-19 23:31:34	NapoleonWils0n	i have an ~/.Xresources with the font and font size
+2016-10-19 23:31:57	dviv	no jmcnaught
+2016-10-19 23:32:10	dviv	tried krita, kolourpaint
+2016-10-19 23:32:16	dviv	they open instantly
+2016-10-19 23:32:16	Resilience	jmcnaught, unfortunately I am running systemd-shim, logs are in /var/log/syslog? or where can I find them?
+2016-10-19 23:32:28	aaro	NapoleonWils0n, ok then do xrdb ~/.Xresources to make it happen
+2016-10-19 23:32:32	-->	murfjr (~realname@185.21.216.185) has joined #debian
+2016-10-19 23:32:36	NapoleonWils0n	ah yes thats it
+2016-10-19 23:32:44	<--	frikinz (~laurent@teebee.n0n3m.com) has quit (Ping timeout: 260 seconds)
+2016-10-19 23:33:28	dviv	i think i will install kde just to see if it opens faster
+2016-10-19 23:33:35	<--	Brigo (~Brigo@164.11.60.178.dynamic.reverse-mundo-r.com) has quit (Ping timeout: 265 seconds)
+2016-10-19 23:33:42	NapoleonWils0n	aaro thx mate that worked
+2016-10-19 23:33:42	<--	AnD[a]LeS (~andales@122.52.69.221) has quit (Read error: Connection reset by peer)
+2016-10-19 23:33:59	NapoleonWils0n	no more large shouty font in the terminal
+2016-10-19 23:34:03	jmcnaught	Resilience: look in /var/log/syslog, the output of 'dmesg'. It's up to you to find the part in syslog where the hibernate event happened.
+2016-10-19 23:34:11	aaro	NapoleonWils0n, np :)
+2016-10-19 23:34:32	NapoleonWils0n	strange thing is the spacing seems off
+2016-10-19 23:34:38	<--	phystau (~phystau@50.28.182.159) has quit (Ping timeout: 252 seconds)
+2016-10-19 23:34:47	NapoleonWils0n	very wide spacing compared to same set up on arch
+2016-10-19 23:35:12	Resilience	jmcnaught, thanks, I am going to chek it
+2016-10-19 23:35:12	<--	BlueByte_ (~walther@dslb-094-220-150-251.094.220.pools.vodafone-ip.de) has quit (Quit: This computer has gone to sleep)
+2016-10-19 23:35:27	aaro	NapoleonWils0n, use the letterSpace resource
+2016-10-19 23:35:56	NapoleonWils0n	aaro sorry for being dense is that in Xresources
+2016-10-19 23:35:57	-->	cliluw (~cliluw@unaffiliated/cliluw) has joined #debian
+2016-10-19 23:36:16	<--	nprs (uid54228@gateway/web/irccloud.com/x-vjdxlkvzjdtxlxwt) has quit (Quit: Connection closed for inactivity)
+2016-10-19 23:36:18	<--	babatte (~babatte@pac33-1-82-235-249-167.fbx.proxad.net) has quit (Quit: Leaving)
+2016-10-19 23:36:20	<--	Dancus (~Dancus@dynamic-adsl-94-34-187-131.clienti.tiscali.it) has quit (Quit: Leaving)
+2016-10-19 23:36:25	jmcnaught	Resilience: i recommend looking for messages from when the previous boot put the computer into hibernate, and also messages from when it resumes or boots. You may find relevant messages in some of the other logs in /var/log too.
+2016-10-19 23:36:35	aaro	NapoleonWils0n, yes URxvt*letterSpace: -1
+2016-10-19 23:36:55	NapoleonWils0n	just found it on stack cheers mate
+2016-10-19 23:38:00	--	Mode #debian [+l 1650] by debhelper
+2016-10-19 23:38:16	<--	majurg (~majurg@2620:107:9044:2011:7d97:9f6e:f58d:3ca4) has left #debian ("Leaving")
+2016-10-19 23:38:43	<--	eju (~eju@unaffiliated/eju) has quit (Quit: WeeChat 1.6)
+2016-10-19 23:38:54	<--	ArchDuke (~ArchDuke@unaffiliated/archduker) has quit (Read error: Connection reset by peer)
+2016-10-19 23:39:44	-->	ArchDuke (~ArchDuke@unaffiliated/archduker) has joined #debian
+2016-10-19 23:39:58	<--	overlord_tm (~andraz@213.172.234.141) has quit (Remote host closed the connection)
+2016-10-19 23:39:58	NapoleonWils0n	tried URxvt*letterSpace: -1 and URxvt.letterSpace: -1
+2016-10-19 23:40:13	NapoleonWils0n	and xrdb ~/.Xresources
+2016-10-19 23:40:18	-->	solrize (solrize@unaffiliated/solrize) has joined #debian
+2016-10-19 23:40:27	NapoleonWils0n	but still not looking the same as on arch
+2016-10-19 23:40:43	teraflops	URxvt.letterSpace: -1 whan an ugly hack…
+2016-10-19 23:40:49	teraflops	s/what*
+2016-10-19 23:40:53	solrize	is wheezy stlil getting updates?  should i worry about the new kernel exploit i've been hearing about?
+2016-10-19 23:40:55	<--	unl0ckd (~unl0ckd@unaffiliated/unl0ckd) has quit (Quit: Bye!)
+2016-10-19 23:40:56	<--	patterson (~patterson@73.93.141.151) has quit (Quit: Going offline, see ya! (www.adiirc.com))
+2016-10-19 23:41:15	NapoleonWils0n	hi teraflops hope your not still trying to sex up your laptop
+2016-10-19 23:41:20	teraflops	xD
+2016-10-19 23:42:00	NapoleonWils0n	i ran dpkg-reconfigure console-setup
+2016-10-19 23:42:35	jmcnaught	solrize: do you know the CVE for the exploit? You can look it up here: https://security-tracker.debian.org/tracker/ . Wheezy is in LTS, which means limited support mostly for server related packages.
+2016-10-19 23:42:48	-->	phystau (~phystau@50.28.182.159) has joined #debian
+2016-10-19 23:42:56	aaro	NapoleonWils0n, paste your Xresources to check it out
+2016-10-19 23:42:58	solrize	CVE-2016-7117
+2016-10-19 23:43:01	solrize	looking
+2016-10-19 23:43:11	NapoleonWils0n	this is my Xresources
+2016-10-19 23:43:12	NapoleonWils0n	https://github.com/NapoleonWils0n/arch-dotfiles/blob/master/.Xresources
+2016-10-19 23:43:21	<--	suffer (jeff@loki.cerberus.network) has quit (Ping timeout: 260 seconds)
+2016-10-19 23:43:23	solrize	linux (PTS)	wheezy	3.2.78-1	vulnerable
+2016-10-19 23:43:39	NapoleonWils0n	just used my arch setup and install powerline for inconslata
+2016-10-19 23:43:50	missmbob	solrize: see the very next line
+2016-10-19 23:43:50	<--	dviv (b156c4d5@gateway/web/cgi-irc/kiwiirc.com/ip.177.86.196.213) has quit (Quit: http://www.kiwiirc.com/ - A hand crafted IRC client)
+2016-10-19 23:43:51	NapoleonWils0n	did a fc-cache
+2016-10-19 23:44:13	solrize	missmbob, yeah i'm checking my version which is somewhat older
+2016-10-19 23:44:26	<--	KingsQuest (~quassel@unaffiliated/kingsquest) has quit (Ping timeout: 250 seconds)
+2016-10-19 23:44:29	aaro	NapoleonWils0n, define boldFont too
+2016-10-19 23:44:34	<--	Almtesh (~Almtesh@unaffiliated/almtesh) has quit (Remote host closed the connection)
+2016-10-19 23:44:36	solrize	i do have security in my apt.sources maybe i just need to reboot
+2016-10-19 23:44:52	solrize	there goes my 8 month uptime :/
+2016-10-19 23:44:55	solrize	rebooting
+2016-10-19 23:45:30	-->	frikinz (~laurent@teebee.n0n3m.com) has joined #debian
+2016-10-19 23:46:10	jmcnaught	solrize: rebooting won't do a lot of good if you haven't installed the updated pacakge
+2016-10-19 23:46:20	solrize	well i did apt-get upgrade
+2016-10-19 23:46:32	missmbob	and didn't notice a kernel upgrade?
+2016-10-19 23:46:43	missmbob	you're fired
+2016-10-19 23:46:50	teraflops	NapoleonWils0n: dpkg-reconfigure console-setup is not related at all to Xorg and you don't have to run fc-cache manually (it's useless)
+2016-10-19 23:46:58	solrize	i didn't see a kernel upgrade but i see i have a new kernel after the reboot
+2016-10-19 23:47:12	NapoleonWils0n	ok cheers teraflops
+2016-10-19 23:47:23	solrize	which unfortunately is 3.2.81-2
+2016-10-19 23:47:25	<--	nighty (~nighty@s229123.ppp.asahi-net.or.jp) has quit (Quit: Disappears in a puff of smoke)
+2016-10-19 23:47:37	jhutchins_wk	solrize: You can always check the running kernel against what dpkg says is installed.
+2016-10-19 23:47:38	NapoleonWils0n	the spacing is like t h i s
+2016-10-19 23:47:38	solrize	where the cve page says 3.2.82-1
+2016-10-19 23:48:01	--	Mode #debian [+l 1643] by debhelper
+2016-10-19 23:48:05	aaro	NapoleonWils0n, got a screenie?
+2016-10-19 23:48:29	<--	anuxivm (~anuxi@92.185.154.236) has quit (Ping timeout: 260 seconds)
+2016-10-19 23:48:29	<--	nidr0x (~z4.30i@nidr0x.ddns.jazztel.es) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2016-10-19 23:48:31	solrize	ii  linux-image-3.2.0-4-amd64                      3.2.81-2                           amd64        Linux 3.2 for 64-bit PCs
+2016-10-19 23:48:40	-->	Eduard_Munteanu (~Eduard_Mu@82.76.239.140) has joined #debian
+2016-10-19 23:48:40	solrize	could that be a typo in the cve page?
+2016-10-19 23:48:45	solrize	https://security-tracker.debian.org/tracker/CVE-2016-7117
+2016-10-19 23:48:49	-->	tristero (~al.f.zero@unaffiliated/transfinite) has joined #debian
+2016-10-19 23:49:46	<--	grimsley (~grimsley@2602:306:319e:c390:c00:e2c9:98c5:da5c) has quit (Quit: Leaving)
+2016-10-19 23:50:01	-->	dragon__ (~dragon@S0106c0a0bbe8bfb9.vc.shawcable.net) has joined #debian
+2016-10-19 23:50:28	NapoleonWils0n	maybe it some gnome font setting
+2016-10-19 23:50:45	aaro	NapoleonWils0n, i'm not sure that font name is correct, check what;s the font name in some other program, an editor maybe
+2016-10-19 23:50:47	teraflops	NapoleonWils0n: urxvt ignores fontconfig at all
+2016-10-19 23:50:55	<--	zerotech (~zerotech@BSN-182-13-63.dynamic.siol.net) has quit (Ping timeout: 252 seconds)
+2016-10-19 23:51:19	NapoleonWils0n	URxvt*font:           xft:Inconsolata\ for\ Powerline:size=13
+2016-10-19 23:51:22	solrize	is there an authoritative way to find out what the latest wheezy kernel is?
+2016-10-19 23:52:06	NapoleonWils0n	teraflops any inconsolata alternatives worth looking at
+2016-10-19 23:52:13	aaro	NapoleonWils0n, try another font and see if the spacing continues like that
+2016-10-19 23:52:25	somiaj	,kernels
+2016-10-19 23:52:26	judd	Available kernel versions are: experimental: 4.8.0-rc8-686-pae (4.8~rc8-1~exp1); sid: 4.7.0-1-686 (4.7.6-1); stretch: 4.7.0-1-686 (4.7.6-1); jessie-backports: 4.7.0-0.bpo.1-686-pae (4.7.5-1~bpo8+2); jessie: 3.16.0-4-686-pae (3.16.36-1+deb8u1); wheezy-backports: 3.16.0-0.bpo.4-686-pae (3.16.36-1+deb8u1~bpo70+1); wheezy: 3.2.0-4-686-pae (3.2.81-2)
+2016-10-19 23:52:39	teraflops	NapoleonWils0n: I dont use powerline so idk
+2016-10-19 23:52:49	somiaj	solrize: are you wantnig this just for knowledge, or do you have a wheezy box you want to check what the latest kernel is from?
+2016-10-19 23:53:13	<--	ledixus (ledixus@evil-ant-colony.org) has quit (Quit: switching to powersavemode)
+2016-10-19 23:53:13	solrize	i have a wheezy box that i just upgraded but there's a mismatch between uname -a and what the cve page says
+2016-10-19 23:53:20	<--	frikinz (~laurent@teebee.n0n3m.com) has quit (Ping timeout: 260 seconds)
+2016-10-19 23:53:25	NapoleonWils0n	ill try install fonts-inconsolata and remove the powerline version
+2016-10-19 23:53:30	-->	nidr0x (~z4.30i@nidr0x.ddns.jazztel.es) has joined #debian
+2016-10-19 23:53:44	jmcnaught	solrize: because of that mismatch i would consider asking in #debian-lts on OFTC
+2016-10-19 23:53:53	-->	alex1a (~alex1a@a81-84-38-221.cpe.netcabo.pt) has joined #debian
+2016-10-19 23:54:02	solrize	hmm what's oftc?  another irc network?
+2016-10-19 23:54:05	somiaj	solrize: what cve page? Do you have the correct security sources needed for wheezy-lts?
+2016-10-19 23:54:13	<--	Masterphi (~Masterphi@199.192.105.248) has quit (Quit: ZZZZzzzzz)
+2016-10-19 23:54:21	somiaj	solrize: also is the missmatch just because you haven't rebooted on the newer kernel?
+2016-10-19 23:54:36	solrize	cve page is https://security-tracker.debian.org/tracker/CVE-2016-7117   says kernel 3.2.82-1
+2016-10-19 23:54:51	-->	pikaroo- (~pikaroo@23.92.93.231) has joined #debian
+2016-10-19 23:55:00	solrize	my security source is deb-src http://security.debian.org/  wheezy/updates  main contrib non-free
+2016-10-19 23:55:03	solrize	is that right?
+2016-10-19 23:55:06	NapoleonWils0n	ok fixed it
+2016-10-19 23:55:28	solrize	uname -a says i'm running kernel 3.2.81-2
+2016-10-19 23:55:28	somiaj	solrize: run 'apt-get update' then run 'apt-cache policy' and 'apt-cache policy linux-image-amd64' (assuming amd64 arch)
+2016-10-19 23:55:32	<--	CutMeOwnThroat (~k@unaffiliated/iridos) has quit (Ping timeout: 250 seconds)
+2016-10-19 23:55:36	NapoleonWils0n	used fonts-inconsolata and then xrdb ~/.Xresorces
+2016-10-19 23:55:58	<--	jpgepetto (~jean-phil@2602:306:c43a:1770:4995:cd42:2ff5:544c) has quit (Quit: Leaving.)
+2016-10-19 23:55:59	NapoleonWils0n	thx guys
+2016-10-19 23:56:03	solrize	apt-cache policy gets a pile of 500 errors sec
+2016-10-19 23:56:26	pikaroo-	ahh it's a wonderful day
+2016-10-19 23:56:27	NapoleonWils0n	time to right down the steps so i dont forgot
+2016-10-19 23:56:29	somiaj	solrize: 500 errors? You may have a problem in your soruces.list (it might show lots of pinnings at 500 which is default and totally normal)
+2016-10-19 23:56:32	--	irc: disconnected from server
+2016-10-20 23:52:16	-->	NapoleonWils0n (~weechat@host86-155-51-92.range86-155.btcentralplus.com) has joined #debian
+2016-10-20 23:52:16	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-10-20 23:52:16	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-10-20 23:52:16	--	Channel #debian: 1646 nicks (2 ops, 0 voices, 1644 normals)
+2016-10-20 23:52:16	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-10-20 23:52:16	--	URL for #debian: http://www.debian.org
+2016-10-20 23:52:18	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-10-20 23:52:26	NapoleonWils0n	hi all
+2016-10-20 23:52:48	<--	cerebro_ (~cerebro@goo.atnf.csiro.au) has quit (Remote host closed the connection)
+2016-10-20 23:52:49	NapoleonWils0n	vim-gnome for gnome desktop right and not vim-gtk
+2016-10-20 23:53:00	<--	cdown__ (~cdown@199.201.66.3) has quit (Ping timeout: 260 seconds)
+2016-10-20 23:53:35	<--	Defcronyke (~Defcronyk@88.143.197.104.bc.googleusercontent.com) has quit (Quit: Bye!)
+2016-10-20 23:53:38	<--	jeltz (~user@51.175.215.232) has quit (Quit: leaving)
+2016-10-20 23:53:57	<--	CapsAdmine (~CapsAdmin@ti0115a400-1989.bb.online.no) has quit (Read error: Connection reset by peer)
+2016-10-20 23:54:03	-->	CapsAdmin (~CapsAdmin@ti0115a400-1989.bb.online.no) has joined #debian
+2016-10-20 23:54:32	<--	fax (~fax@91-159-153-77.elisa-laajakaista.fi) has quit (Quit: Konversation terminated!)
+2016-10-20 23:54:52	<--	cdown_ (~cdown@82.132.185.94) has quit (Ping timeout: 260 seconds)
+2016-10-20 23:55:05	-->	Maxou (~maxou@mol92-2-81-56-75-128.fbx.proxad.net) has joined #debian
+2016-10-20 23:55:08	<--	dionysus69 (~Thunderbi@unaffiliated/dionysus69) has quit (Ping timeout: 256 seconds)
+2016-10-20 23:55:33	<--	GeorgeJipa (~admin@unaffiliated/georgejipa) has quit (Ping timeout: 248 seconds)
+2016-10-20 23:55:36	-->	_rubik (~RippyDipp@137.146.138.50) has joined #debian
+2016-10-20 23:55:57	<--	n3wborn (~n3wborn@unaffiliated/n3wborn) has quit (Quit: leaving)
+2016-10-20 23:56:01	<--	_rubik (~RippyDipp@137.146.138.50) has quit (Client Quit)
+2016-10-20 23:56:23	<--	woshty (~irc@HSI-KBW-078-043-005-174.hsi4.kabel-badenwuerttemberg.de) has quit (Quit: leaving)
+2016-10-20 23:56:42	<--	PseudoNoob (~PseudoNoo@unaffiliated/pseudonoob) has quit (Remote host closed the connection)
+2016-10-20 23:57:20	-->	RippyDippy (~RippyDipp@137.146.138.50) has joined #debian
+2016-10-20 23:57:21	-->	losingkeys (~losingkey@166.170.223.137) has joined #debian
+2016-10-20 23:58:00	--	Mode #debian [+l 1653] by debhelper
+2016-10-20 23:58:05	-->	GeorgeJipa (~admin@188.25.192.30) has joined #debian
+2016-10-20 23:58:05	<--	GeorgeJipa (~admin@188.25.192.30) has quit (Changing host)
+2016-10-20 23:58:05	-->	GeorgeJipa (~admin@unaffiliated/georgejipa) has joined #debian
+2016-10-20 23:58:43	<--	MasonMH (~SHRMz@185.12.45.73) has quit (Remote host closed the connection)
+2016-10-20 23:59:47	<--	Maxou (~maxou@mol92-2-81-56-75-128.fbx.proxad.net) has quit (Ping timeout: 256 seconds)
+2016-10-21 00:00:43	-->	mtn (~mtn@72.168.160.58) has joined #debian
+2016-10-21 00:01:43	-->	MasonMH (~SHRMz@185.12.45.73) has joined #debian
+2016-10-21 00:01:59	-->	philipballew (~philip@ubuntu/member/philipballew) has joined #debian
+2016-10-21 00:02:34	--	irc: disconnected from server
+2016-10-25 18:03:35	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #debian
+2016-10-25 18:03:35	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-10-25 18:03:35	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-10-25 18:03:36	--	Channel #debian: 1649 nicks (2 ops, 0 voices, 1647 normals)
+2016-10-25 18:03:36	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-10-25 18:03:36	--	URL for #debian: http://www.debian.org
+2016-10-25 18:03:36	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-10-25 18:03:39	-->	ojoa (~zetagi@193.105.134.166) has joined #debian
+2016-10-25 18:03:41	NapoleonWils0n	hi all
+2016-10-25 18:03:56	-->	LNJ2GO (~lnj@tmo-097-130.customers.d1-online.com) has joined #debian
+2016-10-25 18:04:09	NapoleonWils0n	im trying to use xkbcomp from ~/.xsession to remap some keys
+2016-10-25 18:04:21	-->	polemic (~polemic@185.86.151.164) has joined #debian
+2016-10-25 18:04:29	jelly	intothemountains: or something like https://www.crowdsupply.com/eoma68/micro-desktop
+2016-10-25 18:04:30	NapoleonWils0n	but its not working, also tried using ~/.xinitrc as well
+2016-10-25 18:04:46	-->	cyborg-one (~cyborg-on@188-115-191-178.broadband.tenet.odessa.ua) has joined #debian
+2016-10-25 18:04:47	NapoleonWils0n	if i run the command in the terminal it works perfectly
+2016-10-25 18:05:59	-->	gilley (b98913a0@gateway/web/freenode/ip.185.137.19.160) has joined #debian
+2016-10-25 18:06:05	<--	gilley (b98913a0@gateway/web/freenode/ip.185.137.19.160) has left #debian
+2016-10-25 18:06:30	<--	llorephie (~Thunderbi@broadband-46-188-127-166.2com.net) has quit (Remote host closed the connection)
+2016-10-25 18:06:40	-->	cdown (~cdown@199.201.64.135) has joined #debian
+2016-10-25 18:06:48	tremon	NapoleonWils0n: can you paste the .xsession script?
+2016-10-25 18:06:51	greycat	NapoleonWils0n: if you log into a DE, the DE probably has its own key mapping that overrides what you did in ~/.xwhatever
+2016-10-25 18:07:05	intothemountains	jelly: yeah, I've been keeping an eye on that for quite a while
+2016-10-25 18:07:07	NapoleonWils0n	im using i3wm
+2016-10-25 18:07:07	greycat	NapoleonWils0n: what WM or DE do you run, and how are you logging in/starting X?
+2016-10-25 18:07:22	intothemountains	There are many interesting projects, I only hope the succeed
+2016-10-25 18:07:27	NapoleonWils0n	startx and ~/.xsession
+2016-10-25 18:07:38	sm00th	I hope the trisquel project don't die
+2016-10-25 18:07:41	<--	paradx (~paradx@2a02:8109:43f:369c:2c93:e025:7e1:d147) has quit (Ping timeout: 260 seconds)
+2016-10-25 18:07:48	<--	pavlushka (~pavlushka@ubuntu/member/pavlushka) has quit (Ping timeout: 250 seconds)
+2016-10-25 18:08:00	sm00th	cleanest distro i ever used
+2016-10-25 18:08:03	NapoleonWils0n	had same error running gnome desktop, so i wiped drive and didnt install a DE
+2016-10-25 18:08:09	sm00th	when I say that I mean noise free.
+2016-10-25 18:08:10	NapoleonWils0n	just i3
+2016-10-25 18:08:16	sm00th	every log clean.
+2016-10-25 18:08:28	sm00th	especially network
+2016-10-25 18:09:32	<--	OS-24749 (~OS-24749@91.177.95.104) has quit (Ping timeout: 250 seconds)
+2016-10-25 18:09:32	<--	clippng (~CHRONIC@unaffiliated/clippng) has quit (Ping timeout: 250 seconds)
+2016-10-25 18:09:33	-->	TorZar (~torzar@50-195-195-168-static.hfc.comcastbusiness.net) has joined #debian
+2016-10-25 18:09:42	<--	TorZar (~torzar@50-195-195-168-static.hfc.comcastbusiness.net) has left #debian
+2016-10-25 18:10:08	<--	thiras_ (~thiras@unaffiliated/thiras) has quit (Ping timeout: 260 seconds)
+2016-10-25 18:10:12	-->	lenovo_lover (~lenovo_lo@c-73-206-107-125.hsd1.tx.comcast.net) has joined #debian
+2016-10-25 18:10:14	<--	electro33 (uid613@gateway/web/irccloud.com/x-sylxzfwewxgqcjch) has quit (Quit: Connection closed for inactivity)
+2016-10-25 18:10:18	-->	Velveeta_Chef (~Nope@fsf/member/Velveeta-Chef) has joined #debian
+2016-10-25 18:10:29	<--	lenovo_lover (~lenovo_lo@c-73-206-107-125.hsd1.tx.comcast.net) has quit (Max SendQ exceeded)
+2016-10-25 18:10:42	<--	David_Hernandez (~David_Her@248.red-88-16-8.dynamicip.rima-tde.net) has quit (Quit: Saliendo)
+2016-10-25 18:10:49	-->	thiras_ (~thiras@unaffiliated/thiras) has joined #debian
+2016-10-25 18:10:54	-->	lenovo_lover (~lenovo_lo@c-73-206-107-125.hsd1.tx.comcast.net) has joined #debian
+2016-10-25 18:11:31	<--	altin (~altin@flossk/altin) has quit (Ping timeout: 252 seconds)
+2016-10-25 18:11:42	awal1	NapoleonWilson, if using startx, use ~/.xinitrc, not ~/.xsession
+2016-10-25 18:12:18	NapoleonWils0n	tried that didnt work either xkbcomp isnt working
+2016-10-25 18:12:45	NapoleonWils0n	starting to think its a bug with something in stable
+2016-10-25 18:12:52	-->	camolist (~camolist@readme.tor.camolist.com) has joined #debian
+2016-10-25 18:12:59	<--	thiras_ (~thiras@unaffiliated/thiras) has quit (Client Quit)
+2016-10-25 18:13:15	ambient	Hello, anyone here use AMD hardware? I want to install graphics drivers for my GPU. I have an AMD APU and a GPU and would like to get the GPU to work rather than just the CPU for programs such as Blender when rendering
+2016-10-25 18:13:19	<--	cyan__ (~cyan@217.170.162.68) has quit (Remote host closed the connection)
+2016-10-25 18:13:26	-->	thiras (~thiras@unaffiliated/thiras) has joined #debian
+2016-10-25 18:14:16	-->	AndChat|93396 (~AndChat93@209.171.88.20) has joined #debian
+2016-10-25 18:14:31	<--	bit1 (~joseanton@61.red-80-24-119.staticip.rima-tde.net) has quit (Quit: Abandonando)
+2016-10-25 18:14:40	<--	thiras (~thiras@unaffiliated/thiras) has quit (Max SendQ exceeded)
+2016-10-25 18:14:45	<--	n4dir (~user@pD9EF0AA8.dip0.t-ipconnect.de) has left #debian
+2016-10-25 18:15:19	tremon	ambient: the default kernel driver and glx packages are sufficient, as long as you have installed the firmware-linux-nonfree (jessie) or firmware-amd-graphics (backports, stretch) packages from non-free
+2016-10-25 18:15:21	-->	thiras (~thiras@unaffiliated/thiras) has joined #debian
+2016-10-25 18:15:41	tremon	not sure if you need additional support packages for compute support, I don't use blender
+2016-10-25 18:15:55	-->	AndChat-93396 (~AndChat93@dsl-173-206-252-132.tor.primus.ca) has joined #debian
+2016-10-25 18:15:59	<--	q37 (~AndChat93@dsl-173-206-252-132.tor.primus.ca) has quit (Read error: Connection reset by peer)
+2016-10-25 18:16:25	ambient	tremon, Hi, I tried to install firmware-amd-graphics last night and it broke my system. I had to reinstall. I received instructions from someone who does not have AMD hardware.
+2016-10-25 18:16:50	<--	thiras (~thiras@unaffiliated/thiras) has quit (Max SendQ exceeded)
+2016-10-25 18:16:52	tremon	that shouldn't happen... broke how?
+2016-10-25 18:17:21	-->	thiras (~thiras@unaffiliated/thiras) has joined #debian
+2016-10-25 18:17:29	ambient	tremon, I had several issues with the repositories, I could not resolve the address it said
+2016-10-25 18:17:37	<--	lenovo_lover (~lenovo_lo@c-73-206-107-125.hsd1.tx.comcast.net) has quit (Remote host closed the connection)
+2016-10-25 18:17:50	tremon	ah, but that means you only broke the internet, not your system
+2016-10-25 18:17:59	ambient	tremon, Also I had no GUI anymore
+2016-10-25 18:18:23	ambient	tremon, When I logged in, I just had a blank screen and could only get into rescue mode
+2016-10-25 18:18:31	<--	el-aman (~Mutter@213.55.105.116) has quit (Quit: Mutter: http://www.mutterirc.com)
+2016-10-25 18:18:31	-->	q37 (~AndChat93@209.171.88.0) has joined #debian
+2016-10-25 18:18:58	tremon	seems odd that that would be caused by simply installing a package, unless that package uninstalled something else
+2016-10-25 18:19:35	ambient	tremon, It said it wanted to install 100 additional packages
+2016-10-25 18:19:41	<--	debian92 (~debian92@112.215.174.173) has quit (Read error: Connection reset by peer)
+2016-10-25 18:19:46	<--	AndChat|93396 (~AndChat93@209.171.88.20) has quit (Read error: Connection reset by peer)
+2016-10-25 18:19:57	tremon	you tried to install it from testing then, instead of backports I guess
+2016-10-25 18:20:05	<--	m4ggus (~m4ggus@ip1f10b5f7.dynamic.kabel-deutschland.de) has quit (Changing host)
+2016-10-25 18:20:05	-->	m4ggus (~m4ggus@unaffiliated/m4ggus) has joined #debian
+2016-10-25 18:20:17	-->	jak2000 (~jak2000@189.231.157.128) has joined #debian
+2016-10-25 18:20:19	jak2000	hi all
+2016-10-25 18:20:29	ambient	tremon, Okay, how do I install from backports?
+2016-10-25 18:20:37	<--	AndChat-93396 (~AndChat93@dsl-173-206-252-132.tor.primus.ca) has quit (Ping timeout: 276 seconds)
+2016-10-25 18:20:39	greycat	!jessie-backports
+2016-10-25 18:20:39	dpkg	Selected packages intended for the Debian 9 "Stretch" release but recompiled for use with "Jessie" (8.x) can be found in the "jessie-backports" repository.  Note that jessie-backports are on the regular mirror network, not on backports.debian.org.  A suitable line for your sources.list is «deb http://httpredir.debian.org/debian/ jessie-backports main».  Also ask me about <bdo>.
+2016-10-25 18:20:56	<--	Shock_ (~shock@5400D20E.dsl.pool.telekom.hu) has quit (Ping timeout: 265 seconds)
+2016-10-25 18:21:17	tremon	did you use the instructions from this page last time? https://backports.debian.org/Instructions/
+2016-10-25 18:21:36	-->	nidr0x (~z4.30i@nidr0x.ddns.jazztel.es) has joined #debian
+2016-10-25 18:21:43	NapoleonWils0n	euerka managed to fix my issue
+2016-10-25 18:21:51	NapoleonWils0n	used my arch .xinitrc
+2016-10-25 18:21:52	ambient	tremon, yeah, I also added 'contrib non-free'
+2016-10-25 18:22:07	<--	LNJ2GO (~lnj@tmo-097-130.customers.d1-online.com) has quit (Quit: Leaving.)
+2016-10-25 18:22:18	--	irc: disconnected from server
+2016-10-29 16:42:31	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #debian
+2016-10-29 16:42:31	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-10-29 16:42:31	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-10-29 16:42:32	--	Channel #debian: 1648 nicks (2 ops, 0 voices, 1646 normals)
+2016-10-29 16:42:32	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-10-29 16:42:32	--	URL for #debian: http://www.debian.org
+2016-10-29 16:42:32	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-10-29 16:42:32	<--	Acn (~noire@46.99.37.216) has quit (Ping timeout: 260 seconds)
+2016-10-29 16:42:34	NapoleonWils0n	hi all
+2016-10-29 16:42:52	NapoleonWils0n	im trying to get copy and paste working with rxvt-unicode-256color
+2016-10-29 16:43:06	NapoleonWils0n	but its just not working
+2016-10-29 16:43:08	<--	Epakai_ (~coweater@47.188.49.58) has quit (Quit: Epakai_)
+2016-10-29 16:43:08	-->	TheCoffeMaker (~TheCoffeM@186.136.217.118) has joined #debian
+2016-10-29 16:43:08	<--	TheCoffeMaker (~TheCoffeM@186.136.217.118) has quit (Changing host)
+2016-10-29 16:43:08	-->	TheCoffeMaker (~TheCoffeM@unaffiliated/thecoffemaker) has joined #debian
+2016-10-29 16:43:24	_elik	TomTomTosch: well damn, somehow pulling the usb stick and plugging it back in worked
+2016-10-29 16:43:36	NapoleonWils0n	should i be using rxvt-unicode instead of rxvt-unicode-256colors
+2016-10-29 16:43:41	_elik	TomTomTosch: it previously only had a sdb node, no partitions (sdb1, etc)
+2016-10-29 16:44:01	jelly	not that many apps work with 256 color support anyway
+2016-10-29 16:44:03	<--	hanshenrik (~hanshenri@ti0016a400-3633.bb.online.no) has quit (Ping timeout: 244 seconds)
+2016-10-29 16:44:17	-->	hanshenrik (~hanshenri@ti0016a400-3633.bb.online.no) has joined #debian
+2016-10-29 16:44:20	NapoleonWils0n	ill try unisalling and install standard version
+2016-10-29 16:44:21	-->	RebelCoder (~Yuriy@cpc74579-lewi13-2-0-cust201.2-4.cable.virginm.net) has joined #debian
+2016-10-29 16:44:24	<--	OS-23863 (~OS-23863@dslb-092-072-236-023.092.072.pools.vodafone-ip.de) has quit (Ping timeout: 260 seconds)
+2016-10-29 16:44:44	careta	han-solo, I see the file menu, and there's a big blank space between that and the rest of the window where the buttons should be
+2016-10-29 16:44:52	han-solo	i think, dd should be preffered to copy isos
+2016-10-29 16:44:59	careta	and actually, the buttons are there as if I click where they should be, they work. But nothing is displayed
+2016-10-29 16:45:08	-->	meauses (~Niels@ip503d5dba.speed.planet.nl) has joined #debian
+2016-10-29 16:45:27	_elik	TomTomTosch: looked too far too fast, thanks mate!
+2016-10-29 16:46:01	TomTomTosch	_elik: no problem. ^^
+2016-10-29 16:46:04	<--	pkv (~pkv@87-231-36-164.rev.numericable.fr) has quit (Quit: WeeChat 1.6)
+2016-10-29 16:46:06	han-solo	that's weird
+2016-10-29 16:46:21	-->	pkv (~pkv@87-231-36-164.rev.numericable.fr) has joined #debian
+2016-10-29 16:47:39	-->	sm00th (~sm00th@unaffiliated/sm00th) has joined #debian
+2016-10-29 16:47:41	TomTomTosch	han-solo: the installation guide uses cp. it doesn't make a difference for this.
+2016-10-29 16:47:44	<--	mtn (~mtn@72.168.161.89) has quit (Quit: Konversation terminated!)
+2016-10-29 16:47:50	-->	ValodiaDeSeynes (~ValodiaDe@unaffiliated/valodiadeseynes) has joined #debian
+2016-10-29 16:48:10	<--	myReaper (reaper@claire.myReaper.de) has quit (Read error: Connection reset by peer)
+2016-10-29 16:48:53	<--	amcorreia (~amcorreia@2804:7f5:280:354::1) has quit (Ping timeout: 260 seconds)
+2016-10-29 16:50:09	-->	lanartri (~lanartri@93.185.70.18) has joined #debian
+2016-10-29 16:50:44	-->	cdown (~cdown@12.37.166.67) has joined #debian
+2016-10-29 16:51:18	-->	musicnate (~musicnate@184.71.185.98) has joined #debian
+2016-10-29 16:51:19	-->	_ADN_ (~ADN@host81-158-143-101.range81-158.btcentralplus.com) has joined #debian
+2016-10-29 16:51:40	<--	adapter (~adapter@c-76-121-82-227.hsd1.wa.comcast.net) has quit (Ping timeout: 268 seconds)
+2016-10-29 16:51:44	<--	BrahRah (~BrahRah@5.2.65.225) has quit (Quit: KVIrc 4.9.2 Aria http://www.kvirc.net/)
+2016-10-29 16:52:11	NapoleonWils0n	rxvt copy and paste not working even with Xresources do i need to dowload the perl extensions
+2016-10-29 16:52:15	-->	myReaper (reaper@claire.myReaper.de) has joined #debian
+2016-10-29 16:53:07	humbot	two-button click ?
+2016-10-29 16:53:52	<--	Anselmo (~cjdns@174-17-84-151.phnx.qwest.net) has quit (Quit: WeeChat 1.6)
+2016-10-29 16:53:55	NapoleonWils0n	no mouse
+2016-10-29 16:54:09	-->	Anselmo (~cjdns@174-17-84-151.phnx.qwest.net) has joined #debian
+2016-10-29 16:54:40	<--	lanartri (~lanartri@93.185.70.18) has quit (Ping timeout: 260 seconds)
+2016-10-29 16:55:56	jelly	how are you doing selection without mouse?
+2016-10-29 16:56:10	<--	clippng (~CHRONIC@unaffiliated/clippng) has quit (Ping timeout: 250 seconds)
+2016-10-29 16:56:31	-->	OS-23863 (~OS-23863@dslb-092-072-236-023.092.072.pools.vodafone-ip.de) has joined #debian
+2016-10-29 16:56:33	NapoleonWils0n	you can just drag across text and its auto selected for copying
+2016-10-29 16:56:46	-->	hewlett (~pitfall@ipservice-092-210-049-180.092.210.pools.vodafone-ip.de) has joined #debian
+2016-10-29 16:56:56	hewlett	hello is there a debian off topic room?
+2016-10-29 16:57:02	-->	mtn (~mtn@72.168.161.89) has joined #debian
+2016-10-29 16:57:10	hewlett	oops
+2016-10-29 16:57:12	hewlett	found it+
+2016-10-29 16:57:13	jamesl	hewlett▸ check the topic
+2016-10-29 16:57:13	NapoleonWils0n	also gvim -v not working as default editor
+2016-10-29 16:57:19	-->	LotharKAtt (~lelouch@194.61.48.251) has joined #debian
+2016-10-29 16:57:23	hewlett	yeah thanks
+2016-10-29 16:57:28	--	Mode #debian [+o eir] by ChanServ
+2016-10-29 16:57:29	--	Mode #debian [-qo *!*@ool-457f2396.dyn.optonline.net eir] by eir
+2016-10-29 16:57:58	<--	stardancer (~stardance@unaffiliated/stardancer) has quit (Quit: leaving)
+2016-10-29 16:58:08	hewlett	take good care -guys god bless
+2016-10-29 16:58:10	<--	ToTheInternet (~totheinte@ip5f5aec62.dynamic.kabel-deutschland.de) has quit (Ping timeout: 265 seconds)
+2016-10-29 16:58:11	<--	hewlett (~pitfall@ipservice-092-210-049-180.092.210.pools.vodafone-ip.de) has left #debian ("Leaving")
+2016-10-29 16:58:11	<--	Caplain (~shayne@d14-69-32-57.try.wideopenwest.com) has quit (Read error: Connection reset by peer)
+2016-10-29 16:58:32	-->	Caplain (~shayne@d14-69-32-57.try.wideopenwest.com) has joined #debian
+2016-10-29 16:58:34	NapoleonWils0n	i have vim.gtk installed not sure if i need to set editor to gvim -v, vim or vim.gtk
+2016-10-29 16:58:49	<--	CEnnis91 (uid3543@gateway/web/irccloud.com/x-vkjodlaabgkxanvt) has quit (Quit: Connection closed for inactivity)
+2016-10-29 16:58:55	-->	remo (~remo@16-104-178-94.pool.ukrtel.net) has joined #debian
+2016-10-29 16:59:20	-->	Gnomethrower (~B@unaffiliated/gnomethrower) has joined #debian
+2016-10-29 16:59:39	-->	DarinMiller (~darin@65.129.56.15) has joined #debian
+2016-10-29 16:59:42	<--	schukai (~schukai@ipbcc2153d.dynamic.kabel-deutschland.de) has quit (Quit: Leaving)
+2016-10-29 16:59:46	<--	rednul_ (~rednul@199.48.163.219) has left #debian ("bye")
+2016-10-29 16:59:55	-->	ssaturos (~saturos@host31-49-225-47.range31-49.btcentralplus.com) has joined #debian
+2016-10-29 17:00:01	-->	heurist` (heurist@unaffiliated/heurist) has joined #debian
+2016-10-29 17:00:35	NapoleonWils0n	no copy and paste from X is kind of a dealbreaker
+2016-10-29 17:01:11	jelly	NapoleonWils0n: huh, drag with no mouse, how?
+2016-10-29 17:01:12	-->	rednul (~rednul@199.48.163.219) has joined #debian
+2016-10-29 17:01:25	<--	Ishaq (~Ishaq@budgetnode/management) has quit (Excess Flood)
+2016-10-29 17:01:38	NapoleonWils0n	i have a trackpad on laptop
+2016-10-29 17:01:56	NapoleonWils0n	just hightlight text and then paste in to X
+2016-10-29 17:01:57	<--	overlordtm (~andraz@BSN-77-157-126.static.siol.net) has quit (Ping timeout: 260 seconds)
+2016-10-29 17:02:00	abrotman	it has no buttons?
+2016-10-29 17:02:09	jelly	eh, that's a mouse as well
+2016-10-29 17:02:10	<--	dethos (~dethos@95.172.190.234) has quit (Quit: Time to Go!)
+2016-10-29 17:02:24	NapoleonWils0n	i have no middle click
+2016-10-29 17:02:33	<--	hanshenrik (~hanshenri@ti0016a400-3633.bb.online.no) has quit (Ping timeout: 252 seconds)
+2016-10-29 17:02:43	abrotman	do you have two buttons?
+2016-10-29 17:03:06	<--	heurist (heurist@unaffiliated/heurist) has quit (Ping timeout: 250 seconds)
+2016-10-29 17:03:24	<--	saturos (~saturos@host31-49-225-47.range31-49.btcentralplus.com) has quit (Ping timeout: 256 seconds)
+2016-10-29 17:03:25	--	ssaturos is now known as saturos
+2016-10-29 17:03:25	-->	karl_ (~karl@174-24-139-116.tukw.qwest.net) has joined #debian
+2016-10-29 17:03:35	abrotman	If you have two existing mouse buttons, you can configure X to treat clicking both at the same time as a middle click
+2016-10-29 17:04:00	NapoleonWils0n	no its a trackpad
+2016-10-29 17:04:07	NapoleonWils0n	works perfectly on arch
+2016-10-29 17:04:09	abrotman	So there are zero buttons?
+2016-10-29 17:04:29	NapoleonWils0n	yes its a trackpad using macair with debian and i3wm
+2016-10-29 17:04:32	 *	abrotman is typing on a laptop with a trackpad, with two mouse buttons ..
+2016-10-29 17:04:41	<--	mavhq (~quassel@cpc77319-basf12-2-0-cust433.12-3.cable.virginm.net) has quit (Read error: Connection reset by peer)
+2016-10-29 17:04:42	-->	Ishaq (~Ishaq@budgetnode/management) has joined #debian
+2016-10-29 17:04:47	 *	jamesl is typing on a laptop with a trackpad, with 5 buttons
+2016-10-29 17:04:48	gnu_	my gt730 won't output to vga after X is init, just black screen (Both VGA and DVI). Once screen goes black, can connect to SSH, but won't create shell.
+2016-10-29 17:04:51	gnu_	something to note: with X not on I can ssh in. Once X is on and goes black, I get an SSH greeting, password prompt, but when I enter the password never a login: it hangs.
+2016-10-29 17:04:58	NapoleonWils0n	i have perl-ext-common in my Xresources
+2016-10-29 17:05:03	<--	pf0_ (~pf0@186.137.230.37) has quit (Ping timeout: 245 seconds)
+2016-10-29 17:05:26	missmbob	gnu_: you really need to understand that this is #debian and we don't support ubuntu. go to #ubuntu
+2016-10-29 17:05:50	gnu_	missmbob: 8.0.04.4 is more debian than unbuntu
+2016-10-29 17:05:53	gnu_	it's from 2008
+2016-10-29 17:06:00	-->	mavhq (~quassel@cpc77319-basf12-2-0-cust433.12-3.cable.virginm.net) has joined #debian
+2016-10-29 17:06:01	abrotman	gnu_: irrevelant, go to #ubuntu
+2016-10-29 17:06:16	<--	meauses (~Niels@ip503d5dba.speed.planet.nl) has quit (Quit: leaving)
+2016-10-29 17:06:19	abrotman	irrelevant too ...
+2016-10-29 17:07:28	gnu_	abrotman: ubuntu says just upgrade
+2016-10-29 17:07:37	gnu_	I refuse
+2016-10-29 17:07:45	-->	meauses (~Niels@ip503d5dba.speed.planet.nl) has joined #debian
+2016-10-29 17:07:51	abrotman	gnu_: okay, but you're not getting help here.
+2016-10-29 17:07:55	jamesl	gnu_▸ why can't you upgrade?
+2016-10-29 17:08:02	abrotman	jamesl: ask him in #ubuntu please
+2016-10-29 17:08:10	<--	douzer (~douzer@unaffiliated/douzer) has quit (Quit: Leaving)
+2016-10-29 17:08:15	-->	demo (~demo@190-39-237-122.dyn.dsl.cantv.net) has joined #debian
+2016-10-29 17:08:29	abrotman	gnu_: That's your last warning from me, do not continue to ask questions about your Ubuntu installation here
+2016-10-29 17:08:46	<--	camolist (~camolist@readme.tor.camolist.com) has left #debian
+2016-10-29 17:08:53	-->	LtL (~irssi@unaffiliated/ltl) has joined #debian
+2016-10-29 17:09:13	-->	heurist`_ (heurist@unaffiliated/heurist) has joined #debian
+2016-10-29 17:09:25	<--	TheCoffeMaker (~TheCoffeM@unaffiliated/thecoffemaker) has quit (Remote host closed the connection)
+2016-10-29 17:09:52	-->	amcorreia (~amcorreia@186.213.184.12) has joined #debian
+2016-10-29 17:09:52	<--	demo (~demo@190-39-237-122.dyn.dsl.cantv.net) has quit (Client Quit)
+2016-10-29 17:10:47	<--	heurist` (heurist@unaffiliated/heurist) has quit (Ping timeout: 268 seconds)
+2016-10-29 17:10:49	-->	Darcidride (~Darcidrid@dmt69-1-88-180-172-161.fbx.proxad.net) has joined #debian
+2016-10-29 17:10:50	NapoleonWils0n	weird copy and paste work in vim in terminal
+2016-10-29 17:10:56	-->	rochelimit (~gct@92.40.249.152.threembb.co.uk) has joined #debian
+2016-10-29 17:11:03	NapoleonWils0n	but not in rxvt on the command line
+2016-10-29 17:11:33	<--	debalance (~debalance@aftr-88-153-6-30.unity-media.net) has quit (Remote host closed the connection)
+2016-10-29 17:11:58	<--	_elik (4a74bb12@gateway/web/freenode/ip.74.116.187.18) has quit (Quit: Page closed)
+2016-10-29 17:12:38	<--	rochelimit_ (~gct@glencthomas.plus.com) has quit (Ping timeout: 250 seconds)
+2016-10-29 17:13:17	gnu_	abrotman: go fuck yourself
+2016-10-29 17:13:21	gnu_	I'll do what I want
+2016-10-29 17:13:22	NapoleonWils0n	seems like the perl extension clipboard isnt in the perl library seach path
+2016-10-29 17:13:24	-->	OS-23624 (~OS-23624@p20030070EE78BD00FA88C22D9BBA3562.dip0.t-ipconnect.de) has joined #debian
+2016-10-29 17:13:27	gnu_	and change IP at will
+2016-10-29 17:13:31	NapoleonWils0n	have to install manually
+2016-10-29 17:13:54	jamesl	gnu_▸ do what you want by all means but we won't help you if you treat us like that
+2016-10-29 17:14:02	<--	jamesl (jamesl@2ProIntl/Users/jamesl.tk/jamesl) has left #debian ("Leaving")
+2016-10-29 17:14:12	<--	Messenger_bird (~banana@wikipedia/Antonio-Lopez) has quit (Ping timeout: 260 seconds)
+2016-10-29 17:14:12	--	Mode #debian [+o abrotman] by ChanServ
+2016-10-29 17:14:13	--	Mode #debian [+b *!*@ool-457f2396.dyn.optonline.net] by abrotman
+2016-10-29 17:14:13	<--	abrotman has kicked gnu_ (you should know better)
+2016-10-29 17:14:13	--	Mode #debian [-o abrotman] by abrotman
+2016-10-29 17:14:15	NapoleonWils0n	asking question about different os is like trying to buy fish and chips at a bank
+2016-10-29 17:14:22	<--	roentgen (~roentgen@unaffiliated/roentgen) has quit (Quit: WeeChat 1.6)
+2016-10-29 17:14:46	cra1g321	probably asking here cuz he's likely been kicked/banned from ubuntu already
+2016-10-29 17:14:51	missmbob	NapoleonWils0n: that's why i love banks inside supermarkets.
+2016-10-29 17:14:57	abrotman	I'm sure that attitude has a lot to do with why he can't get help in #ubuntu
+2016-10-29 17:15:03	TomTomTosch	no, he is getting help in #ubuntu
+2016-10-29 17:15:12	abrotman	good, then he can stay there
+2016-10-29 17:15:21	cra1g321	i'd have kicked from there too ;P
+2016-10-29 17:15:49	NapoleonWils0n	i do find debian has a lot less cruft than ubuntu, and its a pain to try and unpick everything it adds
+2016-10-29 17:16:09	LostSoul	Hi
+2016-10-29 17:16:23	-->	valerio (~valerio`@unaffiliated/valerio/x-9242161) has joined #debian
+2016-10-29 17:16:36	LostSoul	Just quick question today, why Debian (especially Jessie) comes without repos setup? (only cdrom)
+2016-10-29 17:16:36	NapoleonWils0n	i have a debian video on youtube
+2016-10-29 17:16:38	NapoleonWils0n	https://www.youtube.com/watch?v=m3tLSDK0cXY
+2016-10-29 17:16:54	NapoleonWils0n	and some bash scripts to record video from kodi
+2016-10-29 17:17:06	TomTomTosch	LostSoul: that happens if you don't have a working connection during installation.
+2016-10-29 17:17:19	LostSoul	TomTomTosch: Aaa, got it :)
+2016-10-29 17:17:25	TomTomTosch	!tell LostSoul about sources.list
+2016-10-29 17:17:33	TomTomTosch	LostSoul: simple enough to fix it ^
+2016-10-29 17:17:36	-->	Sircle (~ubuntu@unaffiliated/sircle) has joined #debian
+2016-10-29 17:17:42	Sircle	I am few commands away from setting up a multiseatx. Can anyone help? https://pastebin.mozilla.org/8923118
+2016-10-29 17:17:48	LostSoul	Strange in the same time as my VM should have connection
+2016-10-29 17:17:53	LostSoul	TomTomTosch: Hmm?
+2016-10-29 17:17:56	LostSoul	I didn't get it TomTomTosch
+2016-10-29 17:18:15	-->	Guest56226 (crazyed@wrongplanet/CrazyEddy) has joined #debian
+2016-10-29 17:18:15	TomTomTosch	the bot should have sent you a msg.
+2016-10-29 17:18:26	LostSoul	I see!
+2016-10-29 17:18:32	LostSoul	There it is, thanks TomTomTosch
+2016-10-29 17:18:34	-->	blueness_ (~blueness@gentoo/developer/blueness) has joined #debian
+2016-10-29 17:18:34	<--	careta (~botto@129.82.54.77.rev.vodafone.pt) has quit (Quit: Leaving)
+2016-10-29 17:18:49	Sircle	?
+2016-10-29 17:18:51	TomTomTosch	no problem ^^
+2016-10-29 17:20:26	LostSoul	I promised one question but here is another, what is advantage aptitude over apt?
+2016-10-29 17:20:54	abrotman	LostSoul: not "advantage", but different
+2016-10-29 17:21:13	NapoleonWils0n	apt has a pretty progress bar
+2016-10-29 17:21:18	abrotman	dpkg: tell LostSoul about why aptitude
+2016-10-29 17:21:37	NapoleonWils0n	apt !apt-get
+2016-10-29 17:21:57	abrotman	dpkg: tell NapoleonWils0n about apt-get
+2016-10-29 17:23:17	missmbob	i really hate apt in jessie. stretch version is nice. can't wait 'til it becomes stable
+2016-10-29 17:23:38	hexnewbie	Is there an easy way to build a i386 library Debian package on an amd64 machine?
+2016-10-29 17:23:38	LostSoul	Nice
+2016-10-29 17:23:39	 *	abrotman can't wait for the next tool ..
+2016-10-29 17:23:51	LostSoul	Thanks abrotman
+2016-10-29 17:24:02	abrotman	missmbob: I predict cupt will be next!
+2016-10-29 17:24:03	<--	[Brain] (~brain@cpc70879-mfld16-2-0-cust190.13-1.cable.virginm.net) has quit (Quit: Leaving)
+2016-10-29 17:24:10	-->	Messenger_bird (~banana@wikipedia/Antonio-Lopez) has joined #debian
+2016-10-29 17:24:15	missmbob	heh
+2016-10-29 17:24:22	<--	rochelimit (~gct@92.40.249.152.threembb.co.uk) has quit (Quit: Bye)
+2016-10-29 17:24:40	-->	CptPicard (~eero@a91-152-243-173.elisa-laajakaista.fi) has joined #debian
+2016-10-29 17:24:45	-->	rochelimit (~gct@glencthomas.plus.com) has joined #debian
+2016-10-29 17:25:58	<--	CptPicard (~eero@a91-152-243-173.elisa-laajakaista.fi) has left #debian
+2016-10-29 17:26:10	hexnewbie	Or at least any way to produce an error that it can't build the package, instead of producing the amd64 one over and over?
+2016-10-29 17:26:16	-->	_0bitcount (~Big_Byte@92.176.142.156) has joined #debian
+2016-10-29 17:26:24	<--	meauses (~Niels@ip503d5dba.speed.planet.nl) has quit (Ping timeout: 260 seconds)
+2016-10-29 17:26:47	hexnewbie	So far I've been brute-forcing commands, and I've reached: dpkg-architecture --target-arch=i386 -c 'debuild --preserve-env --set-envvar=AUTOCONF=/usr/bin/autoconf2.50 --target-arch=i386 -uc -us -j4 '
+2016-10-29 17:27:36	-->	dmesg (~JC@87.196.80.86) has joined #debian
+2016-10-29 17:27:46	missmbob	hexnewbie: you'd save yourself a lot of pain by creating an i386 chroot
+2016-10-29 17:28:13	<--	ojoa (~zetagi@193.105.134.166) has quit (Ping timeout: 252 seconds)
+2016-10-29 17:28:33	hexnewbie	missmbob: I guess so, but I was hoping to get an error that would convince me to make that chroot, instead of silently getting the amd64 package :)
+2016-10-29 17:28:50	-->	ojoa (~zetagi@193.105.134.166) has joined #debian
+2016-10-29 17:29:15	hexnewbie	I should have all the dependencies (-dev packages, libraries for both i386 and amd64), so there should be a way to at least try :)
+2016-10-29 17:29:17	-->	Akuli (~Akuli@mobile-access-5d6ace-42.dhcp.inet.fi) has joined #debian
+2016-10-29 17:29:31	<--	ovidnis (~user@cpe-174-103-171-206.wi.res.rr.com) has quit (Read error: Connection reset by peer)
+2016-10-29 17:30:42	<--	mzf (~mzf@unaffiliated/mzf) has quit (Quit: Leaving)
+2016-10-29 17:31:21	NapoleonWils0n	rxvt is using ctrl meta v and c to copy and paste
+2016-10-29 17:31:31	<--	hanfm (~Thunderbi@x4e3163c4.dyn.telefonica.de) has quit (Ping timeout: 252 seconds)
+2016-10-29 17:31:42	NapoleonWils0n	need to change it to shift ctrl v and c
+2016-10-29 17:31:42	<--	cdown (~cdown@12.37.166.67) has quit (Ping timeout: 250 seconds)
+2016-10-29 17:32:27	-->	airking (~airking@unaffiliated/blackhat) has joined #debian
+2016-10-29 17:32:39	-->	countbackula (~user@fsf/member/countbackula) has joined #debian
+2016-10-29 17:32:43	airking	How can I start my mysql server?  /etc/init.d/mysql start does not work
+2016-10-29 17:32:50	airking	It says the file/directory does nto exist
+2016-10-29 17:32:55	<--	B[]rG (~tuptidup@46-150-40-173.cable.teleing.net) has quit (Quit: regeneration...)
+2016-10-29 17:33:58	NapoleonWils0n	doesnt it use systemctl
+2016-10-29 17:34:12	mutante	airking: how about  systemctl status mysql
+2016-10-29 17:34:15	NapoleonWils0n	something like sudo systemctl start mysql
+2016-10-29 17:34:27	-->	B[]rG (~tuptidup@46-150-40-173.cable.teleing.net) has joined #debian
+2016-10-29 17:34:37	airking	mutante: systemctl: command not found
+2016-10-29 17:34:53	<--	albertguedes (~albert@177.33.0.35) has quit (Remote host closed the connection)
+2016-10-29 17:35:04	jelly	airking: which debian release?
+2016-10-29 17:35:42	mutante	airking: are you sure the mysql package is installed?
+2016-10-29 17:35:47	mutante	dpkg -l | grep mysql ?
+2016-10-29 17:35:47	dpkg	ii  | grep mysql                 1.9-5           mutante's private porn collection
+2016-10-29 17:35:49	airking	jelly: 7.8
+2016-10-29 17:35:55	<--	MrNeon (~MrNeon@a109-48-102-44.cpe.netcabo.pt) has quit (Quit: Leaving)
+2016-10-29 17:36:01	mutante	dpkg: lol, that was nice
+2016-10-29 17:36:01	dpkg	mutante: are you using Windows?
+2016-10-29 17:36:22	airking	mutante: yes, it's installed, mysql-server shows up in dpkg
+2016-10-29 17:36:59	jelly	airking: pastebin the output of "dpkg -l mysql-server\* " and maybe "grep mysql /var/log/daemon.log | tail -n 200"
+2016-10-29 17:37:00	<--	poleprogger (~mj@75.211.eduroam.dynamic.rbg.tum.de) has quit (Read error: Connection reset by peer)
+2016-10-29 17:37:07	jelly	!paste
+2016-10-29 17:37:08	dpkg	Do not paste more than 2 lines to this channel.  Instead, use: http://paste.debian.net/ http://pastie.org/ or http://picpaste.com/ for pics.  Use wikisend.com for large files (think tar.gz) up to 100MB.  Remember to tell us the URL of your paste!  Cannot cut and paste?  Ask me about <pastebinit>, <nopaste>, <wgetpaste>.
+2016-10-29 17:37:12	-->	poleprogger (~mj@75.211.eduroam.dynamic.rbg.tum.de) has joined #debian
+2016-10-29 17:38:01	airking	jelly: http://pastebin.com/GagVzSBh
+2016-10-29 17:39:34	mutante	airking: it should normally be "ii" not "iU" status
+2016-10-29 17:39:35	<--	aswen (~aswen@lochem.swen.nu) has quit (Ping timeout: 252 seconds)
+2016-10-29 17:39:37	--	irc: disconnected from server
+2016-11-02 14:03:27	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #debian
+2016-11-02 14:03:27	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-11-02 14:03:27	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-11-02 14:03:28	--	Channel #debian: 1687 nicks (2 ops, 0 voices, 1685 normals)
+2016-11-02 14:03:28	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-11-02 14:03:28	--	URL for #debian: http://www.debian.org
+2016-11-02 14:03:28	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-11-02 14:03:32	NapoleonWils0n	hi all
+2016-11-02 14:03:33	-->	makimaki (~makimaki`@jedenzero7-dziewiectrzy.echostar.pl) has joined #debian
+2016-11-02 14:03:41	-->	surfist (~surfist@122.200.0.2) has joined #debian
+2016-11-02 14:03:55	NapoleonWils0n	im using xfce and have the gvfs-backends installed but cant mount an smb share with thunar
+2016-11-02 14:05:01	<--	humbot (~unkraut@unaffiliated/humbag) has quit (Quit: WeeChat 1.0.1)
+2016-11-02 14:05:11	NapoleonWils0n	using the same set up as on arch, but when i enter smb in thunar just get red circle with a white line thru it
+2016-11-02 14:05:20	petn-randall	NapoleonWils0n: Did you log out and in since installing it?
+2016-11-02 14:05:30	NapoleonWils0n	yes 
+2016-11-02 14:06:17	petn-randall	NapoleonWils0n: Is the package 'gvfs' installed?
+2016-11-02 14:06:29	petn-randall	NapoleonWils0n: dpkg -l gvfs
+2016-11-02 14:06:35	NapoleonWils0n	yes im not that dense
+2016-11-02 14:06:38	<--	hualet (~hualet@183.94.114.0) has quit (Remote host closed the connection)
+2016-11-02 14:06:40	<--	gardar- (~gardar@bnc.giraffi.net) has quit (Quit: ZNC - http://znc.in)
+2016-11-02 14:06:52	-->	gl-prout (~gl-prout@197.158.85.141) has joined #debian
+2016-11-02 14:07:07	-->	hualet (~hualet@183.94.114.0) has joined #debian
+2016-11-02 14:07:13	NapoleonWils0n	gvfs-libs gvfs-fuse install with thunar-volman
+2016-11-02 14:07:25	petn-randall	NapoleonWils0n: Never implied that, just going through the necessary steps to verify it.
+2016-11-02 14:07:50	petn-randall	s/it/smb with thunar works/
+2016-11-02 14:07:59	NapoleonWils0n	no worry mate, always first thing to check
+2016-11-02 14:08:12	-->	ksft (~k@wikipedia/KSFT) has joined #debian
+2016-11-02 14:08:25	NapoleonWils0n	i see gvfs-bin isnt installed
+2016-11-02 14:09:22	petn-randall	NapoleonWils0n: Do you get an error trying to access a SMB share, or can't you even browse them?
+2016-11-02 14:09:25	<--	Modeuse (~kvirc@x14m13a.wh7.tu-dresden.de) has quit (Quit: KVIrc 4.9.1 Aria http://www.kvirc.net/)
+2016-11-02 14:09:25	<--	newbie58 (~kvirc@x14m13a.wh7.tu-dresden.de) has quit (Quit: KVIrc 4.9.1 Aria http://www.kvirc.net/)
+2016-11-02 14:09:27	-->	Aoup (~Aoup@nag77-2-83-152-154-106.fbx.proxad.net) has joined #debian
+2016-11-02 14:09:43	-->	gardar (~gardar@bnc.giraffi.net) has joined #debian
+2016-11-02 14:09:49	-->	Modeuse (~kvirc@x14m13a.wh7.tu-dresden.de) has joined #debian
+2016-11-02 14:09:57	<--	sunnymolini (~sunnymoli@DEWBERRY-CO.ear3.Washington1.Level3.net) has quit (Ping timeout: 252 seconds)
+2016-11-02 14:10:02	NapoleonWils0n	cant even browse share just get red circle with white line thru it when i enter smb://
+2016-11-02 14:10:07	-->	jackbrown (~se@unaffiliated/jackbrown) has joined #debian
+2016-11-02 14:10:28	<--	redguy (~matik@unaffiliated/redguy) has quit (Ping timeout: 245 seconds)
+2016-11-02 14:10:45	petn-randall	NapoleonWils0n: And this is on which release exactly?
+2016-11-02 14:11:06	-->	knidos (~knidos@88.246.59.10) has joined #debian
+2016-11-02 14:11:08	-->	cdown (~cdown@209.136.131.202) has joined #debian
+2016-11-02 14:11:10	NapoleonWils0n	jessie im running i3wm using startx and xfce thunar file manager
+2016-11-02 14:11:13	-->	luckman212 (~luckman21@unaffiliated/luckman212) has joined #debian
+2016-11-02 14:11:25	<--	hualet (~hualet@183.94.114.0) has quit (Ping timeout: 252 seconds)
+2016-11-02 14:11:43	<--	antgel (~topdog@82.166.98.41) has quit (Ping timeout: 245 seconds)
+2016-11-02 14:11:52	petn-randall	NapoleonWils0n: Ah, I'm guessing that i3wm isn't autostarting the necessary things
+2016-11-02 14:12:09	<--	mc0e (~mc0e@26.4b.01a8.ip4.static.sl-reverse.com) has quit (Ping timeout: 252 seconds)
+2016-11-02 14:12:10	NapoleonWils0n	right, maybe dbus
+2016-11-02 14:12:16	-->	redguy (~matik@unaffiliated/redguy) has joined #debian
+2016-11-02 14:12:57	petn-randall	NapoleonWils0n: Yeah, it depends on dbus, so it should be running.
+2016-11-02 14:13:41	NapoleonWils0n	have to start dbus session from startx
+2016-11-02 14:14:40	-->	lss8 (~lss8@unaffiliated/lss8) has joined #debian
+2016-11-02 14:14:43	NapoleonWils0n	have to check my dotfiles
+2016-11-02 14:15:25	NapoleonWils0n	something like this: source /etc/X11/xinit/xinitrc.d/30-bus
+2016-11-02 14:15:35	NapoleonWils0n	in my xinitrc
+2016-11-02 14:15:43	-->	|narcos| (uid99359@gateway/web/irccloud.com/x-jfipxbretgdgtxvo) has joined #debian
+2016-11-02 14:16:06	doebi	as far as i've seen one can configure the colors of ls for any directory and file type. but can i also configure custom colors for filesize, permissions and username ?
+2016-11-02 14:16:07	-->	gebruiker (~gebruiker@77-172-237-233.ip.telfort.nl) has joined #debian
+2016-11-02 14:16:29	<--	gebruiker (~gebruiker@77-172-237-233.ip.telfort.nl) has quit (Client Quit)
+2016-11-02 14:16:40	-->	wokedame (~sfgsfdsad@cpc81485-lanc8-2-0-cust90.3-3.cable.virginm.net) has joined #debian
+2016-11-02 14:17:05	-->	seoner (~usr@unaffiliated/sand3r) has joined #debian
+2016-11-02 14:17:08	-->	gebruiker (~gebruiker@77-172-237-233.ip.telfort.nl) has joined #debian
+2016-11-02 14:17:15	-->	Nh3xus (~Nh3xus@unaffiliated/nh3xus) has joined #debian
+2016-11-02 14:17:31	<--	sweatsuit (~sweatsuit@unaffiliated/sweatsuit) has quit (Quit: ZNC - http://znc.in)
+2016-11-02 14:18:09	<--	afx_ (~afx_@195.46.27.228) has quit (Remote host closed the connection)
+2016-11-02 14:18:13	<--	Aoup (~Aoup@nag77-2-83-152-154-106.fbx.proxad.net) has quit (Ping timeout: 268 seconds)
+2016-11-02 14:18:20	-->	natefoo (~nate@enospc.org) has joined #debian
+2016-11-02 14:19:03	-->	sweatsuit (~sweatsuit@unaffiliated/sweatsuit) has joined #debian
+2016-11-02 14:20:45	<--	arturo (~arturo@r2d2.cica.es) has quit (Quit: Saliendo)
+2016-11-02 14:20:54	frostschutz	doebi, not really, no (see man dir_colors what is available)
+2016-11-02 14:21:31	-->	antgel (~topdog@82.166.98.41) has joined #debian
+2016-11-02 14:21:34	<--	ilSt (~prana@net-5-94-8-38.cust.vodafonedsl.it) has quit (Quit: All e Lui ha)
+2016-11-02 14:22:42	doebi	frostschutz: http://teom.org/wp-content/uploads/2012/05/shell5.png
+2016-11-02 14:22:52	doebi	i was thinking about sth like this
+2016-11-02 14:23:12	-->	Envil (~envil@x4db31e36.dyn.telefonica.de) has joined #debian
+2016-11-02 14:23:25	<--	xet7 (~xet7@80-186-223-231.elisa-mobile.fi) has quit (Quit: Leaving)
+2016-11-02 14:23:55	doebi	looks like i need another ls, replacing the usual one
+2016-11-02 14:25:22	-->	xet7 (~xet7@80-186-223-231.elisa-mobile.fi) has joined #debian
+2016-11-02 14:25:33	frostschutz	doebi, according to the blog you linked to, that's ls++... https://github.com/trapd00r/ls--
+2016-11-02 14:25:41	Agiofws	can i follow this tut on how to compile a kernel for debian?
+2016-11-02 14:25:44	Agiofws	https://www.debian.org/releases/jessie/i386/ch08s06.html.en
+2016-11-02 14:25:53	<--	tlaxkit (~Thunderbi@92.177.99.40) has quit (Quit: tlaxkit)
+2016-11-02 14:26:37	doebi	frostschutz: yeah, thx
+2016-11-02 14:26:45	frostschutz	doebi, if you get used to such things you won't feel home in any other shell ;) good luck
+2016-11-02 14:26:58	-->	rocket__ (~rocket__@unaffiliated/rocket--/x-6233973) has joined #debian
+2016-11-02 14:26:59	rocket__	hi
+2016-11-02 14:27:07	rocket__	i have troubles installing a printer in linux
+2016-11-02 14:27:14	rocket__	that seems to be a problem
+2016-11-02 14:27:15	rocket__	in general
+2016-11-02 14:28:42	teraflops	as in everyone having troubles setting up a printer on Linux?
+2016-11-02 14:28:46	-->	fax (~fax@91-159-153-77.elisa-laajakaista.fi) has joined #debian
+2016-11-02 14:28:53	-->	jegc (~jegc@dynamic-186-29-213-60.dynamic.etb.net.co) has joined #debian
+2016-11-02 14:29:23	doebi	frostschutz: well, that happens already. all tools i regularly use are matched in color
+2016-11-02 14:29:36	teraflops	rocket__: that's what you meant?
+2016-11-02 14:29:53	<--	Alam_Squeeze (alam@rigginstereo.lawarias.srb2.org) has quit (Remote host closed the connection)
+2016-11-02 14:29:56	-->	njumdl2014 (~njumdl201@client-104-39-98-243.mobility.psu.edu) has joined #debian
+2016-11-02 14:29:58	petn-randall	rocket__: The printers I know all work out of the box. You just need to know which printer manufacturers to avoid (Brother for example). Do you need help with configuring your printer?
+2016-11-02 14:30:17	NapoleonWils0n	trying to figure out how to launch dbus session from xinitrc
+2016-11-02 14:30:26	rocket__	i have this troubles with hp
+2016-11-02 14:30:34	-->	KyokoDebian (4d4da301@gateway/web/cgi-irc/kiwiirc.com/ip.77.77.163.1) has joined #debian
+2016-11-02 14:30:38	rocket__	i installed the installer
+2016-11-02 14:30:44	rocket__	but it cant disable smart install
+2016-11-02 14:30:46	rocket__	whatever that is
+2016-11-02 14:30:48	rocket__	i tried shell
+2016-11-02 14:30:50	<--	KyokoDebian (4d4da301@gateway/web/cgi-irc/kiwiirc.com/ip.77.77.163.1) has left #debian
+2016-11-02 14:30:55	rocket__	i tried their scripts they crash
+2016-11-02 14:31:02	-->	pkv (~pkv@176.67.93.77) has joined #debian
+2016-11-02 14:31:03	rocket__	when they try to disable smart install
+2016-11-02 14:31:12	rocket__	seems i need windows for printing
+2016-11-02 14:31:16	-->	Alam_Squeeze (alam@rigginstereo.lawarias.srb2.org) has joined #debian
+2016-11-02 14:31:25	teraflops	yeah
+2016-11-02 14:31:29	-->	robotroll (~robotroll@unaffiliated/robotroll) has joined #debian
+2016-11-02 14:31:30	Agiofws	what do i follow to compile a new kernel for debian ?
+2016-11-02 14:31:35	Agiofws	this https://www.debian.org/doc/manuals/debian-handbook/sect.kernel-compilation.en.html
+2016-11-02 14:31:50	Agiofws	or https://www.debian.org/releases/jessie/amd64/ch08s06.html.en ?
+2016-11-02 14:31:51	rocket__	teraflops, is hp not good on linux?
+2016-11-02 14:32:10	teraflops	rocket__: I was being sarcastic
+2016-11-02 14:32:15	rocket__	me too
+2016-11-02 14:32:25	rocket__	but i dont know what else to do
+2016-11-02 14:32:30	teraflops	rocket__: hp is one of the best choices
+2016-11-02 14:32:38	teraflops	imo^
+2016-11-02 14:32:41	rocket__	nice but it doesnt work
+2016-11-02 14:33:01	towo^work	Agiofws, the 1st one
+2016-11-02 14:33:08	-->	mc0e (~mc0e@27.4b.01a8.ip4.static.sl-reverse.com) has joined #debian
+2016-11-02 14:33:12	Agiofws	ok thanks
+2016-11-02 14:33:17	<--	barteks2x (~barteks2x@car21.t17.ds.pwr.wroc.pl) has quit (Remote host closed the connection)
+2016-11-02 14:33:24	Agiofws	https://www.debian.org/doc/manuals/debian-handbook/sect.kernel-compilation.en.html
+2016-11-02 14:33:33	teraflops	rocket__: you're not offering real detailed error messages. you don't even say which printer model is that
+2016-11-02 14:33:40	-->	jnhghy (567a3a94@gateway/web/freenode/ip.86.122.58.148) has joined #debian
+2016-11-02 14:34:19	rocket__	"HP LaserJet Professional P 1102w
+2016-11-02 14:34:21	-->	GadgetGuru (~Thunderbi@2605:a601:967:dd01:d097:7a66:5eb2:2460) has joined #debian
+2016-11-02 14:34:37	<--	denisk (~denisk@CPE-144-132-235-16.nsw.bigpond.net.au) has quit (Remote host closed the connection)
+2016-11-02 14:35:05	rocket__	fuck!!!
+2016-11-02 14:35:07	rocket__	i did it
+2016-11-02 14:35:10	<--	canopus (~canopus@unaffiliated/pierrot) has quit (Ping timeout: 256 seconds)
+2016-11-02 14:35:12	rocket__	:D
+2016-11-02 14:35:28	rocket__	teraflops, i dont know why it works now
+2016-11-02 14:35:30	rocket__	no reason
+2016-11-02 14:35:52	<--	cdown (~cdown@209.136.131.202) has quit (Ping timeout: 250 seconds)
+2016-11-02 14:36:02	-->	vonsyd0w (~vonsyd0w@66-168-214-41.dhcp.athn.ga.charter.com) has joined #debian
+2016-11-02 14:36:16	maily	hi again
+2016-11-02 14:36:22	<--	fax (~fax@91-159-153-77.elisa-laajakaista.fi) has quit (Ping timeout: 265 seconds)
+2016-11-02 14:36:26	maily	SSH_AUTH_SOCK
+2016-11-02 14:36:29	rocket__	teraflops, there is no reason why it works now
+2016-11-02 14:36:33	maily	it accepts a socket file - not an ip address, right?
+2016-11-02 14:36:45	maily	I want to specify an ip address (host network, 127.0.0.1) for the ssh agent
+2016-11-02 14:36:52	<--	GadgetGuru (~Thunderbi@2605:a601:967:dd01:d097:7a66:5eb2:2460) has quit (Client Quit)
+2016-11-02 14:36:54	maily	is this possible? Can I create a socket file that points to an ip address instead?
+2016-11-02 14:36:58	<--	corsibu (~corsibu@171.20.68.68) has quit (Remote host closed the connection)
+2016-11-02 14:37:02	maily	hm, I will also ask in ssh channel
+2016-11-02 14:37:04	rocket__	anyway thanks for trying help
+2016-11-02 14:37:30	-->	iwkse (~iwkse@unaffiliated/iwkse) has joined #debian
+2016-11-02 14:37:32	-->	corsibu (~corsibu@171.20.68.68) has joined #debian
+2016-11-02 14:37:43	jelly	maily: does ssh_config manual says that can be a tcp socket?
+2016-11-02 14:37:50	jelly	say*
+2016-11-02 14:37:55	iwkse	hi, do you know if there's any workaround on this bug? https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=842443 (apart from downgrading gtk3)
+2016-11-02 14:37:56	judd	Bug http://bugs.debian.org/842443 in abiword (forwarded, confirmed): «abiword displays documents as black on black with GTK 3.22»; severity: serious; opened: 2016-10-29; last modified: 2016-10-30.
+2016-11-02 14:38:00	--	Mode #debian [+l 1714] by debhelper
+2016-11-02 14:38:04	NapoleonWils0n	really baffled why thunar cant mount smb shares
+2016-11-02 14:38:12	-->	barteks2x (~barteks2x@car21.t17.ds.pwr.wroc.pl) has joined #debian
+2016-11-02 14:38:26	NapoleonWils0n	dbus is running, thunar-volmand and gvfs-backends installed
+2016-11-02 14:38:57	-->	meauses (~Niels@ip503d5dba.speed.planet.nl) has joined #debian
+2016-11-02 14:39:03	jelly	maily: if not, socat can be used to proxy from one to another
+2016-11-02 14:39:27	<--	rocket__ (~rocket__@unaffiliated/rocket--/x-6233973) has quit (Read error: Connection reset by peer)
+2016-11-02 14:39:53	<--	DammitJim (~DammitJim@173.227.148.6) has quit (Quit: Leaving)
+2016-11-02 14:40:13	-->	philipballew (~philip@ubuntu/member/philipballew) has joined #debian
+2016-11-02 14:40:39	<--	b3h3m0th (uid26288@gateway/web/irccloud.com/x-rdphrawhutxwcvch) has quit (Quit: Connection closed for inactivity)
+2016-11-02 14:41:17	-->	canopus (~canopus@unaffiliated/pierrot) has joined #debian
+2016-11-02 14:41:51	<--	corsibu (~corsibu@171.20.68.68) has quit (Ping timeout: 244 seconds)
+2016-11-02 14:42:55	<--	OS-23606 (~B_Rizzle@wsip-98-189-122-106.oc.oc.cox.net) has quit (Remote host closed the connection)
+2016-11-02 14:43:51	NapoleonWils0n	also dont have trach in thunar
+2016-11-02 14:43:55	<--	meauses (~Niels@ip503d5dba.speed.planet.nl) has quit (Ping timeout: 244 seconds)
+2016-11-02 14:44:00	NapoleonWils0n	trash
+2016-11-02 14:44:37	-->	shinnya (~shinnya@245.144.137.133.dy.bbexcite.jp) has joined #debian
+2016-11-02 14:44:48	<--	Alam_Squeeze (alam@rigginstereo.lawarias.srb2.org) has quit (Remote host closed the connection)
+2016-11-02 14:45:22	<--	paw (~afong@157-52-10-52.cpe.teksavvy.com) has quit (Ping timeout: 256 seconds)
+2016-11-02 14:46:56	-->	Alam_Squeeze (alam@2001:470:1f07:238:1e6f:65ff:fed3:eba8) has joined #debian
+2016-11-02 14:47:11	<--	betandr (~betandr@132.185.153.5) has quit (Quit: Leaving...)
+2016-11-02 14:47:21	<--	antgel (~topdog@82.166.98.41) has quit (Ping timeout: 260 seconds)
+2016-11-02 14:47:31	-->	sup3rn0va (~sup3rn0va@79-75-109-59.dynamic.dsl.as9105.com) has joined #debian
+2016-11-02 14:47:46	<--	rany (~me@unaffiliated/rany) has quit (Read error: Connection reset by peer)
+2016-11-02 14:47:50	--	irc: disconnected from server
+2016-11-02 20:16:15	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #debian
+2016-11-02 20:16:15	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-11-02 20:16:15	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-11-02 20:16:15	--	Channel #debian: 1715 nicks (2 ops, 0 voices, 1713 normals)
+2016-11-02 20:16:15	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-11-02 20:16:15	--	URL for #debian: http://www.debian.org
+2016-11-02 20:16:17	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-11-02 20:16:17	Yuurei	grantwu: did you try the "partial balance" ? in the faq too
+2016-11-02 20:16:22	NapoleonWils0n	hi all
+2016-11-02 20:16:46	NapoleonWils0n	im using i3wm with xinitrc and exec i3wm
+2016-11-02 20:16:49	<--	LarArT (~LarArT@unaffiliated/larart) has quit (Quit: WeeChat 1.0.1)
+2016-11-02 20:16:50	jhutchins	,v chromium --arch=i386
+2016-11-02 20:16:51	judd	Package: chromium on i386 -- wheezy: 37.0.2062.120-1~deb7u1; wheezy-security: 37.0.2062.120-1~deb7u1; jessie: 53.0.2785.89-1~deb8u1; jessie-security: 53.0.2785.143-1~deb8u1; jessie-proposed-updates: 53.0.2785.143-1~deb8u1; stretch: 53.0.2785.143-1; sid: 53.0.2785.143-1
+2016-11-02 20:17:13	NapoleonWils0n	i have xfce as well, but i cant mount smb share using thunar from within i3wm
+2016-11-02 20:17:15	-->	hanshenrik (~hanshenri@ti0016a400-3633.bb.online.no) has joined #debian
+2016-11-02 20:17:20	<--	betandr (~betandr@132.185.153.5) has quit (Ping timeout: 250 seconds)
+2016-11-02 20:17:31	<--	The_Loko (~The_Loko@204.209.222.87.dynamic.jazztel.es) has quit (Quit: Leaving)
+2016-11-02 20:17:41	<--	barteks2x (~barteks2x@car21.t17.ds.pwr.wroc.pl) has quit (Remote host closed the connection)
+2016-11-02 20:17:46	NapoleonWils0n	if i boot into xfce mounting smb shares works
+2016-11-02 20:17:57	Yuurei	ah never mind it's what you tried
+2016-11-02 20:18:19	Agiofws	http://pasteall.org/97578 ? can anyone just take a look/?
+2016-11-02 20:18:52	<--	sslb (~sslb@unaffiliated/sslb) has quit (Quit: Leaving)
+2016-11-02 20:18:59	<--	ketralnis (~ketralnis@reddit/admins/ketralnis) has quit (Remote host closed the connection)
+2016-11-02 20:19:15	<--	conta (~Thunderbi@94.112.251.98.static.b2b.upcbusiness.cz) has quit (Remote host closed the connection)
+2016-11-02 20:19:17	NapoleonWils0n	cant figure out if the issue is dbus policykit or something else
+2016-11-02 20:19:49	-->	conta (~Thunderbi@94.112.251.98.static.b2b.upcbusiness.cz) has joined #debian
+2016-11-02 20:20:01	NapoleonWils0n	if i open thunar in i3wm it has no trash and cant mount shares, if i boot into xfce it works
+2016-11-02 20:20:03	-->	LotharKAtt (~lelouch@ip-78-45-6-254.net.upcbroadband.cz) has joined #debian
+2016-11-02 20:20:12	<--	MadHatter42 (~madhatter@unaffiliated/madhatter42) has quit (Ping timeout: 260 seconds)
+2016-11-02 20:20:20	NapoleonWils0n	trying to figure out whats missing when i use i3wm
+2016-11-02 20:20:51	-->	Starky (~Starky@unaffiliated/starky) has joined #debian
+2016-11-02 20:21:15	<--	denisk (~denisk@pa49-195-15-96.pa.nsw.optusnet.com.au) has quit (Remote host closed the connection)
+2016-11-02 20:23:17	Yuurei	NapoleonWils0n: from random googling, I can see that thunar is using gvfs for smb shares. and it's written that when thunar has to start after gvfs. Maybe when you're using i3wm the order isn't respected?
+2016-11-02 20:23:18	-->	kebabspion (~snowing@c-185-113-99-182.cust.bredband2.com) has joined #debian
+2016-11-02 20:23:39	<--	kebabspion (~snowing@c-185-113-99-182.cust.bredband2.com) has quit (Client Quit)
+2016-11-02 20:23:50	<--	Starkythefox (~Starky@unaffiliated/starky) has quit (Ping timeout: 250 seconds)
+2016-11-02 20:24:09	NapoleonWils0n	strange i have same set up working on arch, not sure whats different in debian
+2016-11-02 20:24:12	-->	kebabspion (~snowing@c-185-113-99-182.cust.bredband2.com) has joined #debian
+2016-11-02 20:24:16	<--	Lowl3v3l (~Lowl3v3l@dslb-188-107-138-032.188.107.pools.vodafone-ip.de) has quit (Remote host closed the connection)
+2016-11-02 20:24:40	<--	pencilandpaper (~penciland@unaffiliated/pencilandpaper) has quit (Quit: WeeChat 1.6)
+2016-11-02 20:24:47	Yuurei	no idea, but btw i read this information from an arch page
+2016-11-02 20:25:04	Yuurei	and it even tells about the missing trash
+2016-11-02 20:25:05	<--	BrahRah (~BrahRah@5.2.64.122) has quit (Quit: KVIrc 4.9.2 Aria http://www.kvirc.net/)
+2016-11-02 20:25:30	NapoleonWils0n	yes thats what i actuall use on my arch system
+2016-11-02 20:25:40	-->	afuentes (~kusanagi@201.165.35.37.dynamic.jazztel.es) has joined #debian
+2016-11-02 20:26:17	NapoleonWils0n	strange this i have the same issue with gnome
+2016-11-02 20:27:08	<--	renka (~renka@unaffiliated/renka) has quit (Ping timeout: 245 seconds)
+2016-11-02 20:27:40	-->	aaro (~aaro@unaffiliated/xyox/x-040147) has joined #debian
+2016-11-02 20:28:00	--	Mode #debian [+l 1723] by debhelper
+2016-11-02 20:28:12	<--	musicnate (~musicnate@S010630b5c2fb31cf.vc.shawcable.net) has quit (Ping timeout: 260 seconds)
+2016-11-02 20:28:21	<--	aaro (~aaro@unaffiliated/xyox/x-040147) has quit (Client Quit)
+2016-11-02 20:29:21	<--	vvande (~vvande@66.244.241.35) has quit (Remote host closed the connection)
+2016-11-02 20:29:25	-->	giricz81 (~quassel@ip4-83-240-38-90.cust.nbox.cz) has joined #debian
+2016-11-02 20:29:29	<--	jeremyhall (~quassel@rrcs-76-79-249-215.west.biz.rr.com) has quit (Read error: Connection reset by peer)
+2016-11-02 20:29:36	-->	vvande (~vvande@66.244.241.35) has joined #debian
+2016-11-02 20:29:52	<--	m8 (~m8@unaffiliated/m8) has quit (Read error: Connection reset by peer)
+2016-11-02 20:30:04	-->	MadHatter42 (~madhatter@unaffiliated/madhatter42) has joined #debian
+2016-11-02 20:30:46	-->	jeremyhall (~quassel@rrcs-76-79-249-215.west.biz.rr.com) has joined #debian
+2016-11-02 20:31:09	-->	ki0_ (~ki0@158.red-83-35-231.dynamicip.rima-tde.net) has joined #debian
+2016-11-02 20:31:17	-->	roptat (~roptat@2083.rez-gif.supelec.fr) has joined #debian
+2016-11-02 20:31:46	<--	Lokke1 (~Thunderbi@ip5f5ad297.dynamic.kabel-deutschland.de) has quit (Quit: Lokke1)
+2016-11-02 20:34:09	Yuurei	NapoleonWils0n: well if you can check gvfs is running, then kill all instances of Thunar and restart it (not sure because of the session parameter) ? then maybe it will behave differently?
+2016-11-02 20:34:22	Yuurei	just to check
+2016-11-02 20:34:44	<--	ki0 (~ki0@158.red-83-35-231.dynamicip.rima-tde.net) has quit (Ping timeout: 260 seconds)
+2016-11-02 20:34:50	<--	btf (~btf@185.83.14.89) has quit (Remote host closed the connection)
+2016-11-02 20:35:00	<--	MadHatter42 (~madhatter@unaffiliated/madhatter42) has quit (Ping timeout: 268 seconds)
+2016-11-02 20:35:10	NapoleonWils0n	just came across this: exec ck-launch-session dbus-launch i3
+2016-11-02 20:35:14	NapoleonWils0n	for xinitrc
+2016-11-02 20:35:18	<--	datasmurf (~datasmurf@unaffiliated/datasmurf) has quit (Quit: Take your stinking paws off me, you damn dirty ape!)
+2016-11-02 20:35:50	NapoleonWils0n	just wondering if something to do with PolicyKit/ConsoleKit 
+2016-11-02 20:36:03	-->	musicnate (~musicnate@S010630b5c2fb31cf.vc.shawcable.net) has joined #debian
+2016-11-02 20:36:41	-->	WormDude (~wormfood@113.89.153.75) has joined #debian
+2016-11-02 20:37:18	-->	Stadtpirat (~void@unaffiliated/danic) has joined #debian
+2016-11-02 20:37:34	--	irc: disconnected from server
+2016-11-04 00:17:05	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #debian
+2016-11-04 00:17:05	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-11-04 00:17:05	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-11-04 00:17:05	--	Channel #debian: 1668 nicks (2 ops, 0 voices, 1666 normals)
+2016-11-04 00:17:06	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-11-04 00:17:06	--	URL for #debian: http://www.debian.org
+2016-11-04 00:17:07	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-11-04 00:17:22	NapoleonWils0n	hi all
+2016-11-04 00:18:09	OerHeks	Stiffler, why not build the source yourself if you find no jessie packages?
+2016-11-04 00:18:18	NapoleonWils0n	im running jessie with i3wm and cant seem to get polkit to allow mounting of drives without sudo
+2016-11-04 00:18:45	<--	nighty (~nighty@s229123.ppp.asahi-net.or.jp) has quit (Quit: Disappears in a puff of smoke)
+2016-11-04 00:18:47	NapoleonWils0n	does debian use /etc/polkit-1/rules.d/
+2016-11-04 00:19:07	<--	philipballew (~philip@ubuntu/member/philipballew) has quit (Ping timeout: 265 seconds)
+2016-11-04 00:19:11	<--	ryerye (~ryerye@c-73-48-155-53.hsd1.ca.comcast.net) has quit (Read error: Connection reset by peer)
+2016-11-04 00:19:16	Stiffler	its hard work.. taken the fact i use linux as my hobby to lab rather than bread earner .. time is the issue here ..
+2016-11-04 00:19:42	NapoleonWils0n	i see references to using /etc/polkit-1/localauthority
+2016-11-04 00:19:52	<--	deeb (~dee@a85-139-8-162.cpe.netcabo.pt) has quit (Ping timeout: 256 seconds)
+2016-11-04 00:20:10	-->	eliotime (~Icedove@201.230.158.139) has joined #debian
+2016-11-04 00:20:36	somiaj	Stiffler: if you find you need software not provided for debian, why not just use ubuntu? Note there are ways to do this, but standard advise from #debian is don't because we don't want to worry about any issues it may give people we are trying to help out.
+2016-11-04 00:20:50	<--	infernix (nix@unaffiliated/infernix) has quit (Ping timeout: 250 seconds)
+2016-11-04 00:21:08	somiaj	NapoleonWils0n: what kinda drives are you needing to mount?
+2016-11-04 00:21:17	NapoleonWils0n	usb drive
+2016-11-04 00:21:29	NapoleonWils0n	have to sudo mount /dev/sdb ~/mnt
+2016-11-04 00:21:32	Stiffler	ubuntu is hoggy as 3rd grade engine .. lame code unstable and it goes on i hate it..
+2016-11-04 00:21:52	<--	ToTheInternet (~totheinte@ip5f5aeb4d.dynamic.kabel-deutschland.de) has quit (Ping timeout: 250 seconds)
+2016-11-04 00:21:53	NapoleonWils0n	cant seem to get ranger to auto mount usb drives
+2016-11-04 00:21:53	somiaj	NapoleonWils0n: sure it isn't /dev/sdb1? And is almost usb drive you use, use this same hardware address?
+2016-11-04 00:22:00	Stiffler	i was using debian to start with was with stable but old lame software made to switch to arc
+2016-11-04 00:22:00	-->	adapter (~adapter@c-76-121-82-227.hsd1.wa.comcast.net) has joined #debian
+2016-11-04 00:22:02	NapoleonWils0n	yes sdb1
+2016-11-04 00:22:14	-->	TheCoffeMaker (~TheCoffeM@186.136.217.118) has joined #debian
+2016-11-04 00:22:14	<--	TheCoffeMaker (~TheCoffeM@186.136.217.118) has quit (Changing host)
+2016-11-04 00:22:14	-->	TheCoffeMaker (~TheCoffeM@unaffiliated/thecoffemaker) has joined #debian
+2016-11-04 00:22:18	Stiffler	then again for deb packages i switch to mint
+2016-11-04 00:22:27	-->	rl34075 (~Mutter@201.6.143.51) has joined #debian
+2016-11-04 00:22:52	NapoleonWils0n	can i create /etc/polkit-1/rules.d/50-default.rules file
+2016-11-04 00:22:56	somiaj	NapoleonWils0n: anways, I do think policykit is the more modern solution but fstab entry can make it so you don't need sudo (but if for somereason the drive gets detected as /dev/sdc1 the fstab entry won't work)
+2016-11-04 00:23:19	somiaj	NapoleonWils0n: I don't know policykit well enough to give you advise on that. Just suggesting an alternative solution.
+2016-11-04 00:23:26	NapoleonWils0n	does polkit work with .rules files or only .pkla files
+2016-11-04 00:23:49	-->	rbern (~rbern@unaffiliated/rbern) has joined #debian
+2016-11-04 00:23:58	NapoleonWils0n	i do use fstab, for smb and nfs shares
+2016-11-04 00:25:06	<--	rl34075 (~Mutter@201.6.143.51) has quit (Remote host closed the connection)
+2016-11-04 00:25:13	<--	xSmurf (MrSmurf@gateway/vpn/mullvad/x-uklyvhfgglpouvqb) has quit (Ping timeout: 260 seconds)
+2016-11-04 00:25:29	Stiffler	THX @ <johnkeates> for the info i was too dumb n lame to understand "Technical details about this PPA" ty again
+2016-11-04 00:25:54	-->	th0r (~th0r@tx-76-0-123-50.dhcp.embarqhsd.net) has joined #debian
+2016-11-04 00:26:28	<--	adapter (~adapter@c-76-121-82-227.hsd1.wa.comcast.net) has quit (Ping timeout: 250 seconds)
+2016-11-04 00:26:38	<--	Raed (~Raed@68.66.82.128) has quit (Ping timeout: 250 seconds)
+2016-11-04 00:28:23	somiaj	Stiffler: what software is this? And is there not an alternative in debian?
+2016-11-04 00:29:53	somiaj	Stiffler: I personally find building upstream source and installing in /usr/local (maybe using stow) for software outside of debian (or build my own .deb)
+2016-11-04 00:30:19	-->	keanne (~kenneth@119.92.123.29) has joined #debian
+2016-11-04 00:30:49	<--	crayon (~user@unaffiliated/crayon) has quit (Ping timeout: 260 seconds)
+2016-11-04 00:30:58	Stiffler	ok
+2016-11-04 00:31:02	Stiffler	try this one
+2016-11-04 00:31:04	Stiffler	its theme
+2016-11-04 00:31:17	Stiffler	https://launchpad.net/~numix/+archive/ubuntu/ppa
+2016-11-04 00:31:32	cluelessperson	how do I fix this?
+2016-11-04 00:31:33	cluelessperson	The following packages have unmet dependencies:
+2016-11-04 00:31:33	cluelessperson	 gstreamer1.0-vaapi : Depends: libgstreamer-plugins-bad1.0-0 (< 1.8.4) but 1.10.0-1 is to be installed
+2016-11-04 00:31:42	Stiffler	weird i added it but its not upgrading
+2016-11-04 00:32:18	Stiffler	i can build.deb but its painfull.. thats all so i am looking for alternatives
+2016-11-04 00:32:35	somiaj	cluelessperson: what version of debian are you using?
+2016-11-04 00:33:30	cluelessperson	somiaj, how do I print it out for you?  I just upgraded to SID from jessie
+2016-11-04 00:34:04	missmbob	!debian-next
+2016-11-04 00:34:04	dpkg	#debian-next is the channel for testing/unstable support on the OFTC network (irc.oftc.net), *not* on Freenode.  If you get "Cannot join #debian-next (Channel is invite only)." it means you did not read it's on irc.oftc.net.
+2016-11-04 00:34:07	missmbob	cluelessperson: go there
+2016-11-04 00:34:25	cluelessperson	missmbob, invite only
+2016-11-04 00:34:33	missmbob	cluelessperson: you need to read the entire message
+2016-11-04 00:34:43	-->	Raed (~Raed@68.66.82.128) has joined #debian
+2016-11-04 00:34:44	<--	LaptopBrain (brain@cortex.brainbox.cc) has quit (Ping timeout: 260 seconds)
+2016-11-04 00:34:46	somiaj	cluelessperson: that can cause such problems. Sometimes packages are just not installable in sid. Anyways help is on irc.oftc.net
+2016-11-04 00:35:07	cluelessperson	I don't feel like setting up on annother network. ;_;
+2016-11-04 00:35:08	-->	CharlieBrown (~calher@2602:306:36de:9cc0:25d4:64ae:7ebd:211) has joined #debian
+2016-11-04 00:35:10	<--	timahvo1 (~rogue@197.237.131.125) has quit (Ping timeout: 256 seconds)
+2016-11-04 00:35:18	missmbob	you're off topic here. so too bad.
+2016-11-04 00:35:29	<--	jthomas_ (~jthomas@nat.sierrabravo.net) has quit (Ping timeout: 260 seconds)
+2016-11-04 00:35:30	cluelessperson	it's so broken
+2016-11-04 00:35:50	-->	jthomas_ (~jthomas@nat.sierrabravo.net) has joined #debian
+2016-11-04 00:35:54	somiaj	its more prefered you talk on oftc, though I don't consider it offtopic completely since it is another network.
+2016-11-04 00:36:09	somiaj	cluelessperson: in your case I say go get help from there, if you are new to sid this may take a bit to work out.
+2016-11-04 00:36:48	cluelessperson	somiaj, I'm trying to get gstreamer up to date, which has a bunch of dependencies.  I thought testing/sid was relatively stable.
+2016-11-04 00:36:51	-->	timahvo1 (~rogue@197.237.131.125) has joined #debian
+2016-11-04 00:37:26	somiaj	cluelessperson: there is a difference between testing and sid. And relatively is very vague. Those who use it know how to debug problems like this when they happen.
+2016-11-04 00:37:42	<--	Sazpaimon (~wat@pool-71-185-62-232.phlapa.fios.verizon.net) has quit (Changing host)
+2016-11-04 00:37:42	-->	Sazpaimon (~wat@unaffiliated/Sazpaimon) has joined #debian
+2016-11-04 00:38:41	<--	klow (~textual@c-98-247-49-57.hsd1.wa.comcast.net) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2016-11-04 00:39:07	<--	murphy (~murphy@8.19.46.3) has quit (Ping timeout: 268 seconds)
+2016-11-04 00:39:40	-->	xiaodong (~xiaodong@128.199.200.83) has joined #debian
+2016-11-04 00:39:44	-->	rabbleproof (crazyed@wrongplanet/CrazyEddy) has joined #debian
+2016-11-04 00:40:03	keanne	hi channel. what is the debian way of locking an interface to a specific ethx? I have a debian sid server with multiple nics, but eth0 jumps from one interface to another upon reboots.
+2016-11-04 00:40:21	<--	vivid (~vivid@unaffiliated/vivid) has quit (Quit: Leaving)
+2016-11-04 00:40:30	Stiffler	is their any way to check to know if i am using testing or sid rather than /etc ?
+2016-11-04 00:40:48	somiaj	Stiffler: apt-cache policy will tell you what your sources are
+2016-11-04 00:41:04	somiaj	Stiffler: but if you have mixed/changed you have to look at each package to know where it came from
+2016-11-04 00:41:14	Stiffler	hmmm
+2016-11-04 00:41:19	-->	vivid (~vivid@unaffiliated/vivid) has joined #debian
+2016-11-04 00:42:15	somiaj	keanne: that shouldn't happen. udev should make interface names static. This use to be done through /etc/udev/rules.d/70-persistent-net.rules though I have some vague feeling that systemd wants to handel this now
+2016-11-04 00:42:42	-->	niftylettuce (uid2733@gateway/web/irccloud.com/x-jrryrapdzymtbcrk) has joined #debian
+2016-11-04 00:42:43	-->	seanrdev (~seanrdev@172-10-44-97.lightspeed.austtx.sbcglobal.net) has joined #debian
+2016-11-04 00:42:50	somiaj	Stiffler: apt-cache policy packagename will tell you about the package.
+2016-11-04 00:43:23	seanrdev	Is there a one liner to creating a file with vim and inserting say 30 e's?
+2016-11-04 00:44:50	keanne	somiaj: hmm, i double checked the debian version, its 8.6 and rebooted the server twice today, and twice eth0 switches between interfaces.
+2016-11-04 00:44:53	somiaj	if you specifically want to use vim, I'd ask a more vim centered channel. There are ways to program that, but I can't think of any nice way.
+2016-11-04 00:45:30	somiaj	keanne: does the macaddress of your interface change?
+2016-11-04 00:45:38	<--	dogman (~dog.marle@2601:84:8702:5c31:6878:2166:d81:ccb) has quit (Quit: Part and Quat!)
+2016-11-04 00:45:40	<--	karimb (~karimb@87.pool85-52-16.dynamic.orange.es) has quit (Quit: Karim has gone to sleep. ZZZzzz…)
+2016-11-04 00:46:05	keanne	somiaj: no it does not
+2016-11-04 00:46:06	-->	dogman (~dog.marle@2601:84:8702:5c31:6878:2166:d81:ccb) has joined #debian
+2016-11-04 00:46:26	somiaj	keanne: Do you have /etc/udev/rules.d/70-persistent-net.rules ?
+2016-11-04 00:46:53	-->	karimb (~karimb@87.pool85-52-16.dynamic.orange.es) has joined #debian
+2016-11-04 00:47:47	keanne	somiaj: no i don't have that rule
+2016-11-04 00:47:51	seanrdev	thank you somiaj
+2016-11-04 00:48:02	<--	karimb (~karimb@87.pool85-52-16.dynamic.orange.es) has quit (Client Quit)
+2016-11-04 00:48:08	<--	helllojesus12 (~helllojes@unaffiliated/helllojesus12) has quit (Ping timeout: 250 seconds)
+2016-11-04 00:48:16	<--	nanoha-sama (~nanoha-sa@van-mig-svr.ad.v10networks.ca) has quit (Ping timeout: 260 seconds)
+2016-11-04 00:49:08	<--	kingkong- (antalya@shellium/member/kingkong) has quit (Remote host closed the connection)
+2016-11-04 00:49:19	<--	jasonvw (~quassel@2001:470:1f10:439::e081:f6c7) has quit (Quit: No Ping reply in 180 seconds.)
+2016-11-04 00:49:30	somiaj	keanne: do you have udev installed? On my jessie installs this file is being created
+2016-11-04 00:49:44	missmbob	i'm not sure it does if it detects a vps
+2016-11-04 00:49:46	-->	marcozink (~marcozink@201.141.27.229) has joined #debian
+2016-11-04 00:50:05	keanne	somiaj: i could create one, but i wonder why the default install did not created one by default. thanks for the heads up. i'll take a look if udev is installed
+2016-11-04 00:50:14	-->	n4dir (~user@pD9EF0F78.dip0.t-ipconnect.de) has joined #debian
+2016-11-04 00:50:16	<--	dogman (~dog.marle@2601:84:8702:5c31:6878:2166:d81:ccb) has quit (Client Quit)
+2016-11-04 00:50:35	-->	nanoha-sama (~nanoha-sa@van-mig-svr.ad.v10networks.ca) has joined #debian
+2016-11-04 00:50:57	<--	humbag (~unkraut@unaffiliated/humbag) has quit (Quit: WeeChat 1.0.1)
+2016-11-04 00:51:02	<--	yann-kaelig (~inyan@89-64-19-219.dynamic.chello.pl) has quit (Quit: Leaving)
+2016-11-04 00:51:10	<--	ToBeCloud (uid51591@wikimedia/ToBeFree) has quit (Quit: Connection closed for inactivity)
+2016-11-04 00:51:17	-->	kingkong- (antalya@shellium/member/kingkong) has joined #debian
+2016-11-04 00:51:44	-->	jasonvw (~quassel@2001:470:1f10:439::e081:f6c7) has joined #debian
+2016-11-04 00:51:46	-->	AL_Kernell (albert@191.32.44.168) has joined #debian
+2016-11-04 00:52:27	-->	infernix (nix@unaffiliated/infernix) has joined #debian
+2016-11-04 00:52:48	-->	Hunterkll (~Hunterkll@2001:470:8b06:100:191f:ef60:2706:43b5) has joined #debian
+2016-11-04 00:52:57	-->	humbag (~unkraut@unaffiliated/humbag) has joined #debian
+2016-11-04 00:53:05	somiaj	missmbob: yea looks like that may be it, I don't have one on my vm.
+2016-11-04 00:54:19	<--	fassl__ (~fassl@192-164-252-98.adsl.highway.telekom.at) has quit (Quit: fassl__)
+2016-11-04 00:54:34	<--	HicksD (~ident@94.6.176.36) has quit (Ping timeout: 244 seconds)
+2016-11-04 00:54:37	<--	Seto_Kaiba (~Hunterkll@2001:470:8b06:100:6041:685c:d61b:e44e) has quit (Ping timeout: 240 seconds)
+2016-11-04 00:55:03	<--	wildlander (~wild@unaffiliated/wildlander) has quit (Quit: Saliendo)
+2016-11-04 00:56:06	<--	g105b (uid148156@gateway/web/irccloud.com/x-tdgvdoujzlegwtln) has quit (Quit: Connection closed for inactivity)
+2016-11-04 00:56:09	--	irc: disconnected from server
+2016-11-05 20:44:43	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #debian
+2016-11-05 20:44:43	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-11-05 20:44:43	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-11-05 20:44:43	--	Channel #debian: 1712 nicks (2 ops, 0 voices, 1710 normals)
+2016-11-05 20:44:43	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-11-05 20:44:43	--	URL for #debian: http://www.debian.org
+2016-11-05 20:44:43	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-11-05 20:44:49	--	irc: disconnected from server
+2016-11-06 21:35:57	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #debian
+2016-11-06 21:35:57	--	Topic for #debian is "Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie | current point releases: /msg dpkg 8.6; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable: #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2016-11-06 21:35:57	--	Topic set by greycat (~wooledg@remote.wooledge.org) on Wed, 21 Sep 2016 17:00:21
+2016-11-06 21:35:57	--	Channel #debian: 1682 nicks (2 ops, 0 voices, 1680 normals)
+2016-11-06 21:35:57	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2016-11-06 21:35:57	--	URL for #debian: http://www.debian.org
+2016-11-06 21:35:57	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2016-11-06 21:36:01	NapoleonWils0n	hi all
+2016-11-06 21:36:22	Lostfile	hi
+2016-11-06 21:36:22	NapoleonWils0n	is maim screen captute not in the jessie repos
+2016-11-06 21:36:23	-->	MaxLanar (~user@197-136-190-109.dsl.ovh.fr) has joined #debian
+2016-11-06 21:36:29	-->	blueness_ (~blueness@gentoo/developer/blueness) has joined #debian
+2016-11-06 21:36:35	<--	tensorpudding (~michael@unaffiliated/tensorpudding) has quit (Quit: ZNC - http://znc.in)
+2016-11-06 21:36:41	NapoleonWils0n	i see scrot is in the repos but maim is more up to date
+2016-11-06 21:37:03	<--	Sazpaimon_ (~wat@pool-71-185-47-32.phlapa.fios.verizon.net) has quit (Ping timeout: 265 seconds)
+2016-11-06 21:37:08	<--	falken1 (~falken@AMontpellier-654-1-104-9.w90-0.abo.wanadoo.fr) has quit (Ping timeout: 260 seconds)
+2016-11-06 21:37:56	--	eche is now known as koffeekbd
+2016-11-06 21:38:10	<--	trumee (~trumee@c-73-155-87-64.hsd1.tx.comcast.net) has quit (Ping timeout: 250 seconds)
+2016-11-06 21:38:45	<--	Sazpaimon__ (~wat@pool-71-185-47-32.phlapa.fios.verizon.net) has quit (Ping timeout: 268 seconds)
+2016-11-06 21:38:45	-->	ma1k (~gyoza.jp@unaffiliated/ma1k) has joined #debian
+2016-11-06 21:40:53	<--	czesmir (~stefan@ehj22.neoplus.adsl.tpnet.pl) has quit (Quit: Lost terminal)
+2016-11-06 21:41:04	<--	nibble_zero (~chatzilla@109.227.58.198) has quit (Quit: ChatZilla 0.9.92 [Firefox 49.0.2/20161019084923])
+2016-11-06 21:41:15	<--	EpicSkeptic (~EpicSkept@162.249.2.238) has quit (Remote host closed the connection)
+2016-11-06 21:41:15	<--	valerio (~valerio`@unaffiliated/valerio/x-9242161) has quit (Remote host closed the connection)
+2016-11-06 21:41:51	-->	valerio (~valerio`@unaffiliated/valerio/x-9242161) has joined #debian
+2016-11-06 21:42:20	-->	githogori (~githogori@c-73-70-12-67.hsd1.ca.comcast.net) has joined #debian
+2016-11-06 21:43:29	--	irc: disconnected from server

@@ -1,0 +1,69 @@
+2016-07-24 17:38:02	-->	NapoleonWils0n (~weechat@208.167.254.241) has joined #kodi
+2016-07-24 17:38:02	--	Topic for #kodi is "Official Kodi channel | latest stable Kodi v16.1 'Jarvis' | http://kodi.tv | http://kodi.wiki | see also #kodi-linux | #kodi-dev for developers only | No  discussion or support of piracy video  addons! | Do NOT pm staff"
+2016-07-24 17:38:02	--	Topic set by keith (keith@kodi/staff/keith) on Mon, 16 May 2016 23:39:36
+2016-07-24 17:38:02	--	Channel #kodi: 519 nicks (1 op, 0 voices, 518 normals)
+2016-07-24 17:38:02	--	Channel created on Mon, 28 Jul 2014 01:07:14
+2016-07-24 17:38:09	NapoleonWils0n	hi all
+2016-07-24 17:38:29	NapoleonWils0n	seems like socks5 proxy is broken in kodi
+2016-07-24 17:38:33	<--	jpabq (~quassel@mythtv/developer/jpabq) has quit (Remote host closed the connection)
+2016-07-24 17:38:36	<--	wd40s (~wd40s@c-73-15-1-108.hsd1.ca.comcast.net) has quit (Read error: Connection reset by peer)
+2016-07-24 17:38:53	-->	wd40s (~wd40s@c-73-15-1-108.hsd1.ca.comcast.net) has joined #kodi
+2016-07-24 17:39:08	NapoleonWils0n	have to see if export proxy on the command line works
+2016-07-24 17:39:17	NapoleonWils0n	or maybe use iptables
+2016-07-24 17:47:04	--	irc: disconnected from server
+2016-10-10 20:06:16	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined #kodi
+2016-10-10 20:06:16	--	Topic for #kodi is "Official Kodi channel | latest stable Kodi v16.1 'Jarvis' | http://kodi.tv | http://kodi.wiki | see also #kodi-linux | #kodi-dev for developers only | No  discussion or support of piracy video  addons! | Do NOT pm staff"
+2016-10-10 20:06:16	--	Topic set by keith on Mon, 16 May 2016 23:39:35
+2016-10-10 20:06:16	--	Channel #kodi: 542 nicks (1 op, 0 voices, 541 normals)
+2016-10-10 20:06:16	--	Channel created on Mon, 28 Jul 2014 01:07:14
+2016-10-10 20:07:27	-->	dreamcat4 (~dreamcat4@gateway/vpn/privateinternetaccess/dreamcat4) has joined #kodi
+2016-10-10 20:07:56	--	irc: disconnected from server
+2016-10-12 16:04:05	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined #kodi
+2016-10-12 16:04:05	--	Topic for #kodi is "Official Kodi channel | latest stable Kodi v16.1 'Jarvis' | http://kodi.tv | http://kodi.wiki | see also #kodi-linux | #kodi-dev for developers only | No  discussion or support of piracy video  addons! | Do NOT pm staff"
+2016-10-12 16:04:05	--	Topic set by keith on Mon, 16 May 2016 23:39:35
+2016-10-12 16:04:05	--	Channel #kodi: 521 nicks (1 op, 0 voices, 520 normals)
+2016-10-12 16:04:05	--	Channel created on Mon, 28 Jul 2014 01:07:14
+2016-10-12 16:04:50	NapoleonWils0n	hi all
+2016-10-12 16:05:04	-->	derk0pf (~derk0pf@55d430d6.access.ecotel.net) has joined #kodi
+2016-10-12 16:05:18	NapoleonWils0n	is it possible to use the json api to open a particular link in an addon
+2016-10-12 16:05:32	NapoleonWils0n	eg: open BBC 1 in iplayer
+2016-10-12 16:06:19	NapoleonWils0n	id like to be able to automate opening different channels, a mate has used automator on the mac to simulate key presses
+2016-10-12 16:06:40	NapoleonWils0n	just wondering if its possible to do the same thing with the kodi api
+2016-10-12 16:11:22	-->	nolimitsoyalap (~nolimitso@h-201-173.a328.priv.bahnhof.se) has joined #kodi
+2016-10-12 16:12:13	Klojum	Not that I know off.  (No idea if this list is uptodate: http://kodi.wiki/view/list_of_built-in_functions )
+2016-10-12 16:12:17	Kib	i believe this depends in the add-on
+2016-10-12 16:12:40	Kib	json-rpc has a self-describing property
+2016-10-12 16:13:10	Kib	you want to do a json-rpc introspect, or a nice trick is to use the Chorus web browser which has json-rpc debugging tools included
+2016-10-12 16:13:24	<--	nonasuomy_ (~nonasuomy@kodi/staff/TeknoJuce) has quit (Ping timeout: 250 seconds)
+2016-10-12 16:13:33	Kib	chorus webinterface i mean
+2016-10-12 16:15:08	-->	DaVu (~kvirc@unaffiliated/david1977) has joined #kodi
+2016-10-12 16:15:16	-->	freebs (~freebs@unaffiliated/freebs) has joined #kodi
+2016-10-12 16:16:31	NapoleonWils0n	cheers mate - i did have a look before and couldnt find anything
+2016-10-12 16:17:09	NapoleonWils0n	i have a set of scripts for windows, mac and linux to record 95% of videos from Kodi
+2016-10-12 16:17:10	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory
+2016-10-12 16:17:24	-->	merbzt (~benjamin@c-170ee555.03-170-73746f36.cust.bredbandsbolaget.se) has joined #kodi
+2016-10-12 16:17:27	NapoleonWils0n	and youtube channel about the scripts
+2016-10-12 16:17:28	NapoleonWils0n	https://www.youtube.com/channel/UCriRR_CzOny-akXyk1R-oDQ
+2016-10-12 16:17:39	NapoleonWils0n	dont know if thats of any interest
+2016-10-12 16:18:38	-->	mandric (~mandric@108-228-58-104.lightspeed.cicril.sbcglobal.net) has joined #kodi
+2016-10-12 16:21:40	Kib	NapoleonWils0n: what is the use case for this exactly, if not piracy ?
+2016-10-12 16:23:05	NapoleonWils0n	BBC has drm videos with iPlayer, that expire after set period
+2016-10-12 16:23:17	<--	shootbird (~quassel@beepbeep.serverpit.com) has quit (Ping timeout: 248 seconds)
+2016-10-12 16:23:23	-->	hfb (~hfb@47.139.20.20) has joined #kodi
+2016-10-12 16:23:36	NapoleonWils0n	this way you can record Eastenders without drm
+2016-10-12 16:24:03	NapoleonWils0n	streams can be legit just depends on the user like everything else with kodi
+2016-10-12 16:24:18	-->	Amelandbor (~Amelandbo@239-114-201-31.ftth.glasoperator.nl) has joined #kodi
+2016-10-12 16:26:00	<--	jfred[m] (jonterracr@gateway/shell/matrix.org/x-yocjetzhcbdtezrg) has quit (Read error: Connection reset by peer)
+2016-10-12 16:26:06	NapoleonWils0n	you can also multicast stream videos to all devices at once which you can do from within kodi
+2016-10-12 16:26:30	NapoleonWils0n	or send ffmpeg command over ssh, get stats about the video
+2016-10-12 16:26:43	NapoleonWils0n	use mpv, ffplay or vlc as external players
+2016-10-12 16:26:50	-->	nonasuomy_ (~nonasuomy@kodi/staff/TeknoJuce) has joined #kodi
+2016-10-12 16:27:11	<--	DrYockel (~Thunderbi@5.146.31.139) has quit (Quit: DrYockel)
+2016-10-12 16:27:32	NapoleonWils0n	and schedule recordings as well
+2016-10-12 16:27:44	-->	Edgeman2 (~edgeman@66.11.190.81) has joined #kodi
+2016-10-12 16:27:57	<--	Edgeman (~edgeman@66.11.190.81) has quit (Ping timeout: 260 seconds)
+2016-10-12 16:28:53	<--	Amelandbor (~Amelandbo@239-114-201-31.ftth.glasoperator.nl) has quit (Ping timeout: 260 seconds)
+2016-10-12 16:29:33	<--	redpill (~redpill@unaffiliated/redpill) has quit (Ping timeout: 258 seconds)
+2016-10-12 16:29:58	-->	luckyaba (~luckyaba@ip184-189-229-238.sb.sd.cox.net) has joined #kodi
+2016-10-12 16:31:30	<--	bonelifer (~quassel@phpbb/moderator/bonelifer) has quit (Ping timeout: 268 seconds)
+2016-10-12 16:31:55	--	irc: disconnected from server

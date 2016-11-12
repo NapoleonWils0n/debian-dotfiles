@@ -1,0 +1,298 @@
+2016-10-04 17:00:31	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined ##mac
+2016-10-04 17:00:31	--	Topic for ##mac is "Welcome! Ask your question, please be patient | Don't ask about future Macs, we don't know, Apple don't tell | Sierra 10.12.0  El Capitan 10.11.6 | Yosemite 10.10.5 | Mavericks 10.9.5 | iOS 10.0.2 | iOS 9.3.5 | Breaking NDA, warez, hackintoss, unsupported VMs = kickban | Dev: #swift-lang #macdev"
+2016-10-04 17:00:31	--	Topic set by Branes (~Branes@60-241-114-101.static.tpgi.com.au) on Fri, 23 Sep 2016 21:39:56
+2016-10-04 17:00:31	--	Channel ##mac: 129 nicks (1 op, 0 voices, 128 normals)
+2016-10-04 17:00:31	--	PvNotice(ChanServ):  http://www.apple.com/mac | http://buyersguide.macrumors.com/
+2016-10-04 17:00:31	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-04 17:00:36	NapoleonWils0n	hi all
+2016-10-04 17:00:53	NapoleonWils0n	apart from the builtin terminal and iterm2 are there any terminals for the mac
+2016-10-04 17:00:58	-->	Rodya_ (~Rodya_@2601:46:4001:e0b4:c032:5318:e9a9:6e71) has joined ##mac
+2016-10-04 17:01:13	NapoleonWils0n	iterm2 tracks you with google analytics and crashes all the time
+2016-10-04 17:01:29	NapoleonWils0n	and you cant configure the builtin terminal to swap control and command
+2016-10-04 17:01:54	NapoleonWils0n	seems to be less and less software for the mac
+2016-10-04 17:03:32	ayaz	NapoleonWils0n: I've used iTerm2 for several years without it causing any issues.
+2016-10-04 17:03:58	NapoleonWils0n	i wont use anything that tracks me with google analytics on principal
+2016-10-04 17:04:51	NapoleonWils0n	looks like you either use the builtin terminal or iterm2 theres doesnt seem to be any other choice
+2016-10-04 17:05:02	NapoleonWils0n	compared to linux it just a joke really
+2016-10-04 17:05:47	NapoleonWils0n	they should have called the new release mac os fisher price and not sierra
+2016-10-04 17:07:03	NapoleonWils0n	multiple desktop is unusable since it 5 seconds to do the animation and switch desktops
+2016-10-04 17:07:58	--	irc: disconnected from server
+2016-10-04 18:46:16	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined ##mac
+2016-10-04 18:46:16	--	Topic for ##mac is "Welcome! Ask your question, please be patient | Don't ask about future Macs, we don't know, Apple don't tell | Sierra 10.12.0  El Capitan 10.11.6 | Yosemite 10.10.5 | Mavericks 10.9.5 | iOS 10.0.2 | iOS 9.3.5 | Breaking NDA, warez, hackintoss, unsupported VMs = kickban | Dev: #swift-lang #macdev"
+2016-10-04 18:46:16	--	Topic set by Branes (~Branes@60-241-114-101.static.tpgi.com.au) on Fri, 23 Sep 2016 21:39:56
+2016-10-04 18:46:16	--	Channel ##mac: 129 nicks (1 op, 0 voices, 128 normals)
+2016-10-04 18:46:16	--	PvNotice(ChanServ):  http://www.apple.com/mac | http://buyersguide.macrumors.com/
+2016-10-04 18:46:16	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-04 18:48:15	-->	vdamewood (~vdamewood@unaffiliated/vdamewood) has joined ##mac
+2016-10-04 18:48:50	NapoleonWils0n	hi all
+2016-10-04 18:49:00	NapoleonWils0n	any way to remap keys for just one app
+2016-10-04 18:49:32	NapoleonWils0n	karibiner-elements for sierra doesnt work, is there a file you can edit somewhere
+2016-10-04 18:49:37	bin_bash	no
+2016-10-04 18:50:16	NapoleonWils0n	macs just get worse with every update
+2016-10-04 18:51:00	SeepingN	Keyboard Maestro
+2016-10-04 18:51:10	NapoleonWils0n	does it work on sierra
+2016-10-04 18:51:15	SeepingN	I imagine
+2016-10-04 18:51:36	SeepingN	not sure if it can remap the unmentioned keys you desire
+2016-10-04 18:52:02	NapoleonWils0n	cost money i dont pay for software, only use open source
+2016-10-04 18:52:22	SeepingN	I mean System Preferences can remap shortcuts. but if you want to remap things like option key, that's a little different
+2016-10-04 18:52:41	SeepingN	then you shall have open source (which has nothing to do with money) results
+2016-10-04 18:52:45	NapoleonWils0n	yes i looked at that but it remaps the keys system wide
+2016-10-04 18:53:13	NapoleonWils0n	stupid to pay for something to remap keys
+2016-10-04 18:53:17	Ussat	There is nothing that will remap a key for a specific program
+2016-10-04 18:53:21	bin_bash	NapoleonWils0n: stop using os x then
+2016-10-04 18:53:23	bin_bash	switch to something better
+2016-10-04 18:53:41	NapoleonWils0n	i dont use osx i use linux, switched a few years ago
+2016-10-04 18:54:03	bin_bash	ok
+2016-10-04 18:54:06	bin_bash	same
+2016-10-04 18:54:11	NapoleonWils0n	macs are like fisher price these days
+2016-10-04 18:54:12	SeepingN	"Make a new command group which only applies to the application in question, then for each key you want to remap, make a new command with a hotkey trigger set to the real key and an "Insert Text" action set to what you want the key to be."
+2016-10-04 18:54:17	bin_bash	thats why i dont really complain about new os x versions
+2016-10-04 18:54:19	bin_bash	cuz i dont use them
+2016-10-04 18:54:37	NapoleonWils0n	i only use the mac for testing things out
+2016-10-04 18:54:45	Ussat	Oh look, a Linux desktop jocky who thinks they know everything
+2016-10-04 18:54:54	NapoleonWils0n	switching desktop takes 5 seconds with animations
+2016-10-04 18:54:54	Ussat	Linux is CRAP on the desktop
+2016-10-04 18:55:10	NapoleonWils0n	Linux kicks osx up and down the street and back again
+2016-10-04 18:55:17	Ussat	hardly
+2016-10-04 18:55:49	bin_bash	i have fewer problems with linux than i ddi with os x but everyone has different needs
+2016-10-04 18:55:54	NapoleonWils0n	there are no apps for macs these days, apart from in the crap store
+2016-10-04 18:56:07	Ussat	There are plenty of apps avaliable
+2016-10-04 18:56:13	Ussat	outside the app store
+2016-10-04 18:56:39	NapoleonWils0n	if you want a terminal you have 2 choices bultin terminal or iterm2
+2016-10-04 18:56:48	NapoleonWils0n	and they both suck compared to urxvt
+2016-10-04 18:56:49	ritsuka	switching space takes 250 ms, not 5 seconds :P
+2016-10-04 18:57:28	-->	abbaZaba (~abbaZaba@unaffiliated/abbazaba) has joined ##mac
+2016-10-04 18:57:36	NapoleonWils0n	still way to long, basically unusable
+2016-10-04 18:57:58	bin_bash	BUT FANCY TRANSITIONS
+2016-10-04 18:57:59	bin_bash	:P
+2016-10-04 18:58:05	NapoleonWils0n	try using i3-wm then youll know what speed is
+2016-10-04 18:58:29	NapoleonWils0n	think ill just ssh into the mac so i can use a proper terminal
+2016-10-04 18:58:47	Ussat	again, Linux on a desktop is crap
+2016-10-04 18:58:56	bin_bash	that's your opinion
+2016-10-04 18:59:04	Ussat	only Linux I bother with is a command line
+2016-10-04 18:59:06	bin_bash	just like my opinion is that it works better than os x did
+2016-10-04 18:59:18	NapoleonWils0n	mac = comsumer toy, linux = real computer
+2016-10-04 18:59:20	ritsuka	like they say since 2000 years ago, de gustibus non est disputandum
+2016-10-04 18:59:25	<--	marcogmonteiro (~textual@62.28.236.130) has quit (Quit: So long!)
+2016-10-04 18:59:40	NapoleonWils0n	they even removed the option to install apps from anywhere
+2016-10-04 18:59:47	NapoleonWils0n	in system prefs
+2016-10-04 18:59:48	bin_bash	let's not get into a flame war
+2016-10-04 18:59:53	bin_bash	it's kind of irrelevant
+2016-10-04 18:59:55	Ussat	NapoleonWils0n, hahaha, wrong
+2016-10-04 19:00:05	ritsuka	oh, I thought linux was a kernel, not a computer, btw
+2016-10-04 19:00:09	NapoleonWils0n	no right mate have a look
+2016-10-04 19:00:10	Ussat	^^^
+2016-10-04 19:00:24	NapoleonWils0n	used to be 3 checkboxes now only 2
+2016-10-04 19:00:26	Ussat	Linux is a kernel, nothing more
+2016-10-04 19:01:01	bin_bash	♫ it doesn't matter ♫
+2016-10-04 19:01:50	NapoleonWils0n	guess it depends if your a power user or not
+2016-10-04 19:02:04	NapoleonWils0n	some people are ok with drinking the apple coolaid
+2016-10-04 19:02:08	ritsuka	nope, still a kernel even if you are a power user
+2016-10-04 19:02:47	Ussat	Oh sure, I am not a power user, I just manage the Unix infrastructure of one of the biggest Universities in the US
+2016-10-04 19:02:58	Ussat	I have no idea what I am talking about
+2016-10-04 19:03:11	Ussat	and my whole team uses mac's
+2016-10-04 19:03:24	bin_bash	♫ it doesn't matter ♫
+2016-10-04 19:03:45	NapoleonWils0n	Ussat im just saying you can only do what apple determines what you can do on your computer
+2016-10-04 19:03:51	NapoleonWils0n	with linux your in charge
+2016-10-04 19:03:52	Ussat	wrong
+2016-10-04 19:03:54	Ussat	again
+2016-10-04 19:04:07	bin_bash	♫ it doesn't matter ♫
+2016-10-04 19:04:12	Ussat	but please keep trying
+2016-10-04 19:04:15	NapoleonWils0n	ok try using setxbmap to swap the keys on a mac, no dice
+2016-10-04 19:04:38	NapoleonWils0n	im saying you cant customize simple things like swapping keys
+2016-10-04 19:04:43	bin_bash	setxbmap
+2016-10-04 19:04:43	bin_bash	bash: setxbmap: command not found
+2016-10-04 19:04:48	bin_bash	that doiesnt do anything on linux either
+2016-10-04 19:05:23	NapoleonWils0n	setxkbmap -option altwin:ctrl_win
+2016-10-04 19:05:34	bin_bash	setxbmap: command not found
+2016-10-04 19:05:55	NapoleonWils0n	yer i know thats my point there are no tools to change settings
+2016-10-04 19:06:18	Ussat	incorrect
+2016-10-04 19:06:36	NapoleonWils0n	ok then how can you swap keys on the command line 
+2016-10-04 19:06:48	bin_bash	no im using linux fam
+2016-10-04 19:07:58	bin_bash	;)
+2016-10-04 19:08:38	bin_bash	anyway
+2016-10-04 19:08:43	bin_bash	literally doesnt matter
+2016-10-04 19:08:45	bin_bash	install linux if you want
+2016-10-04 19:10:18	NapoleonWils0n	i run arch wouldnt switch back if you paid me
+2016-10-04 19:10:21	--	irc: disconnected from server
+2016-10-10 14:40:54	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined ##mac
+2016-10-10 14:40:54	--	Topic for ##mac is "Welcome! Ask your question, please be patient | Don't ask about future Macs, we don't know, Apple don't tell | Sierra 10.12.0  El Capitan 10.11.6 | Yosemite 10.10.5 | Mavericks 10.9.5 | iOS 10.0.2 | iOS 9.3.5 | Breaking NDA, warez, hackintoss, unsupported VMs = kickban | Dev: #swift-lang #macdev"
+2016-10-10 14:40:54	--	Topic set by Branes (~Branes@60-241-114-101.static.tpgi.com.au) on Fri, 23 Sep 2016 21:39:56
+2016-10-10 14:40:54	--	Channel ##mac: 115 nicks (1 op, 0 voices, 114 normals)
+2016-10-10 14:40:54	--	PvNotice(ChanServ):  http://www.apple.com/mac | http://buyersguide.macrumors.com/
+2016-10-10 14:40:54	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-10 14:41:01	NapoleonWils0n	hi all
+2016-10-10 14:41:13	NapoleonWils0n	anyone got a fix for sierra sleep bug
+2016-10-10 14:41:35	NapoleonWils0n	tried resetting the pram, doesnt work
+2016-10-10 14:42:25	NapoleonWils0n	how can you release an update that stops your computer waking from sleep and then not have an update to fix it
+2016-10-10 14:43:08	NapoleonWils0n	i know apple break stuff with every update but this is beyond a joke
+2016-10-10 14:46:17	ahihi	this is often the case with rare, hard-to-reproduce bugs
+2016-10-10 14:46:36	NapoleonWils0n	not rare mate lots of people have the same issue
+2016-10-10 14:47:33	NapoleonWils0n	theres a whole thread on reddit abbout it
+2016-10-10 14:49:33	ahihi	the threads I found indicate that the issue is caused by third-party kernel extensions
+2016-10-10 14:49:47	-->	HotStar (~star@unaffiliated/hotstar) has joined ##mac
+2016-10-10 14:49:47	NapoleonWils0n	i dont have any
+2016-10-10 14:50:05	NapoleonWils0n	clean install of el capitan upgraded to sierra
+2016-10-10 14:50:18	HotStar	if i buy mac mini, then i can see mini screen with mac book pro?
+2016-10-10 14:51:09	NapoleonWils0n	you mean with screensharing
+2016-10-10 14:51:33	NapoleonWils0n	but you will to plug the mini into a display first to do the config
+2016-10-10 14:51:44	HotStar	i means that i can use mac book pro as screen into mac mini
+2016-10-10 14:51:54	NapoleonWils0n	no 
+2016-10-10 14:52:01	NapoleonWils0n	dont think so
+2016-10-10 14:52:13	NapoleonWils0n	you would have to use screensharing
+2016-10-10 14:52:15	ahihi	the MBP doesn't have a video input, no
+2016-10-10 14:52:16	HotStar	impossible?
+2016-10-10 14:52:33	HotStar	then i must buy monitor for mac mini?
+2016-10-10 14:52:34	Branes	HotStar: Not possible.
+2016-10-10 14:52:45	ahihi	NapoleonWils0n: you've checked with kextstat, just to be sure?
+2016-10-10 14:53:02	Branes	Yes, the mini will need its own screen, or you run it headless and use screen-sharing (which is slow)
+2016-10-10 14:53:03	NapoleonWils0n	ahihi yes first thing i checked
+2016-10-10 14:53:11	NapoleonWils0n	also reset the pram
+2016-10-10 14:53:27	HotStar	i don’t know what is screen sharing
+2016-10-10 14:53:30	NapoleonWils0n	vnc
+2016-10-10 14:53:44	HotStar	oh
+2016-10-10 14:53:51	HotStar	vnc is screen sharing?
+2016-10-10 14:53:59	NapoleonWils0n	thats what apple call it
+2016-10-10 14:54:33	HotStar	when i turn on mac mini at first time, then how can i do screen sharing.
+2016-10-10 14:54:49	Branes	It is a form of logging in to a remote computer and it pushes its screen over to your first computer. Pushing all those pixels over a network connection is slow.
+2016-10-10 14:54:50	NapoleonWils0n	plug it into a display, then you can enable screensharing
+2016-10-10 14:55:16	NapoleonWils0n	if you are looking for performance screen sharing isnt for you
+2016-10-10 14:55:17	ahihi	screen sharing performance is fine for most tasks over a good LAN
+2016-10-10 14:55:21	HotStar	plug mini into mac book pro?
+2016-10-10 14:55:27	Branes	HotStar: No.
+2016-10-10 14:55:33	Branes	Needs its own display first.
+2016-10-10 14:55:49	HotStar	it need display at first.
+2016-10-10 14:55:54	NapoleonWils0n	you will need a display to set up screensharing
+2016-10-10 14:56:01	Branes	And the Mac mini does not run very well without a display connected anyway.
+2016-10-10 14:56:05	HotStar	:|
+2016-10-10 14:56:16	NapoleonWils0n	so you will have to buy one anyway in which case there is no point using vnc
+2016-10-10 14:56:20	NapoleonWils0n	just use the monitor
+2016-10-10 14:56:23	Branes	Yup.
+2016-10-10 14:56:51	NapoleonWils0n	i turned my macmini into a pfsense router
+2016-10-10 14:56:52	HotStar	i just want to use it as server.
+2016-10-10 14:56:59	HotStar	so i don’t need monitor
+2016-10-10 14:57:06	NapoleonWils0n	new flat minis are much slower than the old minis
+2016-10-10 14:57:27	Branes	HotStar: You still need the mini to have its own display so you can set it up as a server.
+2016-10-10 14:57:30	<--	sanguisdex (~sanguisde@2601:19b:4000:b370:f5cb:1371:e2f7:2591) has quit (Remote host closed the connection)
+2016-10-10 14:57:44	NapoleonWils0n	HotStar you could plug the mini into the tv with hdmi or vga
+2016-10-10 14:57:57	NapoleonWils0n	set it up, then unplug from the tv
+2016-10-10 14:58:00	HotStar	i have no TV
+2016-10-10 14:58:18	NapoleonWils0n	well then youll have to buy a display
+2016-10-10 14:58:26	NapoleonWils0n	no way round it
+2016-10-10 14:59:02	HotStar	yeah
+2016-10-10 14:59:28	HotStar	but raspberry pi don’t need screen.
+2016-10-10 14:59:33	HotStar	at first time
+2016-10-10 14:59:40	Branes	Borrow one, doesn't have to be big, but it does need DVI or HDMI input.
+2016-10-10 14:59:41	ahihi	a mac is not a raspberry pi
+2016-10-10 15:00:02	HotStar	No one borrow it to me
+2016-10-10 15:00:39	ahihi	you can probably find an old TFT for like 10 bucks at an electronics recycling center or something
+2016-10-10 15:00:45	Branes	Macs are designed to be graphically-operated end-user machines, not something you can telnet/SSH into (at least, not until you set it up for that)
+2016-10-10 15:01:22	HotStar	graphically operated end usr machine
+2016-10-10 15:01:30	HotStar	but i use terminal only
+2016-10-10 15:01:33	HotStar	because i m hacker
+2016-10-10 15:01:35	HotStar	8)
+2016-10-10 15:01:43	Ussat	a hacker......um, sure
+2016-10-10 15:01:53	ahihi	so why do you want to run a mac server? xcode building?
+2016-10-10 15:02:27	HotStar	when i go to outside, then i must connect to my computer.
+2016-10-10 15:04:20	HotStar	ahihi:
+2016-10-10 15:04:38	NapoleonWils0n	it you want a server dont use a mac, use linux or bsd
+2016-10-10 15:04:56	NapoleonWils0n	macs suck for open source tools
+2016-10-10 15:05:03	HotStar	thanks
+2016-10-10 15:05:07	NapoleonWils0n	use a proper operating system for a server
+2016-10-10 15:05:14	NapoleonWils0n	not osx fisher price
+2016-10-10 15:05:17	HotStar	then i use raspberrypi as server?
+2016-10-10 15:05:43	Branes	Depends on what you want to have served.
+2016-10-10 15:05:49	ahihi	if your needs are served by a raspberry pi, I don't understand why you're considering a mac
+2016-10-10 15:06:56	NapoleonWils0n	never ever use a mac as a server, they are useless for that
+2016-10-10 15:06:57	HotStar	because i m afraid that fire will occur when i use server
+2016-10-10 15:07:06	HotStar	ok
+2016-10-10 15:07:27	HotStar	then liunux computer is better than mac book pro?
+2016-10-10 15:07:40	NapoleonWils0n	no documentation at all for apple stuff and no community compared to linux
+2016-10-10 15:08:02	Ussat	Branes, can you silence the little kids and have them go back to the kids table ?
+2016-10-10 15:08:26	mwilson	Ussat: Yeah, the linuxers seem a little strident this morning.
+2016-10-10 15:08:34	HotStar	i will stay without talking here thanks
+2016-10-10 15:09:03	NapoleonWils0n	have you every tried building ffmpeg on a mac, with loads of undocumented flags
+2016-10-10 15:09:18	HotStar	i don’t know ffmpeg
+2016-10-10 15:09:21	NapoleonWils0n	or building an apache web server
+2016-10-10 15:09:25	Branes	Tsk tsk, how else are the poor dweaks going to see the error of their ways and leave the Dark Side, hmm? :)
+2016-10-10 15:09:42	mwilson	Uh, if the flags are undocumented, that'd be a problem with your vaunted open source, not with the Mac.
+2016-10-10 15:09:57	NapoleonWils0n	thats why all the super computers run linux, not mac osx
+2016-10-10 15:10:01	ahihi	I don't recall having any trouble with ffmpeg or apache
+2016-10-10 15:10:25	NapoleonWils0n	no you need special flags to build ffmpeg on mac and apple breaks the updates with every release
+2016-10-10 15:10:40	HotStar	i need laptop, but i don’t know which linux computer or used mac book pro are good?
+2016-10-10 15:10:43	NapoleonWils0n	and there is no documentation, and they remove questions from the forum
+2016-10-10 15:11:18	Branes	HotStar: Sounds like you'd be better off with linux all round. Macs aren't for hackers & tinkers.
+2016-10-10 15:11:21	NapoleonWils0n	debian jessie or arch linux if you want to build it yourslef
+2016-10-10 15:11:44	ahihi	or just look at what homebrew does with it ;)
+2016-10-10 15:11:50	mwilson	I'm not surprised, given the nick, but really, can't you take the religiosity to #linux?
+2016-10-10 15:11:53	NapoleonWils0n	exactly macs are locked down consumer devices
+2016-10-10 15:12:23	Branes	NapoleonWils0n: The reason why people buy Macs is to get *away* from all that nonsense! Sure, its a certified UNIX, but it's not meant to be treated like one.
+2016-10-10 15:12:31	thelostpatrol	macs aren't locked down
+2016-10-10 15:12:36	thelostpatrol	what are you talking about
+2016-10-10 15:12:40	ahihi	there is more than one reason why people buy macs
+2016-10-10 15:13:50	Ussat	Branes, ping me when there are some people here talking about what they know...I have actualy wok to do, on my mac
+2016-10-10 15:14:43	ahihi	while many macs do get hot, I would not recommend using them for wok
+2016-10-10 15:15:33	mwilson	Do you use sesame or peanut oil when you wok with your Mac?
+2016-10-10 15:16:02	<--	ErrantEgo (~ErrantEgo@freenode/jester/errantego) has quit (Read error: Connection reset by peer)
+2016-10-10 15:16:04	HotStar	how about using mac + linux on vmware?
+2016-10-10 15:16:07	-->	ErrantEgo` (~ErrantEgo@freenode/jester/errantego) has joined ##mac
+2016-10-10 15:16:24	Ussat	what ?
+2016-10-10 15:16:34	Branes	HotStar: You can only run macOS/OSX on Apple hardware, virtualised or not.
+2016-10-10 15:16:44	HotStar	how about using mac + linux on vmware instead of linux laptop?
+2016-10-10 15:16:58	Branes	HotStar: Provided the machine is a Mac, fine.
+2016-10-10 15:17:32	thelostpatrol	i run a lot of linux vms because of testing/tinkering at work
+2016-10-10 15:17:49	thelostpatrol	it's good that way, because you can contain it all and not mess things up
+2016-10-10 15:17:51	<--	cnnx (~cnnx@unaffiliated/cnnx) has quit (Quit: Lost terminal)
+2016-10-10 15:18:31	<--	Carbon_Monoxide (~Carbon@059149060003.ctinets.com) has quit (Quit: This computer has gone to sleep)
+2016-10-10 15:19:23	-->	Carbon_Monoxide (~Carbon@059149060003.ctinets.com) has joined ##mac
+2016-10-10 15:23:11	--	ErrantEgo` is now known as ErrantEgo
+2016-10-10 15:27:01	-->	jlf (~user@pdpc/supporter/active/jlf) has joined ##mac
+2016-10-10 15:27:56	HotStar	i heard that new mac pro will come, but when?
+2016-10-10 15:28:04	ahihi	nobody knows
+2016-10-10 15:31:33	Matreya	the mac pro is entirely different from the macbook pro
+2016-10-10 15:31:54	Matreya	the new macbook pro is due to be released this month, near the end of the month
+2016-10-10 15:32:08	thelostpatrol	nothing is due at any point
+2016-10-10 15:32:23	thelostpatrol	there are not set dates with apple releases
+2016-10-10 15:38:01	Matreya	then let me preface my statement with 'it's widely speculated'
+2016-10-10 15:38:46	Matreya	apple better do something with their macs, they're falling behind the rest of the PC world
+2016-10-10 15:39:21	Ussat	Depends how you define falloing behind, latest and greatest hardware means very little
+2016-10-10 15:41:44	-->	BenjaminDeuter (sid29871@gateway/web/irccloud.com/x-qcktzqshzmtomcit) has joined ##mac
+2016-10-10 15:48:27	ahihi	given that e.g. GPU and storage technologies are still evolving at a decent pace, that's not universally true
+2016-10-10 15:51:00	Matreya	apple neutered the mac mini, haven't updated the mac pro in 3 years (apart from soldering the CPU to prevent upgrading), the iMac retina has a series of crappy GPUs
+2016-10-10 15:51:20	NapoleonWils0n	macs = locked down and dumbed down
+2016-10-10 15:51:36	NapoleonWils0n	locked down = sips + dumbed down = final cut x
+2016-10-10 15:51:41	NapoleonWils0n	case in point
+2016-10-10 15:52:14	ahihi	your equations don't make much sense
+2016-10-10 15:52:36	NapoleonWils0n	you dont know what sips is
+2016-10-10 15:52:41	<--	thoraptor (~thoraptor@li975-177.members.linode.com) has quit (Disconnected by services)
+2016-10-10 15:52:59	-->	thoraptor (~thoraptor@li975-177.members.linode.com) has joined ##mac
+2016-10-10 15:53:02	NapoleonWils0n	sips means you cant use sudo to acess parts of the filesystem
+2016-10-10 15:53:08	ahihi	perhaps you mean SIP?
+2016-10-10 15:53:08	Ussat	oh wait, I remember you...ya...making pointless, wrong arguements....go away NapoleonWils0n
+2016-10-10 15:53:13	NapoleonWils0n	which means locked down - you dony control the computer apple
+2016-10-10 15:53:15	NapoleonWils0n	dows
+2016-10-10 15:53:41	NapoleonWils0n	final cut pro was good until apple cripple it with final cut x
+2016-10-10 15:53:46	--	irc: disconnected from server
+2016-10-15 18:26:47	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined ##mac
+2016-10-15 18:26:47	--	Topic for ##mac is "Welcome! Ask your question, please be patient | Don't ask about future Macs, we don't know, Apple don't tell | Sierra 10.12.0  El Capitan 10.11.6 | Yosemite 10.10.5 | Mavericks 10.9.5 | iOS 10.0.2 | iOS 9.3.5 | Breaking NDA, warez, hackintoss, unsupported VMs = kickban | Dev: #swift-lang #macdev"
+2016-10-15 18:26:47	--	Topic set by Branes on Fri, 23 Sep 2016 21:39:56
+2016-10-15 18:26:47	--	Channel ##mac: 108 nicks (2 ops, 0 voices, 106 normals)
+2016-10-15 18:26:47	--	PvNotice(ChanServ):  http://www.apple.com/mac | http://buyersguide.macrumors.com/
+2016-10-15 18:26:49	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-15 18:27:20	NapoleonWils0n	hi all
+2016-10-15 18:27:30	NapoleonWils0n	any fix for the sleep bug on sierra
+2016-10-15 18:29:54	NapoleonWils0n	reseting pram dosnt work, bit of joke really
+2016-10-15 18:30:22	NapoleonWils0n	apple should try and make things that actually work rather than adding pointless icandy and animations
+2016-10-15 18:32:15	@Ziginox	sierra is a feature release, what did you expect? :)
+2016-10-15 18:32:55	NapoleonWils0n	something that actually works would be a start
+2016-10-15 18:33:59	NapoleonWils0n	using itunes to download an app and then install on ios is a nightmare
+2016-10-15 18:34:25	NapoleonWils0n	they actually hide the apps links from the main menu, have to enter pasword multiple times to download something
+2016-10-15 18:35:09	NapoleonWils0n	click thru the sidebar several levels, download click install sync 
+2016-10-15 18:35:55	NapoleonWils0n	the old method was better click to download plug in ios device and sync automatically
+2016-10-15 18:36:21	<--	anotheryou (~anotheryo@xdsl-78-34-244-203.netcologne.de) has quit (Ping timeout: 244 seconds)
+2016-10-15 18:38:11	DLSteve	I have always installed directly from the iOS device. I have not even hooked my current phone up to iTunes.
+2016-10-15 18:38:16	<--	orly_owl (~david@unaffiliated/orly-owl/x-3167833) has quit (Ping timeout: 260 seconds)
+2016-10-15 18:38:31	NapoleonWils0n	yes thats fine if you have a short password
+2016-10-15 18:39:00	NapoleonWils0n	problem is you cant see the password as you type it in which is a problem if you have a long password
+2016-10-15 18:39:37	DLSteve	I just use touch ID.
+2016-10-15 18:44:34	--	irc: disconnected from server

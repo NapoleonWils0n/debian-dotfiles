@@ -1,9 +1,8 @@
 # bash aliases
 #=============
 
-alias vlc='vlc "$1" &>/dev/null'
-
-alias ls='ls --color=auto'
+alias ls='ls -N --color=auto -h'
+alias vim='gvim -v'
 
 # wget - enable continue and set the user agent
 alias wget='wget --user-agent="Mozilla" -c'
@@ -19,6 +18,19 @@ alias backlight='sudo echo 255 > /sys/class/leds/smc::kbd_backlight/brightness'
 # keyboard backlight off
 alias backlight='sudo echo 0 > /sys/class/leds/smc::kbd_backlight/brightness'
 
+# hdmi display on
+alias hdmi-on='xrandr --output eDP1 --auto --primary --output HDMI1 --auto --right-of eDP1'
+
+# hdmi display off
+alias hdmi-off='xrandr --output eDP1 --auto --primary --output HDMI1 --off'
+
+# remind calendar
+alias remstart="remind -z -k'notify-send -i kodi "Reminder" %s &' ~/.reminders &"
+
+# emacs
+#======
+
+alias emacs='emacs -nw'
 
 # git aliases
 #============
@@ -74,3 +86,15 @@ aria2c --bt-metadata-only=true --bt-save-metadata=true --listen-port=6881 "$1"
 }
 
 
+# youtube-dl vlc function
+#========================
+
+# vlc youtube-dl
+function youtube-vlc {
+vlc $(youtube-dl -g "$1") &>/dev/null
+}
+
+# mplayer youtube-dl
+function youtube-mplayer {
+curl --ciphers RC4-SHA $(youtube-dl -g "$1") | mplayer -cache 8192 -
+}

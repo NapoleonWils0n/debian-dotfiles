@@ -1,0 +1,46 @@
+2016-03-19 15:28:06	-->	NapoleonWils0n (~weechat@host-84-9-196-15.dslgb.com) has joined #mpv
+2016-03-19 15:28:06	--	Topic for #mpv is "mpv - video player based on MPlayer/mplayer2 | http://mpv.io | http://mpv.io/manual/ | Dev.: #mpv-devel | List of releases and release notes: https://github.com/mpv-player/mpv/releases"
+2016-03-19 15:28:06	--	Topic set by wm4 (~wm4@2001:41d0:e:335::1) on Fri, 27 Nov 2015 09:15:31
+2016-03-19 15:28:06	--	Channel #mpv: 239 nicks (0 ops, 0 voices, 239 normals)
+2016-03-19 15:28:06	--	Channel created on Sun, 19 Aug 2012 16:05:28
+2016-03-19 15:28:08	NapoleonWils0n	hi all
+2016-03-19 15:28:26	haasn	fitz: it's an O, not a 0
+2016-03-19 15:28:31	fitz	oh oops
+2016-03-19 15:28:37	haasn	copy/paste to the rescue? :p
+2016-03-19 15:28:46	haasn	fitz: also in fullscreen mode it might be easier to see
+2016-03-19 15:29:16	NapoleonWils0n	im getting a black screen and no video with windows
+2016-03-19 15:30:26	fitz	okay so it genere some noise where its needed to make it smoother?
+2016-03-19 15:31:30	NapoleonWils0n	ive written some scripts to use mpv as an external player for kodi
+2016-03-19 15:31:34	<--	spectromas (~spectroma@201.198.1.149) has quit (Quit: WeeChat 1.4)
+2016-03-19 15:31:41	NapoleonWils0n	just cant seem to get mpv working on windows 10
+2016-03-19 15:32:18	haasn	fitz: roughly speaking, yes
+2016-03-19 15:33:13	fitz	what is debanding then?
+2016-03-19 15:33:48	haasn	fitz: given an input source that already *has* banding (i.e. a source that was not dithered when converting to 8 bit), try to recover the original signal
+2016-03-19 15:34:06	haasn	works by detecting+smoothing gradients and also adding some noise
+2016-03-19 15:37:21	<--	lucaswan_ (~lucaswang@118.212.150.170) has quit (Remote host closed the connection)
+2016-03-19 15:37:50	-->	lucaswang (~lucaswang@14.47.125.218) has joined #mpv
+2016-03-19 15:38:43	NapoleonWils0n	anyone git mpv working on windows i just download the prebuilt version
+2016-03-19 15:39:12	fitz	i can't see a difference with a real video though
+2016-03-19 15:39:29	fitz	what is needed to apply debanding/dithering?
+2016-03-19 15:41:25	--	irc: disconnected from server
+2016-03-26 17:48:44	-->	NapoleonWils0n (~weechat@host-84-9-25-157.dslgb.com) has joined #mpv
+2016-03-26 17:48:44	--	Topic for #mpv is "mpv - video player based on MPlayer/mplayer2 | http://mpv.io | http://mpv.io/manual/ | Dev.: #mpv-devel | List of releases and release notes: https://github.com/mpv-player/mpv/releases"
+2016-03-26 17:48:44	--	Topic set by wm4 (~wm4@2001:41d0:e:335::1) on Fri, 27 Nov 2015 09:15:31
+2016-03-26 17:48:44	--	Channel #mpv: 229 nicks (0 ops, 0 voices, 229 normals)
+2016-03-26 17:48:44	--	Channel created on Sun, 19 Aug 2012 16:05:28
+2016-03-26 17:49:02	NapoleonWils0n	hi all
+2016-03-26 17:49:16	NapoleonWils0n	is there a way to suppress error messgaes in the status-msg
+2016-03-26 17:49:53	wm4	--no-terminal
+2016-03-26 17:50:21	NapoleonWils0n	ill give that a shot cheers
+2016-03-26 17:51:07	NapoleonWils0n	that removes the status completly
+2016-03-26 17:51:29	NapoleonWils0n	trying to supress errors like invalid timestamp
+2016-03-26 17:51:42	NapoleonWils0n	but i want to keep the status line
+2016-03-26 17:52:07	RiCON	--msg-level=ffmpeg=fatal?
+2016-03-26 17:52:23	NapoleonWils0n	that looks promising will try
+2016-03-26 17:53:08	NapoleonWils0n	thay works like a charm cheers RICON
+2016-03-26 17:53:25	NapoleonWils0n	have to add it to mpv config
+2016-03-26 17:53:52	NapoleonWils0n	by the way did a video about mpv: https://www.youtube.com/watch?v=np7yTeOBl3g
+2016-03-26 17:56:53	NapoleonWils0n	added to my mpv.conf cheers guys
+2016-03-26 17:57:19	NapoleonWils0n	mpv can play videos from BBC iPlayer as well which is v cool
+2016-03-26 17:57:57	<--	sky4 (sky@113.21.79.43) has quit (Quit: Wishing all a splendid time ahead~)
+2016-03-26 18:01:45	--	irc: disconnected from server

@@ -1,0 +1,1444 @@
+2016-01-06 01:16:16		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, xfer
+2016-01-06 01:16:22		script: downloading list of scripts...
+2016-01-06 01:16:23		script: 299 scripts for WeeChat 1.3
+2016-01-06 01:16:23		perl: loading script "/home/djwilcox/.weechat/perl/iset.pl"
+2016-01-06 01:16:23		perl: registered script "iset", version 4.0 (Interactive Set for configuration options)
+2016-01-06 01:16:23		New key binding (context "mouse"): @chat(perl.iset):button1 => hsignal:iset_mouse
+2016-01-06 01:16:23		New key binding (context "mouse"): @chat(perl.iset):button2* => hsignal:iset_mouse
+2016-01-06 01:16:23		New key binding (context "mouse"): @chat(perl.iset):wheeldown => /repeat 5 /iset **down
+2016-01-06 01:16:23		New key binding (context "mouse"): @chat(perl.iset):wheelup => /repeat 5 /iset **up
+2016-01-06 01:16:53		irc: server freenode-ssl added
+2016-01-06 01:17:12		fifo: pipe closed
+2016-01-06 01:17:12		perl: scripts unloaded
+2016-01-06 01:17:13		perl scripts loaded: iset
+2016-01-06 01:17:13		script: 299 scripts for WeeChat 1.3
+2016-01-06 01:17:13		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, lua, perl, python, relay, ruby, script, trigger, xfer
+2016-01-06 01:17:23		Option changed: weechat.plugin.autoload = "*,!tcl,!ruby,!python2,!lua,!aspell"  (default: "*")
+2016-01-06 01:17:42	=!=	irc: command "msg" must be executed on connected irc server
+2016-01-06 01:53:26		fifo: pipe closed
+2016-01-06 01:53:26		perl: scripts unloaded
+2016-01-06 17:22:48		perl scripts loaded: iset
+2016-01-06 17:22:48		script: 299 scripts for WeeChat 1.3
+2016-01-06 17:22:48		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-06 17:48:15		fifo: pipe closed
+2016-01-06 17:48:15		perl: scripts unloaded
+2016-01-06 22:44:33		perl scripts loaded: iset
+2016-01-06 22:44:33		script: 299 scripts for WeeChat 1.3
+2016-01-06 22:44:33		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-06 23:07:22		fifo: pipe closed
+2016-01-06 23:07:22		perl: scripts unloaded
+2016-01-07 01:38:12		perl scripts loaded: iset
+2016-01-07 01:38:12		script: downloading list of scripts...
+2016-01-07 01:38:12		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-07 01:38:12		script: 299 scripts for WeeChat 1.3
+2016-01-07 01:42:24		fifo: pipe closed
+2016-01-07 01:42:24		perl: scripts unloaded
+2016-01-07 22:06:53	=!=	irc: warning: proxy "vpn" does not exist (you can add it with command /proxy)
+2016-01-07 22:06:53	=!=	irc: warning: proxy "vpn" does not exist (you can add it with command /proxy)
+2016-01-07 22:06:53	=!=	irc: warning: proxy "vpn" does not exist (you can add it with command /proxy)
+2016-01-07 22:06:53		perl scripts loaded: iset
+2016-01-07 22:06:53		script: 299 scripts for WeeChat 1.3
+2016-01-07 22:06:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-07 22:07:11		fifo: pipe closed
+2016-01-07 22:07:11		perl: scripts unloaded
+2016-01-07 22:15:15		perl scripts loaded: iset
+2016-01-07 22:15:15		script: 299 scripts for WeeChat 1.3
+2016-01-07 22:15:15		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-07 22:15:34		fifo: pipe closed
+2016-01-07 22:15:34		perl: scripts unloaded
+2016-01-07 22:15:52		perl scripts loaded: iset
+2016-01-07 22:15:52		script: 299 scripts for WeeChat 1.3
+2016-01-07 22:15:52		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-07 22:47:05		fifo: pipe closed
+2016-01-07 22:47:05		perl: scripts unloaded
+2016-01-08 20:36:33		perl scripts loaded: iset
+2016-01-08 20:36:33		script: downloading list of scripts...
+2016-01-08 20:36:33		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-08 20:36:34		script: 299 scripts for WeeChat 1.3
+2016-01-08 20:36:42	=!=	irc: command "join" must be executed on connected irc server
+2016-01-08 21:12:23		fifo: pipe closed
+2016-01-08 21:12:23		perl: scripts unloaded
+2016-01-09 01:55:11		perl scripts loaded: iset
+2016-01-09 01:55:11		script: 299 scripts for WeeChat 1.3
+2016-01-09 01:55:11		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-09 02:48:08		fifo: pipe closed
+2016-01-09 02:48:08		perl: scripts unloaded
+2016-01-10 20:53:23		perl scripts loaded: iset
+2016-01-10 20:53:23		script: downloading list of scripts...
+2016-01-10 20:53:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-10 20:53:24		script: 299 scripts for WeeChat 1.3
+2016-01-10 21:30:13		fifo: pipe closed
+2016-01-10 21:30:13		perl: scripts unloaded
+2016-01-11 00:03:57		perl scripts loaded: iset
+2016-01-11 00:03:57		script: 299 scripts for WeeChat 1.3
+2016-01-11 00:03:57		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-11 00:31:18		fifo: pipe closed
+2016-01-11 00:31:18		perl: scripts unloaded
+2016-01-11 02:13:00		perl scripts loaded: iset
+2016-01-11 02:13:01		script: 299 scripts for WeeChat 1.3
+2016-01-11 02:13:01		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-11 02:20:54		fifo: pipe closed
+2016-01-11 02:20:54		perl: scripts unloaded
+2016-01-12 14:31:50		perl scripts loaded: iset
+2016-01-12 14:31:50		script: downloading list of scripts...
+2016-01-12 14:31:50		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-12 14:31:50		script: 299 scripts for WeeChat 1.3
+2016-01-12 14:31:58	=!=	irc: command "join" must be executed on connected irc server
+2016-01-12 15:27:02		fifo: pipe closed
+2016-01-12 15:27:02		perl: scripts unloaded
+2016-01-12 23:41:41		perl scripts loaded: iset
+2016-01-12 23:41:41		script: 299 scripts for WeeChat 1.3
+2016-01-12 23:41:41		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-12 23:56:34		fifo: pipe closed
+2016-01-12 23:56:34		perl: scripts unloaded
+2016-01-14 00:18:39		perl scripts loaded: iset
+2016-01-14 00:18:39		script: downloading list of scripts...
+2016-01-14 00:18:39		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-14 00:18:39		script: 299 scripts for WeeChat 1.3
+2016-01-14 00:51:00		fifo: pipe closed
+2016-01-14 00:51:00		perl: scripts unloaded
+2016-01-14 23:47:48		perl scripts loaded: iset
+2016-01-14 23:47:48		script: 299 scripts for WeeChat 1.3
+2016-01-14 23:47:48		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-14 23:48:01	=!=	irc: command "join" must be executed on connected irc server
+2016-01-15 00:33:34		fifo: pipe closed
+2016-01-15 00:33:34		perl: scripts unloaded
+2016-01-21 21:34:54		perl scripts loaded: iset
+2016-01-21 21:34:54		script: downloading list of scripts...
+2016-01-21 21:34:54		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-21 21:34:55		script: 299 scripts for WeeChat 1.3
+2016-01-21 21:57:26		fifo: pipe closed
+2016-01-21 21:57:26		perl: scripts unloaded
+2016-01-22 17:29:32		perl scripts loaded: iset
+2016-01-22 17:29:32		script: 299 scripts for WeeChat 1.3
+2016-01-22 17:29:32		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-22 18:08:09		fifo: pipe closed
+2016-01-22 18:08:09		perl: scripts unloaded
+2016-01-22 23:01:08		perl scripts loaded: iset
+2016-01-22 23:01:09		script: downloading list of scripts...
+2016-01-22 23:01:09		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-22 23:01:09		script: 299 scripts for WeeChat 1.3
+2016-01-23 01:25:26		fifo: pipe closed
+2016-01-23 01:25:26		perl: scripts unloaded
+2016-01-23 21:28:22		perl scripts loaded: iset
+2016-01-23 21:28:22		script: 299 scripts for WeeChat 1.3
+2016-01-23 21:28:22		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-23 21:55:53		fifo: pipe closed
+2016-01-23 21:55:53		perl: scripts unloaded
+2016-01-26 18:07:32		perl scripts loaded: iset
+2016-01-26 18:07:33		script: downloading list of scripts...
+2016-01-26 18:07:33		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-26 18:07:33		script: 299 scripts for WeeChat 1.3
+2016-01-26 18:21:52		fifo: pipe closed
+2016-01-26 18:21:52		perl: scripts unloaded
+2016-01-26 23:22:53		perl scripts loaded: iset
+2016-01-26 23:22:53		script: 299 scripts for WeeChat 1.3
+2016-01-26 23:22:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-26 23:34:28		fifo: pipe closed
+2016-01-26 23:34:28		perl: scripts unloaded
+2016-01-29 23:17:15		perl scripts loaded: iset
+2016-01-29 23:17:15		script: downloading list of scripts...
+2016-01-29 23:17:15		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-29 23:17:16		script: 299 scripts for WeeChat 1.3
+2016-01-29 23:17:24	=!=	irc: command "join" must be executed on connected irc server
+2016-01-29 23:43:48		fifo: pipe closed
+2016-01-29 23:43:48		perl: scripts unloaded
+2016-01-30 17:55:58		perl scripts loaded: iset
+2016-01-30 17:55:58		script: 299 scripts for WeeChat 1.3
+2016-01-30 17:55:58		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-30 18:17:12		fifo: pipe closed
+2016-01-30 18:17:12		perl: scripts unloaded
+2016-01-30 21:47:30		perl scripts loaded: iset
+2016-01-30 21:47:30		script: 299 scripts for WeeChat 1.3
+2016-01-30 21:47:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-01-30 22:12:24		fifo: pipe closed
+2016-01-30 22:12:24		perl: scripts unloaded
+2016-02-01 16:51:40		perl scripts loaded: iset
+2016-02-01 16:51:40		script: downloading list of scripts...
+2016-02-01 16:51:40		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-01 16:51:40		script: 299 scripts for WeeChat 1.3
+2016-02-01 17:05:43		fifo: pipe closed
+2016-02-01 17:05:43		perl: scripts unloaded
+2016-02-01 22:43:12		perl scripts loaded: iset
+2016-02-01 22:43:12		script: 299 scripts for WeeChat 1.3
+2016-02-01 22:43:12		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-01 23:42:45		fifo: pipe closed
+2016-02-01 23:42:45		perl: scripts unloaded
+2016-02-02 01:35:16		perl scripts loaded: iset
+2016-02-02 01:35:16		script: 299 scripts for WeeChat 1.3
+2016-02-02 01:35:16		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-02 01:44:16		fifo: pipe closed
+2016-02-02 01:44:16		perl: scripts unloaded
+2016-02-02 16:25:56		perl scripts loaded: iset
+2016-02-02 16:25:56		script: 299 scripts for WeeChat 1.3
+2016-02-02 16:25:56		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-02 16:57:04		fifo: pipe closed
+2016-02-02 16:57:04		perl: scripts unloaded
+2016-02-02 21:52:30		perl scripts loaded: iset
+2016-02-02 21:52:30		script: downloading list of scripts...
+2016-02-02 21:52:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-02 21:52:30		script: 299 scripts for WeeChat 1.3
+2016-02-02 22:24:49		fifo: pipe closed
+2016-02-02 22:24:49		perl: scripts unloaded
+2016-02-04 00:03:09	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 84: unknown option for section "network": alternate_nick = on
+2016-02-04 00:03:09		perl scripts loaded: iset
+2016-02-04 00:03:09		script: downloading list of scripts...
+2016-02-04 00:03:09		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-04 00:03:10		script: 299 scripts for WeeChat 1.4
+2016-02-04 00:32:00		fifo: pipe closed
+2016-02-04 00:32:00		perl: scripts unloaded
+2016-02-04 17:54:39		perl scripts loaded: iset
+2016-02-04 17:54:39		script: 299 scripts for WeeChat 1.4
+2016-02-04 17:54:39		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-04 17:54:55	=!=	irc: command "join" must be executed on connected irc server
+2016-02-04 18:09:36		fifo: pipe closed
+2016-02-04 18:09:36		perl: scripts unloaded
+2016-02-07 23:10:40		perl scripts loaded: iset
+2016-02-07 23:10:40		script: downloading list of scripts...
+2016-02-07 23:10:40		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-07 23:10:40		script: 299 scripts for WeeChat 1.4
+2016-02-07 23:19:06		fifo: pipe closed
+2016-02-07 23:19:06		perl: scripts unloaded
+2016-02-07 23:57:57		perl scripts loaded: iset
+2016-02-07 23:57:57		script: 299 scripts for WeeChat 1.4
+2016-02-07 23:57:57		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-08 00:09:07		fifo: pipe closed
+2016-02-08 00:09:07		perl: scripts unloaded
+2016-02-08 15:47:57		perl scripts loaded: iset
+2016-02-08 15:47:57		script: 299 scripts for WeeChat 1.4
+2016-02-08 15:47:57		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-08 16:00:37		fifo: pipe closed
+2016-02-08 16:00:37		perl: scripts unloaded
+2016-02-08 17:13:01		perl scripts loaded: iset
+2016-02-08 17:13:01		script: 299 scripts for WeeChat 1.4
+2016-02-08 17:13:01		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-08 17:13:05	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2016-02-08 17:13:12		fifo: pipe closed
+2016-02-08 17:13:12		perl: scripts unloaded
+2016-02-08 17:13:13		perl scripts loaded: iset
+2016-02-08 17:13:13		script: 299 scripts for WeeChat 1.4
+2016-02-08 17:13:13		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-08 17:13:17	=!=	irc: unable to add temporary server "irc.debian.org" because the addition of temporary servers with command /connect is currently disabled
+2016-02-08 17:13:17	=!=	irc: if you want to add a standard server, use the command "/server add" (see /help server); if you really want to add a temporary server (NOT SAVED), turn on the option irc.look.temporary_servers
+2016-02-08 17:13:29	=!=	Too few arguments for command "/server add" (help on command: /help server)
+2016-02-08 17:13:47		[irc]  /server  list|listfull [<server>]
+2016-02-08 17:13:47		                add <server> <hostname>[/<port>] [-temp] [-<option>[=<value>]] [-no<option>]
+2016-02-08 17:13:47		                copy|rename <server> <new_name>
+2016-02-08 17:13:47		                reorder <server> [<server>...]
+2016-02-08 17:13:47		                del|keep <server>
+2016-02-08 17:13:47		                deloutq|jump|raw
+2016-02-08 17:13:47		list, add or remove IRC servers
+2016-02-08 17:13:47		    list: list servers (without argument, this list is displayed)
+2016-02-08 17:13:47		listfull: list servers with detailed info for each server
+2016-02-08 17:13:47		     add: add a new server
+2016-02-08 17:13:47		  server: server name, for internal and display use
+2016-02-08 17:13:47		hostname: name or IP address of server, with optional port (default: 6667), many addresses can be separated by a comma
+2016-02-08 17:13:47		    temp: add a temporary server (not saved)
+2016-02-08 17:13:47		  option: set option for server (for boolean option, value can be omitted)
+2016-02-08 17:13:47		nooption: set boolean option to 'off' (for example: -nossl)
+2016-02-08 17:13:47		    copy: duplicate a server
+2016-02-08 17:13:47		  rename: rename a server
+2016-02-08 17:13:47		 reorder: reorder list of servers
+2016-02-08 17:13:47		    keep: keep server in config file (for temporary servers only)
+2016-02-08 17:13:47		     del: delete a server
+2016-02-08 17:13:47		 deloutq: delete messages out queue for all servers (all messages WeeChat is currently sending)
+2016-02-08 17:13:47		    jump: jump to server buffer
+2016-02-08 17:13:47		     raw: open buffer with raw IRC data
+2016-02-08 17:13:47		Examples:
+2016-02-08 17:13:47		  /server listfull
+2016-02-08 17:13:47		  /server add freenode chat.freenode.net
+2016-02-08 17:13:47		  /server add freenode chat.freenode.net/6697 -ssl -autoconnect
+2016-02-08 17:13:47		  /server add chatspike irc.chatspike.net/6667,irc.duckspike.net/6667
+2016-02-08 17:13:47		  /server copy freenode freenode-test
+2016-02-08 17:13:47		  /server rename freenode-test freenode2
+2016-02-08 17:13:47		  /server reorder freenode2 freenode
+2016-02-08 17:13:47		  /server del freenode
+2016-02-08 17:13:47		  /server deloutq
+2016-02-08 17:14:01		fifo: pipe closed
+2016-02-08 17:14:01		perl: scripts unloaded
+2016-02-08 17:14:02		perl scripts loaded: iset
+2016-02-08 17:14:02		script: 299 scripts for WeeChat 1.4
+2016-02-08 17:14:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-08 17:14:13		irc: server debian added
+2016-02-08 17:29:50		fifo: pipe closed
+2016-02-08 17:29:50		perl: scripts unloaded
+2016-02-09 15:21:15		perl scripts loaded: iset
+2016-02-09 15:21:15		script: downloading list of scripts...
+2016-02-09 15:21:15		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-09 15:21:16		script: 299 scripts for WeeChat 1.4
+2016-02-09 16:16:18		fifo: pipe closed
+2016-02-09 16:16:18		perl: scripts unloaded
+2016-02-11 00:17:18		perl scripts loaded: iset
+2016-02-11 00:17:18		script: downloading list of scripts...
+2016-02-11 00:17:18		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-11 00:17:18		script: 299 scripts for WeeChat 1.4
+2016-02-11 00:58:46		fifo: pipe closed
+2016-02-11 00:58:46		perl: scripts unloaded
+2016-02-12 00:32:43		perl scripts loaded: iset
+2016-02-12 00:32:43		script: downloading list of scripts...
+2016-02-12 00:32:43		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-12 00:32:43		script: 299 scripts for WeeChat 1.4
+2016-02-12 00:53:07	=!=	Error: unknown command "/boot" (type /help for help)
+2016-02-12 00:53:30	=!=	Error: unknown command "/boot" (type /help for help)
+2016-02-12 02:43:42		fifo: pipe closed
+2016-02-12 02:43:42		perl: scripts unloaded
+2016-02-12 17:39:32		perl scripts loaded: iset
+2016-02-12 17:39:32		script: 299 scripts for WeeChat 1.4
+2016-02-12 17:39:32		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-12 17:39:43	=!=	irc: command "join" must be executed on connected irc server
+2016-02-12 19:13:54		fifo: pipe closed
+2016-02-12 19:13:54		perl: scripts unloaded
+2016-02-12 20:59:10		perl scripts loaded: iset
+2016-02-12 20:59:10		script: 299 scripts for WeeChat 1.4
+2016-02-12 20:59:10		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-12 23:18:07		fifo: pipe closed
+2016-02-12 23:18:07		perl: scripts unloaded
+2016-02-13 00:06:24		perl scripts loaded: iset
+2016-02-13 00:06:24		script: 299 scripts for WeeChat 1.4
+2016-02-13 00:06:24		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-13 00:31:31		fifo: pipe closed
+2016-02-13 00:31:31		perl: scripts unloaded
+2016-02-14 20:20:44		perl scripts loaded: iset
+2016-02-14 20:20:44		script: downloading list of scripts...
+2016-02-14 20:20:44		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-14 20:20:45		script: 299 scripts for WeeChat 1.4
+2016-02-14 20:42:50		fifo: pipe closed
+2016-02-14 20:42:50		perl: scripts unloaded
+2016-02-15 23:56:39		perl scripts loaded: iset
+2016-02-15 23:56:40		script: downloading list of scripts...
+2016-02-15 23:56:40		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-15 23:56:40		script: 299 scripts for WeeChat 1.4
+2016-02-16 00:20:25		fifo: pipe closed
+2016-02-16 00:20:25		perl: scripts unloaded
+2016-02-17 02:08:36		perl scripts loaded: iset
+2016-02-17 02:08:36		script: downloading list of scripts...
+2016-02-17 02:08:36		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-17 02:08:37		script: 299 scripts for WeeChat 1.4
+2016-02-17 02:50:49		fifo: pipe closed
+2016-02-17 02:50:49		perl: scripts unloaded
+2016-02-17 22:39:06		perl scripts loaded: iset
+2016-02-17 22:39:06		script: 299 scripts for WeeChat 1.4
+2016-02-17 22:39:06		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-17 23:27:51		fifo: pipe closed
+2016-02-17 23:27:51		perl: scripts unloaded
+2016-02-18 01:46:55		perl scripts loaded: iset
+2016-02-18 01:46:55		script: 299 scripts for WeeChat 1.4
+2016-02-18 01:46:55		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-18 01:47:04	=!=	irc: command "join" must be executed on connected irc server
+2016-02-18 01:53:38		fifo: pipe closed
+2016-02-18 01:53:38		perl: scripts unloaded
+2016-02-18 18:16:35		perl scripts loaded: iset
+2016-02-18 18:16:35		script: downloading list of scripts...
+2016-02-18 18:16:35		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-18 18:16:36		script: 299 scripts for WeeChat 1.4
+2016-02-18 18:25:15		fifo: pipe closed
+2016-02-18 18:25:15		perl: scripts unloaded
+2016-02-18 21:13:16		perl scripts loaded: iset
+2016-02-18 21:13:16		script: 299 scripts for WeeChat 1.4
+2016-02-18 21:13:16		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-18 21:28:44		fifo: pipe closed
+2016-02-18 21:28:44		perl: scripts unloaded
+2016-02-19 23:10:53		perl scripts loaded: iset
+2016-02-19 23:10:53		script: downloading list of scripts...
+2016-02-19 23:10:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-19 23:10:54		script: 299 scripts for WeeChat 1.4
+2016-02-19 23:11:06	=!=	irc: command "join" must be executed on connected irc server
+2016-02-20 00:36:14		fifo: pipe closed
+2016-02-20 00:36:14		perl: scripts unloaded
+2016-02-20 17:56:58		perl scripts loaded: iset
+2016-02-20 17:56:58		script: 299 scripts for WeeChat 1.4
+2016-02-20 17:56:58		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-20 18:02:51		fifo: pipe closed
+2016-02-20 18:02:51		perl: scripts unloaded
+2016-02-20 22:22:54		perl scripts loaded: iset
+2016-02-20 22:22:54		script: 299 scripts for WeeChat 1.4
+2016-02-20 22:22:54		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-20 22:28:33		fifo: pipe closed
+2016-02-20 22:28:33		perl: scripts unloaded
+2016-02-20 22:28:38		perl scripts loaded: iset
+2016-02-20 22:28:38		script: 299 scripts for WeeChat 1.4
+2016-02-20 22:28:38		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-20 22:28:48	=!=	irc: command "join" must be executed on connected irc server
+2016-02-20 23:40:29		fifo: pipe closed
+2016-02-20 23:40:29		perl: scripts unloaded
+2016-02-21 00:02:17		perl scripts loaded: iset
+2016-02-21 00:02:17		script: downloading list of scripts...
+2016-02-21 00:02:17		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-21 00:02:18		script: 299 scripts for WeeChat 1.4
+2016-02-21 00:35:24		fifo: pipe closed
+2016-02-21 00:35:24		perl: scripts unloaded
+2016-02-21 19:50:23		perl scripts loaded: iset
+2016-02-21 19:50:23		script: 299 scripts for WeeChat 1.4
+2016-02-21 19:50:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-21 20:19:48		fifo: pipe closed
+2016-02-21 20:19:48		perl: scripts unloaded
+2016-02-21 22:13:22		perl scripts loaded: iset
+2016-02-21 22:13:22		script: 299 scripts for WeeChat 1.4
+2016-02-21 22:13:22		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-21 22:20:27		fifo: pipe closed
+2016-02-21 22:20:27		perl: scripts unloaded
+2016-02-24 20:15:43		perl scripts loaded: iset
+2016-02-24 20:15:43		script: downloading list of scripts...
+2016-02-24 20:15:43		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-24 20:15:44		script: 299 scripts for WeeChat 1.4
+2016-02-24 22:45:48		fifo: pipe closed
+2016-02-24 22:45:48		perl: scripts unloaded
+2016-02-26 14:06:52		perl scripts loaded: iset
+2016-02-26 14:06:53		script: downloading list of scripts...
+2016-02-26 14:06:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-26 14:06:53		script: 299 scripts for WeeChat 1.4
+2016-02-26 14:06:56	=!=	irc: unable to add temporary server "irc.debian.org" because the addition of temporary servers with command /connect is currently disabled
+2016-02-26 14:06:56	=!=	irc: if you want to add a standard server, use the command "/server add" (see /help server); if you really want to add a temporary server (NOT SAVED), turn on the option irc.look.temporary_servers
+2016-02-26 14:07:07		irc: server irc.debian.org added
+2016-02-26 15:20:08		fifo: pipe closed
+2016-02-26 15:20:08		perl: scripts unloaded
+2016-02-28 01:09:34		perl scripts loaded: iset
+2016-02-28 01:09:34		script: downloading list of scripts...
+2016-02-28 01:09:34		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-28 01:09:35		script: 299 scripts for WeeChat 1.4
+2016-02-28 01:10:19		fifo: pipe closed
+2016-02-28 01:10:19		perl: scripts unloaded
+2016-02-28 14:28:02		perl scripts loaded: iset
+2016-02-28 14:28:02		script: 299 scripts for WeeChat 1.4
+2016-02-28 14:28:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-28 15:59:16		fifo: pipe closed
+2016-02-28 15:59:16		perl: scripts unloaded
+2016-02-28 22:51:09		perl scripts loaded: iset
+2016-02-28 22:51:09		script: 299 scripts for WeeChat 1.4
+2016-02-28 22:51:09		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-28 22:52:14		fifo: pipe closed
+2016-02-28 22:52:14		perl: scripts unloaded
+2016-02-28 22:52:18		perl scripts loaded: iset
+2016-02-28 22:52:18		script: 299 scripts for WeeChat 1.4
+2016-02-28 22:52:18		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-28 23:05:18		fifo: pipe closed
+2016-02-28 23:05:18		perl: scripts unloaded
+2016-02-29 00:29:57		perl scripts loaded: iset
+2016-02-29 00:29:57		script: 299 scripts for WeeChat 1.4
+2016-02-29 00:29:57		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-29 00:52:55		fifo: pipe closed
+2016-02-29 00:52:55		perl: scripts unloaded
+2016-02-29 14:10:00		perl scripts loaded: iset
+2016-02-29 14:10:00		script: downloading list of scripts...
+2016-02-29 14:10:00		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-29 14:10:00		script: 299 scripts for WeeChat 1.4
+2016-02-29 15:07:58		fifo: pipe closed
+2016-02-29 15:07:58		perl: scripts unloaded
+2016-02-29 17:22:18		perl scripts loaded: iset
+2016-02-29 17:22:18		script: 299 scripts for WeeChat 1.4
+2016-02-29 17:22:18		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-02-29 18:11:30		fifo: pipe closed
+2016-02-29 18:11:30		perl: scripts unloaded
+2016-03-01 14:45:16		perl scripts loaded: iset
+2016-03-01 14:45:16		script: downloading list of scripts...
+2016-03-01 14:45:16		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-01 14:45:17		script: 299 scripts for WeeChat 1.4
+2016-03-01 14:45:56	=!=	irc: command "join" must be executed on connected irc server
+2016-03-01 14:46:23		fifo: pipe closed
+2016-03-01 14:46:23		perl: scripts unloaded
+2016-03-01 14:46:24		perl scripts loaded: iset
+2016-03-01 14:46:24		script: 299 scripts for WeeChat 1.4
+2016-03-01 14:46:24		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-01 16:11:07		fifo: pipe closed
+2016-03-01 16:11:07		perl: scripts unloaded
+2016-03-03 17:29:22		perl scripts loaded: iset
+2016-03-03 17:29:23		script: downloading list of scripts...
+2016-03-03 17:29:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-03 17:29:23		script: 299 scripts for WeeChat 1.4
+2016-03-03 17:38:39		fifo: pipe closed
+2016-03-03 17:38:39		perl: scripts unloaded
+2016-03-03 17:38:41		perl scripts loaded: iset
+2016-03-03 17:38:41		script: 299 scripts for WeeChat 1.4
+2016-03-03 17:38:41		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-03 17:47:10		fifo: pipe closed
+2016-03-03 17:47:10		perl: scripts unloaded
+2016-03-04 00:54:34		perl scripts loaded: iset
+2016-03-04 00:54:34		script: 299 scripts for WeeChat 1.4
+2016-03-04 00:54:34		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-04 00:54:44		fifo: pipe closed
+2016-03-04 00:54:44		perl: scripts unloaded
+2016-03-04 00:54:45		perl scripts loaded: iset
+2016-03-04 00:54:46		script: 299 scripts for WeeChat 1.4
+2016-03-04 00:54:46		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-04 01:31:48		fifo: pipe closed
+2016-03-04 01:31:48		perl: scripts unloaded
+2016-03-05 15:23:18		perl scripts loaded: iset
+2016-03-05 15:23:19		script: downloading list of scripts...
+2016-03-05 15:23:19		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-05 15:23:19		script: 299 scripts for WeeChat 1.4
+2016-03-05 15:31:15		fifo: pipe closed
+2016-03-05 15:31:15		perl: scripts unloaded
+2016-03-05 16:13:49		perl scripts loaded: iset
+2016-03-05 16:13:49		script: 299 scripts for WeeChat 1.4
+2016-03-05 16:13:49		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-06 20:40:06		fifo: removing old fifo pipe "/home/djwilcox/.weechat/weechat_fifo_4380"
+2016-03-06 20:40:06		perl scripts loaded: iset
+2016-03-06 20:40:06		script: downloading list of scripts...
+2016-03-06 20:40:06		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-06 20:40:07		script: 299 scripts for WeeChat 1.4
+2016-03-06 21:14:10		fifo: pipe closed
+2016-03-06 21:14:10		perl: scripts unloaded
+2016-03-06 21:48:24		perl scripts loaded: iset
+2016-03-06 21:48:24		script: 299 scripts for WeeChat 1.4
+2016-03-06 21:48:24		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-06 21:48:37	=!=	irc: command "join" must be executed on connected irc server
+2016-03-06 22:12:29		fifo: pipe closed
+2016-03-06 22:12:29		perl: scripts unloaded
+2016-03-08 20:17:43		perl scripts loaded: iset
+2016-03-08 20:17:43		script: downloading list of scripts...
+2016-03-08 20:17:43		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-08 20:17:44		script: 299 scripts for WeeChat 1.4
+2016-03-08 20:46:43		fifo: pipe closed
+2016-03-08 20:46:43		perl: scripts unloaded
+2016-03-09 22:49:45		perl scripts loaded: iset
+2016-03-09 22:49:45		script: downloading list of scripts...
+2016-03-09 22:49:45		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-09 22:49:46		script: 299 scripts for WeeChat 1.4
+2016-03-09 23:05:21		fifo: pipe closed
+2016-03-09 23:05:21		perl: scripts unloaded
+2016-03-10 23:06:14		perl scripts loaded: iset
+2016-03-10 23:06:14		script: downloading list of scripts...
+2016-03-10 23:06:14		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-10 23:06:15		script: 299 scripts for WeeChat 1.4
+2016-03-10 23:42:42		fifo: pipe closed
+2016-03-10 23:42:42		perl: scripts unloaded
+2016-03-13 19:49:52		perl scripts loaded: iset
+2016-03-13 19:49:53		script: downloading list of scripts...
+2016-03-13 19:49:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-13 19:49:53		script: 299 scripts for WeeChat 1.4
+2016-03-13 20:12:21		fifo: pipe closed
+2016-03-13 20:12:21		perl: scripts unloaded
+2016-03-13 22:12:02		perl scripts loaded: iset
+2016-03-13 22:12:02		script: 299 scripts for WeeChat 1.4
+2016-03-13 22:12:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-13 22:37:02		fifo: pipe closed
+2016-03-13 22:37:02		perl: scripts unloaded
+2016-03-14 00:34:50		perl scripts loaded: iset
+2016-03-14 00:34:50		script: 299 scripts for WeeChat 1.4
+2016-03-14 00:34:50		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-14 01:21:33		fifo: pipe closed
+2016-03-14 01:21:33		perl: scripts unloaded
+2016-03-15 19:42:31		perl scripts loaded: iset
+2016-03-15 19:42:31		script: downloading list of scripts...
+2016-03-15 19:42:31		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-15 19:42:32		script: 299 scripts for WeeChat 1.4
+2016-03-15 20:07:53		fifo: pipe closed
+2016-03-15 20:07:53		perl: scripts unloaded
+2016-03-15 23:10:24		perl scripts loaded: iset
+2016-03-15 23:10:24		script: 299 scripts for WeeChat 1.4
+2016-03-15 23:10:24		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-15 23:17:19		fifo: pipe closed
+2016-03-15 23:17:19		perl: scripts unloaded
+2016-03-16 20:25:22		perl scripts loaded: iset
+2016-03-16 20:25:23		script: downloading list of scripts...
+2016-03-16 20:25:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-16 20:25:23		script: 299 scripts for WeeChat 1.4
+2016-03-16 21:23:11		fifo: pipe closed
+2016-03-16 21:23:11		perl: scripts unloaded
+2016-03-18 00:18:58		perl scripts loaded: iset
+2016-03-18 00:18:58		script: downloading list of scripts...
+2016-03-18 00:18:58		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-18 00:18:59		script: 299 scripts for WeeChat 1.4
+2016-03-18 01:43:54		fifo: pipe closed
+2016-03-18 01:43:54		perl: scripts unloaded
+2016-03-18 21:20:08		perl scripts loaded: iset
+2016-03-18 21:20:08		script: 299 scripts for WeeChat 1.4
+2016-03-18 21:20:08		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-18 21:26:11		fifo: pipe closed
+2016-03-18 21:26:11		perl: scripts unloaded
+2016-03-19 15:27:45		perl scripts loaded: iset
+2016-03-19 15:27:45		script: downloading list of scripts...
+2016-03-19 15:27:45		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-19 15:27:46		script: 299 scripts for WeeChat 1.4
+2016-03-19 15:41:25		fifo: pipe closed
+2016-03-19 15:41:25		perl: scripts unloaded
+2016-03-19 15:41:30		perl scripts loaded: iset
+2016-03-19 15:41:30		script: 299 scripts for WeeChat 1.4
+2016-03-19 15:41:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-19 16:09:37		fifo: pipe closed
+2016-03-19 16:09:37		perl: scripts unloaded
+2016-03-24 23:20:39		perl scripts loaded: iset
+2016-03-24 23:20:39		script: downloading list of scripts...
+2016-03-24 23:20:39		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-24 23:20:40		script: 299 scripts for WeeChat 1.4
+2016-03-24 23:44:40		fifo: pipe closed
+2016-03-24 23:44:40		perl: scripts unloaded
+2016-03-25 18:31:39		perl scripts loaded: iset
+2016-03-25 18:31:39		script: 299 scripts for WeeChat 1.4
+2016-03-25 18:31:39		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-25 18:40:09		fifo: pipe closed
+2016-03-25 18:40:09		perl: scripts unloaded
+2016-03-25 20:38:53		perl scripts loaded: iset
+2016-03-25 20:38:53		script: 299 scripts for WeeChat 1.4
+2016-03-25 20:38:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-25 21:08:19		fifo: pipe closed
+2016-03-25 21:08:19		perl: scripts unloaded
+2016-03-26 17:48:05		perl scripts loaded: iset
+2016-03-26 17:48:05		script: downloading list of scripts...
+2016-03-26 17:48:05		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-26 17:48:05		script: 300 scripts for WeeChat 1.4
+2016-03-26 17:48:09		fifo: pipe closed
+2016-03-26 17:48:09		perl: scripts unloaded
+2016-03-26 17:48:12		perl scripts loaded: iset
+2016-03-26 17:48:12		script: 300 scripts for WeeChat 1.4
+2016-03-26 17:48:12		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-26 18:01:45		fifo: pipe closed
+2016-03-26 18:01:45		perl: scripts unloaded
+2016-03-27 13:04:35		perl scripts loaded: iset
+2016-03-27 13:04:35		script: 300 scripts for WeeChat 1.4
+2016-03-27 13:04:35		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-27 16:26:16		fifo: pipe closed
+2016-03-27 16:26:16		perl: scripts unloaded
+2016-03-29 17:30:22		perl scripts loaded: iset
+2016-03-29 17:30:22		script: downloading list of scripts...
+2016-03-29 17:30:22		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-29 17:30:23		script: 300 scripts for WeeChat 1.4
+2016-03-29 17:49:54		fifo: pipe closed
+2016-03-29 17:49:54		perl: scripts unloaded
+2016-03-29 20:22:34		perl scripts loaded: iset
+2016-03-29 20:22:34		script: 300 scripts for WeeChat 1.4
+2016-03-29 20:22:34		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-29 21:09:39		fifo: pipe closed
+2016-03-29 21:09:39		perl: scripts unloaded
+2016-03-30 15:48:04		perl scripts loaded: iset
+2016-03-30 15:48:04		script: 300 scripts for WeeChat 1.4
+2016-03-30 15:48:04		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-03-30 16:48:10		fifo: pipe closed
+2016-03-30 16:48:10		perl: scripts unloaded
+2016-04-01 23:51:45		perl scripts loaded: iset
+2016-04-01 23:51:45		script: downloading list of scripts...
+2016-04-01 23:51:45		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-01 23:51:46		script: 300 scripts for WeeChat 1.4
+2016-04-02 01:45:12		fifo: pipe closed
+2016-04-02 01:45:12		perl: scripts unloaded
+2016-04-08 19:58:18		perl scripts loaded: iset
+2016-04-08 19:58:18		script: downloading list of scripts...
+2016-04-08 19:58:18		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-08 19:58:19		script: 300 scripts for WeeChat 1.4
+2016-04-08 20:34:49		fifo: pipe closed
+2016-04-08 20:34:49		perl: scripts unloaded
+2016-04-10 00:37:56		perl scripts loaded: iset
+2016-04-10 00:37:56		script: downloading list of scripts...
+2016-04-10 00:37:56		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-10 00:37:57		script: 306 scripts for WeeChat 1.4
+2016-04-10 01:03:58		fifo: pipe closed
+2016-04-10 01:03:58		perl: scripts unloaded
+2016-04-20 21:33:53		perl scripts loaded: iset
+2016-04-20 21:33:53		script: downloading list of scripts...
+2016-04-20 21:33:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-20 21:33:54		script: 307 scripts for WeeChat 1.4
+2016-04-20 21:34:33	=!=	irc: command "join" must be executed on connected irc server
+2016-04-20 21:34:39		fifo: pipe closed
+2016-04-20 21:34:39		perl: scripts unloaded
+2016-04-20 21:34:41		perl scripts loaded: iset
+2016-04-20 21:34:41		script: 307 scripts for WeeChat 1.4
+2016-04-20 21:34:41		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-20 22:06:18		fifo: pipe closed
+2016-04-20 22:06:18		perl: scripts unloaded
+2016-04-26 15:43:23		perl scripts loaded: iset
+2016-04-26 15:43:23		script: downloading list of scripts...
+2016-04-26 15:43:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-26 15:43:24		script: 309 scripts for WeeChat 1.4
+2016-04-26 15:59:28		fifo: pipe closed
+2016-04-26 15:59:28		perl: scripts unloaded
+2016-04-27 21:00:30		perl scripts loaded: iset
+2016-04-27 21:00:30		script: downloading list of scripts...
+2016-04-27 21:00:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-27 21:00:31		script: 309 scripts for WeeChat 1.4
+2016-04-27 21:01:14		fifo: pipe closed
+2016-04-27 21:01:14		perl: scripts unloaded
+2016-04-27 21:01:15		perl scripts loaded: iset
+2016-04-27 21:01:15		script: 309 scripts for WeeChat 1.4
+2016-04-27 21:01:15		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-27 21:31:30		fifo: pipe closed
+2016-04-27 21:31:30		perl: scripts unloaded
+2016-04-30 00:57:04		perl scripts loaded: iset
+2016-04-30 00:57:05		script: downloading list of scripts...
+2016-04-30 00:57:05		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-04-30 00:57:05		script: 309 scripts for WeeChat 1.4
+2016-04-30 01:33:33		fifo: pipe closed
+2016-04-30 01:33:33		perl: scripts unloaded
+2016-05-03 15:41:23		perl scripts loaded: iset
+2016-05-03 15:41:23		script: downloading list of scripts...
+2016-05-03 15:41:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-05-03 15:41:24		script: 309 scripts for WeeChat 1.4
+2016-05-03 15:54:47		fifo: pipe closed
+2016-05-03 15:54:47		perl: scripts unloaded
+2016-05-04 01:21:45		perl scripts loaded: iset
+2016-05-04 01:21:45		script: 309 scripts for WeeChat 1.4
+2016-05-04 01:21:45		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-05-04 01:29:30		fifo: pipe closed
+2016-05-04 01:29:30		perl: scripts unloaded
+2016-05-10 00:21:26	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 30: unknown option for section "look": item_away_message = on
+2016-05-10 00:21:26	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 39: unknown option for section "look": nick_color_force = ""
+2016-05-10 00:21:26	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 40: unknown option for section "look": nick_color_hash = sum
+2016-05-10 00:21:26	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 41: unknown option for section "look": nick_color_stop_chars = "_|["
+2016-05-10 00:21:26	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 68: unknown option for section "color": item_away = yellow
+2016-05-10 00:21:26		perl scripts loaded: iset
+2016-05-10 00:21:26		script: downloading list of scripts...
+2016-05-10 00:21:26		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-05-10 00:21:26		script: 309 scripts for WeeChat 1.5
+2016-05-10 00:33:16		fifo: pipe closed
+2016-05-10 00:33:16		perl: scripts unloaded
+2016-05-20 01:06:55		perl scripts loaded: iset
+2016-05-20 01:06:56		script: downloading list of scripts...
+2016-05-20 01:06:56		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-05-20 01:06:56		script: 309 scripts for WeeChat 1.5
+2016-05-20 01:59:06		fifo: pipe closed
+2016-05-20 01:59:06		perl: scripts unloaded
+2016-05-25 23:33:57		perl scripts loaded: iset
+2016-05-25 23:33:58		script: downloading list of scripts...
+2016-05-25 23:33:58		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-05-25 23:33:58		script: 309 scripts for WeeChat 1.5
+2016-05-26 00:11:23		fifo: pipe closed
+2016-05-26 00:11:23		perl: scripts unloaded
+2016-06-02 21:18:39		perl scripts loaded: iset
+2016-06-02 21:18:39		script: downloading list of scripts...
+2016-06-02 21:18:39		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-02 21:18:40		script: 309 scripts for WeeChat 1.5
+2016-06-02 21:39:55		fifo: pipe closed
+2016-06-02 21:39:55		perl: scripts unloaded
+2016-06-03 01:51:43		perl scripts loaded: iset
+2016-06-03 01:51:43		script: 309 scripts for WeeChat 1.5
+2016-06-03 01:51:43		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-03 01:51:53	=!=	irc: command "join" must be executed on connected irc server
+2016-06-03 01:57:32		fifo: pipe closed
+2016-06-03 01:57:32		perl: scripts unloaded
+2016-06-04 21:34:35		perl scripts loaded: iset
+2016-06-04 21:34:35		script: downloading list of scripts...
+2016-06-04 21:34:35		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-04 21:34:36		script: 309 scripts for WeeChat 1.5
+2016-06-04 21:46:35		fifo: pipe closed
+2016-06-04 21:46:35		perl: scripts unloaded
+2016-06-05 20:22:28		perl scripts loaded: iset
+2016-06-05 20:22:28		script: 309 scripts for WeeChat 1.5
+2016-06-05 20:22:28		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-05 20:53:39		fifo: pipe closed
+2016-06-05 20:53:39		perl: scripts unloaded
+2016-06-10 22:36:54		perl scripts loaded: iset
+2016-06-10 22:36:54		script: downloading list of scripts...
+2016-06-10 22:36:54		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-10 22:36:54		script: 309 scripts for WeeChat 1.5
+2016-06-10 23:37:05		fifo: pipe closed
+2016-06-10 23:37:05		perl: scripts unloaded
+2016-06-11 17:07:17		perl scripts loaded: iset
+2016-06-11 17:07:17		script: 309 scripts for WeeChat 1.5
+2016-06-11 17:07:17		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-11 17:39:37		fifo: pipe closed
+2016-06-11 17:39:37		perl: scripts unloaded
+2016-06-12 00:34:14		perl scripts loaded: iset
+2016-06-12 00:34:14		script: downloading list of scripts...
+2016-06-12 00:34:14		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-12 00:34:15		script: 309 scripts for WeeChat 1.5
+2016-06-12 00:44:15		fifo: pipe closed
+2016-06-12 00:44:15		perl: scripts unloaded
+2016-06-14 20:05:42		perl scripts loaded: iset
+2016-06-14 20:05:42		script: downloading list of scripts...
+2016-06-14 20:05:42		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-14 20:05:43		script: 309 scripts for WeeChat 1.5
+2016-06-14 20:21:08		fifo: pipe closed
+2016-06-14 20:21:08		perl: scripts unloaded
+2016-06-14 22:09:09		perl scripts loaded: iset
+2016-06-14 22:09:09		script: 309 scripts for WeeChat 1.5
+2016-06-14 22:09:09		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-14 22:27:05		fifo: pipe closed
+2016-06-14 22:27:05		perl: scripts unloaded
+2016-06-16 17:23:23		perl scripts loaded: iset
+2016-06-16 17:23:23		script: downloading list of scripts...
+2016-06-16 17:23:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-16 17:23:24		script: 309 scripts for WeeChat 1.5
+2016-06-16 17:35:16		fifo: pipe closed
+2016-06-16 17:35:16		perl: scripts unloaded
+2016-06-17 00:47:02		perl scripts loaded: iset
+2016-06-17 00:47:02		script: 309 scripts for WeeChat 1.5
+2016-06-17 00:47:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-17 01:04:16		fifo: pipe closed
+2016-06-17 01:04:16		perl: scripts unloaded
+2016-06-17 01:23:44		perl scripts loaded: iset
+2016-06-17 01:23:44		script: 309 scripts for WeeChat 1.5
+2016-06-17 01:23:44		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-17 01:46:36		fifo: pipe closed
+2016-06-17 01:46:36		perl: scripts unloaded
+2016-06-17 15:57:02		perl scripts loaded: iset
+2016-06-17 15:57:02		script: 309 scripts for WeeChat 1.5
+2016-06-17 15:57:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-17 16:18:22		fifo: pipe closed
+2016-06-17 16:18:22		perl: scripts unloaded
+2016-06-17 20:30:17		perl scripts loaded: iset
+2016-06-17 20:30:17		script: downloading list of scripts...
+2016-06-17 20:30:17		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-17 20:30:17		script: 309 scripts for WeeChat 1.5
+2016-06-17 20:42:45		fifo: pipe closed
+2016-06-17 20:42:45		perl: scripts unloaded
+2016-06-17 20:46:30		perl scripts loaded: iset
+2016-06-17 20:46:30		script: 309 scripts for WeeChat 1.5
+2016-06-17 20:46:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-17 21:10:33		fifo: pipe closed
+2016-06-17 21:10:33		perl: scripts unloaded
+2016-06-17 21:31:00		perl scripts loaded: iset
+2016-06-17 21:31:00		script: 309 scripts for WeeChat 1.5
+2016-06-17 21:31:00		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-17 22:11:22		fifo: pipe closed
+2016-06-17 22:11:22		perl: scripts unloaded
+2016-06-23 22:02:57		perl scripts loaded: iset
+2016-06-23 22:02:57		script: downloading list of scripts...
+2016-06-23 22:02:57		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-23 22:02:57		script: 309 scripts for WeeChat 1.5
+2016-06-23 22:03:16	=!=	irc: unable to add temporary server "#archlinux" because the addition of temporary servers with command /connect is currently disabled
+2016-06-23 22:03:16	=!=	irc: if you want to add a standard server, use the command "/server add" (see /help server); if you really want to add a temporary server (NOT SAVED), turn on the option irc.look.temporary_servers
+2016-06-23 22:28:54		fifo: pipe closed
+2016-06-23 22:28:54		perl: scripts unloaded
+2016-06-24 20:49:08		perl scripts loaded: iset
+2016-06-24 20:49:08		script: 309 scripts for WeeChat 1.5
+2016-06-24 20:49:08		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-24 21:00:19		fifo: pipe closed
+2016-06-24 21:00:19		perl: scripts unloaded
+2016-06-28 00:22:21		perl scripts loaded: iset
+2016-06-28 00:22:21		script: downloading list of scripts...
+2016-06-28 00:22:21		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-28 00:22:22		script: 309 scripts for WeeChat 1.5
+2016-06-28 00:22:32	=!=	irc: command "join" must be executed on connected irc server
+2016-06-28 00:53:56		fifo: pipe closed
+2016-06-28 00:53:56		perl: scripts unloaded
+2016-06-28 22:03:31		perl scripts loaded: iset
+2016-06-28 22:03:31		script: 309 scripts for WeeChat 1.5
+2016-06-28 22:03:31		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-28 22:25:55		fifo: pipe closed
+2016-06-28 22:25:55		perl: scripts unloaded
+2016-06-28 23:02:09		perl scripts loaded: iset
+2016-06-28 23:02:09		script: 309 scripts for WeeChat 1.5
+2016-06-28 23:02:09		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-28 23:47:46		fifo: pipe closed
+2016-06-28 23:47:46		perl: scripts unloaded
+2016-06-30 00:03:55		perl scripts loaded: iset
+2016-06-30 00:03:55		script: downloading list of scripts...
+2016-06-30 00:03:55		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-06-30 00:03:57		script: 309 scripts for WeeChat 1.5
+2016-06-30 00:04:07	=!=	irc: command "join" must be executed on connected irc server
+2016-06-30 00:24:18		fifo: pipe closed
+2016-06-30 00:24:18		perl: scripts unloaded
+2016-07-02 01:13:20		perl scripts loaded: iset
+2016-07-02 01:13:20		script: downloading list of scripts...
+2016-07-02 01:13:20		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-02 01:13:24		script: 309 scripts for WeeChat 1.5
+2016-07-02 01:16:18		fifo: pipe closed
+2016-07-02 01:16:18		perl: scripts unloaded
+2016-07-02 01:16:20		perl scripts loaded: iset
+2016-07-02 01:16:20		script: 309 scripts for WeeChat 1.5
+2016-07-02 01:16:20		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-02 01:44:14		fifo: pipe closed
+2016-07-02 01:44:14		perl: scripts unloaded
+2016-07-02 17:07:35		perl scripts loaded: iset
+2016-07-02 17:07:35		script: 309 scripts for WeeChat 1.5
+2016-07-02 17:07:35		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-02 17:19:47		fifo: pipe closed
+2016-07-02 17:19:47		perl: scripts unloaded
+2016-07-02 18:28:22		perl scripts loaded: iset
+2016-07-02 18:28:22		script: 309 scripts for WeeChat 1.5
+2016-07-02 18:28:22		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-02 19:45:09		fifo: pipe closed
+2016-07-02 19:45:09		perl: scripts unloaded
+2016-07-02 23:00:55		perl scripts loaded: iset
+2016-07-02 23:00:55		script: 309 scripts for WeeChat 1.5
+2016-07-02 23:00:55		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-02 23:31:53		fifo: pipe closed
+2016-07-02 23:31:53		perl: scripts unloaded
+2016-07-03 19:56:10		perl scripts loaded: iset
+2016-07-03 19:56:11		script: downloading list of scripts...
+2016-07-03 19:56:11		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-03 19:56:12		script: 309 scripts for WeeChat 1.5
+2016-07-03 20:37:49		fifo: pipe closed
+2016-07-03 20:37:49		perl: scripts unloaded
+2016-07-04 21:32:29		perl scripts loaded: iset
+2016-07-04 21:32:29		script: downloading list of scripts...
+2016-07-04 21:32:29		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-04 21:32:34		script: 309 scripts for WeeChat 1.5
+2016-07-04 21:41:51		fifo: pipe closed
+2016-07-04 21:41:51		perl: scripts unloaded
+2016-07-05 01:06:05		perl scripts loaded: iset
+2016-07-05 01:06:05		script: 309 scripts for WeeChat 1.5
+2016-07-05 01:06:05		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-05 01:33:36		fifo: pipe closed
+2016-07-05 01:33:36		perl: scripts unloaded
+2016-07-06 21:13:41		perl scripts loaded: iset
+2016-07-06 21:13:41		script: downloading list of scripts...
+2016-07-06 21:13:41		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-06 21:13:41		script: 309 scripts for WeeChat 1.5
+2016-07-06 21:32:57		fifo: pipe closed
+2016-07-06 21:32:57		perl: scripts unloaded
+2016-07-08 23:18:14		perl scripts loaded: iset
+2016-07-08 23:18:14		script: downloading list of scripts...
+2016-07-08 23:18:14		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-08 23:18:14		script: 309 scripts for WeeChat 1.5
+2016-07-08 23:33:07		fifo: pipe closed
+2016-07-08 23:33:07		perl: scripts unloaded
+2016-07-12 00:15:25		perl scripts loaded: iset
+2016-07-12 00:15:25		script: downloading list of scripts...
+2016-07-12 00:15:25		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-12 00:15:28		script: 309 scripts for WeeChat 1.5
+2016-07-12 00:23:44		fifo: pipe closed
+2016-07-12 00:23:44		perl: scripts unloaded
+2016-07-14 22:03:07		perl scripts loaded: iset
+2016-07-14 22:03:07		script: downloading list of scripts...
+2016-07-14 22:03:07		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-14 22:03:07		script: 309 scripts for WeeChat 1.5
+2016-07-14 22:14:46		fifo: pipe closed
+2016-07-14 22:14:46		perl: scripts unloaded
+2016-07-17 15:24:58		perl scripts loaded: iset
+2016-07-17 15:24:58		script: downloading list of scripts...
+2016-07-17 15:24:58		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-17 15:24:58		script: 309 scripts for WeeChat 1.5
+2016-07-17 15:57:38		fifo: pipe closed
+2016-07-17 15:57:38		perl: scripts unloaded
+2016-07-17 16:25:00		perl scripts loaded: iset
+2016-07-17 16:25:00		script: 309 scripts for WeeChat 1.5
+2016-07-17 16:25:00		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-17 16:53:29		fifo: pipe closed
+2016-07-17 16:53:29		perl: scripts unloaded
+2016-07-17 20:54:47		perl scripts loaded: iset
+2016-07-17 20:54:48		script: 309 scripts for WeeChat 1.5
+2016-07-17 20:54:48		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-17 21:01:19		fifo: pipe closed
+2016-07-17 21:01:19		perl: scripts unloaded
+2016-07-19 23:46:40		perl scripts loaded: iset
+2016-07-19 23:46:40		script: downloading list of scripts...
+2016-07-19 23:46:40		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-19 23:46:41		script: 309 scripts for WeeChat 1.5
+2016-07-20 00:41:29		fifo: pipe closed
+2016-07-20 00:41:29		perl: scripts unloaded
+2016-07-20 23:59:05		perl scripts loaded: iset
+2016-07-20 23:59:06		script: downloading list of scripts...
+2016-07-20 23:59:06		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-20 23:59:06		script: 309 scripts for WeeChat 1.5
+2016-07-21 00:11:18		fifo: pipe closed
+2016-07-21 00:11:18		perl: scripts unloaded
+2016-07-21 01:18:30		perl scripts loaded: iset
+2016-07-21 01:18:30		script: 309 scripts for WeeChat 1.5
+2016-07-21 01:18:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-21 01:22:25		fifo: pipe closed
+2016-07-21 01:22:25		perl: scripts unloaded
+2016-07-21 16:11:23		perl scripts loaded: iset
+2016-07-21 16:11:23		script: 309 scripts for WeeChat 1.5
+2016-07-21 16:11:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-21 16:55:02		fifo: pipe closed
+2016-07-21 16:55:02		perl: scripts unloaded
+2016-07-23 22:55:30		perl scripts loaded: iset
+2016-07-23 22:55:30		script: downloading list of scripts...
+2016-07-23 22:55:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-23 22:55:30		script: 309 scripts for WeeChat 1.5
+2016-07-23 23:09:17		fifo: pipe closed
+2016-07-23 23:09:17		perl: scripts unloaded
+2016-07-24 02:34:54		perl scripts loaded: iset
+2016-07-24 02:34:55		script: 309 scripts for WeeChat 1.5
+2016-07-24 02:34:55		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-24 02:43:03		fifo: pipe closed
+2016-07-24 02:43:03		perl: scripts unloaded
+2016-07-24 17:37:47		perl scripts loaded: iset
+2016-07-24 17:37:47		script: 309 scripts for WeeChat 1.5
+2016-07-24 17:37:47		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-24 17:47:04		fifo: pipe closed
+2016-07-24 17:47:04		perl: scripts unloaded
+2016-07-27 21:25:02		perl scripts loaded: iset
+2016-07-27 21:25:02		script: downloading list of scripts...
+2016-07-27 21:25:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-27 21:25:02		script: 309 scripts for WeeChat 1.5
+2016-07-27 21:34:20		fifo: pipe closed
+2016-07-27 21:34:20		perl: scripts unloaded
+2016-07-27 21:34:21		perl scripts loaded: iset
+2016-07-27 21:34:21		script: 309 scripts for WeeChat 1.5
+2016-07-27 21:34:21		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-27 21:42:40		fifo: pipe closed
+2016-07-27 21:42:40		perl: scripts unloaded
+2016-07-28 20:39:20		perl scripts loaded: iset
+2016-07-28 20:39:20		script: 309 scripts for WeeChat 1.5
+2016-07-28 20:39:20		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-07-28 20:57:48		fifo: pipe closed
+2016-07-28 20:57:48		perl: scripts unloaded
+2016-08-02 15:34:31		perl scripts loaded: iset
+2016-08-02 15:34:31		script: downloading list of scripts...
+2016-08-02 15:34:31		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-02 15:34:32		script: 310 scripts for WeeChat 1.5
+2016-08-02 15:40:52		fifo: pipe closed
+2016-08-02 15:40:52		perl: scripts unloaded
+2016-08-02 16:22:46		perl scripts loaded: iset
+2016-08-02 16:22:46		script: 310 scripts for WeeChat 1.5
+2016-08-02 16:22:46		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-02 16:32:32		fifo: pipe closed
+2016-08-02 16:32:32		perl: scripts unloaded
+2016-08-03 14:26:14		perl scripts loaded: iset
+2016-08-03 14:26:14		script: 310 scripts for WeeChat 1.5
+2016-08-03 14:26:14		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-03 14:33:45		fifo: pipe closed
+2016-08-03 14:33:45		perl: scripts unloaded
+2016-08-04 20:45:45		perl scripts loaded: iset
+2016-08-04 20:45:45		script: downloading list of scripts...
+2016-08-04 20:45:45		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-04 20:45:45		script: 310 scripts for WeeChat 1.5
+2016-08-04 20:53:42		fifo: pipe closed
+2016-08-04 20:53:42		perl: scripts unloaded
+2016-08-06 00:20:37		perl scripts loaded: iset
+2016-08-06 00:20:37		script: downloading list of scripts...
+2016-08-06 00:20:37		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-06 00:20:38		script: 310 scripts for WeeChat 1.5
+2016-08-06 00:32:52		fifo: pipe closed
+2016-08-06 00:32:52		perl: scripts unloaded
+2016-08-07 01:44:51		perl scripts loaded: iset
+2016-08-07 01:44:51		script: downloading list of scripts...
+2016-08-07 01:44:51		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-07 01:44:51		script: 310 scripts for WeeChat 1.5
+2016-08-07 01:54:16		fifo: pipe closed
+2016-08-07 01:54:16		perl: scripts unloaded
+2016-08-07 16:53:25		perl scripts loaded: iset
+2016-08-07 16:53:25		script: 310 scripts for WeeChat 1.5
+2016-08-07 16:53:25		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-07 16:53:45	=!=	irc: command "join" must be executed on connected irc server
+2016-08-07 17:18:50		fifo: pipe closed
+2016-08-07 17:18:50		perl: scripts unloaded
+2016-08-07 23:01:10		perl scripts loaded: iset
+2016-08-07 23:01:10		script: 310 scripts for WeeChat 1.5
+2016-08-07 23:01:10		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-07 23:13:02		fifo: pipe closed
+2016-08-07 23:13:03		perl: scripts unloaded
+2016-08-08 01:11:26		perl scripts loaded: iset
+2016-08-08 01:11:26		script: 310 scripts for WeeChat 1.5
+2016-08-08 01:11:26		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-08 01:25:51		fifo: pipe closed
+2016-08-08 01:25:51		perl: scripts unloaded
+2016-08-10 22:37:56		perl scripts loaded: iset
+2016-08-10 22:37:56		script: downloading list of scripts...
+2016-08-10 22:37:56		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-10 22:37:57		script: 310 scripts for WeeChat 1.5
+2016-08-10 22:47:36		fifo: pipe closed
+2016-08-10 22:47:36		perl: scripts unloaded
+2016-08-10 23:08:31		perl scripts loaded: iset
+2016-08-10 23:08:31		script: 310 scripts for WeeChat 1.5
+2016-08-10 23:08:31		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-10 23:21:20		fifo: pipe closed
+2016-08-10 23:21:20		perl: scripts unloaded
+2016-08-12 02:18:52		perl scripts loaded: iset
+2016-08-12 02:18:52		script: downloading list of scripts...
+2016-08-12 02:18:52		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-12 02:18:53		script: 310 scripts for WeeChat 1.5
+2016-08-12 02:32:27		fifo: pipe closed
+2016-08-12 02:32:27		perl: scripts unloaded
+2016-08-17 17:27:01		perl scripts loaded: iset
+2016-08-17 17:27:02		script: downloading list of scripts...
+2016-08-17 17:27:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-17 17:27:02		script: 310 scripts for WeeChat 1.5
+2016-08-17 17:42:18		fifo: pipe closed
+2016-08-17 17:42:18		perl: scripts unloaded
+2016-08-18 00:14:30		perl scripts loaded: iset
+2016-08-18 00:14:30		script: 310 scripts for WeeChat 1.5
+2016-08-18 00:14:30		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-18 00:24:21		fifo: pipe closed
+2016-08-18 00:24:21		perl: scripts unloaded
+2016-08-18 19:32:31		perl scripts loaded: iset
+2016-08-18 19:32:31		script: downloading list of scripts...
+2016-08-18 19:32:31		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-18 19:32:31		script: 310 scripts for WeeChat 1.5
+2016-08-18 20:00:52		fifo: pipe closed
+2016-08-18 20:00:52		perl: scripts unloaded
+2016-08-24 22:58:28		perl scripts loaded: iset
+2016-08-24 22:58:28		script: downloading list of scripts...
+2016-08-24 22:58:28		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-24 22:58:29		script: 310 scripts for WeeChat 1.5
+2016-08-24 23:07:57		fifo: pipe closed
+2016-08-24 23:07:57		perl: scripts unloaded
+2016-08-25 20:10:36		perl scripts loaded: iset
+2016-08-25 20:10:37		script: 310 scripts for WeeChat 1.5
+2016-08-25 20:10:37		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-25 20:16:44		fifo: pipe closed
+2016-08-25 20:16:44		perl: scripts unloaded
+2016-08-26 19:50:40		perl scripts loaded: iset
+2016-08-26 19:50:40		script: downloading list of scripts...
+2016-08-26 19:50:40		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-26 19:50:40		script: 310 scripts for WeeChat 1.5
+2016-08-26 19:57:52		fifo: pipe closed
+2016-08-26 19:57:52		perl: scripts unloaded
+2016-08-26 22:29:15		perl scripts loaded: iset
+2016-08-26 22:29:16		script: 310 scripts for WeeChat 1.5
+2016-08-26 22:29:16		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-26 22:50:58		fifo: pipe closed
+2016-08-26 22:50:58		perl: scripts unloaded
+2016-08-27 02:28:08		perl scripts loaded: iset
+2016-08-27 02:28:08		script: 310 scripts for WeeChat 1.5
+2016-08-27 02:28:08		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-27 02:42:17		fifo: pipe closed
+2016-08-27 02:42:17		perl: scripts unloaded
+2016-08-28 16:45:09		perl scripts loaded: iset
+2016-08-28 16:45:09		script: downloading list of scripts...
+2016-08-28 16:45:09		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-28 16:45:09		script: 310 scripts for WeeChat 1.5
+2016-08-28 17:02:26		fifo: pipe closed
+2016-08-28 17:02:26		perl: scripts unloaded
+2016-08-29 22:29:13		perl scripts loaded: iset
+2016-08-29 22:29:13		script: downloading list of scripts...
+2016-08-29 22:29:13		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-29 22:29:14		script: 310 scripts for WeeChat 1.5
+2016-08-29 22:52:24		fifo: pipe closed
+2016-08-29 22:52:24		perl: scripts unloaded
+2016-08-29 23:42:36		perl scripts loaded: iset
+2016-08-29 23:42:36		script: 310 scripts for WeeChat 1.5
+2016-08-29 23:42:36		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-08-29 23:48:48		fifo: pipe closed
+2016-08-29 23:48:48		perl: scripts unloaded
+2016-09-01 00:00:28		perl scripts loaded: iset
+2016-09-01 00:00:28		script: downloading list of scripts...
+2016-09-01 00:00:28		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-01 00:00:29		script: 310 scripts for WeeChat 1.5
+2016-09-01 00:00:31		fifo: pipe closed
+2016-09-01 00:00:31		perl: scripts unloaded
+2016-09-01 00:00:33		perl scripts loaded: iset
+2016-09-01 00:00:33		script: 310 scripts for WeeChat 1.5
+2016-09-01 00:00:33		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-01 00:04:59		fifo: pipe closed
+2016-09-01 00:04:59		perl: scripts unloaded
+2016-09-11 21:47:49		perl scripts loaded: iset
+2016-09-11 21:47:49		script: downloading list of scripts...
+2016-09-11 21:47:49		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-11 21:47:49		script: 310 scripts for WeeChat 1.5
+2016-09-11 22:02:49		fifo: pipe closed
+2016-09-11 22:02:49		perl: scripts unloaded
+2016-09-16 20:09:19		perl scripts loaded: iset
+2016-09-16 20:09:19		script: downloading list of scripts...
+2016-09-16 20:09:19		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-16 20:09:19		script: 310 scripts for WeeChat 1.5
+2016-09-16 20:48:59		fifo: pipe closed
+2016-09-16 20:48:59		perl: scripts unloaded
+2016-09-18 15:26:01		perl scripts loaded: iset
+2016-09-18 15:26:01		script: downloading list of scripts...
+2016-09-18 15:26:01		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-18 15:26:02		script: 310 scripts for WeeChat 1.5
+2016-09-18 15:36:31		fifo: pipe closed
+2016-09-18 15:36:31		perl: scripts unloaded
+2016-09-18 21:41:54		perl scripts loaded: iset
+2016-09-18 21:41:54		script: 310 scripts for WeeChat 1.5
+2016-09-18 21:41:54		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-18 21:58:29		fifo: pipe closed
+2016-09-18 21:58:29		perl: scripts unloaded
+2016-09-18 23:07:25		perl scripts loaded: iset
+2016-09-18 23:07:25		script: 310 scripts for WeeChat 1.5
+2016-09-18 23:07:25		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-18 23:32:06		fifo: pipe closed
+2016-09-18 23:32:06		perl: scripts unloaded
+2016-09-19 14:25:01		perl scripts loaded: iset
+2016-09-19 14:25:02		script: 310 scripts for WeeChat 1.5
+2016-09-19 14:25:02		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-19 15:50:01		fifo: pipe closed
+2016-09-19 15:50:01		perl: scripts unloaded
+2016-09-20 21:10:19		perl scripts loaded: iset
+2016-09-20 21:10:19		script: downloading list of scripts...
+2016-09-20 21:10:19		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-20 21:10:19		script: 310 scripts for WeeChat 1.5
+2016-09-20 21:29:34		fifo: pipe closed
+2016-09-20 21:29:34		perl: scripts unloaded
+2016-09-26 16:03:10		perl scripts loaded: iset
+2016-09-26 16:03:10		script: downloading list of scripts...
+2016-09-26 16:03:10		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-26 16:03:11		script: 310 scripts for WeeChat 1.5
+2016-09-26 16:03:36		fifo: pipe closed
+2016-09-26 16:03:36		perl: scripts unloaded
+2016-09-26 16:03:38		perl scripts loaded: iset
+2016-09-26 16:03:38		script: 310 scripts for WeeChat 1.5
+2016-09-26 16:03:38		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-26 16:08:47		fifo: pipe closed
+2016-09-26 16:08:47		perl: scripts unloaded
+2016-09-28 16:31:13		perl scripts loaded: iset
+2016-09-28 16:31:13		script: downloading list of scripts...
+2016-09-28 16:31:13		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-09-28 16:31:14		script: 310 scripts for WeeChat 1.5
+2016-09-28 16:47:34		fifo: pipe closed
+2016-09-28 16:47:34		perl: scripts unloaded
+2016-10-01 18:34:10		perl scripts loaded: iset
+2016-10-01 18:34:11		script: downloading list of scripts...
+2016-10-01 18:34:11		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-01 18:34:11		script: 310 scripts for WeeChat 1.5
+2016-10-01 18:52:07		fifo: pipe closed
+2016-10-01 18:52:07		perl: scripts unloaded
+2016-10-01 20:12:31		perl scripts loaded: iset
+2016-10-01 20:12:31		script: 310 scripts for WeeChat 1.5
+2016-10-01 20:12:31		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-01 20:24:03		fifo: pipe closed
+2016-10-01 20:24:03		perl: scripts unloaded
+2016-10-02 01:34:07		perl scripts loaded: iset
+2016-10-02 01:34:07		script: 310 scripts for WeeChat 1.5
+2016-10-02 01:34:07		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-02 01:34:17	=!=	irc: command "join" must be executed on connected irc server
+2016-10-02 01:40:36		fifo: pipe closed
+2016-10-02 01:40:36		perl: scripts unloaded
+2016-10-02 18:56:47		perl scripts loaded: iset
+2016-10-02 18:56:47		script: downloading list of scripts...
+2016-10-02 18:56:47		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-02 18:56:47		script: 310 scripts for WeeChat 1.5
+2016-10-02 19:07:45		fifo: pipe closed
+2016-10-02 19:07:45		perl: scripts unloaded
+2016-10-02 20:14:33		perl scripts loaded: iset
+2016-10-02 20:14:33		script: 310 scripts for WeeChat 1.5
+2016-10-02 20:14:33		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-02 20:27:36		fifo: pipe closed
+2016-10-02 20:27:36		perl: scripts unloaded
+2016-10-03 13:53:50		perl scripts loaded: iset
+2016-10-03 13:53:50		script: 310 scripts for WeeChat 1.5
+2016-10-03 13:53:50		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-03 14:07:10		fifo: pipe closed
+2016-10-03 14:07:10		perl: scripts unloaded
+2016-10-04 17:00:12		perl scripts loaded: iset
+2016-10-04 17:00:13		script: downloading list of scripts...
+2016-10-04 17:00:13		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-04 17:00:13		script: 310 scripts for WeeChat 1.5
+2016-10-04 17:00:20	=!=	irc: command "join" must be executed on connected irc server
+2016-10-04 17:07:58		fifo: pipe closed
+2016-10-04 17:07:58		perl: scripts unloaded
+2016-10-04 18:45:58		perl scripts loaded: iset
+2016-10-04 18:45:58		script: 310 scripts for WeeChat 1.5
+2016-10-04 18:45:58		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-04 19:10:21		fifo: pipe closed
+2016-10-04 19:10:21		perl: scripts unloaded
+2016-10-05 13:36:54		perl scripts loaded: iset
+2016-10-05 13:36:55		script: 310 scripts for WeeChat 1.5
+2016-10-05 13:36:55		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-05 13:56:08		fifo: pipe closed
+2016-10-05 13:56:08		perl: scripts unloaded
+2016-10-06 00:23:42		perl scripts loaded: iset
+2016-10-06 00:23:42		script: downloading list of scripts...
+2016-10-06 00:23:42		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-06 00:23:42		script: 310 scripts for WeeChat 1.5
+2016-10-06 00:53:43		fifo: pipe closed
+2016-10-06 00:53:43		perl: scripts unloaded
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 118: unknown option for section "server_default": default_msg_kick = ""
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 119: unknown option for section "server_default": default_msg_part = "WeeChat %v"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 120: unknown option for section "server_default": default_msg_quit = "WeeChat %v"
+2016-10-10 14:40:20	=!=	irc: error creating server option "freenode-ssl.default_msg_kick"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 179: invalid value for option: freenode-ssl.default_msg_kick
+2016-10-10 14:40:20	=!=	irc: error creating server option "freenode-ssl.default_msg_part"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 180: invalid value for option: freenode-ssl.default_msg_part
+2016-10-10 14:40:20	=!=	irc: error creating server option "freenode-ssl.default_msg_quit"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 181: invalid value for option: freenode-ssl.default_msg_quit
+2016-10-10 14:40:20	=!=	irc: error creating server option "debian.default_msg_kick"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 218: invalid value for option: debian.default_msg_kick
+2016-10-10 14:40:20	=!=	irc: error creating server option "debian.default_msg_part"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 219: invalid value for option: debian.default_msg_part
+2016-10-10 14:40:20	=!=	irc: error creating server option "debian.default_msg_quit"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 220: invalid value for option: debian.default_msg_quit
+2016-10-10 14:40:20	=!=	irc: error creating server option "irc.debian.org.default_msg_kick"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 257: invalid value for option: irc.debian.org.default_msg_kick
+2016-10-10 14:40:20	=!=	irc: error creating server option "irc.debian.org.default_msg_part"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 258: invalid value for option: irc.debian.org.default_msg_part
+2016-10-10 14:40:20	=!=	irc: error creating server option "irc.debian.org.default_msg_quit"
+2016-10-10 14:40:20	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 259: invalid value for option: irc.debian.org.default_msg_quit
+2016-10-10 14:40:20		perl scripts loaded: iset
+2016-10-10 14:40:20		script: downloading list of scripts...
+2016-10-10 14:40:20		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-10 14:40:20		script: 310 scripts for WeeChat 1.6
+2016-10-10 15:53:46		fifo: pipe closed
+2016-10-10 15:53:46		perl: scripts unloaded
+2016-10-10 20:05:54		perl scripts loaded: iset
+2016-10-10 20:05:54		script: 310 scripts for WeeChat 1.6
+2016-10-10 20:05:54		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-10 20:07:56		fifo: pipe closed
+2016-10-10 20:07:56		perl: scripts unloaded
+2016-10-11 20:06:43		perl scripts loaded: iset
+2016-10-11 20:06:43		script: downloading list of scripts...
+2016-10-11 20:06:43		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-11 20:06:44		script: 310 scripts for WeeChat 1.6
+2016-10-11 20:21:08		fifo: pipe closed
+2016-10-11 20:21:08		perl: scripts unloaded
+2016-10-12 16:03:46		perl scripts loaded: iset
+2016-10-12 16:03:46		script: 310 scripts for WeeChat 1.6
+2016-10-12 16:03:46		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-12 16:31:55		fifo: pipe closed
+2016-10-12 16:31:55		perl: scripts unloaded
+2016-10-15 15:21:25		perl scripts loaded: iset
+2016-10-15 15:21:25		script: downloading list of scripts...
+2016-10-15 15:21:25		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-15 15:21:26		script: 310 scripts for WeeChat 1.6
+2016-10-15 16:40:00		fifo: pipe closed
+2016-10-15 16:40:00		perl: scripts unloaded
+2016-10-15 18:26:22		perl scripts loaded: iset
+2016-10-15 18:26:22		script: 310 scripts for WeeChat 1.6
+2016-10-15 18:26:22		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-15 18:44:34		fifo: pipe closed
+2016-10-15 18:44:34		perl: scripts unloaded
+2016-10-17 02:00:06		perl scripts loaded: iset
+2016-10-17 02:00:06		script: downloading list of scripts...
+2016-10-17 02:00:06		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-17 02:00:12		script: 310 scripts for WeeChat 1.6
+2016-10-17 02:00:24	=!=	irc: command "join" must be executed on connected irc server
+2016-10-17 02:12:21		fifo: pipe closed
+2016-10-17 02:12:21		perl: scripts unloaded
+2016-10-17 12:57:55		perl scripts loaded: iset
+2016-10-17 12:57:55		script: 310 scripts for WeeChat 1.6
+2016-10-17 12:57:55		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-17 13:20:16		fifo: pipe closed
+2016-10-17 13:20:16		perl: scripts unloaded
+2016-10-18 20:01:53		perl scripts loaded: iset
+2016-10-18 20:01:53		script: downloading list of scripts...
+2016-10-18 20:01:53		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-18 20:01:53		script: 310 scripts for WeeChat 1.6
+2016-10-18 20:13:21		fifo: pipe closed
+2016-10-18 20:13:21		perl: scripts unloaded
+2016-10-18 23:09:05		perl scripts loaded: iset
+2016-10-18 23:09:05		script: 310 scripts for WeeChat 1.6
+2016-10-18 23:09:05		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-18 23:33:47		fifo: pipe closed
+2016-10-18 23:33:47		perl: scripts unloaded
+2016-10-19 00:16:03		perl scripts loaded: iset
+2016-10-19 00:16:03		script: 310 scripts for WeeChat 1.6
+2016-10-19 00:16:03		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-19 00:33:32		fifo: pipe closed
+2016-10-19 00:33:32		perl: scripts unloaded
+2016-10-19 15:16:51		perl scripts loaded: iset
+2016-10-19 15:16:51		script: 310 scripts for WeeChat 1.6
+2016-10-19 15:16:51		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-19 16:52:01		fifo: pipe closed
+2016-10-19 16:52:01		perl: scripts unloaded
+2016-10-19 23:26:35		perl scripts loaded: iset
+2016-10-19 23:26:35		script: downloading list of scripts...
+2016-10-19 23:26:35		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-19 23:26:40		script: 310 scripts for WeeChat 1.6
+2016-10-19 23:56:32		fifo: pipe closed
+2016-10-19 23:56:32		perl: scripts unloaded
+2016-10-20 16:53:17		perl scripts loaded: iset
+2016-10-20 16:53:17		script: 310 scripts for WeeChat 1.6
+2016-10-20 16:53:17		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-20 17:18:43		fifo: pipe closed
+2016-10-20 17:18:43		perl: scripts unloaded
+2016-10-20 23:51:29		perl scripts loaded: iset
+2016-10-20 23:51:29		script: downloading list of scripts...
+2016-10-20 23:51:29		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-20 23:51:33		script: 310 scripts for WeeChat 1.6
+2016-10-21 00:02:34		fifo: pipe closed
+2016-10-21 00:02:34		perl: scripts unloaded
+2016-10-25 18:03:08		perl scripts loaded: iset
+2016-10-25 18:03:08		script: downloading list of scripts...
+2016-10-25 18:03:08		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-25 18:03:10		script: 311 scripts for WeeChat 1.6
+2016-10-25 18:22:18		fifo: pipe closed
+2016-10-25 18:22:18		perl: scripts unloaded
+2016-10-25 22:30:45		perl scripts loaded: iset
+2016-10-25 22:30:45		script: 311 scripts for WeeChat 1.6
+2016-10-25 22:30:45		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-25 23:00:47		fifo: pipe closed
+2016-10-25 23:00:47		perl: scripts unloaded
+2016-10-26 00:24:19		perl scripts loaded: iset
+2016-10-26 00:24:19		script: 311 scripts for WeeChat 1.6
+2016-10-26 00:24:19		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-26 00:36:06		fifo: pipe closed
+2016-10-26 00:36:06		perl: scripts unloaded
+2016-10-26 14:44:43		perl scripts loaded: iset
+2016-10-26 14:44:43		script: 311 scripts for WeeChat 1.6
+2016-10-26 14:44:43		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-26 15:13:32		fifo: pipe closed
+2016-10-26 15:13:32		perl: scripts unloaded
+2016-10-26 15:33:14		perl scripts loaded: iset
+2016-10-26 15:33:14		script: 311 scripts for WeeChat 1.6
+2016-10-26 15:33:14		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-26 16:17:54		fifo: pipe closed
+2016-10-26 16:17:54		perl: scripts unloaded
+2016-10-29 11:51:22		perl scripts loaded: iset
+2016-10-29 11:51:22		script: downloading list of scripts...
+2016-10-29 11:51:22		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-29 11:51:26		script: 314 scripts for WeeChat 1.6
+2016-10-29 11:59:59		fifo: pipe closed
+2016-10-29 11:59:59		perl: scripts unloaded
+2016-10-29 16:08:57		perl scripts loaded: iset
+2016-10-29 16:08:57		script: 314 scripts for WeeChat 1.6
+2016-10-29 16:08:57		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-29 16:18:47		fifo: pipe closed
+2016-10-29 16:18:47		perl: scripts unloaded
+2016-10-29 16:42:10		perl scripts loaded: iset
+2016-10-29 16:42:10		script: 314 scripts for WeeChat 1.6
+2016-10-29 16:42:10		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-10-29 17:39:37		fifo: pipe closed
+2016-10-29 17:39:37		perl: scripts unloaded
+2016-11-02 14:03:06		perl scripts loaded: iset
+2016-11-02 14:03:06		script: downloading list of scripts...
+2016-11-02 14:03:06		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-02 14:03:07		script: 326 scripts for WeeChat 1.6
+2016-11-02 14:47:50		fifo: pipe closed
+2016-11-02 14:47:50		perl: scripts unloaded
+2016-11-02 20:15:29		perl scripts loaded: iset
+2016-11-02 20:15:29		script: 326 scripts for WeeChat 1.6
+2016-11-02 20:15:29		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-02 20:37:34		fifo: pipe closed
+2016-11-02 20:37:34		perl: scripts unloaded
+2016-11-04 00:16:42		perl scripts loaded: iset
+2016-11-04 00:16:42		script: downloading list of scripts...
+2016-11-04 00:16:42		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-04 00:16:45		script: 326 scripts for WeeChat 1.6
+2016-11-04 00:56:09		fifo: pipe closed
+2016-11-04 00:56:09		perl: scripts unloaded
+2016-11-04 01:48:39		perl scripts loaded: iset
+2016-11-04 01:48:39		script: 326 scripts for WeeChat 1.6
+2016-11-04 01:48:39		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-04 02:04:54		fifo: pipe closed
+2016-11-04 02:04:54		perl: scripts unloaded
+2016-11-04 23:33:52		perl scripts loaded: iset
+2016-11-04 23:33:52		script: 326 scripts for WeeChat 1.6
+2016-11-04 23:33:52		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-04 23:49:43		fifo: pipe closed
+2016-11-04 23:49:43		perl: scripts unloaded
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/relay.conf, line 21: unknown option for section "network": allow_empty_password = off
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/relay.conf, line 30: unknown option for section "network": ssl_priorities = "NORMAL:-VERS-SSL3.0"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/relay.conf, line 37: unknown option for section "irc": backlog_since_last_message = off
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/script.conf, line 46: unknown option for section "scripts": download_timeout = 30
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/script.conf, line 48: unknown option for section "scripts": path = "%h/script"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/script.conf, line 50: unknown option for section "scripts": url_force_https = on
+2016-11-05 20:42:48		script: downloading list of scripts...
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 6: unknown option for section "look": buffer_open_before_autojoin = on
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 7: unknown option for section "look": buffer_open_before_join = off
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 59: unknown option for section "look": temporary_servers = off
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 74: unknown option for section "color": topic_current = default
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 82: unknown option for section "network": channel_encode = off
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 92: unknown option for section "network": sasl_fail_unavailable = on
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 120: unknown option for section "server_default": msg_kick = ""
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 121: unknown option for section "server_default": msg_part = "WeeChat ${info:version}"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 122: unknown option for section "server_default": msg_quit = "WeeChat ${info:version}"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 124: unknown option for section "server_default": nicks_alternate = on
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 129: unknown option for section "server_default": sasl_fail = continue
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 130: unknown option for section "server_default": sasl_key = ""
+2016-11-05 20:42:48	=!=	irc: error creating server option "freenode-ssl.sasl_key"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 158: invalid value for option: freenode-ssl.sasl_key
+2016-11-05 20:42:48	=!=	irc: error creating server option "freenode-ssl.sasl_fail"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 160: invalid value for option: freenode-ssl.sasl_fail
+2016-11-05 20:42:48	=!=	irc: error creating server option "freenode-ssl.nicks_alternate"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 165: invalid value for option: freenode-ssl.nicks_alternate
+2016-11-05 20:42:48	=!=	irc: error creating server option "freenode-ssl.msg_kick"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 179: invalid value for option: freenode-ssl.msg_kick
+2016-11-05 20:42:48	=!=	irc: error creating server option "freenode-ssl.msg_part"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 180: invalid value for option: freenode-ssl.msg_part
+2016-11-05 20:42:48	=!=	irc: error creating server option "freenode-ssl.msg_quit"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 181: invalid value for option: freenode-ssl.msg_quit
+2016-11-05 20:42:48	=!=	irc: error creating server option "debian.sasl_key"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 197: invalid value for option: debian.sasl_key
+2016-11-05 20:42:48	=!=	irc: error creating server option "debian.sasl_fail"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 199: invalid value for option: debian.sasl_fail
+2016-11-05 20:42:48	=!=	irc: error creating server option "debian.nicks_alternate"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 204: invalid value for option: debian.nicks_alternate
+2016-11-05 20:42:48	=!=	irc: error creating server option "debian.msg_kick"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 218: invalid value for option: debian.msg_kick
+2016-11-05 20:42:48	=!=	irc: error creating server option "debian.msg_part"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 219: invalid value for option: debian.msg_part
+2016-11-05 20:42:48	=!=	irc: error creating server option "debian.msg_quit"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 220: invalid value for option: debian.msg_quit
+2016-11-05 20:42:48	=!=	irc: error creating server option "irc.debian.org.sasl_key"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 236: invalid value for option: irc.debian.org.sasl_key
+2016-11-05 20:42:48	=!=	irc: error creating server option "irc.debian.org.sasl_fail"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 238: invalid value for option: irc.debian.org.sasl_fail
+2016-11-05 20:42:48	=!=	irc: error creating server option "irc.debian.org.nicks_alternate"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 243: invalid value for option: irc.debian.org.nicks_alternate
+2016-11-05 20:42:48	=!=	irc: error creating server option "irc.debian.org.msg_kick"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 257: invalid value for option: irc.debian.org.msg_kick
+2016-11-05 20:42:48	=!=	irc: error creating server option "irc.debian.org.msg_part"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 258: invalid value for option: irc.debian.org.msg_part
+2016-11-05 20:42:48	=!=	irc: error creating server option "irc.debian.org.msg_quit"
+2016-11-05 20:42:48	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 259: invalid value for option: irc.debian.org.msg_quit
+2016-11-05 20:42:48		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-05 20:42:53		script: 320 scripts for WeeChat 1.0.1
+2016-11-05 20:43:54		script: 320 scripts for WeeChat 1.0.1
+2016-11-05 20:43:54		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-05 20:44:20		script: 320 scripts for WeeChat 1.0.1
+2016-11-05 20:44:20		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-06 21:35:37		script: downloading list of scripts...
+2016-11-06 21:35:37		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
+2016-11-06 21:35:37		script: 321 scripts for WeeChat 1.0.1

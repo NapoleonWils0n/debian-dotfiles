@@ -1,0 +1,34 @@
+2016-07-23 22:55:56	-->	NapoleonWils0n (~weechat@host86-155-48-87.range86-155.btcentralplus.com) has joined #vim
+2016-07-23 22:55:56	--	Topic for #vim is "Can't Talk? Get Registered on freenode (HOWTO: http://bit.ly/23YhaS1) | Vim 7.4.2084 http://www.vim.org | Don't ask to ask! | Use :help and :helpgrep | WIKI: http://vim.wikia.com | PASTE: http://vpaste.net/?ft=vim | DONATE: http://www.vim.org/sponsor"
+2016-07-23 22:55:56	--	Topic set by ntnn on Fri, 22 Jul 2016 20:21:46
+2016-07-23 22:55:56	--	Channel #vim: 1078 nicks (0 ops, 0 voices, 1078 normals)
+2016-07-23 22:55:56	--	PvNotice(ChanServ): vim discussion .. www.vim.org, vim.sf.net, :help
+2016-07-23 22:55:56	--	URL for #vim: http://vi-improved.org
+2016-07-23 22:55:58	--	Channel created on Sun, 26 Nov 2006 06:42:44
+2016-07-23 22:56:06	NapoleonWils0n	hi all
+2016-07-23 22:56:11	<--	somepunk (~rohinpate@174.127.169.236) has quit (Ping timeout: 240 seconds)
+2016-07-23 22:56:33	<--	armyriad (~armyriad@96-39-247-38.dhcp.mtpk.ca.charter.com) has quit (Ping timeout: 240 seconds)
+2016-07-23 22:56:36	NapoleonWils0n	looking for a pandoc markdown preview, any recommendations
+2016-07-23 22:57:07	NapoleonWils0n	i have this for previewing with w3m
+2016-07-23 22:57:09	NapoleonWils0n	map <Leader>, :w<cr>:!pandoc -f markdown -t html -s -S % \| w3m -T 'text/html'<cr>:redraw!<cr>
+2016-07-23 22:59:39	<--	dvinciguerra_ (~dvincigue@189.120.73.223) has quit (Ping timeout: 244 seconds)
+2016-07-23 23:00:12	<--	xall (~xall@ip68-230-65-100.ph.ph.cox.net) has quit (Ping timeout: 276 seconds)
+2016-07-23 23:00:21	<--	roamingdog (~notrealna@108.9.156.243) has quit (Remote host closed the connection)
+2016-07-23 23:01:06	<--	cipherocelot_ (~cipheroce@163-64-212-66.spl.org) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2016-07-23 23:01:28	ntnn	NapoleonWils0n: thats finicky. i'd suggest to either use `watch pandoc ... $file | w3m ...` or the same with entr
+2016-07-23 23:02:02	ntnn	either way, why do you need preview for markdown?
+2016-07-23 23:02:24	NapoleonWils0n	using watch thats a neat idea
+2016-07-23 23:03:22	-->	armyriad (~armyriad@96-39-247-38.dhcp.mtpk.ca.charter.com) has joined #vim
+2016-07-23 23:03:28	ntnn	but take care to quote or escape the args, otherwise watch's output will be piped into w3m and i don't know how it reacts to changing input with full new pages
+2016-07-23 23:04:02	<--	Jackneill (~Jackneill@unaffiliated/jackneill) has quit (Remote host closed the connection)
+2016-07-23 23:04:09	NapoleonWils0n	i have a w3m preview using pandoc
+2016-07-23 23:04:10	NapoleonWils0n	https://github.com/NapoleonWils0n/arch-dotfiles/blob/master/.vimrc
+2016-07-23 23:04:39	NapoleonWils0n	going to mod it and use mktemp /tmp/xxxxxx.html and then open that with chromium
+2016-07-23 23:05:27	NapoleonWils0n	got a python error trying yo use the pandoc command from vim
+2016-07-23 23:05:30	-->	unbalancedparen (~unbalance@181.229.90.43) has joined #vim
+2016-07-23 23:05:42	-->	sctskw (~sctskw@c-174-51-68-18.hsd1.co.comcast.net) has joined #vim
+2016-07-23 23:06:20	NapoleonWils0n	been trying emacs which has a good markdown preview with pandoc
+2016-07-23 23:06:25	NapoleonWils0n	wanted the same with vim
+2016-07-23 23:07:41	<--	Sixmsj (~Sixmsj@cpe-172-248-206-161.socal.res.rr.com) has quit (Quit: Sixmsj)
+2016-07-23 23:08:27	<--	solars (~solars@84-115-247-2.cable.dynamic.surfer.at) has quit (Ping timeout: 265 seconds)
+2016-07-23 23:09:17	--	irc: disconnected from server

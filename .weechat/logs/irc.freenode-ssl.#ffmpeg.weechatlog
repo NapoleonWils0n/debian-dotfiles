@@ -1,0 +1,375 @@
+2016-09-28 16:31:35	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined #ffmpeg
+2016-09-28 16:31:35	--	Topic for #ffmpeg is "Welcome to the FFmpeg USER support channel | Development channel: #ffmpeg-devel | Bug reports: http://bit.ly/cqvkhs | Wiki: https://trac.ffmpeg.org/ | FFmpeg 3.1.2 is released | FFmpeg forum: http://ffmpeg.gusari.org/ | This channel is publicly logged"
+2016-09-28 16:31:35	--	Topic set by durandal_170 (~mahol@93-142-150-122.adsl.net.t-com.hr) on Mon, 15 Aug 2016 09:10:04
+2016-09-28 16:31:35	--	Channel #ffmpeg: 370 nicks (5 ops, 1 voice, 364 normals)
+2016-09-28 16:31:35	--	PvNotice(ChanServ): When asking a question be precise, detailed and patient. If you don't receive a response, try the users mailing list. PASTE TO http://ffmpeg.pastebin.com/ ! If you are asking about CLI usage, paste the complete command and output to the paste bin.
+2016-09-28 16:31:35	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-09-28 16:31:41	<--	bf_ (~bf_@xdsl-87-79-44-208.netcologne.de) has quit (Read error: Connection reset by peer)
+2016-09-28 16:31:45	NapoleonWils0n	hi all
+2016-09-28 16:32:16	NapoleonWils0n	is there a way to suppress dts invalid timestamp errors without using log level 9 which hides everything
+2016-09-28 16:32:52	NapoleonWils0n	i can redirect output to dev null, but is there a way to disable invalid timestamp errors
+2016-09-28 16:33:44	<--	Mani_ (~quassel@2a03:b0c0:3:d0::12f:8001) has quit (Remote host closed the connection)
+2016-09-28 16:34:36	-->	eduardas_m (~eduardas_@213.197.143.19) has joined #ffmpeg
+2016-09-28 16:36:38	-->	Buster (Buster@2001:470:1f0b:1639::2) has joined #ffmpeg
+2016-09-28 16:38:00	<--	Balliad (~textual@80.79.35.95) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2016-09-28 16:41:41	-->	blop (~blop@2.105-78-194.adsl-static.isp.belgacom.be) has joined #ffmpeg
+2016-09-28 16:47:34	--	irc: disconnected from server
+2016-10-11 20:07:04	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined #ffmpeg
+2016-10-11 20:07:04	--	Topic for #ffmpeg is "Welcome to the FFmpeg USER support channel | Development channel: #ffmpeg-devel | Bug reports: http://bit.ly/cqvkhs | Wiki: https://trac.ffmpeg.org/ | FFmpeg 3.1.2 is released | FFmpeg forum: http://ffmpeg.gusari.org/ | This channel is publicly logged"
+2016-10-11 20:07:04	--	Topic set by durandal_170 (~mahol@93-142-150-122.adsl.net.t-com.hr) on Mon, 15 Aug 2016 09:10:04
+2016-10-11 20:07:04	--	Channel #ffmpeg: 352 nicks (3 ops, 1 voice, 348 normals)
+2016-10-11 20:07:04	--	PvNotice(ChanServ): When asking a question be precise, detailed and patient. If you don't receive a response, try the users mailing list. PASTE TO http://ffmpeg.pastebin.com/ ! If you are asking about CLI usage, paste the complete command and output to the paste bin.
+2016-10-11 20:07:04	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-11 20:07:09	NapoleonWils0n	hi all
+2016-10-11 20:07:25	pgorley	shapsuk: try adding --enable-hwaccel options
+2016-10-11 20:07:35	NapoleonWils0n	im getting this error recording a stream and copy the audio and video codecs into an mkv
+2016-10-11 20:07:37	NapoleonWils0n	AMF_END_OF_OBJECT in AMF_DATA_TYPE_MIXEDARRAY
+2016-10-11 20:07:50	pgorley	do a ./configure --list-hwaccels to get a list of all of them
+2016-10-11 20:07:50	shapsuk	ok give me a minute -- will also remove the existing source so that it grabs 3.1.1 or wateva is the current latest
+2016-10-11 20:08:05	shapsuk	ok cool
+2016-10-11 20:08:06	shapsuk	one sec
+2016-10-11 20:08:06	NapoleonWils0n	anyone had this error and got any tips on how to resolve it
+2016-10-11 20:08:10	pgorley	i use 3.1.3
+2016-10-11 20:08:29	shapsuk	right
+2016-10-11 20:09:54	<--	ocbtec (~ocbtec@dslb-088-075-066-222.088.075.pools.vodafone-ip.de) has quit (Quit: leaving)
+2016-10-11 20:11:30	shapsuk	--enable-hwaccel  returns unknown option
+2016-10-11 20:11:52	shapsuk	oh wait its missing an 's' at the end right?
+2016-10-11 20:11:52	pgorley	it's --enable-hwaccel=h264_videotoolbox, for example
+2016-10-11 20:11:58	shapsuk	ahh ok
+2016-10-11 20:12:05	shapsuk	thing is
+2016-10-11 20:12:09	shapsuk	when I ran it earlier
+2016-10-11 20:12:21	pgorley	like i said, do a configure --list-hwaccels to see which ones are available
+2016-10-11 20:12:24	shapsuk	I noticed while it was running that all of those hwaccels were added
+2016-10-11 20:12:33	shapsuk	all the videotoolbox ones
+2016-10-11 20:12:45	shapsuk	I can try again anyway with the latest version though
+2016-10-11 20:13:28	pgorley	in configure's output you have all those xxx_videotoolbox hwaccels under the enabled hwaccels section?
+2016-10-11 20:13:55	shapsuk	yes
+2016-10-11 20:14:11	<--	JEEB (~jeeb@kuroko.fushizen.eu) has quit (Changing host)
+2016-10-11 20:14:11	-->	JEEB (~jeeb@unaffiliated/jeeb) has joined #ffmpeg
+2016-10-11 20:14:44	shapsuk	http://pastebin.com/t0s4923C
+2016-10-11 20:14:45	pgorley	and you still get an undefined reference to av_videotoolbox_alloc_context?
+2016-10-11 20:14:52	shapsuk	I did yes
+2016-10-11 20:15:02	shapsuk	but I will try and rebuild with 3.x now
+2016-10-11 20:15:04	shapsuk	and see
+2016-10-11 20:15:53	shapsuk	I'll also add --enable-hwaccel=h264_videotoolbox --enable-hwaccel=h263_videotoolbox --enable-hwaccel=mpeg1_videotoolbox --enable-hwaccel=mpeg4_videotoolbox
+2016-10-11 20:16:40	pgorley	ah, i see why i needed those switches, we have a --disable-everything at the top of our makefile for ffmpeg
+2016-10-11 20:17:19	shapsuk	ah ok
+2016-10-11 20:17:22	JEEB	that is a general thing some people tend to do. and then they get all kinds of issues when they're missing various stuff :)
+2016-10-11 20:17:27	shapsuk	so for me, its not relevant lol
+2016-10-11 20:18:10	pgorley	nope lol
+2016-10-11 20:18:12	shapsuk	ok its building now
+2016-10-11 20:18:23	shapsuk	I've just kept --enable-videotoolbox
+2016-10-11 20:18:37	pgorley	should be autodetected though, looking at the configure script
+2016-10-11 20:18:59	shapsuk	yeah and so now I get this during the build output:
+2016-10-11 20:19:05	shapsuk	Enabled hwaccels: h263_videotoolbox	  h264_videotoolbox	    mpeg1_videotoolbox	      mpeg2_videotoolbox	mpeg4_videotoolbox
+2016-10-11 20:19:09	shapsuk	which is right
+2016-10-11 20:19:16	shapsuk	that's all the video toolbox ones
+2016-10-11 20:19:27	shapsuk	but no different to before yet
+2016-10-11 20:19:29	pgorley	that's good, how about when you build your application
+2016-10-11 20:19:46	shapsuk	huh?
+2016-10-11 20:20:09	pgorley	you're just compiling ffmpeg, or you want to use it with some of your code?
+2016-10-11 20:20:20	shapsuk	I want to use it yes
+2016-10-11 20:20:41	shapsuk	so basically I'm compiling into .h/.a
+2016-10-11 20:20:48	shapsuk	then added it to my Xcode project
+2016-10-11 20:20:54	pgorley	so you have some piece of code that calls av_videotoolbox_alloc_context?
+2016-10-11 20:21:08	--	irc: disconnected from server
+2016-10-15 15:21:59	-->	NapoleonWils0n (~weechat@host86-155-49-241.range86-155.btcentralplus.com) has joined #ffmpeg
+2016-10-15 15:21:59	--	Topic for #ffmpeg is "Welcome to the FFmpeg USER support channel | Development channel: #ffmpeg-devel | Bug reports: http://bit.ly/cqvkhs | Wiki: https://trac.ffmpeg.org/ | FFmpeg 3.1.2 is released | FFmpeg forum: http://ffmpeg.gusari.org/ | This channel is publicly logged"
+2016-10-15 15:21:59	--	Topic set by durandal_170 (~mahol@93-142-150-122.adsl.net.t-com.hr) on Mon, 15 Aug 2016 09:10:04
+2016-10-15 15:21:59	--	Channel #ffmpeg: 357 nicks (3 ops, 1 voice, 353 normals)
+2016-10-15 15:21:59	--	PvNotice(ChanServ): When asking a question be precise, detailed and patient. If you don't receive a response, try the users mailing list. PASTE TO http://ffmpeg.pastebin.com/ ! If you are asking about CLI usage, paste the complete command and output to the paste bin.
+2016-10-15 15:22:01	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-15 15:22:10	NapoleonWils0n	hi all
+2016-10-15 15:22:18	Phi	yo
+2016-10-15 15:22:49	NapoleonWils0n	is there a way to work out the correct bitstream filter for a particular stream
+2016-10-15 15:23:36	NapoleonWils0n	at the moment im manually testing streams and then going thru the possible combinations of bitstream filters
+2016-10-15 15:25:00	<--	furq_ (~furq@b23.be) has quit (Quit: Reconnecting)
+2016-10-15 15:25:07	-->	furq (~furq@b23.be) has joined #ffmpeg
+2016-10-15 15:25:27	NapoleonWils0n	cat always tell if an aac atream requires -bsf:a aac_adtstoasc or you can just -c:a copy
+2016-10-15 15:25:39	<--	Balliad (~textual@52D96D43.cm-11-1b.dynamic.ziggo.nl) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2016-10-15 15:26:46	NapoleonWils0n	thinking of either detecting the codecs used in the stream and then using the approiate bit stream filters or going thru the different options checking for errors
+2016-10-15 15:33:15	c_14	NapoleonWils0n: if you use a recent ffmpeg (might only be in git) bitstream filters should be automatic
+2016-10-15 15:34:47	NapoleonWils0n	c_14 really im running 3.1.4
+2016-10-15 15:34:59	NapoleonWils0n	this is my script
+2016-10-15 15:35:00	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/rip-record
+2016-10-15 15:35:33	NapoleonWils0n	c_14 so ffmpeg should detect the correct bitstream filters for a stream
+2016-10-15 15:36:05	NapoleonWils0n	even if us -c:a -c:v it will switch to using the correct bitsrteam filter
+2016-10-15 15:37:58	BtbN	I don't think there is a release with the auto bsf yet.
+2016-10-15 15:38:29	NapoleonWils0n	right ill keep a look out for the new release thanks guys
+2016-10-15 15:38:52	BtbN	just use latest git master.
+2016-10-15 15:38:57	NapoleonWils0n	is there any documentation about the auto bitstream filters
+2016-10-15 15:38:58	BtbN	releases are mostly meaningless anyway
+2016-10-15 15:39:07	BtbN	you don't do anything, and it works.
+2016-10-15 15:39:22	NapoleonWils0n	i like the sound of that
+2016-10-15 15:39:49	Phi	I tried what you said JEEB, but that documentation is out of date
+2016-10-15 15:39:53	NapoleonWils0n	but if i specify -c:a -c:v it will override it with the correct bitstream filter
+2016-10-15 15:40:00	Phi	can't find codecpar
+2016-10-15 15:40:07	BtbN	a codec is not a bsf.
+2016-10-15 15:40:39	Phi	I tried passing av_opt_set(codecCtx, "profile", "main", 0) but it ignores me and uses high
+2016-10-15 15:41:27	furq	why are you using printf "%s\n" 'string' instead of echo "string"
+2016-10-15 15:41:55	NapoleonWils0n	line endings, printf is also faster i believe
+2016-10-15 15:42:06	furq	echo already adds a newline
+2016-10-15 15:42:40	NapoleonWils0n	im not using line endings is some situations
+2016-10-15 15:43:03	furq	echo -n
+2016-10-15 15:43:35	NapoleonWils0n	im not really worried about printf vs echo
+2016-10-15 15:43:50	furq	it sounds like i care more about echo than i actually do
+2016-10-15 15:43:58	NapoleonWils0n	mor interested in getting the right combination of bitstream filters and codecs
+2016-10-15 15:43:59	furq	i was wondering if echo didn't work for some reason
+2016-10-15 15:44:33	NapoleonWils0n	furq bit like vim vs emacs and mac vs pc
+2016-10-15 15:44:53	NapoleonWils0n	also the scripts have to work on windows, linux and mac
+2016-10-15 15:44:58	furq	well no because emacs and mac users are just wrong
+2016-10-15 15:45:16	NapoleonWils0n	yes furq with you on that one mate
+2016-10-15 15:45:18	furq	portability seems like a more reasonable reason
+2016-10-15 15:45:39	NapoleonWils0n	ill go with that excuse then :)
+2016-10-15 15:46:03	NapoleonWils0n	scripts take a url and chop it up and create the correct ffmpeg command
+2016-10-15 15:46:10	furq	although if you want it to be portable then you should use #! /usr/bin/env bash
+2016-10-15 15:46:46	NapoleonWils0n	i have it working on all versions of windows, mac and linux which wasnt easy
+2016-10-15 15:46:53	furq	or /bin/sh but it looks like you're actually using bash features
+2016-10-15 15:47:40	NapoleonWils0n	yes im using bash pattern matching in a case statement to switch on various urls
+2016-10-15 15:47:53	furq	well yeah there's no /bin/bash on the BSDs
+2016-10-15 15:47:59	furq	and probably other unixes
+2016-10-15 15:48:14	NapoleonWils0n	furq the scripts work on openbsd as well
+2016-10-15 15:48:20	BtbN	furq, "echo -n" is bash. in a plain posix shell it would print a "-n something"
+2016-10-15 15:48:25	<--	Bermond (~Bermond@187.64.139.239) has quit (Ping timeout: 252 seconds)
+2016-10-15 15:48:37	BtbN	The print method works
+2016-10-15 15:48:48	<--	zevarito (~zevarito@r190-134-132-254.dialup.adsl.anteldata.net.uy) has quit (Read error: Connection reset by peer)
+2016-10-15 15:48:55	NapoleonWils0n	apart from the printf vs echo debate any suggestions for improvements
+2016-10-15 15:49:14	NapoleonWils0n	always open to feedback however brutal
+2016-10-15 15:49:36	-->	Buster (Buster@2001:470:1f0b:1639::2) has joined #ffmpeg
+2016-10-15 15:49:43	-->	zevarito (~zevarito@r190-134-132-254.dialup.adsl.anteldata.net.uy) has joined #ffmpeg
+2016-10-15 15:50:16	NapoleonWils0n	so when the auto bitstream filters is "released" i can just use -c:a copy -c:v copy
+2016-10-15 15:50:31	furq	echo -n works in every /bin/sh i have here
+2016-10-15 15:50:33	NapoleonWils0n	and not add the bitstream filters to the ffmpeg commands
+2016-10-15 15:50:53	furq	also this is a bash script anyway
+2016-10-15 15:51:27	NapoleonWils0n	ok mess of code that happens to be in a text file might be a better description
+2016-10-15 15:51:50	NapoleonWils0n	but it does actually work believe ot or not
+2016-10-15 15:52:03	NapoleonWils0n	https://www.youtube.com/channel/UCriRR_CzOny-akXyk1R-oDQ
+2016-10-15 15:52:20	NapoleonWils0n	youtube channel accompanying the scripts
+2016-10-15 15:55:24	NapoleonWils0n	cant seem to find any documentation of the auto bitstream filters, im sure it will come soon
+2016-10-15 15:56:58	-->	raijin (~raijin@unaffiliated/raijin) has joined #ffmpeg
+2016-10-15 15:57:48	<--	Yagiza (ejabberd@marvin.isgeek.info) has left #ffmpeg
+2016-10-15 16:01:41	NapoleonWils0n	in the ffmpeg examples they use printf just saying
+2016-10-15 16:02:38	furq	i feel like i've cast myself as some kind of echo enthusiast here
+2016-10-15 16:02:51	furq	i just figured maybe there was an interesting reason why echo didn't work
+2016-10-15 16:03:09	-->	fahadash (uid44972@gateway/web/irccloud.com/x-tnoycjftphduumrk) has joined #ffmpeg
+2016-10-15 16:03:19	NapoleonWils0n	i got told in no uncertain terms on other irc channels to use printf
+2016-10-15 16:04:03	NapoleonWils0n	furq thanks for the heads up on the auto bitstream filters
+2016-10-15 16:04:13	furq	that wasn't me
+2016-10-15 16:04:30	furq	i haven't told you anything useful about ffmpeg
+2016-10-15 16:04:48	SchrodingersScat	furq: you taught me everything without saying a word
+2016-10-15 16:05:01	NapoleonWils0n	lol
+2016-10-15 16:05:36	NapoleonWils0n	been using the ffmpeg reconnect option which seems to work 
+2016-10-15 16:07:44	SchrodingersScat	to rip stuff on kodi?
+2016-10-15 16:08:09	NapoleonWils0n	yes ripping stuff from kodi, can also multicast stream and schedule recordings
+2016-10-15 16:08:40	-->	Yagiza (ejabberd@marvin.isgeek.info) has joined #ffmpeg
+2016-10-15 16:09:09	NapoleonWils0n	main page of git repo:
+2016-10-15 16:09:10	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory
+2016-10-15 16:12:23	SchrodingersScat	NapoleonWils0n: this is my equivalent, https://github.com/SchroSct/stream-creep
+2016-10-15 16:12:36	-->	Bermond (~Bermond@187.64.139.239) has joined #ffmpeg
+2016-10-15 16:13:18	NapoleonWils0n	much better name, i went with descriptive name
+2016-10-15 16:13:19	furq	that readme becomes more interesting at the end
+2016-10-15 16:14:43	NapoleonWils0n	SchrodingersScat nice work ill go thru your code
+2016-10-15 16:14:55	SchrodingersScat	yours looks much more professional
+2016-10-15 16:15:34	NapoleonWils0n	thanks mate - writing all the docs did take a while
+2016-10-15 16:15:51	NapoleonWils0n	got more info in the docs section
+2016-10-15 16:15:52	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/tree/master/docs
+2016-10-15 16:16:25	NapoleonWils0n	figured out a way to send ffmpeg commands over ssh and escape special characters like &? etc
+2016-10-15 16:16:37	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/rip-ssh
+2016-10-15 16:16:49	NapoleonWils0n	using printf furq
+2016-10-15 16:18:28	NapoleonWils0n	SchrodingersScat nice use of netcat mate
+2016-10-15 16:18:56	-->	NightShift (0188612a@gateway/web/freenode/ip.1.136.97.42) has joined #ffmpeg
+2016-10-15 16:19:34	SchrodingersScat	NapoleonWils0n: yeah, didn't want to use rtmpdump while it was live, I catch the stream with tcpflow first
+2016-10-15 16:20:10	NapoleonWils0n	i have a little script to extract http links from pcap files
+2016-10-15 16:20:11	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/pcap-link-extractor
+2016-10-15 16:20:54	NapoleonWils0n	what i do is tcpdump open kodi and capture all the links into a pcap file and then extract them with tshark
+2016-10-15 16:21:26	-->	surfaced (~textual@107-132-137-250.lightspeed.sntcca.sbcglobal.net) has joined #ffmpeg
+2016-10-15 16:21:27	SchrodingersScat	ah, k, that's the cli wireshark
+2016-10-15 16:21:29	NapoleonWils0n	i tend to use iptables and rtmpsrv
+2016-10-15 16:21:50	NapoleonWils0n	you can use the same wireshark filters with tshark
+2016-10-15 16:22:23	NapoleonWils0n	much easier than scrolling thru wireshark window
+2016-10-15 16:23:02	NapoleonWils0n	oh and you shoudnt run wireshark as root, add your self to the wireshark group and reboot
+2016-10-15 16:27:55	-->	Balliad (~textual@52D96D43.cm-11-1b.dynamic.ziggo.nl) has joined #ffmpeg
+2016-10-15 16:35:13	<--	NightShift (0188612a@gateway/web/freenode/ip.1.136.97.42) has quit
+2016-10-15 16:39:33	-->	psychicist__ (~psychicis@ip127-8-212-87.adsl2.static.versatel.nl) has joined #ffmpeg
+2016-10-15 16:39:58	NapoleonWils0n	time for an egg sandwich and cup of tea
+2016-10-15 16:40:00	--	irc: disconnected from server
+2016-10-25 22:31:06	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #ffmpeg
+2016-10-25 22:31:06	--	Topic for #ffmpeg is "Welcome to the FFmpeg USER support channel | Development channel: #ffmpeg-devel | Bug reports: http://bit.ly/cqvkhs | Wiki: https://trac.ffmpeg.org/ | FFmpeg 3.1.2 is released | FFmpeg forum: http://ffmpeg.gusari.org/ | This channel is publicly logged"
+2016-10-25 22:31:06	--	Topic set by durandal_170 (~mahol@93-142-150-122.adsl.net.t-com.hr) on Mon, 15 Aug 2016 09:10:04
+2016-10-25 22:31:07	--	Channel #ffmpeg: 370 nicks (3 ops, 1 voice, 366 normals)
+2016-10-25 22:31:07	--	PvNotice(ChanServ): When asking a question be precise, detailed and patient. If you don't receive a response, try the users mailing list. PASTE TO http://ffmpeg.pastebin.com/ ! If you are asking about CLI usage, paste the complete command and output to the paste bin.
+2016-10-25 22:31:08	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-25 22:31:26	NapoleonWils0n	hi all
+2016-10-25 22:31:38	llogan	refrijerator: and -channels instead of -ac (see "man ffmpeg-devices")
+2016-10-25 22:31:43	furq	i wonder if reconnect_streamed being off by default means it'll start from the beginning
+2016-10-25 22:31:55	-->	tontonth (~tth@www-mixart-myrys.tetaneutral.net) has joined #ffmpeg
+2016-10-25 22:32:27	NapoleonWils0n	i have a script that auto restart when the stream cuts out
+2016-10-25 22:32:31	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory/blob/master/bash-scripts/rip-record
+2016-10-25 22:32:35	CFS-MP3b	Is it possible for ffmpeg to segment on demand? By this I mean - instead of segmenting by segment length, segment when an external event happens, such as a signal being sent
+2016-10-25 22:33:07	NapoleonWils0n	are auto bitstream filters enabled in latest version on git
+2016-10-25 22:33:13	llogan	refrijerator: ...and -framerate instead of -r for x11grab.
+2016-10-25 22:33:33	llogan	and you don't need "-strict -2"
+2016-10-25 22:33:35	NapoleonWils0n	is it possible to enable auto bit stream filters using any config options
+2016-10-25 22:33:54	debkad	furq: i will work on those options, that really helpful, thanks again
+2016-10-25 22:34:07	-->	thib (~thib@wikimedia/Thibaut120094) has joined #ffmpeg
+2016-10-25 22:34:23	refrijerator	llogan: strict 2 was needed, else audio did not work (I don't know aac, sthg like this), I run ffmpeg version 2.8.6
+2016-10-25 22:34:32	llogan	your ffmpeg is old
+2016-10-25 22:35:09	refrijerator	it is in the stable branch in my distribution, gentoo
+2016-10-25 22:35:31	llogan	2.8.6 that was old when old was young
+2016-10-25 22:35:54	refrijerator	ok, I will keep that in mind, but seems to do what I wanted for now
+2016-10-25 22:36:03	debkad	my ffmpeg ( compiled from git if i remember) is ffmpeg version N-81995-gd790e48
+2016-10-25 22:36:34	debkad	is that ok?
+2016-10-25 22:36:37	NapoleonWils0n	i see automatic bitstream filtering in the changelog on github
+2016-10-25 22:37:16	NapoleonWils0n	im running 3.1.5 at the moment, is it a config option or am i just running an old version
+2016-10-25 22:37:54	furq	the latest release usually doesn't have all the changes from git
+2016-10-25 22:38:13	NapoleonWils0n	cheers furq
+2016-10-25 22:38:29	NapoleonWils0n	so will have to wait for the changes to flow downstream
+2016-10-25 22:38:35	furq	that change is probably part of the 3.2 branch
+2016-10-25 22:38:47	furq	you could just use git head
+2016-10-25 22:38:50	NapoleonWils0n	right ill keep an eye out
+2016-10-25 22:38:53	-->	saste (~saste___@host84-23-dynamic.53-82-r.retail.telecomitalia.it) has joined #ffmpeg
+2016-10-25 22:38:53	--	Mode #ffmpeg [+o saste] by ChanServ
+2016-10-25 22:39:46	-->	m1dnight_ (~m1dnight@213.219.148.30.adsl.dyn.edpnet.net) has joined #ffmpeg
+2016-10-25 22:40:03	NapoleonWils0n	stupid question but what would be the timeframe for 3.2.0 "release"
+2016-10-25 22:40:06	Substring	hihi ! i'm trying to capture video from stdin as well as the sound output with ffmpeg through ALSA. my audio device has no capture feature, i'd just like to record what i hear on the speakers. Is that possible ?
+2016-10-25 22:40:21	NapoleonWils0n	Sustring yes it is possible
+2016-10-25 22:40:35	NapoleonWils0n	i have done it myself i dig out a link to the code i used
+2016-10-25 22:40:45	Substring	NapoleonWils0n, oh thanks :)
+2016-10-25 22:41:58	NapoleonWils0n	just trying to find it 
+2016-10-25 22:42:47	NapoleonWils0n	https://github.com/NapoleonWils0n/cerberus/blob/master/ffmpeg/ffmpeg-screen-recording-mic-alsa-loopback.txt
+2016-10-25 22:43:02	NapoleonWils0n	you create a alsa loopback device
+2016-10-25 22:43:21	Substring	but it has no capture device
+2016-10-25 22:43:29	Substring	(it's on a raspberry pi)
+2016-10-25 22:43:59	NapoleonWils0n	i think you also need the ~/.asoundrc
+2016-10-25 22:44:14	NapoleonWils0n	with the alsaloop back device
+2016-10-25 22:44:22	<--	zevarito (~zevarito@r190-134-153-203.dialup.adsl.anteldata.net.uy) has quit (Quit: zevarito)
+2016-10-25 22:44:56	Substring	oh so the .asoundrc is making th emagic ?
+2016-10-25 22:44:58	debkad	Substring: the video is inside your machine?
+2016-10-25 22:45:24	Substring	debkad, it's not even a video, it's the display of the pi
+2016-10-25 22:45:27	NapoleonWils0n	Substring you need to create the alsa loopback device with code like this
+2016-10-25 22:45:28	NapoleonWils0n	sudo modprobe snd-aloop pcm_substreams=1
+2016-10-25 22:46:05	debkad	Substring: you want to capture the whole screen including the sound?
+2016-10-25 22:46:13	<--	iml_ (~user@189-212-171-161.static.axtel.net) has quit (Quit: Leaving.)
+2016-10-25 22:46:13	NapoleonWils0n	im using filter complex to fix an issue where the audio was only coming out the left speaker
+2016-10-25 22:46:19	NapoleonWils0n	so you probably dont need that
+2016-10-25 22:46:33	Substring	debkad, yes i am
+2016-10-25 22:46:36	NapoleonWils0n	you can capture both you mic and any audio that is playing
+2016-10-25 22:46:53	debkad	ok i think the loop idea from NapoleonWils0n worth a try
+2016-10-25 22:46:58	NapoleonWils0n	what you need to do is set the application to use the alsa loopback device
+2016-10-25 22:47:16	NapoleonWils0n	so in vlc for example you need to change the output audio device to alsa loopback
+2016-10-25 22:47:31	NapoleonWils0n	note you wont be able to hear the audio playing but it will record
+2016-10-25 22:47:41	Substring	well, i'd better make the loopback device the default output then
+2016-10-25 22:47:43	-->	iml_ (~user@189-212-171-161.static.axtel.net) has joined #ffmpeg
+2016-10-25 22:47:47	Substring	oh !
+2016-10-25 22:47:50	Substring	wll
+2016-10-25 22:47:54	debkad	o_o
+2016-10-25 22:47:58	Substring	that's just to test if I can do some screen casting
+2016-10-25 22:48:19	NapoleonWils0n	i have used that technique on several screencasts for youtube
+2016-10-25 22:48:36	debkad	sound very logic
+2016-10-25 22:49:00	debkad	NapoleonWils0n: i guess it is a kind of a virtual device?
+2016-10-25 22:49:10	Substring	debkad, i"m not using any software on which you can set on which device you want the sound output
+2016-10-25 22:49:22	NapoleonWils0n	debkad yes exactly its a virtual audio device
+2016-10-25 22:49:55	NapoleonWils0n	Substring you can set the loopback device to be default temporaily while you record
+2016-10-25 22:49:56	debkad	Substring: yeah i understand that, the virtual loop device can capture the sound stream
+2016-10-25 22:50:16	NapoleonWils0n	then you can then switch back when your finished recording
+2016-10-25 22:50:37	ATField	furq: Here are: 1. the notes http://pastebin.com/k9LLcLan , 2. the mediainfo data: http://pastebin.com/S8ZFKFcS , http://pastebin.com/DypjaQRG. The command used for creating OUTPUT.ogg was a generic ｢ ffmpeg -i "INPUT.dts" -c:a libvorbis -q:a 4  OUTPUT.ogg ｣.
+2016-10-25 22:51:05	<--	szulak_ (uid162164@gateway/web/irccloud.com/x-ebdxbtddmmongife) has quit (Quit: Connection closed for inactivity)
+2016-10-25 22:51:18	Substring	That's some great help you gave me here :) One more question : i'd like the video to be encoded with h264_omx and not libx264 ... what is the command line ?
+2016-10-25 22:51:37	NapoleonWils0n	i havent used h264_omx before
+2016-10-25 22:52:02	Substring	well, then on a general matter : how do you define the encoder ?
+2016-10-25 22:52:10	llogan	-c:v <encoder name>
+2016-10-25 22:52:35	NapoleonWils0n	script is here:
+2016-10-25 22:52:36	NapoleonWils0n	https://github.com/NapoleonWils0n/cerberus/blob/master/ffmpeg/ffmpeg-screen-recording-mic-alsa-loopback.txt
+2016-10-25 22:52:44	NapoleonWils0n	-c:v libx264 -preset veryfast -crf 18 -profile:v high
+2016-10-25 22:52:52	NapoleonWils0n	-c:a libfdk_aac -ac 2 -ar 44100 -b:a 128k
+2016-10-25 22:53:02	debkad	Substring: you can use ffmpeg -formats to see the available formats
+2016-10-25 22:53:22	NapoleonWils0n	you dont need the filter complex in that code that was just a fix for my laptop
+2016-10-25 22:53:41	NapoleonWils0n	steps are create the alsa loopback device
+2016-10-25 22:54:00	NapoleonWils0n	use asoundrc to set it as your default audio device
+2016-10-25 22:54:03	debkad	-codecs* my bad
+2016-10-25 22:54:09	NapoleonWils0n	then record with ffmpeg
+2016-10-25 22:54:17	NapoleonWils0n	-f alsa -ac 2 -ar 44100 -i hw:0,0 \
+2016-10-25 22:54:23	NapoleonWils0n	-f alsa -ac 2 -ar 44100 -i loopout \
+2016-10-25 22:54:53	llogan	-f alsa -channels 2 -sample_rate 44100
+2016-10-25 22:54:56	NapoleonWils0n	obviously you need to work out the address of the mic 
+2016-10-25 22:55:45	Substring	h264_omx is working fine (just the compression is awful ... nevermind)
+2016-10-25 22:56:36	NapoleonWils0n	Substring i have some bash scripts for ffmpeg here:
+2016-10-25 22:56:37	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory
+2016-10-25 22:56:50	NapoleonWils0n	and videos:
+2016-10-25 22:56:51	Substring	my ffmpeg is not compiled with the non free option
+2016-10-25 22:56:51	NapoleonWils0n	https://www.youtube.com/channel/UCriRR_CzOny-akXyk1R-oDQ
+2016-10-25 22:57:05	NapoleonWils0n	i always use the non-free
+2016-10-25 22:57:23	NapoleonWils0n	pain otherwise
+2016-10-25 22:57:27	Substring	libfdk_aac is part of the non free
+2016-10-25 22:57:43	-->	raijin (~raijin@unaffiliated/raijin) has joined #ffmpeg
+2016-10-25 22:57:48	NapoleonWils0n	yes i found it usually better quality
+2016-10-25 22:57:58	Substring	libaac works not bad either
+2016-10-25 22:58:45	llogan	support for libfaac has been removed from FFmpeg
+2016-10-25 22:59:39	Substring	aac
+2016-10-25 22:59:49	Substring	just the aac codec
+2016-10-25 23:00:17	llogan	i assumed it was a typo
+2016-10-25 23:00:43	NapoleonWils0n	just off to make some tea
+2016-10-25 23:00:47	--	irc: disconnected from server
+2016-10-26 15:33:39	-->	NapoleonWils0n (~weechat@host86-162-29-45.range86-162.btcentralplus.com) has joined #ffmpeg
+2016-10-26 15:33:39	--	Topic for #ffmpeg is "Welcome to the FFmpeg USER support channel | Development channel: #ffmpeg-devel | Bug reports: http://bit.ly/cqvkhs | Wiki: https://trac.ffmpeg.org/ | FFmpeg 3.1.2 is released | FFmpeg forum: http://ffmpeg.gusari.org/ | This channel is publicly logged"
+2016-10-26 15:33:39	--	Topic set by durandal_170 (~mahol@93-142-150-122.adsl.net.t-com.hr) on Mon, 15 Aug 2016 09:10:04
+2016-10-26 15:33:39	--	Channel #ffmpeg: 366 nicks (4 ops, 1 voice, 361 normals)
+2016-10-26 15:33:39	--	PvNotice(ChanServ): When asking a question be precise, detailed and patient. If you don't receive a response, try the users mailing list. PASTE TO http://ffmpeg.pastebin.com/ ! If you are asking about CLI usage, paste the complete command and output to the paste bin.
+2016-10-26 15:33:39	--	Channel created on Sun, 26 Nov 2006 06:42:45
+2016-10-26 15:33:58	NapoleonWils0n	hi all
+2016-10-26 15:34:07	NapoleonWils0n	i see automatic bitstream filtering in the changelog for version 3
+2016-10-26 15:34:36	NapoleonWils0n	when i run fmpeg -bsfs i dont see auto bitstream filters in 3.1.5
+2016-10-26 15:35:07	NapoleonWils0n	is it a compile time option
+2016-10-26 15:36:50	NapoleonWils0n	its not an option listed in the config options for my build of ffmpeg
+2016-10-26 15:37:19	-->	Stels (~stels@95.104.250.233) has joined #ffmpeg
+2016-10-26 15:40:03	NapoleonWils0n	looked at git build or my distro and dont see any compile time flags for auto bitsream filters
+2016-10-26 15:41:19	DHE	./configure --list-bsfs
+2016-10-26 15:42:50	NapoleonWils0n	DHE im using arch and dont see any options in the pkgbuild
+2016-10-26 15:46:52	<--	yagiza (ejabberd@marvin.isgeek.info) has left #ffmpeg
+2016-10-26 15:47:36	-->	Yagiza (ejabberd@marvin.isgeek.info) has joined #ffmpeg
+2016-10-26 15:51:19	NapoleonWils0n	so i could download ffmpeg git head and run ./configure --list-bsfs and see if anything shows up
+2016-10-26 15:54:49	DHE	you could, but to save time here's what I get: http://pastebin.com/rnrXn2xk
+2016-10-26 15:56:51	Mad7Scientist	How can I watch a downloaded youtube video with separate audio and video? Run two player instances at the same time? I do know that I can encode them with ffmpeg and probably use the -copy codec
+2016-10-26 15:58:04	DHE	depends on the player. mpv has an --audio-file option to select which file contains the audio track
+2016-10-26 15:58:23	bencoh	mplayer has something like that as well ... I'd suspect vlc has one too
+2016-10-26 15:58:24	Mad7Scientist	thanks
+2016-10-26 15:58:34	DHE	correction, mpv
+2016-10-26 15:58:40	DHE	sorry, old habit
+2016-10-26 15:58:45	Mad7Scientist	with ffmpeg I tried .mp4 .avi .mov and finally .vob would contain both streams
+2016-10-26 15:59:18	DHE	$ ffmpeg -i video.mp4 -i audio.mp3 -c copy combined.mkv
+2016-10-26 15:59:54	bencoh	you might need to play with -map 0 as well
+2016-10-26 16:00:37	Mad7Scientist	I did -vcodec copy -acodec copy
+2016-10-26 16:01:48	NapoleonWils0n	DHE i see the dump_header bsfs options in git version, but no dump_headers in my build
+2016-10-26 16:02:05	Mad7Scientist	the .vob file didn't work. mplayer said that the video dimensions were aut of range
+2016-10-26 16:02:13	NapoleonWils0n	wondering what auto bitstream filters would be listed as 
+2016-10-26 16:03:33	Mad7Scientist	yeah I do need -map
+2016-10-26 16:03:48	Mad7Scientist	It did this and I have no audio:
+2016-10-26 16:03:49	Mad7Scientist	Stream mapping:
+2016-10-26 16:03:49	Mad7Scientist	  Stream #0:0 -> #0:0 (copy)
+2016-10-26 16:03:49	Mad7Scientist	  Stream #1:0 -> #0:1 (copy)
+2016-10-26 16:04:25	-->	starkline59 (~mush@c-76-120-65-230.hsd1.co.comcast.net) has joined #ffmpeg
+2016-10-26 16:05:05	<--	starkline (~mush@c-76-120-65-230.hsd1.co.comcast.net) has quit (Ping timeout: 260 seconds)
+2016-10-26 16:05:08	-->	iml_ (~user@189-212-171-161.static.axtel.net) has joined #ffmpeg
+2016-10-26 16:05:22	Mad7Scientist	I see videos on file download sites but most of them don't have surround sound or subtitles or multiple languages like the original DVD had
+2016-10-26 16:06:34	DHE	bencoh: by default the files genuinely contain only audio and only video, my command works. if that's not the case, then yes some use of -map may become necessary
+2016-10-26 16:06:46	Mad7Scientist	Oh the 48,000Hz audio that I downloaded can't be played. Cannot find codec 'libopus' in libavcodec...
+2016-10-26 16:07:04	NapoleonWils0n	Mad7Scientist have you looked at using Kodi which has lots of high quality videos
+2016-10-26 16:07:13	Mad7Scientist	I haven't
+2016-10-26 16:07:33	NapoleonWils0n	i have some ffmpeg scripts that can record pretty much any video from Kodi
+2016-10-26 16:07:42	NapoleonWils0n	https://github.com/NapoleonWils0n/kodi-playercorefactory
+2016-10-26 16:07:50	NapoleonWils0n	https://www.youtube.com/channel/UCriRR_CzOny-akXyk1R-oDQ
+2016-10-26 16:08:16	NapoleonWils0n	the scripts automatically restart recording if the stream cuts out
+2016-10-26 16:08:44	NapoleonWils0n	works on windows, mac and linux
+2016-10-26 16:09:11	-->	kepstin (uid128400@gateway/web/irccloud.com/x-nuvzmheinfidhdet) has joined #ffmpeg
+2016-10-26 16:09:14	bencoh	DHE: doesn't ffmpeg default to at most 1 audio and 1 video?
+2016-10-26 16:09:51	NapoleonWils0n	MadScientist7 have a look at Kodi and the Phoenix addon
+2016-10-26 16:09:53	NapoleonWils0n	https://seo-michael.co.uk/how-to-install-phoenix-for-xbmc/
+2016-10-26 16:11:48	<--	Stels (~stels@95.104.250.233) has quit (Ping timeout: 260 seconds)
+2016-10-26 16:12:12	<--	dv_ (~quassel@62-178-118-86.cable.dynamic.surfer.at) has quit (Ping timeout: 260 seconds)
+2016-10-26 16:12:22	-->	dv (~quassel@62.178.118.86) has joined #ffmpeg
+2016-10-26 16:12:42	Mad7Scientist	Is Kodi a media streaming Internet service?
+2016-10-26 16:13:25	NapoleonWils0n	Md7Scientist its a Media player that has thousands of addons to stream videos from loads of place on the internet
+2016-10-26 16:13:31	NapoleonWils0n	https://kodi.tv/
+2016-10-26 16:13:57	NapoleonWils0n	works on windows, mac, linux, android and mobile devices
+2016-10-26 16:15:07	NapoleonWils0n	you can find pretty much any film, tv or live tv streams you want
+2016-10-26 16:17:54	--	irc: disconnected from server

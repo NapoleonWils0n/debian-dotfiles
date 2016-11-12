@@ -120,11 +120,15 @@ fi
 # My set up
 #==========
 
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# editor
+export EDITOR="/usr/bin/vim"
+
 # kodi bash scripts
 if [ -d "$HOME/git/kodi-playercorefactory/bash-scripts" ] ; then
         PATH="$HOME/git/kodi-playercorefactory/bash-scripts:$PATH"
 fi
-
 
 # git prompt
 if [ -f /usr/share/git/completion/git-prompt.sh ]; then
@@ -144,13 +148,14 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM="auto verbose git"
 
 # prompt
-# PS1='[\u@\h \W$(__git_ps1 " (%s)")]\nYes Master ? '
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\nYes Master ? '
 
 # cdpath
 CDPATH=".:~"
 
 # set $GNUPGHOME for gnupg keys
 # export GNUPGHOME="~/.gnupg-personal"
+eval $(gpg-agent --daemon)
 
 # Tell ls to be colourful
 export CLICOLOR=1
