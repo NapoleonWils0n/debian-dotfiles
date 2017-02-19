@@ -2,10 +2,10 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
-(elpy-enable)
-;; fixing elpy keybinding
-(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-(define-key global-map (kbd "C-c o") 'iedit-mode)
+;(elpy-enable)
+; fixing elpy keybinding
+; (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+; (define-key global-map (kbd "C-c o") 'iedit-mode)
 
 ;Tell emacs where is your personal elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/lisp/")

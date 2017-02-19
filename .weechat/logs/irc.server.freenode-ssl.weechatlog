@@ -15276,3 +15276,71 @@
 2016-11-06 21:35:51	--	User mode [+Zi] by NapoleonWils0n
 2016-11-06 21:35:51	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.
 2016-11-06 21:43:29	--	irc: disconnected from server
+2017-02-18 15:05:23	--	irc: connecting to server chat.freenode.net/6697 (SSL)...
+2017-02-18 15:05:24	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2017-02-18 15:05:24	--	gnutls: receiving 2 certificates
+2017-02-18 15:05:24	--	 - certificate[1] info:
+2017-02-18 15:05:24	--	   - subject `CN=hitchcock.freenode.net', issuer `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', serial 0x03849aa25191c8ae7479521fafbe5e7a0f80, RSA key 4096 bits, signed using RSA-SHA256, activated `2017-01-12 17:01:00 UTC', expires `2017-04-12 17:01:00 UTC', key-ID `sha256:bd9240228e4060bd600859c363ba6726e237eaf29c7838dcd98bb08a34bb9bcd'
+2017-02-18 15:05:24	--	 - certificate[2] info:
+2017-02-18 15:05:24	--	   - subject `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', issuer `CN=DST Root CA X3,O=Digital Signature Trust Co.', serial 0x0a0141420000015385736a0b85eca708, RSA key 2048 bits, signed using RSA-SHA256, activated `2016-03-17 16:40:46 UTC', expires `2021-03-17 16:40:46 UTC', key-ID `sha256:60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18'
+2017-02-18 15:05:24	--	gnutls: peer's certificate is trusted
+2017-02-18 15:05:24	--	irc: connected to chat.freenode.net/6697 (130.185.232.126)
+2017-02-18 15:05:25	--	hitchcock.freenode.net: *** Looking up your hostname...
+2017-02-18 15:05:25	--	hitchcock.freenode.net: *** Checking Ident
+2017-02-18 15:05:25	--	hitchcock.freenode.net: *** Found your hostname
+2017-02-18 15:05:34	--	hitchcock.freenode.net: *** No Ident response
+2017-02-18 15:05:34	--	irc: client capability, server supports: account-notify extended-join identify-msg multi-prefix sasl
+2017-02-18 15:05:34	--	irc: client capability, requesting: sasl
+2017-02-18 15:05:34	--	irc: client capability, enabled: sasl
+2017-02-18 15:05:35	--	You are now logged in as NapoleonWils0n. (NapoleonWils0n!weechat@host109-157-164-54.range109-157.btcentralplus.com)
+2017-02-18 15:05:35	--	SASL authentication successful
+2017-02-18 15:05:36	--	Welcome to the freenode Internet Relay Chat Network NapoleonWils0n
+2017-02-18 15:05:36	--	Your host is hitchcock.freenode.net[130.185.232.126/6697], running version ircd-seven-1.1.4
+2017-02-18 15:05:36	--	This server was created Tue Jan 10 2017 at 22:29:35 EET
+2017-02-18 15:05:36	--	hitchcock.freenode.net ircd-seven-1.1.4 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2017-02-18 15:05:36	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2017-02-18 15:05:36	--	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 WHOX SAFELIST ELIST=CTU :are supported by this server
+2017-02-18 15:05:36	--	ETRACE CPRIVMSG CNOTICE KNOCK :are supported by this server
+2017-02-18 15:05:36	--	There are 127 users and 83728 invisible on 27 servers
+2017-02-18 15:05:36	--	27 :IRC Operators online
+2017-02-18 15:05:36	--	13 :unknown connection(s)
+2017-02-18 15:05:36	--	57034 :channels formed
+2017-02-18 15:05:36	--	I have 4694 clients and 1 servers
+2017-02-18 15:05:36	--	4694 5214 :Current local users 4694, max 5214
+2017-02-18 15:05:36	--	83855 91751 :Current global users 83855, max 91751
+2017-02-18 15:05:36	--	Highest connection count: 5215 (5214 clients) (407022 connections received)
+2017-02-18 15:05:36	--	- hitchcock.freenode.net Message of the Day -
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	- Welcome to hitchcock.freenode.net in Sofia, Bulgaria, EU, kindly sponsored by
+2017-02-18 15:05:36	--	- Neterra Communications (www.neterra.net)
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	- HITCHCOCK, SIR ALFRED [1899 - 1980] Born in Essex,
+2017-02-18 15:05:36	--	- England, Sir Alfred Hitchcock was a noted film director
+2017-02-18 15:05:36	--	- and producer. Over a long career he pioneered many modern
+2017-02-18 15:05:36	--	- techniques in film-making, made more than 50 feature films,
+2017-02-18 15:05:36	--	- and influenced many present-day directors and producers.
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	- Welcome to freenode - supporting the free and open source
+2017-02-18 15:05:36	--	- software communities since 1998.
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	- By connecting to freenode you indicate that you have read and
+2017-02-18 15:05:36	--	- accept our policies as set out on http://www.freenode.net
+2017-02-18 15:05:36	--	- freenode runs an open proxy scanner. Please join #freenode for
+2017-02-18 15:05:36	--	- any network-related questions or queries, where a number of
+2017-02-18 15:05:36	--	- volunteer staff and helpful users will be happy to assist you.
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2017-02-18 15:05:36	--	- together with like-minded FOSS enthusiasts for talks and
+2017-02-18 15:05:36	--	- real-life collaboration.
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	- We would like to thank Private Internet Access
+2017-02-18 15:05:36	--	- (https://www.privateinternetaccess.com/) and the other
+2017-02-18 15:05:36	--	- organisations that help keep freenode and our other projects
+2017-02-18 15:05:36	--	- running for their sustained support.
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	- In particular we would like to thank the sponsor
+2017-02-18 15:05:36	--	- of this server, details of which can be found above.
+2017-02-18 15:05:36	--	-
+2017-02-18 15:05:36	--	End of /MOTD command.
+2017-02-18 15:05:36	--	User mode [+Zi] by NapoleonWils0n
+2017-02-18 15:05:36	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.

@@ -116,8 +116,8 @@
 
 
 !! powerline fonts
-!! URxvt*font:           xft:Inconsolata:size=13
-URxvt*font:           xft:Inconsolata:size=13
+!!URxvt*font:           xft:Inconsolata:size=13
+URxvt*font:           xft:Inconsolata\ for\ Powerline:size=13
 ! URxvt*boldFont: fontlist
 
 ! URxvt*italicFont: fontlist

@@ -120,7 +120,7 @@ fi
 # My set up
 #==========
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+#export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # editor
 export EDITOR="/usr/bin/vim"
@@ -155,14 +155,19 @@ CDPATH=".:~"
 
 # set $GNUPGHOME for gnupg keys
 # export GNUPGHOME="~/.gnupg-personal"
-eval $(gpg-agent --daemon)
+#eval $(gpg-agent --daemon)
 
 # Tell ls to be colourful
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+# vim powerline
+
 # export alsa settings for ffplay
 #export SDL_AUDIODRIVER="alsa"
-export AUDIODEV="plughw:2,0"
+#export AUDIODEV="plughw:2,0"
 #export AUDIODEV="plughw:1,0"
 #export AUDIODEV="plughw:0,0"
+
+# fix debian chromium disbaling remote extensions
+export CHROMIUM_FLAGS=$CHROMIUM_FLAGS" --enable-remote-extensions"

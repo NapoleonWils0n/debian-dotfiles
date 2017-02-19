@@ -64,10 +64,11 @@ set formatoptions=qrn1
 
 " vim-airline
 set encoding=utf-8
-set guifont=Inconsolata\ for\ Powerline\ 12
+set guifont=Inconsolata\ for\ Powerline\ 13
+"set guifont=Inconsolata\ 13
 let g:airline_powerline_fonts = 1
 set laststatus=2
-set t_Co=256
+"set t_Co=256
 
 "Shortcut to fold tags with leader (usually \) + ft
 nnoremap <leader>ft Vatzf

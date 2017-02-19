@@ -1442,3 +1442,39 @@
 2016-11-06 21:35:37		script: downloading list of scripts...
 2016-11-06 21:35:37		Plugins loaded: alias, charset, exec, fifo, guile, irc, logger, perl, python, relay, script, trigger, xfer
 2016-11-06 21:35:37		script: 321 scripts for WeeChat 1.0.1
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 28: unknown option for section "look": item_away_message = on
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 37: unknown option for section "look": nick_color_force = ""
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 38: unknown option for section "look": nick_color_hash = sum
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 39: unknown option for section "look": nick_color_stop_chars = "_|["
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 65: unknown option for section "color": item_away = yellow
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 80: unknown option for section "network": alternate_nick = on
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 118: unknown option for section "server_default": default_msg_kick = ""
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 119: unknown option for section "server_default": default_msg_part = "WeeChat %v"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 120: unknown option for section "server_default": default_msg_quit = "WeeChat %v"
+2017-02-18 15:03:51	=!=	irc: error creating server option "freenode-ssl.default_msg_kick"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 173: invalid value for option: freenode-ssl.default_msg_kick
+2017-02-18 15:03:51	=!=	irc: error creating server option "freenode-ssl.default_msg_part"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 174: invalid value for option: freenode-ssl.default_msg_part
+2017-02-18 15:03:51	=!=	irc: error creating server option "freenode-ssl.default_msg_quit"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 175: invalid value for option: freenode-ssl.default_msg_quit
+2017-02-18 15:03:51	=!=	irc: error creating server option "debian.default_msg_kick"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 209: invalid value for option: debian.default_msg_kick
+2017-02-18 15:03:51	=!=	irc: error creating server option "debian.default_msg_part"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 210: invalid value for option: debian.default_msg_part
+2017-02-18 15:03:51	=!=	irc: error creating server option "debian.default_msg_quit"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 211: invalid value for option: debian.default_msg_quit
+2017-02-18 15:03:51	=!=	irc: error creating server option "irc.debian.org.default_msg_kick"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 245: invalid value for option: irc.debian.org.default_msg_kick
+2017-02-18 15:03:51	=!=	irc: error creating server option "irc.debian.org.default_msg_part"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 246: invalid value for option: irc.debian.org.default_msg_part
+2017-02-18 15:03:51	=!=	irc: error creating server option "irc.debian.org.default_msg_quit"
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/irc.conf, line 247: invalid value for option: irc.debian.org.default_msg_quit
+2017-02-18 15:03:51	=!=	Warning: /home/djwilcox/.weechat/script.conf, line 46: unknown option for section "scripts": dir = "%h/script"
+2017-02-18 15:03:51		script: downloading list of scripts...
+2017-02-18 15:03:51		Plugins loaded: alias, charset, exec, fifo, guile, irc, javascript, logger, perl, python, relay, script, trigger, xfer
+2017-02-18 15:03:59		script: 331 scripts for WeeChat 1.7
+2017-02-18 15:04:46		perl: script removed: /home/djwilcox/git/dotfiles/.weechat/perl/iset.pl
+2017-02-18 15:04:55		script: script "iset.pl" is already installed and up-to-date
+2017-02-18 15:05:06	=!=	Error: unknown command "/iset" (type /help for help)
+2017-02-18 15:05:15		script: 331 scripts for WeeChat 1.7
+2017-02-18 15:05:15		Plugins loaded: alias, charset, exec, fifo, guile, irc, javascript, logger, perl, python, relay, script, trigger, xfer
