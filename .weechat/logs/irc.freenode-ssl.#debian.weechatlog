@@ -1435,3 +1435,124 @@
 2016-11-06 21:41:51	-->	valerio (~valerio`@unaffiliated/valerio/x-9242161) has joined #debian
 2016-11-06 21:42:20	-->	githogori (~githogori@c-73-70-12-67.hsd1.ca.comcast.net) has joined #debian
 2016-11-06 21:43:29	--	irc: disconnected from server
+2017-02-20 20:10:36	-->	NapoleonWils0n (~weechat@host109-157-164-54.range109-157.btcentralplus.com) has joined #debian
+2017-02-20 20:10:36	--	Topic for #debian is "Unwanted private messages? /umode +R | Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie |  current point releases: /msg dpkg 8.7; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable:  #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2017-02-20 20:10:36	--	Topic set by abrotman (~abrotman@pdpc/supporter/active/abrotman) on Fri, 20 Jan 2017 13:29:02
+2017-02-20 20:10:36	--	Channel #debian: 1735 nicks (2 ops, 0 voices, 1733 normals)
+2017-02-20 20:10:36	-->	[Brain] (~brain@cpc4-mfld16-2-0-cust466.13-1.cable.virginm.net) has joined #debian
+2017-02-20 20:10:36	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2017-02-20 20:10:45	NapoleonWils0n	hi all
+2017-02-20 20:10:49	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2017-02-20 20:10:49	--	URL for #debian: http://www.debian.org
+2017-02-20 20:11:12	NapoleonWils0n	im trying to install dante-server but it wont install properly
+2017-02-20 20:11:12	PPaFin_	OXXL4-CTO-Laptop
+2017-02-20 20:11:24	NapoleonWils0n	had same issue on stable and unstable
+2017-02-20 20:11:27	-->	chomwitt (~chomwitt@athedsl-254698.home.otenet.gr) has joined #debian
+2017-02-20 20:11:38	<--	PPaFin_ (~PPaFin@static.134.36.47.78.clients.your-server.de) has quit (Quit: leaving)
+2017-02-20 20:11:52	-->	PPaFin (~PPaFin@static.134.36.47.78.clients.your-server.de) has joined #debian
+2017-02-20 20:12:04	<--	thms (~thms@unaffiliated/thms) has quit (Ping timeout: 255 seconds)
+2017-02-20 20:12:16	-->	___xon00___ (~michald@095160159241.dynamic-ra-12.vectranet.pl) has joined #debian
+2017-02-20 20:12:24	<--	___xon00___ (~michald@095160159241.dynamic-ra-12.vectranet.pl) has quit (Client Quit)
+2017-02-20 20:12:35	-->	felix__ (~felix@r167-62-148-108.dialup.adsl.anteldata.net.uy) has joined #debian
+2017-02-20 20:13:10	<--	olegfusion (~olegfusio@mail.mobileforsale.ru) has quit (Ping timeout: 240 seconds)
+2017-02-20 20:13:14	-->	dynek (~dynek@178-211-235-84.dhcp.voenergies.net) has joined #debian
+2017-02-20 20:13:18	-->	olegfusion (~olegfusio@mail.mobileforsale.ru) has joined #debian
+2017-02-20 20:14:32	<--	edyp87 (~marek@aglt70.neoplus.adsl.tpnet.pl) has quit (Ping timeout: 260 seconds)
+2017-02-20 20:14:52	-->	Vutral|BSD (~ss@95.141.37.164) has joined #debian
+2017-02-20 20:15:02	-->	edyp87 (~marek@public-gprs383201.centertel.pl) has joined #debian
+2017-02-20 20:15:21	marioxcc	Hello.
+2017-02-20 20:15:24	<--	Tom01 (~tom@p5DDFF76A.dip0.t-ipconnect.de) has quit (Remote host closed the connection)
+2017-02-20 20:16:12	marioxcc	How can I configure a computer with Debian 8 to use a VPN with a desktop program?. In Debian 7, this could be done with network manager.
+2017-02-20 20:16:15	<--	Typhon (~Typhon@dslb-084-056-183-226.084.056.pools.vodafone-ip.de) has quit (Quit: moep moep)
+2017-02-20 20:16:18	<--	Vutral|BSD (~ss@95.141.37.164) has quit (Max SendQ exceeded)
+2017-02-20 20:16:33	NapoleonWils0n	hi mate you can still do that you just need to install another package
+2017-02-20 20:16:50	NapoleonWils0n	i think its called something like networkmanager-openvpn
+2017-02-20 20:17:22	NapoleonWils0n	network-manager-openvpn
+2017-02-20 20:17:32	-->	afx_ (~afx_@adsl-6.37.6.1.tellas.gr) has joined #debian
+2017-02-20 20:17:44	NapoleonWils0n	sudo apt install network-manager-openvpn
+2017-02-20 20:17:46	somiaj	marioxcc: you should still be able to use network-manager, you just may need to isntall the plugins as NapoleonWils0n states
+2017-02-20 20:17:47	<--	DoberMann (~james@cap31-6-88-180-72-76.fbx.proxad.net) has quit (Ping timeout: 252 seconds)
+2017-02-20 20:17:47	<--	shazzr (~shazzr@ti0086a430-4105.bb.online.no) has quit (Ping timeout: 252 seconds)
+2017-02-20 20:17:55	marioxcc	NapoleonWils0n: I got it. It is network-manager-gnome.
+2017-02-20 20:17:57	NapoleonWils0n	not sure if you might need to reboot as well
+2017-02-20 20:18:08	marioxcc	Yes, I needed to reboot. I see it is working now.
+2017-02-20 20:18:16	-->	DoberMann (~james@cap31-6-88-180-72-76.fbx.proxad.net) has joined #debian
+2017-02-20 20:18:18	marioxcc	Thanks somiaj. I found the package.
+2017-02-20 20:18:27	NapoleonWils0n	privateinternetaccess for vpn what i swear by
+2017-02-20 20:18:41	-->	shazzr (~shazzr@ti0086a430-4105.bb.online.no) has joined #debian
+2017-02-20 20:18:47	<--	afx_ (~afx_@adsl-6.37.6.1.tellas.gr) has quit (Max SendQ exceeded)
+2017-02-20 20:19:03	NapoleonWils0n	i like to create a split openvpn route
+2017-02-20 20:19:21	-->	afx_ (~afx_@adsl-6.37.6.1.tellas.gr) has joined #debian
+2017-02-20 20:19:25	marioxcc	NapoleonWils0n: I need a VPN for 48 hours only, does privateinternetaccess allows to pay for day of use.
+2017-02-20 20:19:33	NapoleonWils0n	usually i used dante server to bind to tun0 interface then i can set programs to use the socks5 proxy and go over the vpn
+2017-02-20 20:19:41	-->	AlexLikeRock (~AlexLikeR@unaffiliated/alexlikerock) has joined #debian
+2017-02-20 20:19:53	NapoleonWils0n	£25 for a year and you can use it on 5 devices at once
+2017-02-20 20:20:06	NapoleonWils0n	you could probably buy for a month
+2017-02-20 20:20:07	marioxcc	I do not need it for a year. It would be wasted.
+2017-02-20 20:20:14	<--	felix__ (~felix@r167-62-148-108.dialup.adsl.anteldata.net.uy) has quit (Quit: Konversation terminated!)
+2017-02-20 20:20:30	NapoleonWils0n	https://www.privateinternetaccess.com/
+2017-02-20 20:20:34	-->	Streusel (~Anonymous@unaffiliated/streusel) has joined #debian
+2017-02-20 20:20:40	<--	afx_ (~afx_@adsl-6.37.6.1.tellas.gr) has quit (Max SendQ exceeded)
+2017-02-20 20:20:52	NapoleonWils0n	prices: https://www.privateinternetaccess.com/pages/buy-vpn/
+2017-02-20 20:21:07	-->	trifolio6 (~h@79.109.194.239.dyn.user.ono.com) has joined #debian
+2017-02-20 20:21:10	NapoleonWils0n	$6.95 a month or £25 punds a year
+2017-02-20 20:21:10	-->	afx_ (~afx_@adsl-6.37.6.1.tellas.gr) has joined #debian
+2017-02-20 20:21:19	-->	nullbyte_ (~ghost@unaffiliated/nullby7e) has joined #debian
+2017-02-20 20:21:23	-->	altin (~altin@46.99.185.39) has joined #debian
+2017-02-20 20:21:23	<--	altin (~altin@46.99.185.39) has quit (Changing host)
+2017-02-20 20:21:23	-->	altin (~altin@flossk/altin) has joined #debian
+2017-02-20 20:21:51	<--	nullbyte_ (~ghost@unaffiliated/nullby7e) has quit (Client Quit)
+2017-02-20 20:22:55	-->	murfman (~murfman@unaffiliated/murfman) has joined #debian
+2017-02-20 20:23:27	marioxcc	NapoleonWils0n: Do you know any VPN which will allow one to hire less than one month of service?.
+2017-02-20 20:23:43	marioxcc	Preferably one day. I only need 24 or 48 hours of VPN.
+2017-02-20 20:24:20	-->	Vutral|BSD (~ss@95.141.37.164) has joined #debian
+2017-02-20 20:24:21	NapoleonWils0n	i dont im afriad, but to be honest would probably cost you a couple of dollars anyway
+2017-02-20 20:24:33	-->	felix__ (~felix@r167-62-148-108.dialup.adsl.anteldata.net.uy) has joined #debian
+2017-02-20 20:24:55	NapoleonWils0n	could just get PIA for 1 month for $7, not sure youll find anything cheaper
+2017-02-20 20:25:28	marioxcc	NapoleonWils0n: Ok. The problem is that I can only pay with Bitcoin and I am running out of them. I can't buy more bitcoins for the moment.
+2017-02-20 20:25:35	marioxcc	Although I have fiat money.
+2017-02-20 20:25:40	marioxcc	Thanks you very much anyway. :)
+2017-02-20 20:25:49	marioxcc	I think I will hire 1 week at Mullvad
+2017-02-20 20:26:01	<--	HurricaneHarry (~quassel@5.199.147.189) has quit (Ping timeout: 255 seconds)
+2017-02-20 20:26:15	marioxcc	It used that be that one could pay for a single day as well: https://mullvad.net/
+2017-02-20 20:26:22	NapoleonWils0n	looks like you can pay with bitcoin
+2017-02-20 20:26:25	<--	dethos (~dethos@95.172.190.234) has quit (Ping timeout: 260 seconds)
+2017-02-20 20:26:25	NapoleonWils0n	https://helpdesk.privateinternetaccess.com/hc/en-us/articles/219330588-How-can-I-pay-with-Bitcoins-
+2017-02-20 20:26:27	-->	l3archos (~Icedove@unaffiliated/l3archos) has joined #debian
+2017-02-20 20:26:34	<--	l3archos (~Icedove@unaffiliated/l3archos) has quit (Client Quit)
+2017-02-20 20:26:51	-->	root__ (~root@41.109.96.245) has joined #debian
+2017-02-20 20:26:55	NapoleonWils0n	there is a university in japan that offeres free vpn access
+2017-02-20 20:27:10	-->	Typhon (~Typhon@ipservice-092-218-101-002.092.218.pools.vodafone-ip.de) has joined #debian
+2017-02-20 20:27:14	NapoleonWils0n	http://www.vpngate.net/en/
+2017-02-20 20:27:31	-->	savantgarde (~savantgar@x55b27320.dyn.telefonica.de) has joined #debian
+2017-02-20 20:27:51	<--	root__ (~root@41.109.96.245) has quit (Client Quit)
+2017-02-20 20:28:00	--	Mode #debian [+l 1758] by debhelper
+2017-02-20 20:29:00	-->	onryo (~dgid@c-eea4d954.501201014125-0-757473696b74.cust.bredbandsbolaget.se) has joined #debian
+2017-02-20 20:29:08	<--	onryo (~dgid@c-eea4d954.501201014125-0-757473696b74.cust.bredbandsbolaget.se) has left #debian
+2017-02-20 20:29:51	<--	jandrusk (~jra@cpe-104-231-119-61.neo.res.rr.com) has quit (Quit: WeeChat 1.6)
+2017-02-20 20:30:06	marioxcc	NapoleonWils0n: Ok, thanks. I think I will hire Mullvad.
+2017-02-20 20:30:10	marioxcc	:)
+2017-02-20 20:30:20	-->	jandrusk (~jra@cpe-104-231-119-61.neo.res.rr.com) has joined #debian
+2017-02-20 20:30:23	NapoleonWils0n	no problem mate whatever works for you
+2017-02-20 20:30:43	<--	Hozy (~hozy@85.253.103.109.cable.starman.ee) has quit
+2017-02-20 20:30:58	marioxcc	Sure, thanks.
+2017-02-20 20:31:22	<--	dionysus69 (~Thunderbi@unaffiliated/dionysus69) has quit (Ping timeout: 268 seconds)
+2017-02-20 20:31:53	unborn	ChmEarl: thanks.. i was able to deploy :)
+2017-02-20 20:31:53	-->	eternal-pain (~eternal-p@195-27-142-46.pool.kielnet.net) has joined #debian
+2017-02-20 20:32:08	-->	muhannad_____ (~muhannad@95.218.61.200) has joined #debian
+2017-02-20 20:32:20	unborn	- now free time.. later all.
+2017-02-20 20:32:58	<--	EightBitDefender (~EightBitD@95.215.47.42) has quit (Quit: Lost terminal)
+2017-02-20 20:33:26	<--	schu-r (~Thunderbi@82-149-107-2.wco.wellcom.at) has quit (Quit: schu-r)
+2017-02-20 20:33:29	-->	HurricaneHarry (~quassel@5.199.147.189) has joined #debian
+2017-02-20 20:34:18	<--	ShalokShalom (~quassel@194-96-118-210.adsl.highway.telekom.at) has quit (Remote host closed the connection)
+2017-02-20 20:34:40	<--	murphy (~murphy@ip-8-19-46-3.cust.crosslinknet.com) has quit (Remote host closed the connection)
+2017-02-20 20:34:47	<--	philipballew (~philip@ubuntu/member/philipballew) has quit (Ping timeout: 240 seconds)
+2017-02-20 20:35:02	-->	fatalerrors (~fatalerro@2a03:7220:8081:b400::1) has joined #debian
+2017-02-20 20:38:16	<--	n-iCe (~nice@Aircrack-NG/User/n-iCe) has quit (Quit: Lost terminal)
+2017-02-20 20:38:20	-->	earthundead (~earthunde@78.25.123.237) has joined #debian
+2017-02-20 20:38:48	<--	bertbob (~bertbob@reriding.dsl.xmission.com) has quit (Ping timeout: 260 seconds)
+2017-02-20 20:40:05	<--	felix__ (~felix@r167-62-148-108.dialup.adsl.anteldata.net.uy) has quit (Quit: Konversation terminated!)
+2017-02-20 20:40:34	-->	WoodLeg (~WoodLeg@81.180.209.136) has joined #debian
+2017-02-20 20:40:47	<--	murfman (~murfman@unaffiliated/murfman) has quit (Quit: Leaving)
+2017-02-20 20:40:57	-->	mo1991 (~mo1991@12.28.231.61) has joined #debian
+2017-02-20 20:41:16	-->	xyberguard (~xyberguar@2601:152:4103:3ec2:9987:2cf2:8168:1c9e) has joined #debian

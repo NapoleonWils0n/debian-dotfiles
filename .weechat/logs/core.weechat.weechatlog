@@ -1478,3 +1478,10 @@
 2017-02-18 15:05:06	=!=	Error: unknown command "/iset" (type /help for help)
 2017-02-18 15:05:15		script: 331 scripts for WeeChat 1.7
 2017-02-18 15:05:15		Plugins loaded: alias, charset, exec, fifo, guile, irc, javascript, logger, perl, python, relay, script, trigger, xfer
+2017-02-20 20:10:14		script: downloading list of scripts...
+2017-02-20 20:10:14		Plugins loaded: alias, charset, exec, fifo, guile, irc, javascript, logger, perl, python, relay, script, trigger, xfer
+2017-02-20 20:10:14		script: 331 scripts for WeeChat 1.7
+2017-02-20 20:10:18		script: 331 scripts for WeeChat 1.7
+2017-02-20 20:10:18		Plugins loaded: alias, charset, exec, fifo, guile, irc, javascript, logger, perl, python, relay, script, trigger, xfer
+2017-02-21 00:36:23		script: 331 scripts for WeeChat 1.7
+2017-02-21 00:36:23		Plugins loaded: alias, charset, exec, fifo, guile, irc, javascript, logger, perl, python, relay, script, trigger, xfer

@@ -31634,3 +31634,125 @@
 2016-11-04 23:48:37	-->	andrewchen (~andrew@114.23.137.240) has joined #archlinux
 2016-11-04 23:49:37	-->	Keniyal (~Keniyal@unaffiliated/keniyal) has joined #archlinux
 2016-11-04 23:49:43	--	irc: disconnected from server
+2017-02-21 00:36:45	-->	NapoleonWils0n (~weechat@host109-157-164-54.range109-157.btcentralplus.com) has joined #archlinux
+2017-02-21 00:36:45	--	Topic for #archlinux is "Welcome to Arch Linux World Domination, Inc. <+> Channel rules: https://goo.gl/fkksz9 <+> Pastebins: https://ptpb.pw https://gist.github.com https://bpaste.net <+> Become an official Arch Tester: https://goo.gl/3uvJQk <+> Phasing out i686! | Welcome new ops gehidore and alad | `pacman -Syu libxml++` if you get conflicts"
+2017-02-21 00:36:45	--	Topic set by evilgrawity (grawity@wolke.nullroute.eu.org) on Wed, 08 Feb 2017 16:48:48
+2017-02-21 00:36:45	--	Channel #archlinux: 1748 nicks (1 op, 0 voices, 1747 normals)
+2017-02-21 00:36:46	--	Channel created on Sun, 15 Feb 2004 05:08:31
+2017-02-21 00:36:53	NapoleonWils0n	hi all
+2017-02-21 00:37:33	<--	m4sk1n (uid206209@gateway/web/irccloud.com/x-arnptnyqbpvkyywo) has quit (Quit: Connection closed for inactivity)
+2017-02-21 00:37:46	-->	Keniyal (~Keniyal@unaffiliated/keniyal) has joined #archlinux
+2017-02-21 00:38:07	grazzolini	jab416171: https://wiki.archlinux.org/index.php/Secure_Shell#X11_forwarding
+2017-02-21 00:38:08	<--	h4wk (~h4wk@cpc82411-trow6-2-0-cust90.18-1.cable.virginm.net) has quit (Quit: Leaving)
+2017-02-21 00:38:08	phrik	Title: Secure Shell - ArchWiki (at wiki.archlinux.org)
+2017-02-21 00:38:11	eschwartz	alad: roll
+2017-02-21 00:38:23	jab416171	grazzolini, yes I have that open
+2017-02-21 00:38:55	-->	HeyCitizen (~citizen@gateway/vpn/privateinternetaccess/heycitizen) has joined #archlinux
+2017-02-21 00:39:13	grazzolini	jab416171: xhost +
+2017-02-21 00:39:21	grazzolini	jab416171: on local system
+2017-02-21 00:39:31	-->	Oatmeal (~Suzeanne@166.175.60.174) has joined #archlinux
+2017-02-21 00:39:47	<--	gkbrk (~gkbrk@31.205.1.1) has quit (Quit: Leaving)
+2017-02-21 00:40:02	eschwartz	alad: roll
+2017-02-21 00:40:16	dmc	lol
+2017-02-21 00:40:20	alad	eschwartz: I've set +m in #ot
+2017-02-21 00:40:29	eschwartz	cool
+2017-02-21 00:40:43	dmc	that doesn't let banned people talk
+2017-02-21 00:40:54	jab416171	grazzolini, xhost +?
+2017-02-21 00:41:04	eschwartz	I tried...
+2017-02-21 00:41:24	eschwartz	alad: roll
+2017-02-21 00:41:40	<--	iconz (~iconz@90.194.70.189) has quit (Quit: WeeChat 1.7)
+2017-02-21 00:41:46	<--	kisk_ (~kisk@173-21-88-132.client.mchsi.com) has quit (Quit: Leaving)
+2017-02-21 00:42:07	--	Piper-Off is now known as Monthrect
+2017-02-21 00:42:08	-->	kisk (~kisk@173-21-88-132.client.mchsi.com) has joined #archlinux
+2017-02-21 00:42:09	-->	proudzhu (~proudzhu@113.89.237.133) has joined #archlinux
+2017-02-21 00:42:16	-->	DarkPsydeLord (~quassel@187.211.44.171) has joined #archlinux
+2017-02-21 00:42:24	<--	jstimm (~jstimm@unaffiliated/jstimm) has quit (Ping timeout: 260 seconds)
+2017-02-21 00:42:51	grazzolini	jab416171: yes, on your local system, before ssh -X
+2017-02-21 00:43:02	jab416171	I don't understand
+2017-02-21 00:43:20	grazzolini	jab416171: xhost + ; ssh -X <remote host>
+2017-02-21 00:43:43	<--	mirk0 (~mirk0@unaffiliated/-mirko-/x-2946915) has quit (Quit: WeeChat 1.7)
+2017-02-21 00:43:51	grazzolini	jab416171: your life would be extremely easier if you just used x2go
+2017-02-21 00:43:59	grazzolini	jab416171: is this a remote system over the internet?
+2017-02-21 00:44:17	<--	andyrtr (~andyrtr@archlinux/developer/andyrtr) has quit (Ping timeout: 240 seconds)
+2017-02-21 00:44:53	jab416171	no it's on my lan
+2017-02-21 00:44:59	-->	gratidude (~gratidude@unaffiliated/gratidude) has joined #archlinux
+2017-02-21 00:46:01	-->	hubnerd_ (~weechat@71.19.251.248) has joined #archlinux
+2017-02-21 00:46:03	-->	Evol (~Cof@191.190.217.124) has joined #archlinux
+2017-02-21 00:46:06	<--	fitouf (~fitouf@2607:fa48:6e98:f9d0:50fb:d82c:37d5:2ac6) has quit (Quit: WeeChat 1.7)
+2017-02-21 00:46:42	<--	ozmage (~ozmage@unaffiliated/javashin) has quit (Remote host closed the connection)
+2017-02-21 00:46:51	-->	BarrelMan (~Loch@anon-34-96.vpn.ipredator.se) has joined #archlinux
+2017-02-21 00:47:17	NapoleonWils0n	im trying to find a way to put certain files under / under version control
+2017-02-21 00:47:42	--	eschwartz is now known as alad2
+2017-02-21 00:47:46	NapoleonWils0n	seen a few people use org-mode to manage dotfiles
+2017-02-21 00:47:55	--	alad is now known as eschwartz2
+2017-02-21 00:47:57	<--	redShadow (~redShadow@unaffiliated/redshadow) has quit (Ping timeout: 240 seconds)
+2017-02-21 00:48:11	grazzolini	NapoleonWils0n: well, I use a git repo
+2017-02-21 00:48:14	grazzolini	NapoleonWils0n: just that
+2017-02-21 00:48:24	NapoleonWils0n	for files under root /
+2017-02-21 00:48:28	<--	Cloudish (~Cloudish@unaffiliated/cloudish) has quit (Ping timeout: 260 seconds)
+2017-02-21 00:48:29	<--	sunri5e (~sunri5e@unaffiliated/sunri5e) has quit (Quit: ZNC - http://znc.in)
+2017-02-21 00:48:45	NapoleonWils0n	dont want to put all of / in a git repo
+2017-02-21 00:49:17	<--	matoro (~matoro@129.62.119.133) has quit (Ping timeout: 240 seconds)
+2017-02-21 00:49:20	-->	sunri5e (~sunri5e@unaffiliated/sunri5e) has joined #archlinux
+2017-02-21 00:49:21	NapoleonWils0n	was just wondering if there was a way to pick and choose certain files under / and add to a git repo
+2017-02-21 00:49:27	-->	newcoder (~newcoder@unaffiliated/newcoder) has joined #archlinux
+2017-02-21 00:49:32	<--	peaveyman (~gary@unaffiliated/peaveyman) has quit (Quit: WeeChat 1.7)
+2017-02-21 00:49:39	grazzolini	NapoleonWils0n: sure, copy then over to a git repo. easy
+2017-02-21 00:49:48	NapoleonWils0n	yes thats what i nomally do
+2017-02-21 00:49:52	<--	proudzhu (~proudzhu@113.89.237.133) has quit (Ping timeout: 260 seconds)
+2017-02-21 00:49:54	<--	Llewelyn (~derelict@50-46-217-106.evrt.wa.frontiernet.net) has quit (Remote host closed the connection)
+2017-02-21 00:49:57	<--	la_croix (~la_croix@host86-146-141-183.range86-146.btcentralplus.com) has quit (Ping timeout: 240 seconds)
+2017-02-21 00:50:02	NapoleonWils0n	and recreate the dir structure in the git repo
+2017-02-21 00:50:38	<--	PyroPeter (~pyropeter@april-fools/2013/tenth/pyropeter) has quit (Ping timeout: 255 seconds)
+2017-02-21 00:50:44	NapoleonWils0n	i have home dot files
+2017-02-21 00:50:46	-->	andyrtr (~andyrtr@archlinux/developer/andyrtr) has joined #archlinux
+2017-02-21 00:51:20	<--	novns (~novns@unaffiliated/novns) has quit (Remote host closed the connection)
+2017-02-21 00:51:22	NapoleonWils0n	so guess best way is to create dir structure for / files in a git repo
+2017-02-21 00:51:29	NapoleonWils0n	then just copy the files into places
+2017-02-21 00:51:39	--	alad2 is now known as eschwartz
+2017-02-21 00:51:43	--	eschwartz2 is now known as alad
+2017-02-21 00:51:47	grazzolini	NapoleonWils0n: I have a simple script for diff'ing then and copying them from/to repo
+2017-02-21 00:52:08	grazzolini	NapoleonWils0n: there are more sophisticated approaches, but mine has been working for almost a decade now
+2017-02-21 00:52:26	grazzolini	NapoleonWils0n: I don't like the idea of putting my entire /etc under git for instance
+2017-02-21 00:52:33	grazzolini	I only put what I manually change
+2017-02-21 00:52:36	-->	ozmage (~ozmage@unaffiliated/javashin) has joined #archlinux
+2017-02-21 00:52:37	NapoleonWils0n	exactly
+2017-02-21 00:53:12	-->	peaveyman (~gary@unaffiliated/peaveyman) has joined #archlinux
+2017-02-21 00:53:14	<--	peaveyman (~gary@unaffiliated/peaveyman) has quit (Client Quit)
+2017-02-21 00:53:29	-->	poxbat (~Unknown@cpe-173-174-87-252.austin.res.rr.com) has joined #archlinux
+2017-02-21 00:53:35	<--	xsmile (~xsmile@unaffiliated/xsmile) has quit (Ping timeout: 260 seconds)
+2017-02-21 00:55:09	NapoleonWils0n	been playing around with debian sid, chromium has extension disabled by default
+2017-02-21 00:55:36	NapoleonWils0n	so you cant install anything from the chrome store and have to start chromium with --enable-remote-extensions
+2017-02-21 00:55:38	<--	poxbat (~Unknown@cpe-173-174-87-252.austin.res.rr.com) has quit (Client Quit)
+2017-02-21 00:56:14	-->	Llewelyn (~derelict@50-46-217-106.evrt.wa.frontiernet.net) has joined #archlinux
+2017-02-21 00:56:17	-->	la_croix (~la_croix@host86-146-141-183.range86-146.btcentralplus.com) has joined #archlinux
+2017-02-21 00:56:23	-->	peaveyman (~gary@unaffiliated/peaveyman) has joined #archlinux
+2017-02-21 00:56:40	<--	The_Flash (~krae@65.129.112.101) has quit (Quit: WeeChat 1.7-rc1)
+2017-02-21 00:57:15	<--	peaveyman (~gary@unaffiliated/peaveyman) has quit (Client Quit)
+2017-02-21 00:57:19	-->	The_Flash (~krae@65.129.112.101) has joined #archlinux
+2017-02-21 00:57:47	<--	panostimos (ptim@athedsl-120268.home.otenet.gr) has quit (Ping timeout: 240 seconds)
+2017-02-21 00:57:49	-->	comma8 (~comma8@2601:1c2:500:b7fc::9c3f) has joined #archlinux
+2017-02-21 00:57:52	<--	Stick (~stick@Kol-kolibrien.cust.fsknet.dk) has quit (Remote host closed the connection)
+2017-02-21 00:58:15	-->	PyroPeter (~pyropeter@april-fools/2013/tenth/pyropeter) has joined #archlinux
+2017-02-21 00:59:13	wyre	why lib link in / has rwx permissions to others? 
+2017-02-21 00:59:16	<--	ozmage (~ozmage@unaffiliated/javashin) has quit (Remote host closed the connection)
+2017-02-21 00:59:19	wyre	that's not dangerous? 
+2017-02-21 00:59:20	<--	feksclaus (~feksclaus@80-71-131-204.u.parknet.dk) has quit (Quit: WeeChat 1.7)
+2017-02-21 00:59:27	-->	peaveyman (~gary@unaffiliated/peaveyman) has joined #archlinux
+2017-02-21 00:59:57	occultus	wyre: symlinks just are
+2017-02-21 01:00:09	d42	symlinks are magic
+2017-02-21 01:00:38	wyre	occultus, but other users could remove them? 
+2017-02-21 01:00:42	wyre	that's insecure, right? 
+2017-02-21 01:01:00	occultus	wyre: iirc deleting a file usually needs write permission to the parent directory
+2017-02-21 01:01:30	<--	somis (~somis@149.56.153.181) has quit (Quit: WeeChat 1.7)
+2017-02-21 01:01:35	--	phillid is now known as bokchoi
+2017-02-21 01:01:37	krarkrrrc	imagine the linux display is implemented as a pipeline of programs that output a single subframe that gets 'flattened' to a master frame at the end of the pipeline; window management would be so trivial you could do it manually from the shell by inserting whatever program you want inside the layer pipeline
+2017-02-21 01:01:43	<--	frenchbeard (~frenchbea@LFbn-1-7820-219.w92-167.abo.wanadoo.fr) has quit (Remote host closed the connection)
+2017-02-21 01:02:16	wyre	occultus, and modify them? 
+2017-02-21 01:02:22	Score_Under	How do I install QtWebKit for qt4?
+2017-02-21 01:02:34	occultus	wyre: but it's a symlink
+2017-02-21 01:02:43	occultus	wyre: the rules are different for symlinks
+2017-02-21 01:02:44	<--	bfrog (~tburdick@unaffiliated/submersive) has quit (Quit: WeeChat 1.7)
+2017-02-21 01:02:56	wyre	ok :) 
+2017-02-21 01:03:00	Score_Under	krarkrrrc: you could probably implement that as a compositor, right?
+2017-02-21 01:03:22	-->	fekzebzak (~fekzebzak@2601:246:8202:6aaa:fa32:e4ff:febb:8a7d) has joined #archlinux

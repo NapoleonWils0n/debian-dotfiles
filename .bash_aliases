@@ -12,12 +12,6 @@ alias curl='curl -A "Mozilla"'
 # mkdir check if dir exists
 alias mkdir='mkdir -p'
 
-# keyboard backlight on
-alias backlight='echo 255 > /sys/class/leds/smc::kbd_backlight/brightness'
-
-# keyboard backlight off
-alias backlight='echo 0 > /sys/class/leds/smc::kbd_backlight/brightness'
-
 # hdmi display on
 alias hdmi-on='xrandr --output eDP1 --auto --primary --output HDMI1 --auto --right-of eDP1'
 
