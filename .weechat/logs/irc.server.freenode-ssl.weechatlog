@@ -15483,3 +15483,335 @@
 2017-02-21 00:36:39	--	End of /MOTD command.
 2017-02-21 00:36:39	--	User mode [+Zi] by NapoleonWils0n
 2017-02-21 00:36:39	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.
+2017-02-21 20:06:06	--	irc: connecting to server chat.freenode.net/6697 (SSL)...
+2017-02-21 20:06:09	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2017-02-21 20:06:09	--	gnutls: receiving 2 certificates
+2017-02-21 20:06:09	--	 - certificate[1] info:
+2017-02-21 20:06:09	--	   - subject `CN=leguin.freenode.net', issuer `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', serial 0x039e1e586941912490e9b90b6e90a39f023c, RSA key 4096 bits, signed using RSA-SHA256, activated `2017-01-12 16:50:00 UTC', expires `2017-04-12 16:50:00 UTC', key-ID `sha256:b575b498f1712f0042577568179b92fc4455ac198bdea6fae7fe3ed25046964e'
+2017-02-21 20:06:09	--	 - certificate[2] info:
+2017-02-21 20:06:09	--	   - subject `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', issuer `CN=DST Root CA X3,O=Digital Signature Trust Co.', serial 0x0a0141420000015385736a0b85eca708, RSA key 2048 bits, signed using RSA-SHA256, activated `2016-03-17 16:40:46 UTC', expires `2021-03-17 16:40:46 UTC', key-ID `sha256:60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18'
+2017-02-21 20:06:09	--	gnutls: peer's certificate is trusted
+2017-02-21 20:06:09	--	irc: connected to chat.freenode.net/6697 (130.239.18.119)
+2017-02-21 20:06:09	--	leguin.freenode.net: *** Looking up your hostname...
+2017-02-21 20:06:09	--	leguin.freenode.net: *** Checking Ident
+2017-02-21 20:06:09	--	leguin.freenode.net: *** Found your hostname
+2017-02-21 20:06:18	--	leguin.freenode.net: *** No Ident response
+2017-02-21 20:06:18	--	irc: client capability, server supports: account-notify extended-join identify-msg multi-prefix sasl
+2017-02-21 20:06:18	--	irc: client capability, requesting: sasl
+2017-02-21 20:06:18	--	irc: client capability, enabled: sasl
+2017-02-21 20:06:20	--	You are now logged in as NapoleonWils0n. (NapoleonWils0n!weechat@host109-157-164-54.range109-157.btcentralplus.com)
+2017-02-21 20:06:20	--	SASL authentication successful
+2017-02-21 20:06:21	--	Welcome to the freenode Internet Relay Chat Network NapoleonWils0n
+2017-02-21 20:06:21	--	Your host is leguin.freenode.net[130.239.18.119/6697], running version ircd-seven-1.1.4
+2017-02-21 20:06:21	--	This server was created Tue Jan 3 2017 at 13:35:13 UTC
+2017-02-21 20:06:21	--	leguin.freenode.net ircd-seven-1.1.4 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2017-02-21 20:06:21	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2017-02-21 20:06:21	--	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 CPRIVMSG CNOTICE KNOCK :are supported by this server
+2017-02-21 20:06:21	--	ETRACE SAFELIST ELIST=CTU WHOX :are supported by this server
+2017-02-21 20:06:21	--	There are 133 users and 90474 invisible on 27 servers
+2017-02-21 20:06:21	--	28 :IRC Operators online
+2017-02-21 20:06:21	--	22 :unknown connection(s)
+2017-02-21 20:06:21	--	57707 :channels formed
+2017-02-21 20:06:21	--	I have 9391 clients and 1 servers
+2017-02-21 20:06:21	--	9391 9409 :Current local users 9391, max 9409
+2017-02-21 20:06:21	--	90607 91751 :Current global users 90607, max 91751
+2017-02-21 20:06:21	--	Highest connection count: 9410 (9409 clients) (669828 connections received)
+2017-02-21 20:06:21	--	- leguin.freenode.net Message of the Day -
+2017-02-21 20:06:21	--	- Welcome to leguin.freenode.net in Umeå, Sweden, EU! Thanks to
+2017-02-21 20:06:21	--	- the Academic Computer Club at Umeå University for sponsoring
+2017-02-21 20:06:21	--	- this server!
+2017-02-21 20:06:21	--	-
+2017-02-21 20:06:21	--	- LE GUIN, URSULA K. (1929-) Born in Berkeley, California,
+2017-02-21 20:06:21	--	- Ursula Le Guin is an american author primarily known for
+2017-02-21 20:06:21	--	- her Science Fiction and Fantasy. She has been awarded the
+2017-02-21 20:06:21	--	- Hugo and Nebula awards, and is best known for her Earthsea
+2017-02-21 20:06:21	--	- and Hainish series.
+2017-02-21 20:06:21	--	-
+2017-02-21 20:06:21	--	- Welcome to freenode - supporting the free and open source
+2017-02-21 20:06:21	--	- software communities since 1998.
+2017-02-21 20:06:21	--	-
+2017-02-21 20:06:21	--	- By connecting to freenode you indicate that you have read and
+2017-02-21 20:06:21	--	- accept our policies as set out on http://www.freenode.net
+2017-02-21 20:06:21	--	- freenode runs an open proxy scanner. Please join #freenode for
+2017-02-21 20:06:21	--	- any network-related questions or queries, where a number of
+2017-02-21 20:06:21	--	- volunteer staff and helpful users will be happy to assist you.
+2017-02-21 20:06:21	--	-
+2017-02-21 20:06:21	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2017-02-21 20:06:21	--	- together with like-minded FOSS enthusiasts for talks and
+2017-02-21 20:06:21	--	- real-life collaboration.
+2017-02-21 20:06:21	--	-
+2017-02-21 20:06:21	--	- We would like to thank Private Internet Access
+2017-02-21 20:06:21	--	- (https://www.privateinternetaccess.com/) and the other
+2017-02-21 20:06:21	--	- organisations that help keep freenode and our other projects
+2017-02-21 20:06:21	--	- running for their sustained support.
+2017-02-21 20:06:21	--	-
+2017-02-21 20:06:21	--	- In particular we would like to thank the sponsor
+2017-02-21 20:06:21	--	- of this server, details of which can be found above.
+2017-02-21 20:06:21	--	-
+2017-02-21 20:06:21	--	End of /MOTD command.
+2017-02-21 20:06:21	--	User mode [+Zi] by NapoleonWils0n
+2017-02-21 20:06:21	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.
+2017-02-21 23:17:54	--	irc: connecting to server chat.freenode.net/6697 (SSL)...
+2017-02-21 23:17:55	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2017-02-21 23:17:55	--	gnutls: receiving 2 certificates
+2017-02-21 23:17:55	--	 - certificate[1] info:
+2017-02-21 23:17:55	--	   - subject `CN=card.freenode.net', issuer `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', serial 0x03bf86423bd641c62bc787b975fdb0dd4e11, RSA key 4096 bits, signed using RSA-SHA256, activated `2017-02-07 18:24:00 UTC', expires `2017-05-08 18:24:00 UTC', key-ID `sha256:90afaeb78039aa81aacb17ce466ff628f794d95a02bf3e5618375eb1636d3556'
+2017-02-21 23:17:55	--	 - certificate[2] info:
+2017-02-21 23:17:55	--	   - subject `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', issuer `CN=DST Root CA X3,O=Digital Signature Trust Co.', serial 0x0a0141420000015385736a0b85eca708, RSA key 2048 bits, signed using RSA-SHA256, activated `2016-03-17 16:40:46 UTC', expires `2021-03-17 16:40:46 UTC', key-ID `sha256:60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18'
+2017-02-21 23:17:55	--	gnutls: peer's certificate is trusted
+2017-02-21 23:17:55	--	irc: connected to chat.freenode.net/6697 (38.229.70.22)
+2017-02-21 23:17:55	--	card.freenode.net: *** Looking up your hostname...
+2017-02-21 23:17:55	--	card.freenode.net: *** Checking Ident
+2017-02-21 23:17:55	--	card.freenode.net: *** Found your hostname
+2017-02-21 23:18:03	--	card.freenode.net: *** No Ident response
+2017-02-21 23:18:03	--	irc: client capability, server supports: account-notify extended-join identify-msg multi-prefix sasl
+2017-02-21 23:18:03	--	irc: client capability, requesting: sasl
+2017-02-21 23:18:03	--	irc: client capability, enabled: sasl
+2017-02-21 23:18:05	--	You are now logged in as NapoleonWils0n. (NapoleonWils0n!weechat@host109-157-164-54.range109-157.btcentralplus.com)
+2017-02-21 23:18:05	--	SASL authentication successful
+2017-02-21 23:18:06	--	Welcome to the freenode Internet Relay Chat Network NapoleonWils0n
+2017-02-21 23:18:06	--	Your host is card.freenode.net[38.229.70.22/6697], running version ircd-seven-1.1.4
+2017-02-21 23:18:06	--	This server was created Tue Feb 7 2017 at 17:41:14 UTC
+2017-02-21 23:18:06	--	card.freenode.net ircd-seven-1.1.4 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2017-02-21 23:18:06	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2017-02-21 23:18:06	--	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 KNOCK CPRIVMSG CNOTICE :are supported by this server
+2017-02-21 23:18:06	--	WHOX SAFELIST ELIST=CTU ETRACE :are supported by this server
+2017-02-21 23:18:06	--	There are 125 users and 86426 invisible on 27 servers
+2017-02-21 23:18:06	--	28 :IRC Operators online
+2017-02-21 23:18:06	--	14 :unknown connection(s)
+2017-02-21 23:18:06	--	57348 :channels formed
+2017-02-21 23:18:06	--	I have 4398 clients and 1 servers
+2017-02-21 23:18:06	--	4398 4834 :Current local users 4398, max 4834
+2017-02-21 23:18:06	--	86551 91751 :Current global users 86551, max 91751
+2017-02-21 23:18:06	--	Highest connection count: 4835 (4834 clients) (116177 connections received)
+2017-02-21 23:18:06	--	- card.freenode.net Message of the Day -
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	- Welcome to card.freenode.net in Washington, DC, US, kindly sponsored by
+2017-02-21 23:18:06	--	- Team Cymru (http://www.team-cymru.org).
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	- CARD, ORSON SCOTT [1951-]. Born in Richland, Washington, Card grew up in
+2017-02-21 23:18:06	--	- California, Arizona, and Utah. He lived in Brazil for two years as an unpaid
+2017-02-21 23:18:06	--	- missionary for the Mormon Church. Author of the Ender and Alvin Maker books,
+2017-02-21 23:18:06	--	- Card's science fiction and fantasy work is strongly influenced by his Mormon
+2017-02-21 23:18:06	--	- cultural background. The first author to win the Hugo and Nebula novel awards
+2017-02-21 23:18:06	--	- two years in a row, Card currently lives in Greensboro, North Carolina, US.
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	- Welcome to freenode - supporting the free and open source
+2017-02-21 23:18:06	--	- software communities since 1998.
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	- By connecting to freenode you indicate that you have read and
+2017-02-21 23:18:06	--	- accept our policies as set out on http://www.freenode.net
+2017-02-21 23:18:06	--	- freenode runs an open proxy scanner. Please join #freenode for
+2017-02-21 23:18:06	--	- any network-related questions or queries, where a number of
+2017-02-21 23:18:06	--	- volunteer staff and helpful users will be happy to assist you.
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2017-02-21 23:18:06	--	- together with like-minded FOSS enthusiasts for talks and
+2017-02-21 23:18:06	--	- real-life collaboration.
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	- We would like to thank Private Internet Access
+2017-02-21 23:18:06	--	- (https://www.privateinternetaccess.com/) and the other
+2017-02-21 23:18:06	--	- organisations that help keep freenode and our other projects
+2017-02-21 23:18:06	--	- running for their sustained support.
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	- In particular we would like to thank the sponsor
+2017-02-21 23:18:06	--	- of this server, details of which can be found above.
+2017-02-21 23:18:06	--	-
+2017-02-21 23:18:06	--	End of /MOTD command.
+2017-02-21 23:18:06	--	User mode [+Zi] by NapoleonWils0n
+2017-02-21 23:18:06	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.
+2017-02-22 00:00:24	--	irc: connecting to server chat.freenode.net/6697 (SSL)...
+2017-02-22 00:00:24	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2017-02-22 00:00:24	--	gnutls: receiving 2 certificates
+2017-02-22 00:00:24	--	 - certificate[1] info:
+2017-02-22 00:00:24	--	   - subject `CN=hobana.freenode.net', issuer `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', serial 0x03dcffa1d5efb17806c717386d39dbe4feb8, RSA key 4096 bits, signed using RSA-SHA256, activated `2017-01-14 00:03:00 UTC', expires `2017-04-14 00:03:00 UTC', key-ID `sha256:a868f26e1a16a44396403229c641c4ae8830cd5dd4d12f03bfb5e665d6e40ba1'
+2017-02-22 00:00:24	--	 - certificate[2] info:
+2017-02-22 00:00:24	--	   - subject `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', issuer `CN=DST Root CA X3,O=Digital Signature Trust Co.', serial 0x0a0141420000015385736a0b85eca708, RSA key 2048 bits, signed using RSA-SHA256, activated `2016-03-17 16:40:46 UTC', expires `2021-03-17 16:40:46 UTC', key-ID `sha256:60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18'
+2017-02-22 00:00:24	--	gnutls: peer's certificate is trusted
+2017-02-22 00:00:25	--	irc: connected to chat.freenode.net/6697 (81.18.73.123)
+2017-02-22 00:00:25	--	hobana.freenode.net: *** Looking up your hostname...
+2017-02-22 00:00:25	--	hobana.freenode.net: *** Checking Ident
+2017-02-22 00:00:25	--	hobana.freenode.net: *** Found your hostname
+2017-02-22 00:00:33	--	hobana.freenode.net: *** No Ident response
+2017-02-22 00:00:33	--	irc: client capability, server supports: account-notify extended-join identify-msg multi-prefix sasl
+2017-02-22 00:00:33	--	irc: client capability, requesting: sasl
+2017-02-22 00:00:33	--	irc: client capability, enabled: sasl
+2017-02-22 00:00:34	--	You are now logged in as NapoleonWils0n. (NapoleonWils0n!weechat@host109-157-164-54.range109-157.btcentralplus.com)
+2017-02-22 00:00:34	--	SASL authentication successful
+2017-02-22 00:00:35	--	Welcome to the freenode Internet Relay Chat Network NapoleonWils0n
+2017-02-22 00:00:35	--	Your host is hobana.freenode.net[81.18.73.123/6697], running version ircd-seven-1.1.4
+2017-02-22 00:00:35	--	This server was created Fri Jan 13 2017 at 00:03:11 UTC
+2017-02-22 00:00:35	--	hobana.freenode.net ircd-seven-1.1.4 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2017-02-22 00:00:35	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2017-02-22 00:00:35	--	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 ETRACE WHOX SAFELIST :are supported by this server
+2017-02-22 00:00:35	--	ELIST=CTU KNOCK CPRIVMSG CNOTICE :are supported by this server
+2017-02-22 00:00:35	--	There are 126 users and 85488 invisible on 27 servers
+2017-02-22 00:00:35	--	28 :IRC Operators online
+2017-02-22 00:00:35	--	20 :unknown connection(s)
+2017-02-22 00:00:35	--	57253 :channels formed
+2017-02-22 00:00:35	--	I have 5201 clients and 1 servers
+2017-02-22 00:00:35	--	5201 7444 :Current local users 5201, max 7444
+2017-02-22 00:00:35	--	85614 91751 :Current global users 85614, max 91751
+2017-02-22 00:00:35	--	Highest connection count: 7445 (7444 clients) (475006 connections received)
+2017-02-22 00:00:35	--	- hobana.freenode.net Message of the Day -
+2017-02-22 00:00:35	--	- Welcome to hobana.freenode.net in Bucharest, Romania! Thank
+2017-02-22 00:00:35	--	- you to RCS-RDS for sponsoring this server!
+2017-02-22 00:00:35	--	-
+2017-02-22 00:00:35	--	- Ion Hobana (1931-2011) was a Romanian science fiction writer,
+2017-02-22 00:00:35	--	- literary critic and ufologist. Ion Hobana is a literary
+2017-02-22 00:00:35	--	- pseudonym, the writer's real name being Aurelian Manta Rosie.
+2017-02-22 00:00:35	--	-
+2017-02-22 00:00:35	--	- Welcome to freenode - supporting the free and open source
+2017-02-22 00:00:35	--	- software communities since 1998.
+2017-02-22 00:00:35	--	-
+2017-02-22 00:00:35	--	- By connecting to freenode you indicate that you have read and
+2017-02-22 00:00:35	--	- accept our policies as set out on http://www.freenode.net
+2017-02-22 00:00:35	--	- freenode runs an open proxy scanner. Please join #freenode for
+2017-02-22 00:00:35	--	- any network-related questions or queries, where a number of
+2017-02-22 00:00:35	--	- volunteer staff and helpful users will be happy to assist you.
+2017-02-22 00:00:35	--	-
+2017-02-22 00:00:35	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2017-02-22 00:00:35	--	- together with like-minded FOSS enthusiasts for talks and
+2017-02-22 00:00:35	--	- real-life collaboration.
+2017-02-22 00:00:35	--	-
+2017-02-22 00:00:35	--	- We would like to thank Private Internet Access
+2017-02-22 00:00:35	--	- (https://www.privateinternetaccess.com/) and the other
+2017-02-22 00:00:35	--	- organisations that help keep freenode and our other projects
+2017-02-22 00:00:35	--	- running for their sustained support.
+2017-02-22 00:00:35	--	-
+2017-02-22 00:00:35	--	- In particular we would like to thank the sponsor
+2017-02-22 00:00:35	--	- of this server, details of which can be found above.
+2017-02-22 00:00:35	--	-
+2017-02-22 00:00:35	--	End of /MOTD command.
+2017-02-22 00:00:35	--	User mode [+Zi] by NapoleonWils0n
+2017-02-22 00:00:35	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.
+2017-02-22 00:54:08	--	irc: connecting to server chat.freenode.net/6697 (SSL)...
+2017-02-22 00:54:08	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2017-02-22 00:54:08	--	gnutls: receiving 2 certificates
+2017-02-22 00:54:08	--	 - certificate[1] info:
+2017-02-22 00:54:08	--	   - subject `CN=cherryh.freenode.net', issuer `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', serial 0x036f5ed547ca3c6cbc404b34aa0c5443cdae, RSA key 4096 bits, signed using RSA-SHA256, activated `2017-01-12 16:48:00 UTC', expires `2017-04-12 16:48:00 UTC', key-ID `sha256:2ffa0025a28b911e9773ec5343b846943cb56d22ab0718407b55d7e6710a85df'
+2017-02-22 00:54:08	--	 - certificate[2] info:
+2017-02-22 00:54:08	--	   - subject `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', issuer `CN=DST Root CA X3,O=Digital Signature Trust Co.', serial 0x0a0141420000015385736a0b85eca708, RSA key 2048 bits, signed using RSA-SHA256, activated `2016-03-17 16:40:46 UTC', expires `2021-03-17 16:40:46 UTC', key-ID `sha256:60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18'
+2017-02-22 00:54:08	--	gnutls: peer's certificate is trusted
+2017-02-22 00:54:08	--	irc: connected to chat.freenode.net/6697 (149.56.134.238)
+2017-02-22 00:54:08	--	cherryh.freenode.net: *** Looking up your hostname...
+2017-02-22 00:54:08	--	cherryh.freenode.net: *** Checking Ident
+2017-02-22 00:54:09	--	cherryh.freenode.net: *** Found your hostname
+2017-02-22 00:54:18	--	cherryh.freenode.net: *** No Ident response
+2017-02-22 00:54:18	--	irc: client capability, server supports: account-notify extended-join identify-msg multi-prefix sasl
+2017-02-22 00:54:18	--	irc: client capability, requesting: sasl
+2017-02-22 00:54:18	--	irc: client capability, enabled: sasl
+2017-02-22 00:54:19	--	You are now logged in as NapoleonWils0n. (NapoleonWils0n!weechat@host109-157-164-54.range109-157.btcentralplus.com)
+2017-02-22 00:54:19	--	SASL authentication successful
+2017-02-22 00:54:20	--	Welcome to the freenode Internet Relay Chat Network NapoleonWils0n
+2017-02-22 00:54:20	--	Your host is cherryh.freenode.net[149.56.134.238/6697], running version ircd-seven-1.1.4
+2017-02-22 00:54:20	--	This server was created Wed Jan 4 2017 at 16:45:00 EST
+2017-02-22 00:54:20	--	cherryh.freenode.net ircd-seven-1.1.4 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2017-02-22 00:54:20	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2017-02-22 00:54:20	--	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 CPRIVMSG CNOTICE SAFELIST :are supported by this server
+2017-02-22 00:54:20	--	ELIST=CTU WHOX ETRACE KNOCK :are supported by this server
+2017-02-22 00:54:20	--	There are 124 users and 84624 invisible on 27 servers
+2017-02-22 00:54:20	--	28 :IRC Operators online
+2017-02-22 00:54:20	--	19 :unknown connection(s)
+2017-02-22 00:54:20	--	57137 :channels formed
+2017-02-22 00:54:20	--	I have 3853 clients and 1 servers
+2017-02-22 00:54:20	--	3853 4452 :Current local users 3853, max 4452
+2017-02-22 00:54:20	--	84748 91751 :Current global users 84748, max 91751
+2017-02-22 00:54:20	--	Highest connection count: 4453 (4452 clients) (101875 connections received)
+2017-02-22 00:54:20	--	- cherryh.freenode.net Message of the Day -
+2017-02-22 00:54:20	--	- Welcome to freenode - supporting the free and open source
+2017-02-22 00:54:20	--	- software communities since 1998.
+2017-02-22 00:54:20	--	-
+2017-02-22 00:54:20	--	- By connecting to freenode you indicate that you have read and
+2017-02-22 00:54:20	--	- accept our policies as set out on http://www.freenode.net
+2017-02-22 00:54:20	--	- freenode runs an open proxy scanner. Please join #freenode for
+2017-02-22 00:54:20	--	- any network-related questions or queries, where a number of
+2017-02-22 00:54:20	--	- volunteer staff and helpful users will be happy to assist you.
+2017-02-22 00:54:20	--	-
+2017-02-22 00:54:20	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2017-02-22 00:54:20	--	- together with like-minded FOSS enthusiasts for talks and
+2017-02-22 00:54:20	--	- real-life collaboration.
+2017-02-22 00:54:20	--	-
+2017-02-22 00:54:20	--	- We would like to thank Private Internet Access
+2017-02-22 00:54:20	--	- (https://www.privateinternetaccess.com/) and the other
+2017-02-22 00:54:20	--	- organisations that help keep freenode and our other projects
+2017-02-22 00:54:20	--	- running for their sustained support.
+2017-02-22 00:54:20	--	-
+2017-02-22 00:54:20	--	- In particular we would like to thank the sponsor
+2017-02-22 00:54:20	--	- of this server, details of which can be found above.
+2017-02-22 00:54:20	--	-
+2017-02-22 00:54:20	--	End of /MOTD command.
+2017-02-22 00:54:20	--	User mode [+Zi] by NapoleonWils0n
+2017-02-22 00:54:20	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.
+2017-02-22 15:32:36	--	irc: connecting to server chat.freenode.net/6697 (SSL)...
+2017-02-22 15:32:36	--	gnutls: connected using 2048-bit Diffie-Hellman shared secret exchange
+2017-02-22 15:32:36	--	gnutls: receiving 2 certificates
+2017-02-22 15:32:36	--	 - certificate[1] info:
+2017-02-22 15:32:36	--	   - subject `CN=verne.freenode.net', issuer `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', serial 0x0318d96f20c9da879648d551de3afc17778d, RSA key 4096 bits, signed using RSA-SHA256, activated `2017-01-12 16:56:00 UTC', expires `2017-04-12 16:56:00 UTC', key-ID `sha256:43be2810cd0791eb93aa1bd93eec8443edb1c911e63586868c6009969f8465c7'
+2017-02-22 15:32:36	--	 - certificate[2] info:
+2017-02-22 15:32:36	--	   - subject `CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US', issuer `CN=DST Root CA X3,O=Digital Signature Trust Co.', serial 0x0a0141420000015385736a0b85eca708, RSA key 2048 bits, signed using RSA-SHA256, activated `2016-03-17 16:40:46 UTC', expires `2021-03-17 16:40:46 UTC', key-ID `sha256:60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18'
+2017-02-22 15:32:36	--	gnutls: peer's certificate is trusted
+2017-02-22 15:32:36	--	irc: connected to chat.freenode.net/6697 (185.30.166.37)
+2017-02-22 15:32:36	--	verne.freenode.net: *** Looking up your hostname...
+2017-02-22 15:32:36	--	verne.freenode.net: *** Checking Ident
+2017-02-22 15:32:36	--	verne.freenode.net: *** Found your hostname
+2017-02-22 15:32:45	--	verne.freenode.net: *** No Ident response
+2017-02-22 15:32:45	--	irc: client capability, server supports: account-notify extended-join identify-msg multi-prefix sasl
+2017-02-22 15:32:45	--	irc: client capability, requesting: sasl
+2017-02-22 15:32:45	--	irc: client capability, enabled: sasl
+2017-02-22 15:32:47	--	You are now logged in as NapoleonWils0n. (NapoleonWils0n!weechat@host109-157-164-54.range109-157.btcentralplus.com)
+2017-02-22 15:32:47	--	SASL authentication successful
+2017-02-22 15:32:48	--	Welcome to the freenode Internet Relay Chat Network NapoleonWils0n
+2017-02-22 15:32:48	--	Your host is verne.freenode.net[185.30.166.37/6697], running version ircd-seven-1.1.4
+2017-02-22 15:32:48	--	This server was created Sat Jan 7 2017 at 11:53:54 EST
+2017-02-22 15:32:48	--	verne.freenode.net ircd-seven-1.1.4 DOQRSZaghilopswz CFILMPQSbcefgijklmnopqrstvz bkloveqjfI
+2017-02-22 15:32:48	--	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2017-02-22 15:32:48	--	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 ETRACE WHOX KNOCK :are supported by this server
+2017-02-22 15:32:48	--	SAFELIST ELIST=CTU CPRIVMSG CNOTICE :are supported by this server
+2017-02-22 15:32:48	--	There are 130 users and 91646 invisible on 27 servers
+2017-02-22 15:32:48	--	28 :IRC Operators online
+2017-02-22 15:32:48	--	19 :unknown connection(s)
+2017-02-22 15:32:48	--	57901 :channels formed
+2017-02-22 15:32:48	--	I have 6718 clients and 2 servers
+2017-02-22 15:32:48	--	6718 6730 :Current local users 6718, max 6730
+2017-02-22 15:32:48	--	91776 91776 :Current global users 91776, max 91776
+2017-02-22 15:32:48	--	Highest connection count: 6732 (6730 clients) (506468 connections received)
+2017-02-22 15:32:48	--	- verne.freenode.net Message of the Day -
+2017-02-22 15:32:48	--	- Welcome to verne.freenode.net in Amsterdam, NL.
+2017-02-22 15:32:48	--	- Thanks to http://www.hyperfilter.com/ for sponsoring
+2017-02-22 15:32:48	--	- this server!
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	- VERNE, Jules (1828-1905). Born in Nantes, France, Verne was
+2017-02-22 15:32:48	--	- a pioneering french author known for novels such as Twenty
+2017-02-22 15:32:48	--	- Thousand Leagues Under the Sea, A Journey to the Center of the
+2017-02-22 15:32:48	--	- Earth, and Around the World in Eighty Days. Often lauded as the
+2017-02-22 15:32:48	--	- Father of science fiction, Verne wrote about concepts such as
+2017-02-22 15:32:48	--	- space travel, skyscrapers, and worldwide communications
+2017-02-22 15:32:48	--	- networks long before these ideas became popularised or realised.
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	- Welcome to freenode - supporting the free and open source
+2017-02-22 15:32:48	--	- software communities since 1998.
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	- By connecting to freenode you indicate that you have read and
+2017-02-22 15:32:48	--	- accept our policies as set out on http://www.freenode.net
+2017-02-22 15:32:48	--	- freenode runs an open proxy scanner. Please join #freenode for
+2017-02-22 15:32:48	--	- any network-related questions or queries, where a number of
+2017-02-22 15:32:48	--	- volunteer staff and helpful users will be happy to assist you.
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	- You can meet us at FOSSCON (http://www.fosscon.org) where we get
+2017-02-22 15:32:48	--	- together with like-minded FOSS enthusiasts for talks and
+2017-02-22 15:32:48	--	- real-life collaboration.
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	- We would like to thank Private Internet Access
+2017-02-22 15:32:48	--	- (https://www.privateinternetaccess.com/) and the other
+2017-02-22 15:32:48	--	- organisations that help keep freenode and our other projects
+2017-02-22 15:32:48	--	- running for their sustained support.
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	- In particular we would like to thank the sponsor
+2017-02-22 15:32:48	--	- of this server, details of which can be found above.
+2017-02-22 15:32:48	--	-
+2017-02-22 15:32:48	--	End of /MOTD command.
+2017-02-22 15:32:48	--	User mode [+Zi] by NapoleonWils0n
+2017-02-22 15:32:48	--	NickServ (NickServ@services.): You are already logged in as NapoleonWils0n.

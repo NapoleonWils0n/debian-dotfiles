@@ -9,7 +9,7 @@ color signature default default
 color attachment default default
 color message default default
 color error default default
-color indicator default default
+color indicator black green
 color status black green
 color tree default default
 color normal default default

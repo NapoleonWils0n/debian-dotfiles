@@ -1556,3 +1556,437 @@
 2017-02-20 20:40:47	<--	murfman (~murfman@unaffiliated/murfman) has quit (Quit: Leaving)
 2017-02-20 20:40:57	-->	mo1991 (~mo1991@12.28.231.61) has joined #debian
 2017-02-20 20:41:16	-->	xyberguard (~xyberguar@2601:152:4103:3ec2:9987:2cf2:8168:1c9e) has joined #debian
+2017-02-21 23:18:12	-->	NapoleonWils0n (~weechat@host109-157-164-54.range109-157.btcentralplus.com) has joined #debian
+2017-02-21 23:18:12	--	Topic for #debian is "Unwanted private messages? /umode +R | Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie |  current point releases: /msg dpkg 8.7; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable:  #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2017-02-21 23:18:12	--	Topic set by abrotman (~abrotman@pdpc/supporter/active/abrotman) on Fri, 20 Jan 2017 13:29:17
+2017-02-21 23:18:13	--	Channel #debian: 1722 nicks (2 ops, 0 voices, 1720 normals)
+2017-02-21 23:18:13	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2017-02-21 23:18:13	--	URL for #debian: http://www.debian.org
+2017-02-21 23:18:14	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2017-02-21 23:18:23	NapoleonWils0n	hi all
+2017-02-21 23:18:41	NapoleonWils0n	installed mutt but i see in the status bar it says neomutt
+2017-02-21 23:19:00	<--	llucenic (~Thunderbi@rev-185-22-215-103.radiolan.sk) has quit (Ping timeout: 260 seconds)
+2017-02-21 23:19:00	<--	monpocchi (~monpocchi@unaffiliated/monpocchi) has quit (Ping timeout: 260 seconds)
+2017-02-21 23:19:02	NapoleonWils0n	would explain why my keybindings dont work
+2017-02-21 23:19:18	missmbob	guest523: i see nothing in repos for it
+2017-02-21 23:19:20	<--	Riku (~riku@hatsune.thisis.moe) has quit (Ping timeout: 240 seconds)
+2017-02-21 23:19:22	<--	locrian9 (~mike@4.59.53.37) has quit (Quit: leaving)
+2017-02-21 23:21:02	NapoleonWils0n	anyone else having problems with mutt today
+2017-02-21 23:21:44	-->	transhuman_ (~transhuma@pool-71-174-162-142.bstnma.east.verizon.net) has joined #debian
+2017-02-21 23:22:07	zykotick9	NapoleonWils0n: installed mutt?  doesn't mutt come with the base debian install these days?
+2017-02-21 23:22:08	-->	in2tacti1s (~in2tactic@cpe-76-173-53-129.hawaii.res.rr.com) has joined #debian
+2017-02-21 23:22:16	NapoleonWils0n	yes your right mate
+2017-02-21 23:22:45	<--	blinkingprompt (~blinkingp@unaffiliated/blinkingprompt) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2017-02-21 23:22:46	<--	in2tactics (~in2tactic@cpe-76-173-53-129.hawaii.res.rr.com) has quit (Ping timeout: 240 seconds)
+2017-02-21 23:23:02	<--	TsukiRa (~fpob@77.48.59.175) has quit (Quit: Leaving.)
+2017-02-21 23:23:31	NapoleonWils0n	but it says neomutt in the statusbar, some of my keybindings from my muttrc arent working
+2017-02-21 23:25:05	 *	zykotick9 is unable to mind any debian package called neomutt, or mutt with neo in the name...
+2017-02-21 23:25:34	<--	philipballew (~philip@ubuntu/member/philipballew) has quit (Ping timeout: 255 seconds)
+2017-02-21 23:25:37	<--	silverhom (~silverhom@c83-252-236-239.bredband.comhem.se) has quit (Quit: Leaving)
+2017-02-21 23:25:45	TomTomTosch	it's just mutt in stretch.
+2017-02-21 23:26:00	zykotick9	ah...
+2017-02-21 23:26:04	-->	amnesia666 (~amnesia66@91.ip-137-74-171.eu) has joined #debian
+2017-02-21 23:26:10	<--	Vizva (~max@dslb-094-219-124-166.094.219.pools.vodafone-ip.de) has quit (Remote host closed the connection)
+2017-02-21 23:26:11	NapoleonWils0n	i see there is a /etc/Muttrc config file
+2017-02-21 23:26:37	 *	Lady_Aleena taking a break as she is about to have a fit of rage.
+2017-02-21 23:26:42	<--	pingfloyd (~pingfloyd@unaffiliated/pingfloyd) has quit (Quit: ☮ out)
+2017-02-21 23:26:55	NapoleonWils0n	i would have thought my ~/.muttrc file should override the defaults
+2017-02-21 23:27:01	<--	pbrewczynski (uid172802@gateway/web/irccloud.com/x-onskgnnyrmhjmgck) has quit (Quit: Connection closed for inactivity)
+2017-02-21 23:28:01	--	Mode #debian [+l 1728] by debhelper
+2017-02-21 23:28:19	<--	nighty (~nighty@s229123.ppp.asahi-net.or.jp) has quit (Quit: Disappears in a puff of smoke)
+2017-02-21 23:28:36	<--	savantgarde (~savantgar@x4e377bc1.dyn.telefonica.de) has quit (Remote host closed the connection)
+2017-02-21 23:28:41	-->	ffatman (~ffamousff@2a01:e35:8ad7:6b60:7671:5ac3:1fd7:7b0b) has joined #debian
+2017-02-21 23:28:54	-->	savantgarde (~savantgar@x4e377bc1.dyn.telefonica.de) has joined #debian
+2017-02-21 23:28:56	NapoleonWils0n	i want classic coke not new coke
+2017-02-21 23:29:13	NapoleonWils0n	wheres the old mutt :(
+2017-02-21 23:29:16	<--	olek_poz (~bobik314@dhcp95-108-46-76.eaw.com.pl) has quit (Ping timeout: 260 seconds)
+2017-02-21 23:29:22	-->	pig (~pig@host86-130-209-228.range86-130.btcentralplus.com) has joined #debian
+2017-02-21 23:29:23	<--	savantgarde (~savantgar@x4e377bc1.dyn.telefonica.de) has quit (Remote host closed the connection)
+2017-02-21 23:29:37	<--	DrNo (~DrNo@122.124.9.51.dyn.plus.net) has quit (Ping timeout: 255 seconds)
+2017-02-21 23:29:39	-->	savantgarde (~savantgar@x4e377bc1.dyn.telefonica.de) has joined #debian
+2017-02-21 23:29:51	<--	dethos (~dethos@95.172.190.234) has quit (Read error: Connection reset by peer)
+2017-02-21 23:30:03	TomTomTosch	replaced by shiny patched-up mutt.
+2017-02-21 23:30:11	<--	savantgarde (~savantgar@x4e377bc1.dyn.telefonica.de) has quit (Remote host closed the connection)
+2017-02-21 23:30:15	<--	amnesia666 (~amnesia66@91.ip-137-74-171.eu) has left #debian
+2017-02-21 23:30:34	<--	clueless (53af4a7f@gateway/web/freenode/ip.83.175.74.127) has quit (Ping timeout: 260 seconds)
+2017-02-21 23:30:46	-->	Riku (~riku@hatsune.thisis.moe) has joined #debian
+2017-02-21 23:31:01	-->	{41444d494e} (~kvirc@46.56.64.67) has joined #debian
+2017-02-21 23:31:01	<--	GenteelBen (~GenteelBe@cpc70133-lutn12-2-0-cust324.9-3.cable.virginm.net) has quit
+2017-02-21 23:31:04	<--	navlys (~smuxi@85-69-186-75.rev.numericable.fr) has quit (Remote host closed the connection)
+2017-02-21 23:31:12	<--	pig (~pig@host86-130-209-228.range86-130.btcentralplus.com) has left #debian
+2017-02-21 23:31:38	NapoleonWils0n	problem is mutt has been around for a while and youll get a lot more hits for mutt than neomutt
+2017-02-21 23:32:11	-->	locrian9 (~mike@4.59.53.37) has joined #debian
+2017-02-21 23:32:17	NapoleonWils0n	so have to spend time trying to figure out what neomutt has added that breaks my muttrc
+2017-02-21 23:33:01	-->	zuiss1 (~zuiss1@gateway/vpn/privateinternetaccess/zuiss1) has joined #debian
+2017-02-21 23:33:03	<--	zuiss1 (~zuiss1@gateway/vpn/privateinternetaccess/zuiss1) has quit (Max SendQ exceeded)
+2017-02-21 23:33:45	 *	zykotick9 will remember NapoleonWils0n's issue, after Stretch is released, and will start with a blank mutt config :(
+2017-02-21 23:33:47	-->	zuiss1 (~zuiss1@gateway/vpn/privateinternetaccess/zuiss1) has joined #debian
+2017-02-21 23:33:49	<--	zuiss1 (~zuiss1@gateway/vpn/privateinternetaccess/zuiss1) has quit (Max SendQ exceeded)
+2017-02-21 23:33:53	-->	lethu (~lethu@unaffiliated/lethu) has joined #debian
+2017-02-21 23:34:10	-->	zuiss1 (~zuiss1@gateway/vpn/privateinternetaccess/zuiss1) has joined #debian
+2017-02-21 23:35:11	<--	fyrril (~fyrril@2605:a601:7014:1800:1df:f424:2778:ffa1) has quit (Quit: Leaving)
+2017-02-21 23:35:23	-->	fyrril (~fyrril@2605:a601:7014:1800:1df:f424:2778:ffa1) has joined #debian
+2017-02-21 23:36:22	-->	DrNo (~DrNo@25.124.9.51.dyn.plus.net) has joined #debian
+2017-02-21 23:36:38	-->	eh3- (~eh3@2605:6000:1022:e09c:70d8:da1e:6494:40a9) has joined #debian
+2017-02-21 23:36:39	guest523	Looks like Intel's update tool can be put on a bootable usb, so besides that any other concerns for SSD or Intel SSD on Debian?
+2017-02-21 23:36:43	<--	yesi (~yesi@gateway/tor-sasl/yesi) has quit (Quit: leaving)
+2017-02-21 23:37:20	<--	peterbecich (~user@12.20.175.2) has quit (Ping timeout: 240 seconds)
+2017-02-21 23:37:30	Zewwy	lol Hardware on software
+2017-02-21 23:37:56	Zewwy	I think you meant to say Debian on SSD, no, there should be no issues from a HDD
+2017-02-21 23:38:08	Zewwy	vs SSD
+2017-02-21 23:38:09	guest523	yea, worded weird
+2017-02-21 23:38:38	<--	Atm0spher1c (~future@unaffiliated/atm0spher1c) has quit (Remote host closed the connection)
+2017-02-21 23:39:01	locrian9	In VirtualBox, how come I'm getting a "USB device 'LexarMedia,Inc.' with UUID {b5e6a9a7-d00e-4498-a96d-4ac0e58bdadb} is busy with a previous request. Please try again later"
+2017-02-21 23:39:02	Zewwy	unless there something special I bleieve the OS isn't much aware other than what the storage controller provides?
+2017-02-21 23:39:41	Zewwy	locrian9: attached to another VM? or locked to host?
+2017-02-21 23:39:46	NapoleonWils0n	so no way to install the proper mutt on debian
+2017-02-21 23:40:00	<--	satbyy (satbyy@unaffiliated/satbyy) has quit (Ping timeout: 260 seconds)
+2017-02-21 23:40:07	-->	Atm0spher1c (~future@unaffiliated/atm0spher1c) has joined #debian
+2017-02-21 23:40:27	Zewwy	no backups?
+2017-02-21 23:40:54	<--	polemic (~polemic@185.86.151.164) has quit (Ping timeout: 260 seconds)
+2017-02-21 23:41:30	-->	polemic (~polemic@185.86.151.164) has joined #debian
+2017-02-21 23:42:00	-->	Alam_Lenny (quasselcor@rigginstereo.lawarias.srb2.org) has joined #debian
+2017-02-21 23:42:03	<--	nuno_nunes (~PC@93.102.97.68.rev.optimus.pt) has quit (Quit: Leaving)
+2017-02-21 23:42:04	locrian9	Zewwy: Host is Win7, and nothing is open on the USB. I'm pretty much just putting the USB into the host, right-clicking on the bottom-right USB icon in VirtualBox, selecting the 'Lexar USB [0101]' that appears when inserted, then getting that error.  No new device showing up in /dev.
+2017-02-21 23:42:31	Zewwy	no autorun happening in teh background maybe?\
+2017-02-21 23:43:08	Zewwy	i don't have much of any experience with VirtualBox, or how it handles hardware passthorugh
+2017-02-21 23:43:16	<--	OtakuSenpai (~MaBunny@unaffiliated/mabunny) has quit (Ping timeout: 240 seconds)
+2017-02-21 23:43:20	locrian9	Zewey: Hmmm it would be good to have a syslog in Win7 to see if that's going on.
+2017-02-21 23:43:26	-->	stqn (~stqn@pdc38-1-82-246-180-56.fbx.proxad.net) has joined #debian
+2017-02-21 23:43:27	-->	diniwed (~gavron@ool-457b9c88.dyn.optonline.net) has joined #debian
+2017-02-21 23:43:41	Zewwy	you mean event viewer, or procmon by sysinternals
+2017-02-21 23:44:08	locrian9	Zewey: Hmmm, right.  I'll see what that's doing.
+2017-02-21 23:44:30	locrian9	Zewey: All the #vbox people are sleeping in that channel...
+2017-02-21 23:44:42	Zewwy	I figured VirtualBox would be aare of such things and provide a better erro message, but meh
+2017-02-21 23:44:43	<--	Pr0metheus (~nezos@46-14-124.adsl.cyta.gr) has quit (Quit: Pr0metheus)
+2017-02-21 23:44:55	<--	Alam_Squeeze (alam@2001:470:1f07:238:1e6f:65ff:fed3:eba8) has quit (Ping timeout: 255 seconds)
+2017-02-21 23:45:07	-->	flugger (~flugger@c-71-239-39-156.hsd1.il.comcast.net) has joined #debian
+2017-02-21 23:45:17	Zewwy	i know Handles by sysinternals
+2017-02-21 23:45:31	Zewwy	would be a good start to see if there are any unkown locks taking place
+2017-02-21 23:45:58	locrian9	Zewwy: Yeah, I had this working before.  Something weird now.  I'll check procmon / sysinternals
+2017-02-21 23:46:00	Zewwy	Mark Russianovich is an awesome dev
+2017-02-21 23:46:02	<--	stqn (~stqn@pdc38-1-82-246-180-56.fbx.proxad.net) has left #debian
+2017-02-21 23:46:36	<--	wildlander (~wildlande@unaffiliated/wildlander) has quit (Quit: Saliendo)
+2017-02-21 23:46:38	Zewwy	when in doubt reboot, but not sure if you are runnign, lol, critical servers on your VirtualBox
+2017-02-21 23:47:15	<--	is_null (~quassel@pdpc/supporter/professional/is-null) has quit (Quit: github.com/jpic)
+2017-02-21 23:47:47	<--	earthundead (~earthunde@78.25.122.71) has quit (Remote host closed the connection)
+2017-02-21 23:48:00	--	Mode #debian [+l 1720] by debhelper
+2017-02-21 23:48:14	Zewwy	I've since long learned I can spend hours trying to dig deep and solve an issue, just to discover a reboot would have solved it too
+2017-02-21 23:48:18	-->	ffilozov (~ffilozov@pool-74-108-58-161.nycmny.fios.verizon.net) has joined #debian
+2017-02-21 23:48:53	<--	Atm0spher1c (~future@unaffiliated/atm0spher1c) has quit (Remote host closed the connection)
+2017-02-21 23:49:20	Zewwy	Best example of this was one time I noticed I wasn't getting auto out of my TV's HDMI inputs, cable was fine, RCA was fine, but all my HDMI wasn't working, no matter which system I used (Xbox or PS)... turned out I simply had to turn the TV off and back on...
+2017-02-21 23:49:33	Zewwy	I was at the point I was convinced the HDMI chip in teh TV was done somehow
+2017-02-21 23:49:55	<--	pacha (~user@unaffiliated/pacha) has quit (Read error: Connection reset by peer)
+2017-02-21 23:49:57	Zewwy	nope simple "reboot" of the TV worked
+2017-02-21 23:50:05	-->	DarinMiller (~darin@unaffiliated/darinmiller) has joined #debian
+2017-02-21 23:50:13	-->	epicout (~epic@31.207.44.176) has joined #debian
+2017-02-21 23:50:33	-->	Atm0spher1c (~future@unaffiliated/atm0spher1c) has joined #debian
+2017-02-21 23:51:17	-->	is_null (~quassel@pdpc/supporter/professional/is-null) has joined #debian
+2017-02-21 23:51:25	<--	SpeccyMan (~nick@94.197.121.110.threembb.co.uk) has quit (Quit: 'Goodbye')
+2017-02-21 23:51:40	<--	kyan (~kyan@elliot.wallace.laptop.ums.maine.edu) has quit (Quit: Leaving)
+2017-02-21 23:52:41	-->	pioneer42 (~pioneer42@2600:8803:9008:8f00:2fa7:7e1b:47b8:e0fa) has joined #debian
+2017-02-21 23:53:18	<--	doyle (~doyle@surf01.adesa.com) has quit (Remote host closed the connection)
+2017-02-21 23:53:45	-->	doyle (~doyle@surf01.adesa.com) has joined #debian
+2017-02-21 23:54:13	-->	satbyy (satbyy@unaffiliated/satbyy) has joined #debian
+2017-02-21 23:55:08	<--	foul_owl (~foul_owl@c-73-97-48-166.hsd1.wa.comcast.net) has quit (Ping timeout: 240 seconds)
+2017-02-21 23:55:48	-->	OtakuSenpai (~{0}_{0}@117.194.198.91) has joined #debian
+2017-02-21 23:56:04	<--	denisk (~denisk@119.225.222.122) has quit (Remote host closed the connection)
+2017-02-21 23:56:41	-->	denisk (~denisk@119.225.222.122) has joined #debian
+2017-02-21 23:56:45	<--	OtakuSenpai (~{0}_{0}@117.194.198.91) has quit (Max SendQ exceeded)
+2017-02-21 23:56:48	<--	dreamon (~dreamon@unaffiliated/dreamon) has quit (Ping timeout: 260 seconds)
+2017-02-21 23:56:48	<--	denisk (~denisk@119.225.222.122) has quit (Read error: Connection reset by peer)
+2017-02-21 23:56:57	<--	WayToDoor (~milk.bott@autresservs.api-d.com) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2017-02-21 23:57:10	<--	comgot (~Icedove@58.78.228.206) has quit (Remote host closed the connection)
+2017-02-21 23:57:11	NapoleonWils0n	cant believe theres no mutt package for debian
+2017-02-21 23:57:26	-->	denisk (~denisk@119.225.222.122) has joined #debian
+2017-02-21 23:57:29	missmbob	,v mutt
+2017-02-21 23:57:44	judd	Package: mutt on amd64 -- wheezy: 1.5.21-6.2+deb7u3; wheezy-security: 1.5.21-6.2+deb7u3; jessie: 1.5.23-3; sid: 1.7.2-1; stretch: 1.7.2-1
+2017-02-21 23:58:48	NapoleonWils0n	except is neomutt which seems to muck up muttrc keybindings
+2017-02-21 23:58:55	-->	comgot (~Icedove@58.78.228.206) has joined #debian
+2017-02-21 23:59:25	<--	eh3- (~eh3@2605:6000:1022:e09c:70d8:da1e:6494:40a9) has quit (Quit: My MacBook has gone to sleep. ZZZzzz…)
+2017-02-21 23:59:42	-->	OtakuSenpai (~{0}_{0}@117.194.198.91) has joined #debian
+2017-02-22 00:00:00	<--	alexlist (~alexlist@bjoerk.list.priv.at) has quit (Quit: Coyote finally caught me)
+2017-02-22 00:00:13	<--	tomcres (~tom@ool-182d9002.dyn.optonline.net) has quit (Quit: Leaving)
+2017-02-22 15:32:54	-->	NapoleonWils0n (~weechat@host109-157-164-54.range109-157.btcentralplus.com) has joined #debian
+2017-02-22 15:32:54	--	Topic for #debian is "Unwanted private messages? /umode +R | Debian 8 Jessie released! /msg dpkg jessie ; /msg dpkg wheezy->jessie ; /msg dpkg install jessie |  current point releases: /msg dpkg 8.7; /msg dpkg 7.11 | NO FLOOD: /msg dpkg paste | /msg bots NOT people | offtopic: #debian-offtopic | testing/unstable:  #debian-next (irc.oftc.net) | chanlogs: /msg dpkg irclog"
+2017-02-22 15:32:54	--	Topic set by abrotman (~abrotman@pdpc/supporter/active/abrotman) on Fri, 20 Jan 2017 13:29:29
+2017-02-22 15:32:54	--	Channel #debian: 1737 nicks (2 ops, 0 voices, 1735 normals)
+2017-02-22 15:32:54	--	PvNotice(ChanServ): Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel's guidelines by typing "/msg dpkg guidelines". Please do not paste in the channel; use #flood instead. Thank you.
+2017-02-22 15:32:54	--	URL for #debian: http://www.debian.org
+2017-02-22 15:32:54	--	Channel created on Fri, 09 Feb 2001 23:16:24
+2017-02-22 15:33:22	NapoleonWils0n	any way to install the proper version of mutt not the neomutt which is broken
+2017-02-22 15:33:58	<--	fhdrin (~fhdrin@199.195.192.130) has quit (Ping timeout: 255 seconds)
+2017-02-22 15:34:06	-->	Specialist (~tg@tmo-112-118.customers.d1-online.com) has joined #debian
+2017-02-22 15:34:07	greycat	huh?
+2017-02-22 15:34:19	NapoleonWils0n	mutt isnt mutt on debian its neomutt
+2017-02-22 15:34:29	NapoleonWils0n	and neomutt keybinding are broken
+2017-02-22 15:34:34	jelly	,v neomutt
+2017-02-22 15:34:35	judd	No package named 'neomutt' was found in amd64.
+2017-02-22 15:34:58	NapoleonWils0n	its called mutt but its not mutt its neomutt
+2017-02-22 15:35:08	NapoleonWils0n	mutt != neomutt
+2017-02-22 15:35:19	greycat	copyright says it's from ftp://ftp.mutt.org/mutt/devel/
+2017-02-22 15:35:28	jelly	NapoleonWils0n: are you talking about package mutt, or about package mutt-patched?
+2017-02-22 15:35:39	jelly	NapoleonWils0n: which debian release and which package version?
+2017-02-22 15:35:40	greycat	I don't know what your "neomutt" means, or what URLs you are talking about, or anything at all.  You are being really vague and weird.
+2017-02-22 15:35:40	NapoleonWils0n	mutt that gets installed by defauly
+2017-02-22 15:35:53	jelly	NapoleonWils0n: which debian release and which package version?
+2017-02-22 15:35:55	NapoleonWils0n	https://www.neomutt.org/
+2017-02-22 15:36:25	jelly	there are some patches even in default mutt, but not very many
+2017-02-22 15:36:26	-->	vonsyd0w (~vonsyd0w@unaffiliated/vonsyd0w) has joined #debian
+2017-02-22 15:36:36	NapoleonWils0n	running sid and mutt is installed by default, except its not mutt but a basterized version called neomutt
+2017-02-22 15:36:39	<--	overlord_tm (~andraz@storitve.energetika.net) has quit (Remote host closed the connection)
+2017-02-22 15:36:43	themill	didn't we go through this yesterday?
+2017-02-22 15:37:08	greycat	Why the fuck are you asking SID questions, anywhere, but most of all HERE?
+2017-02-22 15:37:12	greycat	,v mutt
+2017-02-22 15:37:13	judd	Package: mutt on amd64 -- wheezy: 1.5.21-6.2+deb7u3; wheezy-security: 1.5.21-6.2+deb7u3; jessie: 1.5.23-3; sid: 1.7.2-1; stretch: 1.7.2-1
+2017-02-22 15:37:30	greycat	OK, that makes zero sense.  Same as stretch, and stretch's copyright file says mutt.org
+2017-02-22 15:37:46	NapoleonWils0n	i know thats why it confusing
+2017-02-22 15:37:52	-->	frosite (~starclear@217-210-27-49-no214.tbcn.telia.com) has joined #debian
+2017-02-22 15:38:00	--	Mode #debian [+l 1753] by debhelper
+2017-02-22 15:38:04	NapoleonWils0n	but as soon as you open mutt on debian check the statusbar and youll see its neomutt
+2017-02-22 15:38:23	NapoleonWils0n	like asking for coke and getting pepsi
+2017-02-22 15:38:30	themill	neomutt is just a different name for a pile of patches everyone had been applying to mutt for a decade
+2017-02-22 15:38:52	NapoleonWils0n	great except the keybinding are broken
+2017-02-22 15:38:56	-->	dontknow (~dontknow@unaffiliated/dontknow) has joined #debian
+2017-02-22 15:39:04	themill	bug number?
+2017-02-22 15:39:12	tomcres	so, um. report the broken keybindings as a bug?
+2017-02-22 15:39:19	<--	alxd (~alxd@188.226.245.148) has quit (Excess Flood)
+2017-02-22 15:39:23	<--	Achylles (~Achylles@177.103.43.171) has quit (Remote host closed the connection)
+2017-02-22 15:39:28	jelly	NapoleonWils0n: if you're using sid, please check the BTS and file a bug report if not present already
+2017-02-22 15:40:22	jelly	tbh it's a bigger pile of patches than it used to be
+2017-02-22 15:40:25	jelly	-rw-r--r-- 1 jelly src 129328 Dec  4  2014 mutt_1.5.23-3.debian.tar.xz
+2017-02-22 15:40:25	jelly	-rw-r--r-- 1 jelly src 937396 Jan 20 23:22 mutt_1.7.2-1.debian.tar.xz
+2017-02-22 15:40:28	-->	Pjusur (~Pjusur@ti0035a400-0648.bb.online.no) has joined #debian
+2017-02-22 15:41:11	NapoleonWils0n	but the problem is there is documentation for mutt, but non for whatever patches neomutt uses
+2017-02-22 15:41:20	<--	Delta-One (~zero@2001:2002:51e2:7ba1:e216:8860:f727:279b) has quit (Ping timeout: 240 seconds)
+2017-02-22 15:41:39	jelly	yeah, well, you're using sid, please help fixing this problem
+2017-02-22 15:41:49	NapoleonWils0n	so when you go to set up mutt on debian, with you muttrc that works on every other version of linux and bsd it doesnt work
+2017-02-22 15:41:49	 *	greycat opens mutt on stretch which is the same as sid, and the first few key bindings I tried worked as expected
+2017-02-22 15:42:06	greycat	What specific key, in what context?
+2017-02-22 15:42:19	-->	oxid0 (~onestic@2.47.14.62.static.jazztel.es) has joined #debian
+2017-02-22 15:42:30	NapoleonWils0n	bind pager j  next-line
+2017-02-22 15:42:36	NapoleonWils0n	bind pager k  previous-line
+2017-02-22 15:42:46	<--	peewhy (~peewhy@gol06-h01-176-190-139-143.dsl.sta.abo.bbox.fr) has quit (Quit: leaving)
+2017-02-22 15:42:47	-->	theluckymike (~theluckym@85.93.125.67) has joined #debian
+2017-02-22 15:42:48	NapoleonWils0n	wont let me use vim keybindings
+2017-02-22 15:42:49	frosite	im working on backport a software from sid: https://packages.debian.org/sid/handbrake to debian jessie x64 stable. i have added  the "deb-src sid main" << only in sources.list but when i run  fakeroot debian/rules binary the terminal gives: https://paste.debian.net/916227/ ? what am i doing rong here?
+2017-02-22 15:42:58	greycat	Damn, I don't have any emails big enough to need a pager on that box...
+2017-02-22 15:43:04	jelly	those wfm in pager on stretch
+2017-02-22 15:43:23	greycat	Or is pager the list of emails, rather than reading an individual email?  j and k work in the index screen.
+2017-02-22 15:43:27	-->	alxd (~alxd@188.226.245.148) has joined #debian
+2017-02-22 15:43:29	-->	dgeary2_ (~dgeary2@2.24.162.188) has joined #debian
+2017-02-22 15:43:36	greycat	Was like the first thing I pressed.
+2017-02-22 15:43:44	jelly	j, k work in both pager and index for me
+2017-02-22 15:43:45	<--	_Nox (~Nox@177.79.42.109) has quit (Ping timeout: 240 seconds)
+2017-02-22 15:43:48	-->	juangh (c837bdab@gateway/web/freenode/ip.200.55.189.171) has joined #debian
+2017-02-22 15:43:49	--	doyle_ is now known as doyle
+2017-02-22 15:43:55	NapoleonWils0n	weird thing is other keymaping i have like gg work fine
+2017-02-22 15:44:06	<--	alexlist (~alexlist@bjoerk.list.priv.at) has quit (Quit: Coyote finally caught me)
+2017-02-22 15:44:15	<--	damarusama (~damarusam@209.52.44.123) has left #debian
+2017-02-22 15:44:22	-->	alexlist (~alexlist@bjoerk.list.priv.at) has joined #debian
+2017-02-22 15:44:27	<--	samodid (~vsamodid@178.136.237.123) has quit (Ping timeout: 268 seconds)
+2017-02-22 15:44:34	-->	Alam_Squeeze (alam@rigginstereo.lawarias.srb2.org) has joined #debian
+2017-02-22 15:44:37	<--	cccc828 (~severin@lap-i22-022.informatik.tu-muenchen.de) has quit (Remote host closed the connection)
+2017-02-22 15:44:39	DammitJim	the debian-sys-maint user that gets created when installing mysql... does it automatically get grants to ALL PRIVILEGES?
+2017-02-22 15:44:40	NapoleonWils0n	exactly the same set up on debian as arch, all same config files
+2017-02-22 15:44:49	jelly	but I had those bindings in my own muttrc
+2017-02-22 15:44:52	jelly	bind    pager j              next-line
+2017-02-22 15:44:52	jelly	bind    pager k          previous-line
+2017-02-22 15:44:59	<--	oxid0 (~onestic@2.47.14.62.static.jazztel.es) has quit (Client Quit)
+2017-02-22 15:45:08	NapoleonWils0n	only difference is neomutt on debian and real mutt on arch
+2017-02-22 15:45:16	veek	petn-randall, 'Not all apt repository keys are signed at all by another key. Maybe the person setting up the repository doesn't have another key, or maybe they don't feel comfortable signing such a role key with their main key.)' also this link http://askubuntu.com/questions/131397/what-is-a-repository-key-under-ubuntu-and-how-do-they-work
+2017-02-22 15:45:19	-->	arch___ (~arch_@wnpp-p-144-134-176-132.prem.tmns.net.au) has joined #debian
+2017-02-22 15:45:21	<--	arch___ (~arch_@wnpp-p-144-134-176-132.prem.tmns.net.au) has quit (Excess Flood)
+2017-02-22 15:45:27	NapoleonWils0n	my muttrc even worked on freebsd
+2017-02-22 15:45:32	veek	i don't understand it though..
+2017-02-22 15:45:34	<--	tomcres (~tom@ool-182d9002.dyn.optonline.net) has quit (Quit: Leaving)
+2017-02-22 15:45:44	-->	arch___ (~arch_@wnpp-p-144-134-176-132.prem.tmns.net.au) has joined #debian
+2017-02-22 15:45:46	jelly	NapoleonWils0n: wfm with older ii  mutt              1.7.1-5     i386  text-based mailreader supporting MIME, GPG, PGP and threading
+2017-02-22 15:45:46	<--	arch___ (~arch_@wnpp-p-144-134-176-132.prem.tmns.net.au) has quit (Excess Flood)
+2017-02-22 15:46:00	jelly	did not patch up this system in a couple weeks
+2017-02-22 15:46:14	<--	dkas (~dkas@p4FEAAF99.dip0.t-ipconnect.de) has quit (Quit: Lost terminal)
+2017-02-22 15:46:30	jelly	NapoleonWils0n: is your muttrc in ~/.muttrc or ~/.mutt/muttrc or where?
+2017-02-22 15:46:36	NapoleonWils0n	~/.muttrc
+2017-02-22 15:46:40	<--	Alam_Lenny (quasselcor@rigginstereo.lawarias.srb2.org) has quit (Ping timeout: 240 seconds)
+2017-02-22 15:46:53	-->	mtn (~mtn@72.168.160.207) has joined #debian
+2017-02-22 15:46:54	NapoleonWils0n	it connects to my gmail fine
+2017-02-22 15:47:13	NapoleonWils0n	just the keybindings for j k dont work
+2017-02-22 15:47:17	jelly	NapoleonWils0n: when you press ? in pager, do you see those two bindings?
+2017-02-22 15:47:21	-->	maotm (~mao@81.24.87.131) has joined #debian
+2017-02-22 15:47:27	<--	interki (~arch_@wnpp-p-144-134-176-132.prem.tmns.net.au) has quit (Ping timeout: 240 seconds)
+2017-02-22 15:47:30	NapoleonWils0n	no those bindings arent listed
+2017-02-22 15:47:50	NapoleonWils0n	but then they are listed when they are working on other distros either
+2017-02-22 15:47:52	<--	OerHeks (~OerHeks@ubuntu/member/oerheks) has quit (Quit: Bye! [If you don't have a backup of your data, it is not important at all])
+2017-02-22 15:47:54	greycat	Oh, pager is when you press "?"?  That all works for me as expected.  Even if I put those two explicit bind lines in ~/.muttrc it still works.
+2017-02-22 15:48:03	<--	z0ran (~z0ran@c94-161.i07-24.onvol.net) has quit (Ping timeout: 260 seconds)
+2017-02-22 15:48:19	jelly	greycat: ? gives a list of bindings in any given context
+2017-02-22 15:48:20	NapoleonWils0n	so when you ? j and k arent mapped to next and previous line
+2017-02-22 15:48:23	<--	bobi1024 (~bobi@94.155.42.130) has quit (Quit: Lost terminal)
+2017-02-22 15:48:31	jelly	and pager is, yes, viewing a message
+2017-02-22 15:48:35	NapoleonWils0n	up and down keys dont work either
+2017-02-22 15:48:39	greycat	I'm trying to duplicate his bug report, and I cannot duplicate it.
+2017-02-22 15:48:52	jelly	NapoleonWils0n: so something unbinds them, I guess
+2017-02-22 15:48:57	NapoleonWils0n	so cant move up or down in neomutt at all
+2017-02-22 15:49:15	-->	OerHeks (~OerHeks@ubuntu/member/oerheks) has joined #debian
+2017-02-22 15:49:16	<--	TuxShells (~TuxShells@unaffiliated/birdinatux) has quit (Ping timeout: 255 seconds)
+2017-02-22 15:49:29	greycat	If I put the two bind lines in ~/.muttrc and then run mutt and enter an individual message and press "?" then j and k work as expected.
+2017-02-22 15:49:31	NapoleonWils0n	yes exactly some patch that has been added with neomutt breaks muttrc
+2017-02-22 15:49:47	--	heurist__ is now known as heurist
+2017-02-22 15:49:52	jelly	I'm not asking whether they work in "?", but if they're _listed_
+2017-02-22 15:49:52	greycat	And I am on latest stretch mutt which calls itself "NeoMutt" in an obscure place I had never looked before.
+2017-02-22 15:49:57	NapoleonWils0n	also has /etc/Muttrc file and /etc/Muttrc.d dir
+2017-02-22 15:50:00	greycat	ii  mutt           1.7.2-1      amd64        text-based mailreader supporting
+2017-02-22 15:50:05	NapoleonWils0n	never seen that before with mutt
+2017-02-22 15:50:09	-->	xzork (~Thunderbi@213.153.251.228) has joined #debian
+2017-02-22 15:50:22	greycat	jelly: If I have them in ~/.muttrc then they are listed and they work.
+2017-02-22 15:50:22	NapoleonWils0n	also a load of .rc config files in /etc/Muttrc.d
+2017-02-22 15:50:26	jelly	nod
+2017-02-22 15:50:30	-->	tmh1999 (~tmh1999@2604:2000:26ca:e700::7) has joined #debian
+2017-02-22 15:50:46	-->	TuxShells (~TuxShells@unaffiliated/birdinatux) has joined #debian
+2017-02-22 15:50:51	<--	tmh1999 (~tmh1999@2604:2000:26ca:e700::7) has left #debian
+2017-02-22 15:51:04	-->	fhdrin (~fhdrin@c-76-115-88-140.hsd1.or.comcast.net) has joined #debian
+2017-02-22 15:51:39	DammitJim	this is not a direct mysql question, but does the debian-sys-maint user normally show up in show grants?
+2017-02-22 15:52:09	NapoleonWils0n	may have to find another distro that doent basterdize upstream packages
+2017-02-22 15:52:14	jhutchins_wk	DammitJim: Should be in the tables.
+2017-02-22 15:52:25	<--	blueness (~blueness@gentoo/developer/blueness) has quit (Quit: blueness)
+2017-02-22 15:52:30	DammitJim	I can find it in SELECT * FROM mysql.user;
+2017-02-22 15:52:34	DammitJim	but not in: show grants;
+2017-02-22 15:52:45	DammitJim	oh dammit
+2017-02-22 15:52:48	DammitJim	wrong query!
+2017-02-22 15:52:49	DammitJim	thank you!
+2017-02-22 15:52:55	<--	The_Loko (~The_Loko@33.red-83-54-217.dynamicip.rima-tde.net) has quit (Quit: Leaving)
+2017-02-22 15:53:16	greycat	NapoleonWils0n: if you can describe a way to reproduce the problem, please file a bug report so it can get fixed.
+2017-02-22 15:53:17	DammitJim	for some reason, the privileges changed for that user
+2017-02-22 15:53:50	<--	fhdrin (~fhdrin@c-76-115-88-140.hsd1.or.comcast.net) has quit (Client Quit)
+2017-02-22 15:54:01	NapoleonWils0n	greycat fresh install of debian installs neomutt, add your ~/.muttrc and the keybinding dont work
+2017-02-22 15:54:23	jelly	NapoleonWils0n: mine do!
+2017-02-22 15:54:42	-->	Wizek (~Wizek@catv-89-132-132-110.catv.broadband.hu) has joined #debian
+2017-02-22 15:54:52	jelly	NapoleonWils0n: can you isolate and provide a minimal muttrc?
+2017-02-22 15:55:15	greycat	NapoleonWils0n: neither of us can reproduce your error.  Tell us exactly what to put in ~/.muttrc to make the problem happen.
+2017-02-22 15:55:21	NapoleonWils0n	my muttrc
+2017-02-22 15:55:22	NapoleonWils0n	https://github.com/NapoleonWils0n/dotfiles/blob/master/.muttrc
+2017-02-22 15:55:40	<--	neuraload (~neuraload@89.43.18.6) has quit (Quit: Leaving)
+2017-02-22 15:55:59	NapoleonWils0n	this works: bind index gg first-entry
+2017-02-22 15:56:13	NapoleonWils0n	bind pager k  previous-line and bind pager j  next-line dont work
+2017-02-22 15:56:21	NapoleonWils0n	did see this: https://github.com/neomutt/neomutt/issues/56
+2017-02-22 15:56:24	<--	juangh (c837bdab@gateway/web/freenode/ip.200.55.189.171) has quit (Ping timeout: 260 seconds)
+2017-02-22 15:56:27	greycat	They work for me if they are the only two lines in .muttrc
+2017-02-22 15:56:56	-->	___xon00___ (~michald@095160159109.dynamic-ra-12.vectranet.pl) has joined #debian
+2017-02-22 15:57:10	themill	frosite: it builds just fine for me, but I'd build with dpkg-buildpackage
+2017-02-22 15:57:23	<--	___xon00___ (~michald@095160159109.dynamic-ra-12.vectranet.pl) has left #debian
+2017-02-22 15:57:38	petn-randall	veek: I don't know where you're quoting this from, but random sites are probably not a good source for such information. A good starting point is here: https://debian-handbook.info/browse/stable/sect.package-authentication.html
+2017-02-22 15:58:00	--	Mode #debian [+l 1746] by debhelper
+2017-02-22 15:58:24	greycat	They also work for me if I copy the 6 bind lines from page 5/9 of your muttrc as displayed by elinks
+2017-02-22 15:58:40	<--	sliekas99 (~mantas@213.164.98.77) has quit (Quit: Leaving)
+2017-02-22 15:58:43	<--	Freenoodle (~Bratwurst@p4FC7F97D.dip0.t-ipconnect.de) has quit (Ping timeout: 255 seconds)
+2017-02-22 15:58:49	jelly	greycat: you can download raw file from https://raw.githubusercontent.com/NapoleonWils0n/dotfiles/master/.muttrc
+2017-02-22 15:59:05	themill	veek: developer signatures are not a good starting point for package authentication for the end user; signed Release files are.
+2017-02-22 15:59:29	greycat	Gah.  If I download that with wget and fire up mutt, it wants me to type someone's password....
+2017-02-22 15:59:52	greycat	And it's GREEN ON FUCKING WHITE.  And it says "no mailbox".
+2017-02-22 16:00:12	NapoleonWils0n	if i try my arch version of muttrc key bindings work
+2017-02-22 16:00:12	<--	boilingWater (~alex@104.238.140.9) has quit (Remote host closed the connection)
+2017-02-22 16:00:14	greycat	NapoleonWils0n: you're going to have to provide a MINIMAL example that reproduces the problem.
+2017-02-22 16:00:29	NapoleonWils0n	https://github.com/NapoleonWils0n/arch-dotfiles/blob/master/.muttrc
+2017-02-22 16:01:07	themill	NapoleonWils0n: that's about 115 lines longer than "minimal"
+2017-02-22 16:01:09	greycat	Something with just bind lines, no changes to where the mailbox is.
+2017-02-22 16:01:30	<--	funnel (~funnel@unaffiliated/espiral) has quit (Quit: leaving)
+2017-02-22 16:01:31	-->	knoxville (knox@got-root.xyz) has joined #debian
+2017-02-22 16:01:43	<--	In33dt0kn00w (~zer0err0r@77.30.234.226) has quit (Ping timeout: 268 seconds)
+2017-02-22 16:02:05	-->	boilingWater (~alex@104.238.140.9) has joined #debian
+2017-02-22 16:02:12	greycat	OK, commenting out a shitload of lines I can make it start up and load my mailbox.  But the cursor is invisible (white on white?) so I can't tell what message I'm on until it says "You are on the last message." when I press j
+2017-02-22 16:02:23	<--	xzork (~Thunderbi@213.153.251.228) has quit (Quit: xzork)
+2017-02-22 16:02:29	<--	Lerele (~Doohan_ok@221.19.14.37.dynamic.jazztel.es) has quit
+2017-02-22 16:02:38	<--	lsr (~lsrk@unaffiliated/lsr) has quit (Quit: Leaving)
+2017-02-22 16:02:40	greycat	Then space to enter a message, and ? to enter the help pager, and j and k work as expected.
+2017-02-22 16:02:48	NapoleonWils0n	thats weird only difference between the 2 muttrc is some color difference
+2017-02-22 16:02:57	<--	uNmowed (~Mayu@cli-nw.71.184.helios-nw.ru) has quit (Ping timeout: 268 seconds)
+2017-02-22 16:03:11	-->	awal1 (~awal1@199.241.132.84) has joined #debian
+2017-02-22 16:03:14	greycat	I *still* cannot reproduce your problem even with your entire .muttrc (minus a dozen lines about where things are)
+2017-02-22 16:03:18	-->	norovni (~karl.noro@103.10.28.24) has joined #debian
+2017-02-22 16:03:29	NapoleonWils0n	its the colors in the muttrc that break the j and k keybidings
+2017-02-22 16:03:33	jelly	NapoleonWils0n: your colors are strange, but your muttrc works with a fresh user after purging and installing mutt
+2017-02-22 16:03:38	greycat	I did not touch your colors.
+2017-02-22 16:03:44	NapoleonWils0n	only differeence between the 2 files
+2017-02-22 16:03:56	-->	WayToDoor (~milk.bott@193.55.29.169) has joined #debian
+2017-02-22 16:04:04	jelly	NapoleonWils0n: selected message in index is invisibl
+2017-02-22 16:04:04	<--	Alam_Squeeze (alam@rigginstereo.lawarias.srb2.org) has quit (Read error: Connection reset by peer)
+2017-02-22 16:04:12	greycat	I commented out "set from" and "set realname" and "set imap_user" and "set smtp_url" and so on down to "set mailcap_path"
+2017-02-22 16:04:37	jelly	and personalized gpg stuff on the bottom
+2017-02-22 16:04:45	<--	cdown (~cdown@199.201.65.2) has quit (Ping timeout: 240 seconds)
+2017-02-22 16:05:08	<--	cereal_poster (~Cereal@189.58.90.160) has quit (Remote host closed the connection)
+2017-02-22 16:05:15	-->	funnel (~funnel@unaffiliated/espiral) has joined #debian
+2017-02-22 16:05:15	-->	soee (~soee@acch98.neoplus.adsl.tpnet.pl) has joined #debian
+2017-02-22 16:05:20	-->	towo` (~towo@unaffiliated/towo/x-4064351) has joined #debian
+2017-02-22 16:05:28	NapoleonWils0n	its the colors that seem to be the issue, go figure
+2017-02-22 16:05:31	DammitJim	how do I fix my debian-sys-maint user in mysql?
+2017-02-22 16:05:37	DammitJim	I don't understand what happened to it
+2017-02-22 16:05:59	DammitJim	can I just drop it and create it/grant stuff to it?
+2017-02-22 16:06:03	DammitJim	or is there a utility to fix this?
+2017-02-22 16:07:00	<--	dgeary2_ (~dgeary2@2.24.162.188) has quit (Ping timeout: 260 seconds)
+2017-02-22 16:07:22	<--	littlebear (littlebear@2607:fea8:a220:7e3:c8a5:f163:7730:492f) has quit (Read error: Connection reset by peer)
+2017-02-22 16:07:23	-->	x032cx (~lxuser@unaffiliated/tdis) has joined #debian
+2017-02-22 16:07:30	-->	new_user (2f1ed74e@gateway/web/freenode/ip.47.30.215.78) has joined #debian
+2017-02-22 16:08:01	-->	littlebear (littlebear@2607:fea8:a220:7e3:43c:8cea:d765:ba61) has joined #debian
+2017-02-22 16:08:37	<--	thiras_ (~thiras@unaffiliated/thiras) has quit (Ping timeout: 255 seconds)
+2017-02-22 16:08:53	NapoleonWils0n	commented out colors on line 6 - 20 and keybinding work, just look fucking awful
+2017-02-22 16:09:00	<--	blackest_mamba (~blackest_@2601:249:1:77a4:256c:436d:1136:9261) has quit (Ping timeout: 240 seconds)
+2017-02-22 16:09:16	-->	Redfoxmoon (~Redfox@177.92-221-236.customer.lyse.net) has joined #debian
+2017-02-22 16:09:19	-->	CuSn (~glockensp@c-73-100-184-120.hsd1.ma.comcast.net) has joined #debian
+2017-02-22 16:09:20	<--	btf (~btf@host217-36-214-162.in-addr.btopenworld.com) has quit (Ping timeout: 260 seconds)
+2017-02-22 16:09:49	-->	blackest_mamba (~blackest_@c-67-184-79-89.hsd1.il.comcast.net) has joined #debian
+2017-02-22 16:09:49	Iridos	maybe you  have some typo/syntax error, that stops parsing the rest of the file
+2017-02-22 16:10:00	-->	crayon (~i@unaffiliated/crayon) has joined #debian
+2017-02-22 16:10:23	greycat	Can I just delete this .muttrc now?  I don't want it around any more.
+2017-02-22 16:10:39	greycat	Not that I ever really use mutt on that stretch box, but still.
+2017-02-22 16:10:47	<--	new_user (2f1ed74e@gateway/web/freenode/ip.47.30.215.78) has left #debian
+2017-02-22 16:10:53	jelly	greycat: you didn't run all of this in a safe sandbox?!?!?
+2017-02-22 16:11:01	Iridos	uh, there's no colors in 6-20?
+2017-02-22 16:11:04	jelly	shame
+2017-02-22 16:11:30	Iridos	"mark all messages as read" was a trojan macro
+2017-02-22 16:11:37	greycat	There's no mail that I care about on this box.  Just 3 random things, good enough to test that mutt works.
+2017-02-22 16:12:20	-->	peewhy (~peewhy@gol06-h01-176-190-139-143.dsl.sta.abo.bbox.fr) has joined #debian
+2017-02-22 16:13:03	jelly	NapoleonWils0n: for me, the keybindings worked but the result was not immediately visible in index
+2017-02-22 16:13:08	<--	Guest55144 (~elik@74.116.187.18) has quit (Ping timeout: 240 seconds)
+2017-02-22 16:13:10	NapoleonWils0n	this is the line that causes the error
+2017-02-22 16:13:11	NapoleonWils0n	color indicator default default
+2017-02-22 16:13:38	NapoleonWils0n	soon as i add that line mutt locks up and j and k and up and down dont work
+2017-02-22 16:14:05	NapoleonWils0n	bizaree
+2017-02-22 16:14:11	greycat	Maybe some really strange interaction with your terminal?
+2017-02-22 16:14:17	greycat	I tested in urxvt.
+2017-02-22 16:14:44	NapoleonWils0n	yes im using rxvt-256colors
+2017-02-22 16:14:47	greycat	And my results were the same as jelly's.
+2017-02-22 16:15:14	<--	Redfoxmoon (~Redfox@177.92-221-236.customer.lyse.net) has quit (Changing host)
+2017-02-22 16:15:14	-->	Redfoxmoon (~Redfox@unaffiliated/kitt3n) has joined #debian
+2017-02-22 16:15:19	-->	mearon (~mearon@unaffiliated/mearon) has joined #debian
+2017-02-22 16:15:22	NapoleonWils0n	wouldnt have thought color settings would stop key bindings working
+2017-02-22 16:15:34	-->	tomcres (~tom@ool-182d9002.dyn.optonline.net) has joined #debian
+2017-02-22 16:15:46	<--	xiaodong (~xiaodong@1.180.215.81) has quit (Remote host closed the connection)
+2017-02-22 16:15:55	NapoleonWils0n	thanks guys, at least i have mutt working again
+2017-02-22 16:15:57	jelly	NapoleonWils0n: maybe it just makes the selected line invisible but it still works
+2017-02-22 16:16:20	NapoleonWils0n	although color scheme is a little odd, but it works
+2017-02-22 16:16:50	jelly	eg. in a large mailbox, press j and keep it autorepeating, and eventually mutt shows the next page
+2017-02-22 16:16:54	-->	allizom1 (~Thunderbi@host46-134-dynamic.57-82-r.retail.telecomitalia.it) has joined #debian
+2017-02-22 16:16:57	NapoleonWils0n	yes you are right mate
+2017-02-22 16:17:05	NapoleonWils0n	make the line invisible
+2017-02-22 16:17:10	<--	allizom (~Thunderbi@host46-134-dynamic.57-82-r.retail.telecomitalia.it) has quit (Ping timeout: 255 seconds)
+2017-02-22 16:17:11	--	allizom1 is now known as allizom
+2017-02-22 16:17:11	-->	Dreaman (~one@unaffiliated/dreaman) has joined #debian
+2017-02-22 16:17:16	jelly	but that's not "pager" context, that's "index"
+2017-02-22 16:17:19	<--	clmsy (~eoz@ringring.dpl.mendix.net) has quit (Remote host closed the connection)
+2017-02-22 16:18:00	<--	anco (~anco@li119-69.members.linode.com) has quit (Quit: leaving)
+2017-02-22 16:18:03	<--	norovni (~karl.noro@103.10.28.24) has quit (Quit: Leaving;Bye)
+2017-02-22 16:18:07	-->	norovni_md (~invoron@103-10-28-12.vianet.com.np) has joined #debian
+2017-02-22 16:18:17	-->	Envil (~envil@85.182.62.149) has joined #debian
+2017-02-22 16:18:18	NapoleonWils0n	changed to: color indicator black green
+2017-02-22 16:18:28	NapoleonWils0n	all good now
+2017-02-22 16:18:32	<--	norovni_md (~invoron@103-10-28-12.vianet.com.np) has quit (Max SendQ exceeded)
+2017-02-22 16:18:43	<--	funnel (~funnel@unaffiliated/espiral) has quit (Quit: Lost terminal)
+2017-02-22 16:18:45	NapoleonWils0n	must be some mad color issue 
+2017-02-22 16:18:45	-->	dedicated_ (~dedicate@254C47C0.nat.pool.telekom.hu) has joined #debian
+2017-02-22 16:18:54	<--	n4dir (~user@pD9EF0E09.dip0.t-ipconnect.de) has quit (Remote host closed the connection)
+2017-02-22 16:18:56	-->	norovni_md (~invoron@103-10-28-12.vianet.com.np) has joined #debian
+2017-02-22 16:18:56	<--	norovni_md (~invoron@103-10-28-12.vianet.com.np) has quit (Client Quit)
+2017-02-22 16:19:08	-->	norovni (~invoron@103-10-28-12.vianet.com.np) has joined #debian
+2017-02-22 16:19:13	NapoleonWils0n	thought i was going bonkers, which is a real possibility
+2017-02-22 16:19:38	-->	funnel (~funnel@unaffiliated/espiral) has joined #debian
+2017-02-22 16:19:45	<--	norovni (~invoron@103-10-28-12.vianet.com.np) has quit (Remote host closed the connection)

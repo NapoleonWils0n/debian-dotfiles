@@ -31756,3 +31756,367 @@
 2017-02-21 01:02:56	wyre	ok :) 
 2017-02-21 01:03:00	Score_Under	krarkrrrc: you could probably implement that as a compositor, right?
 2017-02-21 01:03:22	-->	fekzebzak (~fekzebzak@2601:246:8202:6aaa:fa32:e4ff:febb:8a7d) has joined #archlinux
+2017-02-21 20:06:27	-->	NapoleonWils0n (~weechat@host109-157-164-54.range109-157.btcentralplus.com) has joined #archlinux
+2017-02-21 20:06:27	--	Topic for #archlinux is "Welcome to Arch Linux World Domination, Inc. <+> Channel rules: https://goo.gl/fkksz9 <+> Pastebins: https://ptpb.pw https://gist.github.com https://bpaste.net <+> Become an official Arch Tester: https://goo.gl/3uvJQk <+> Phasing out i686! | Welcome new ops gehidore and alad | `pacman -Syu libxml++` if you get conflicts"
+2017-02-21 20:06:27	--	Topic set by evilgrawity (grawity@wolke.nullroute.eu.org) on Wed, 08 Feb 2017 16:48:24
+2017-02-21 20:06:27	--	Channel #archlinux: 1785 nicks (2 ops, 0 voices, 1783 normals)
+2017-02-21 20:06:27	--	Channel created on Sun, 15 Feb 2004 05:08:31
+2017-02-21 20:06:55	joebobjoe	thurstylark: yea but per syscall or file descriptor... not entire program
+2017-02-21 20:07:00	-->	Valicek1 (~Thunderbi@55-125-149-46.synanet.cz) has joined #archlinux
+2017-02-21 20:07:01	joebobjoe	I guess what I want isn't really unix
+2017-02-21 20:07:08	<--	Baumfaust (~Baumfaust@unaffiliated/baumfaust) has quit (Remote host closed the connection)
+2017-02-21 20:07:12	<--	karmahacker (~karmahack@unaffiliated/karmahacker) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:07:23	NapoleonWils0n	hi all
+2017-02-21 20:07:26	Fayn	:/ is there no cheap DDR4 anywhere
+2017-02-21 20:07:31	-->	dale6998 (~dale6998@cpe-74-78-156-164.maine.res.rr.com) has joined #archlinux
+2017-02-21 20:07:42	<--	A124 (~Username@unaffiliated/a124) has quit (Client Quit)
+2017-02-21 20:07:45	NapoleonWils0n	is there a way to bind chromium to the tun0 network interface
+2017-02-21 20:07:54	<--	du5tball (~du5tball@filzwiesel.de) has quit (Quit: NEEP NEEP)
+2017-02-21 20:08:06	NapoleonWils0n	aprt from using iptables
+2017-02-21 20:08:42	-->	du5tball (~du5tball@filzwiesel.de) has joined #archlinux
+2017-02-21 20:08:50	dale6998	NapoleonWils0n: i second this question...i can't pass any web traffic via vpn
+2017-02-21 20:09:08	dale6998	but i'm ssh'd in and i can ping the server
+2017-02-21 20:09:25	NapoleonWils0n	at the moment i use the dante socks5 proxy and bind it to tun0
+2017-02-21 20:09:41	NapoleonWils0n	then i can set programs to use the socks 5 connected to the vpn
+2017-02-21 20:09:52	NapoleonWils0n	i use a split vpn route
+2017-02-21 20:09:56	grazzolini	NapoleonWils0n: why not use the VPN all the time?
+2017-02-21 20:10:18	NapoleonWils0n	i dont want all my traffic to go over the vpn
+2017-02-21 20:10:46	NapoleonWils0n	for example i can use a vpn to the us, but then i cant watch the bbc because its geoblocked
+2017-02-21 20:11:00	<--	ttyS2 (~Username@nat-208-66-188-116.pinebelt.net) has quit (Quit: Leaving)
+2017-02-21 20:11:22	NapoleonWils0n	i can use programs with rtorrent with the -b option to bind to an ip address
+2017-02-21 20:12:00	-->	tau (~vy@189.84.254.220) has joined #archlinux
+2017-02-21 20:12:11	NapoleonWils0n	and then i can use proxychains to the socks5 proxy over the vpn to send any app over the socks 5 proxy and the vpn
+2017-02-21 20:12:13	grazzolini	NapoleonWils0n: dns still will go through your isp, not the vpn
+2017-02-21 20:12:24	-->	muhannad (~muhannad@2.89.66.25) has joined #archlinux
+2017-02-21 20:12:35	grazzolini	NapoleonWils0n: my suggestion? make everything through the VPN then deal with the exceptions
+2017-02-21 20:12:59	NapoleonWils0n	i run the unbound dns server and bind that to the tun0 interface so dns goes over the vpn as well
+2017-02-21 20:13:19	xundres	now im trying with win32diskimager
+2017-02-21 20:13:38	xundres	in bios which option I should have?
+2017-02-21 20:13:48	-->	GJdan (~dan@d216-232-152-33.bchsia.telus.net) has joined #archlinux
+2017-02-21 20:13:49	grawity	...from what selection of options?
+2017-02-21 20:13:53	-->	arjen-jonathan (~arjen@145.132.121.4) has joined #archlinux
+2017-02-21 20:13:57	arjen-jonathan	Hi all
+2017-02-21 20:14:01	arjen-jonathan	I'm having some trouble with texlive
+2017-02-21 20:14:05	-->	A124 (~Username@unaffiliated/a124) has joined #archlinux
+2017-02-21 20:14:08	<--	Samy__ (0e8bf61e@gateway/web/freenode/ip.14.139.246.30) has quit (Quit: Page closed)
+2017-02-21 20:14:10	grazzolini	NapoleonWils0n: well, you might leak traffic that way, but sure =D
+2017-02-21 20:14:11	<--	arjen-jonathan (~arjen@145.132.121.4) has left #archlinux
+2017-02-21 20:14:37	<--	Dedes (~Thunderbi@181.74.4.230) has quit (Quit: Dedes)
+2017-02-21 20:14:41	NapoleonWils0n	i checked with dnsleak and it looks all good
+2017-02-21 20:14:43	-->	icyjug (~icyjug@2001:4c50:4ae:b500:1e3e:84ff:fea6:a2d9) has joined #archlinux
+2017-02-21 20:14:50	-->	NolanSyKinsley (~NolanSyKi@2606:6000:5112:df00:2388:a124:6036:49c3) has joined #archlinux
+2017-02-21 20:14:58	-->	bugzc (~1@unaffiliated/bugzc) has joined #archlinux
+2017-02-21 20:14:59	-->	bjorn248 (~Bjorn@unaffiliated/bjorn248) has joined #archlinux
+2017-02-21 20:15:26	<--	guruprasad (~guruprasa@unaffiliated/lgp171188) has quit (Remote host closed the connection)
+2017-02-21 20:15:51	-->	arjen-jonathan (~arjen@145.132.121.4) has joined #archlinux
+2017-02-21 20:15:56	arjen-jonathan	Seems to be a font issue; has anyone seen this error pop up recently? ! pdfTeX error (font expansion): auto expansion is only possible with scalable font
+2017-02-21 20:16:22	tau	hi guys
+2017-02-21 20:16:25	tau	i keep getting this http://codepad.org/StQyo6On
+2017-02-21 20:16:26	phrik	Title: Plain Text code - 22 lines - codepad (at codepad.org)
+2017-02-21 20:16:29	tau	no idea what to do anymore.
+2017-02-21 20:16:31	xundres	in bios I have to select raid or ahci?
+2017-02-21 20:16:41	dale6998	how can i test why i can't get any web traffic through my openvpn?
+2017-02-21 20:16:50	dale6998	test/diagnose
+2017-02-21 20:17:06	grawity	xundres: usually ahci, unless you're using the motherboard's RAID support (which you shouldn't)
+2017-02-21 20:17:29	NapoleonWils0n	dale6998 what openvpn provider do you use privateinternet access ?
+2017-02-21 20:17:30	-->	gonification (~gonificat@unaffiliated/gonification) has joined #archlinux
+2017-02-21 20:17:38	<--	nando293921 (~Nando15@173.224.88.2) has quit (Quit: Lost terminal)
+2017-02-21 20:17:40	Namarrgon	tau: pacman-key --refresh-keys
+2017-02-21 20:17:50	tau	i'll try.
+2017-02-21 20:18:09	<--	bjorn248 (~Bjorn@unaffiliated/bjorn248) has quit (Client Quit)
+2017-02-21 20:18:12	xundres	i was in Raid mode, selected from bios
+2017-02-21 20:18:41	dale6998	NapoleonWils0n: i'm not using a provider...i've got a box at my house i'm trying to route all my remote coffeeshop traffic through
+2017-02-21 20:18:52	honestly	I don't know how it is these days, but at least 5 years ago "Raid" mode was something you never wanted, ever
+2017-02-21 20:18:55	xundres	I have this options: IDE, AHCI, RAID
+2017-02-21 20:18:56	dale6998	well, obviously i have an isp, but no vpn provider
+2017-02-21 20:19:09	honestly	xundres: you want ahci
+2017-02-21 20:19:28	NapoleonWils0n	dale6998 how are you starting the openvpn client command line or network manager
+2017-02-21 20:19:43	honestly	xundres: unless you need to dualboot something that doesn't support it
+2017-02-21 20:20:00	<--	whynix (~root@185.21.216.196) has quit (Remote host closed the connection)
+2017-02-21 20:20:12	-->	whynix (~root@185.21.216.196) has joined #archlinux
+2017-02-21 20:20:33	NapoleonWils0n	you need to work out if the issue is with the vpn server or client
+2017-02-21 20:20:37	-->	frankdrey (~textual@2601:601:c700:7c2e:3c63:4fba:2029:1bd7) has joined #archlinux
+2017-02-21 20:20:38	dale6998	command line:  i'm following the wiki very closely
+2017-02-21 20:20:41	xundres	if I wanna create sw raid0 i don't need raid mode no?
+2017-02-21 20:20:54	<--	K0JIbKA (~nikobit@188.124.243.58) has quit (Quit: K0JIbKA)
+2017-02-21 20:20:57	<--	abbec (~abbec@94.255.165.160) has quit (Quit: leaving)
+2017-02-21 20:20:59	grawity	no
+2017-02-21 20:21:07	NapoleonWils0n	have you tried connecting to other openvpn server to see if that works
+2017-02-21 20:21:12	dale6998	NapoleonWils0n: command line:  openvpn /etc/openvpn/server/server.conf
+2017-02-21 20:21:15	grawity	mdraid & dm-raid are both implemented entirely in Linux
+2017-02-21 20:21:28	-->	masterjaguar (~masterjag@x5ce58593.dyn.telefonica.de) has joined #archlinux
+2017-02-21 20:21:31	<--	modlin (~modlin@93.123.41.167) has quit (Quit: modlin)
+2017-02-21 20:21:32	-->	abbec (~abbec@94.255.165.160) has joined #archlinux
+2017-02-21 20:21:39	honestly	xundres: raid mode is *only* for windows fakeraid
+2017-02-21 20:21:49	honestly	xundres: it's a silly 90's "technology"
+2017-02-21 20:21:52	dale6998	NapoleonWils0n: no, this has been an exersise in figuring out what VPN was...I don't have any other ones to try
+2017-02-21 20:21:53	NapoleonWils0n	you could try using one of these free openvpns
+2017-02-21 20:21:56	NapoleonWils0n	http://www.vpngate.net/en/
+2017-02-21 20:21:57	phrik	Title: VPN Gate - Public Free VPN Cloud by Univ of Tsukuba, Japan (at www.vpngate.net)
+2017-02-21 20:22:14	dale6998	NapoleonWils0n: oh...didn't realize that was an option!
+2017-02-21 20:22:23	<--	windel (~windel@2001:984:3702:1:c5bc:5e0b:f8a9:6070) has quit (Quit: Konversation terminated!)
+2017-02-21 20:22:27	<--	madalu (~user@unaffiliated/madalu) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:22:37	NapoleonWils0n	see if you can connect to a free vpn, and then you know if the issue is with your vpn server set up
+2017-02-21 20:22:41	xundres	Namarrgon yes there is the iso
+2017-02-21 20:22:50	xundres	but still cant do anything
+2017-02-21 20:23:14	<--	lukeshu (~lukeshu@2605:8900:3000:1001:9:0:13:2) has quit (Quit: ZNC 1.6.4 - http://znc.in)
+2017-02-21 20:23:29	Namarrgon	if the symlink is functionl i don't know either, post an image of the errors you get during boot
+2017-02-21 20:23:46	-->	modlin (~modlin@93.123.41.167) has joined #archlinux
+2017-02-21 20:24:11	<--	alad (~alad@archlinux/op/alad) has quit (Remote host closed the connection)
+2017-02-21 20:24:22	<--	darkrow (~D4rKr0W@unaffiliated/d4rkr0w) has quit (Remote host closed the connection)
+2017-02-21 20:24:24	-->	alad (~alad@archlinux/op/alad) has joined #archlinux
+2017-02-21 20:24:28	<--	pierres (~pierre@archlinux/developer/pierres) has quit (Quit: Konversation terminated!)
+2017-02-21 20:25:15	<--	whynix (~root@185.21.216.196) has quit (Remote host closed the connection)
+2017-02-21 20:25:24	-->	lukeshu (~lukeshu@199.180.255.147) has joined #archlinux
+2017-02-21 20:25:28	-->	whynix (~root@185.21.216.196) has joined #archlinux
+2017-02-21 20:25:58	-->	nando293921 (~Nando15@173.224.88.2) has joined #archlinux
+2017-02-21 20:26:01	tau	namarrgon it seems i keep getting the same error.
+2017-02-21 20:26:08	<--	P1ro (~UNIX@gentoo/user/p1ro) has quit (Remote host closed the connection)
+2017-02-21 20:26:15	Namarrgon	tau: sha1sum it
+2017-02-21 20:26:27	tau	namarrgon how could i proceed?
+2017-02-21 20:26:40	Namarrgon	tau: sha1sum the package in the cache
+2017-02-21 20:26:47	tau	hold on
+2017-02-21 20:27:00	tau	it seems there is no package in the cache.
+2017-02-21 20:27:04	tau	cd /var/cache/pacman/pkg/ ;ls
+2017-02-21 20:27:11	Namarrgon	then you removed it
+2017-02-21 20:27:19	tau	but i didnt.
+2017-02-21 20:27:26	grazzolini	NapoleonWils0n: you know that js and html5, flash, java, etc can get out through your ISP, and bypass your vpn
+2017-02-21 20:27:30	Namarrgon	"Do you want to delete it? [Y/n] y"
+2017-02-21 20:27:32	Namarrgon	you did
+2017-02-21 20:27:34	tau	oh i see.
+2017-02-21 20:27:35	tau	yes.
+2017-02-21 20:27:36	tau	true
+2017-02-21 20:27:38	tau	sorry
+2017-02-21 20:27:44	<--	ludat (~ludat@190.210.223.66) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:27:50	Namarrgon	get a new one from a different mirror
+2017-02-21 20:27:53	grazzolini	NapoleonWils0n: as I said, make everything go through the vpn, put a firewall, and deal with the exceptions
+2017-02-21 20:28:04	dale6998	NapoleonWils0n: this works
+2017-02-21 20:28:07	tau	i see.
+2017-02-21 20:28:08	dale6998	i'm on google japan now!
+2017-02-21 20:28:24	-->	Purec (~Purec@unaffiliated/purec) has joined #archlinux
+2017-02-21 20:29:04	<--	xundres (~Mutter@net-5-88-212-53.cust.vodafonedsl.it) has quit (Quit: Mutter: www.mutterirc.com)
+2017-02-21 20:29:31	<--	BoBeR182 (~BoBeR182@gateway/tor-sasl/bober182) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:29:35	<--	sebch (~sebastian@unaffiliated/sebch) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:29:38	<--	cgar (~cgar@653263hfc228.tampabay.res.rr.com) has quit (Remote host closed the connection)
+2017-02-21 20:30:26	-->	sebch (~sebastian@unaffiliated/sebch) has joined #archlinux
+2017-02-21 20:30:33	<--	j12t (~j12t@w146.z205158021.lax-ca.dsl.cnc.net) has quit (Remote host closed the connection)
+2017-02-21 20:30:39	<--	dandels (~Dandels@unaffiliated/dandels) has quit (Read error: Connection reset by peer)
+2017-02-21 20:30:55	-->	P1ro (~UNIX@gentoo/user/p1ro) has joined #archlinux
+2017-02-21 20:31:05	arjen-jonathan	If anything has any idea what to do with this: https://github.com/borisveytsman/acmart/issues/95 
+2017-02-21 20:31:06	phrik	Title: auto expansion error · Issue #95 · borisveytsman/acmart · GitHub (at github.com)
+2017-02-21 20:31:15	arjen-jonathan	Please let me know ;-)
+2017-02-21 20:31:16	-->	kaben (~kaben@179.43.174.130) has joined #archlinux
+2017-02-21 20:31:35	-->	madalu (~user@unaffiliated/madalu) has joined #archlinux
+2017-02-21 20:31:54	<--	kaben_ (~kaben@179.43.174.130) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:32:01	arjen-jonathan	Having a fresh installation of texlive-most and a document that compiles fine with pdflatex on several osx machines, I'm wondering whether there's something wrong with the package.
+2017-02-21 20:32:22	-->	xundres (~Mutter@net-5-88-212-53.cust.vodafonedsl.it) has joined #archlinux
+2017-02-21 20:32:29	-->	venmx (~pactadmin@cpc8-camd15-2-0-cust699.20-2.cable.virginm.net) has joined #archlinux
+2017-02-21 20:32:40	xundres	 Namarrgon https://i.imgur.com/XYiFypa.jpg
+2017-02-21 20:33:04	-->	SysGhost (~sysghost@79.138.129.168.mobile.tre.se) has joined #archlinux
+2017-02-21 20:33:08	-->	Dr8128 (~cyber@143.176.214.136) has joined #archlinux
+2017-02-21 20:33:28	xundres	SysGhost https://i.imgur.com/XYiFypa.jpg
+2017-02-21 20:33:42	<--	abbec (~abbec@94.255.165.160) has quit (Quit: leaving)
+2017-02-21 20:33:57	-->	orionstein (~orionstei@ec2-54-208-103-125.compute-1.amazonaws.com) has joined #archlinux
+2017-02-21 20:34:02	<--	LBV_User (~leonardo@177.18.170.151) has quit (Quit: done with this Instant Ramen Cup)
+2017-02-21 20:34:38	-->	j12t (~j12t@w146.z205158021.lax-ca.dsl.cnc.net) has joined #archlinux
+2017-02-21 20:34:49	Namarrgon	did you verify the checksum of the iso?
+2017-02-21 20:35:00	xundres	no
+2017-02-21 20:35:17	<--	whynix (~root@185.21.216.196) has quit (Remote host closed the connection)
+2017-02-21 20:35:24	-->	whynix (~root@185.21.216.196) has joined #archlinux
+2017-02-21 20:35:25	xundres	really could be an iso corrupted? Never happenes to me
+2017-02-21 20:35:33	-->	abbec (~abbec@94.255.165.160) has joined #archlinux
+2017-02-21 20:35:42	Namarrgon	everything is possible
+2017-02-21 20:35:44	-->	joekamprad (~joekampra@pD9FAB559.dip0.t-ipconnect.de) has joined #archlinux
+2017-02-21 20:35:56	SysGhost	if the download is interupted, it ends up too short.
+2017-02-21 20:35:57	-->	iterati (~vangelis@ppp141237198097.access.hol.gr) has joined #archlinux
+2017-02-21 20:36:16	thurstylark	just because it's never happened to you, doesn't mean it won't ever :P
+2017-02-21 20:36:20	<--	opthomasprime (~thomas@p2003006A623E2D99BEEE7BFFFE785E9D.dip0.t-ipconnect.de) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:36:29	xundres	mmh okk. So i will try doing all again... 
+2017-02-21 20:36:34	<--	cpt-oblivious (~quassel@freebsd/user/cpt-oblivious) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:36:46	-->	cpt-oblivious (~quassel@freebsd/user/cpt-oblivious) has joined #archlinux
+2017-02-21 20:36:55	xundres	Tomorrow you will have the result. Thank you
+2017-02-21 20:37:00	xundres	xd
+2017-02-21 20:37:00	SysGhost	it happens that the server that serves the file can cut the stream during transfer without any error code. Browser/download manager "thinks" it's finished.
+2017-02-21 20:37:10	<--	joekamprad (~joekampra@pD9FAB559.dip0.t-ipconnect.de) has left #archlinux
+2017-02-21 20:37:17	-->	joekamprad (~joekampra@pD9FAB559.dip0.t-ipconnect.de) has joined #archlinux
+2017-02-21 20:37:21	tau	i wonder if there is a way to reset all pacman conf/stuff and get it working.
+2017-02-21 20:37:23	<--	xundres (~Mutter@net-5-88-212-53.cust.vodafonedsl.it) has quit (Quit: Mutter: www.mutterirc.com)
+2017-02-21 20:37:40	-->	rtkt (~rtkt@ptr-fhfszoyd76bj8841u89.18120a2.ip6.access.telenet.be) has joined #archlinux
+2017-02-21 20:37:48	<--	irc-5225225 (~weechat@gateway/tor-sasl/irc-5225225) has quit (Remote host closed the connection)
+2017-02-21 20:38:01	SysGhost	tau: reset pacman? you mean the package database? what's the actual error message you get?
+2017-02-21 20:38:04	Namarrgon	did you get a good file from your mirror?
+2017-02-21 20:38:16	-->	irc-5225225 (~weechat@gateway/tor-sasl/irc-5225225) has joined #archlinux
+2017-02-21 20:38:16	<--	GodGinrai (~msterritt@unaffiliated/godginrai) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:38:19	tau	namarrgon i have got one from that arch site that generates mirrors.
+2017-02-21 20:38:36	-->	avances11 (~avances12@46.25.162.207) has joined #archlinux
+2017-02-21 20:38:36	-->	most_enter (~most_ente@213.240.100.149) has joined #archlinux
+2017-02-21 20:38:54	tau	http://codepad.org/Ldbwq19f
+2017-02-21 20:38:55	phrik	Title: Plain Text code - 475 lines - codepad (at codepad.org)
+2017-02-21 20:38:57	tau	this is how it looks like.
+2017-02-21 20:39:04	<--	inad922 (~inad925@78-131-82-48.pool.digikabel.hu) has quit (Ping timeout: 255 seconds)
+2017-02-21 20:39:11	Namarrgon	the generator doesn't test the packages on the mirrors
+2017-02-21 20:39:16	Namarrgon	get the checksum
+2017-02-21 20:39:19	tau	hmm
+2017-02-21 20:39:36	tau	namarrgon i'm getting bad package for all things that i try to install.
+2017-02-21 20:39:41	tau	i cant even update arch now.
+2017-02-21 20:39:46	Namarrgon	how long have you not updated that system?
+2017-02-21 20:39:52	-->	patarr (~patarr@unaffiliated/patarr) has joined #archlinux
+2017-02-21 20:40:12	-->	gtxbb (~gtxbb__@modemcable088.224-202-24.mc.videotron.ca) has joined #archlinux
+2017-02-21 20:40:13	<--	gtxbb (~gtxbb__@modemcable088.224-202-24.mc.videotron.ca) has quit (Max SendQ exceeded)
+2017-02-21 20:40:23	tau	namarrgon i thin about three or four months.
+2017-02-21 20:40:23	earnestly	Logs would be useful...
+2017-02-21 20:40:38	SysGhost	bad package? 
+2017-02-21 20:40:40	Namarrgon	pacman -S archlinux-keyring
+2017-02-21 20:40:47	tau	i'll try that one.
+2017-02-21 20:40:57	-->	gtxbb (~gtxbb__@modemcable088.224-202-24.mc.videotron.ca) has joined #archlinux
+2017-02-21 20:41:07	SysGhost	perhaps pacman recieves some kind of 404 page, and thinks it, the file it tries to download.
+2017-02-21 20:41:17	earnestly	SysGhost: Perhaps we should stop guessing :p
+2017-02-21 20:41:18	SysGhost	...or some login page.
+2017-02-21 20:41:27	tau	http://codepad.org/hZux4ySh
+2017-02-21 20:41:27	SysGhost	earnestly: naaah ;)
+2017-02-21 20:41:27	phrik	Title: Plain Text code - 23 lines - codepad (at codepad.org)
+2017-02-21 20:41:29	tau	i get this.
+2017-02-21 20:41:55	tau	namarrgon.
+2017-02-21 20:41:56	Namarrgon	did you mess with /etc/pacman.d/gnupg/?
+2017-02-21 20:42:07	tau	i saw a post on a forum to remove the folder.
+2017-02-21 20:42:09	tau	i did so.
+2017-02-21 20:42:11	Namarrgon	...
+2017-02-21 20:42:13	tau	:(
+2017-02-21 20:42:19	<--	d0x1p2 (~schism@c-73-136-241-51.hsd1.tx.comcast.net) has quit (Quit: WeeChat 1.7)
+2017-02-21 20:42:20	<--	GI_Jack (~GI_Jack@pdpc/supporter/active/gi-jack) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:42:22	tau	i was having issues before though too.
+2017-02-21 20:42:22	SysGhost	then you have to recreate the local key database
+2017-02-21 20:42:32	tau	sysghost how could i proceed?
+2017-02-21 20:42:47	thurstylark	maybe if you came here when you were having your first issues, you wouldn't be here...
+2017-02-21 20:43:05	-->	absolutejam (~absolutej@185.4.24.24) has joined #archlinux
+2017-02-21 20:43:08	tau	pacman-key --init; pacman-key --populate archlinux i tried this to recreate
+2017-02-21 20:43:08	<--	DoctorJellyface (~DoctorJel@ip133.213-181-141.pegonet.sk) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:43:11	tau	but i get errors too.
+2017-02-21 20:43:16	tau	thurstylark true.
+2017-02-21 20:43:29	earnestly	--refresh-keys
+2017-02-21 20:43:38	<--	Weaselweb (~quassel@185.44.151.75) has quit (Remote host closed the connection)
+2017-02-21 20:43:38	-->	BoBeR182 (~BoBeR182@gateway/tor-sasl/bober182) has joined #archlinux
+2017-02-21 20:43:39	thurstylark	tau: instead of just saying you get errors, post those errors to a paste service.
+2017-02-21 20:43:47	tau	http://codepad.org/yoaGutWI
+2017-02-21 20:43:48	phrik	Title: Plain Text code - 216 lines - codepad (at codepad.org)
+2017-02-21 20:43:53	<--	madalu (~user@unaffiliated/madalu) has quit (Remote host closed the connection)
+2017-02-21 20:43:57	<--	aw1 (~aw1@unaffiliated/aw1) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:44:01	tau	thurstylark i'm posting them on codepad.
+2017-02-21 20:44:32	<--	jtc123 (~Thunderbi@193.165.96.34) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:44:38	-->	raynold (uid201163@gateway/web/irccloud.com/x-nikrbbkddthxartc) has joined #archlinux
+2017-02-21 20:44:38	-->	Weaselweb (~quassel@185.44.151.75) has joined #archlinux
+2017-02-21 20:44:39	thurstylark	tau: that's fine, just give the link sooner rather than laterr.
+2017-02-21 20:44:44	SysGhost	first error: you stand in a path that doesn't exist. "error retrieving current directory: getcwd: cannot access parent directories: No such file or directory"
+2017-02-21 20:44:47	-->	tdy_err (~textual@cpe-72-190-147-62.satx.res.rr.com) has joined #archlinux
+2017-02-21 20:44:50	tau	thurstylark sure.
+2017-02-21 20:45:23	<--	whynix (~root@185.21.216.196) has quit (Remote host closed the connection)
+2017-02-21 20:45:27	tau	sysghost i got off that path.
+2017-02-21 20:45:30	-->	whynix (~root@185.21.216.196) has joined #archlinux
+2017-02-21 20:45:48	earnestly	Without gnupg installed, there's probably not much you can do
+2017-02-21 20:45:54	tau	yea.
+2017-02-21 20:46:03	tau	i'll have to install that by hand i think.
+2017-02-21 20:46:10	earnestly	Outside of temporarily disabling pgp checks
+2017-02-21 20:46:23	tau	earnestly how could i do that?
+2017-02-21 20:46:28	SysGhost	boot a live cd, and pacstrap it perhaps?
+2017-02-21 20:46:35	tau	i see.
+2017-02-21 20:46:38	tau	i was wondering of it.
+2017-02-21 20:47:37	<--	abbec (~abbec@94.255.165.160) has quit (Ping timeout: 255 seconds)
+2017-02-21 20:47:39	earnestly	tau: Replacing Required with PackageOptional for the SigLevel setting in pacman.conf
+2017-02-21 20:47:51	-->	ludat (~ludat@190.210.223.66) has joined #archlinux
+2017-02-21 20:47:56	<--	sebch (~sebastian@unaffiliated/sebch) has quit (Ping timeout: 268 seconds)
+2017-02-21 20:48:04	earnestly	Getting an updated archlinux-keyring package, and then switching back to Required
+2017-02-21 20:48:09	<--	hamersaw (~rammerd@phoenix.cs.colostate.edu) has quit (Quit: WeeChat 1.6)
+2017-02-21 20:48:10	tau	i see.
+2017-02-21 20:48:11	demize	Hmm, pacman links against libgpg-error.so though, so if gnupg isn't installed.. that's tricky.
+2017-02-21 20:48:22	<--	yiati (uid84597@gateway/web/irccloud.com/x-hvvsoxhszpoanplh) has quit (Quit: Connection closed for inactivity)
+2017-02-21 20:48:25	-->	electricblue (~slr@p4FF0F9EA.dip0.t-ipconnect.de) has joined #archlinux
+2017-02-21 20:48:25	-->	Shtene (~Shtene@s55942125.adsl.online.nl) has joined #archlinux
+2017-02-21 20:48:27	joebobjoe	is there a man/info page that explains ls colors?
+2017-02-21 20:48:27	<--	dale6998 (~dale6998@cpe-74-78-156-164.maine.res.rr.com) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:48:45	NapoleonWils0n	you can use dir colors
+2017-02-21 20:48:49	earnestly	demize: I'm assuming if gnupg isn't installed there's more fundamental problems here, so long as they post logs we can probably figure it out
+2017-02-21 20:48:52	-->	sebch (~sebastian@unaffiliated/sebch) has joined #archlinux
+2017-02-21 20:49:05	HewlettDell	if I have ida pro for windows, can I run it on wine without issues or need to have windows install (VM probably) ?. earnestly.
+2017-02-21 20:49:09	<--	Evol (~Cof@191.190.217.124) has quit (Quit: Leaving)
+2017-02-21 20:49:15	NapoleonWils0n	https://linux.die.net/man/5/dir_colors
+2017-02-21 20:49:16	phrik	Title: dir_colors(5): config file for dircolors - Linux man page (at linux.die.net)
+2017-02-21 20:49:17	tau	earnestly could you provide me a line to be added in pacman.conf with that conf? i'm not sure how to do it myself.
+2017-02-21 20:49:28	tau	oh
+2017-02-21 20:49:31	tau	i think i got it.
+2017-02-21 20:49:38	tau	nvm
+2017-02-21 20:49:59	earnestly	demize: Maybe if it's old enough their pacman didn't have the gpgme dependency
+2017-02-21 20:50:20	tau	i think i'll have to pacstrap.
+2017-02-21 20:50:20	<--	whynix (~root@185.21.216.196) has quit (Remote host closed the connection)
+2017-02-21 20:50:29	earnestly	Not likely
+2017-02-21 20:50:31	-->	whynix (~root@185.21.216.196) has joined #archlinux
+2017-02-21 20:50:37	tau	i have tried that earnestly but it gives the same error.
+2017-02-21 20:50:41	tau	i have done it like this:
+2017-02-21 20:50:53	tau	SigLevel    = PackageOptional DatabaseOptional
+2017-02-21 20:50:53	NapoleonWils0n	is there a way to bind chromium to the tun0 network interface
+2017-02-21 20:50:58	tau	then pacman -S archlinux-keyring
+2017-02-21 20:50:59	joebobjoe	NapoleonWils0n: hm. don't know why I could find that man page. it is not mentioned in man ls or man dircolors
+2017-02-21 20:51:16	earnestly	tau: I'd suggest doing pacman -Syu
+2017-02-21 20:51:22	tau	i see.
+2017-02-21 20:51:30	-->	jmcantrell (uid324@gateway/web/irccloud.com/x-jcwrqughbofazmfx) has joined #archlinux
+2017-02-21 20:51:30	jmcantrell	j #sed
+2017-02-21 20:51:49	tau	i'm afraid it may take a lot of time but in the end just fail to work.
+2017-02-21 20:51:53	-->	in1t3r_ (~LordShiva@unaffiliated/lordshiva) has joined #archlinux
+2017-02-21 20:51:54	NapoleonWils0n	joebobjoe heres my dir_colors
+2017-02-21 20:51:56	NapoleonWils0n	https://github.com/NapoleonWils0n/arch-dotfiles/blob/master/.dir_colors
+2017-02-21 20:51:57	phrik	Title: arch-dotfiles/.dir_colors at master · NapoleonWils0n/arch-dotfiles · GitHub (at github.com)
+2017-02-21 20:51:57	-->	torak (~torak@88.240.109.112) has joined #archlinux
+2017-02-21 20:52:01	earnestly	tau: Or at least partially updating pacman and archlinux-keyring then
+2017-02-21 20:52:22	tau	earnestly when i do pacman -S archlinux-keyring it fails too.
+2017-02-21 20:52:23	earnestly	tau: Then switching back to Required for the rest of the Syu
+2017-02-21 20:52:27	earnestly	tau: Logs
+2017-02-21 20:52:30	tau	hold on
+2017-02-21 20:52:45	earnestly	!give tau sprungepacman
+2017-02-21 20:52:46	phrik	tau: LC_ALL=C pacman --debug <pacmanoptions> |& tee >(curl -F sprunge=@- sprunge.us)
+2017-02-21 20:52:51	-->	Th3R0b (~bobby@a838.ip20.netikka.fi) has joined #archlinux
+2017-02-21 20:53:26	tau	http://codepad.org/O1OsBj9b
+2017-02-21 20:53:27	phrik	Title: Plain Text code - 21 lines - codepad (at codepad.org)
+2017-02-21 20:53:36	tau	oh
+2017-02-21 20:53:42	earnestly	Hm
+2017-02-21 20:54:06	<--	venmx (~pactadmin@cpc8-camd15-2-0-cust699.20-2.cable.virginm.net) has quit (Ping timeout: 268 seconds)
+2017-02-21 20:54:15	<--	oconnorct1 (~connor@nc-76-4-9-220.dhcp.embarqhsd.net) has quit (Remote host closed the connection)
+2017-02-21 20:54:28	-->	dandels_ (~dandels@unaffiliated/dandels) has joined #archlinux
+2017-02-21 20:54:33	-->	oconnorct1 (~connor@nc-76-4-9-220.dhcp.embarqhsd.net) has joined #archlinux
+2017-02-21 20:54:51	earnestly	tau: I think it's trying to check the signatures because it was set to optional, meaning it will check if a signature exists but won't fail if none are found.  Try Never instead of Required
+2017-02-21 20:55:04	tau	sure.
+2017-02-21 20:55:19	<--	tschan_ (~tschan@p4FC5391C.dip0.t-ipconnect.de) has quit (Quit: Leaving)
+2017-02-21 20:55:25	<--	dandels_ (~dandels@unaffiliated/dandels) has quit (Client Quit)
+2017-02-21 20:55:40	earnestly	Never will not check signatures even if present
+2017-02-21 20:55:44	joebobjoe	NapoleonWils0n: https://github.com/NapoleonWils0n/bashfinder is pretty neat
+2017-02-21 20:55:45	phrik	Title: GitHub - NapoleonWils0n/bashfinder: Control the Mac Finder from the Terminal (at github.com)
+2017-02-21 20:55:54	-->	linuxan (uid214372@gateway/web/irccloud.com/x-bnxxyucqwldprful) has joined #archlinux
+2017-02-21 20:55:57	joebobjoe	NapoleonWils0n: how did you hook cd?
+2017-02-21 20:56:09	tau	http://codepad.org/QCKR15kk
+2017-02-21 20:56:10	phrik	Title: Plain Text code - 38 lines - codepad (at codepad.org)
+2017-02-21 20:56:10	tau	i got this
+2017-02-21 20:56:14	earnestly	tau: Then to make sure you get a recent archlinux-keyring, use pacman -Sy (partial upgrade, but necessary in this case)
+2017-02-21 20:56:16	tau	earnestly.
+2017-02-21 20:56:19	<--	Fayn (~Erk@84.248.156.55) has quit (Quit: Leaving)
+2017-02-21 20:56:51	-->	aw1 (~aw1@unaffiliated/aw1) has joined #archlinux
+2017-02-21 20:57:12	earnestly	tau: Yeah, like I said, you should first update pacman.  We might get issues here temporarily, but that should pull in gpgme which then pulls in gnupg
+2017-02-21 20:57:21	tau	okay.
+2017-02-21 20:57:28	tau	done
+2017-02-21 20:57:31	earnestly	tau: You need gpg to use gpg, obviously
+2017-02-21 20:57:34	-->	piousminion (~clay@unaffiliated/piousminion) has joined #archlinux
+2017-02-21 20:57:36	tau	it seems to have updated pacman.
+2017-02-21 20:57:44	earnestly	tau: Do you have gpgme installed?
+2017-02-21 20:58:00	<--	cleme1mp (mclement@nat/ibm/x-qwscdtbpquayzpne) has quit (Ping timeout: 240 seconds)
+2017-02-21 20:58:06	tau	it seems so, earnestly.
+2017-02-21 20:58:16	<--	joekamprad (~joekampra@pD9FAB559.dip0.t-ipconnect.de) has quit (Quit: joekamprad)
+2017-02-21 20:58:25	tau	what after updating pacman?
+2017-02-21 20:58:32	<--	andyrtr (~andyrtr@archlinux/developer/andyrtr) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:58:32	<--	bootkiller (~bootkille@a89-154-166-61.cpe.netcabo.pt) has quit (Ping timeout: 260 seconds)
+2017-02-21 20:58:33	earnestly	tau: And does /usr/bin/gpg-agent exist?
+2017-02-21 20:58:36	tau	should i run pacman -S archlinux-keyring right
+2017-02-21 20:58:38	tau	lemme check
+2017-02-21 20:58:46	<--	A124 (~Username@unaffiliated/a124) has quit (Quit: '')
+2017-02-21 20:58:48	-->	joekamprad (~joekampra@pD9FAB559.dip0.t-ipconnect.de) has joined #archlinux
+2017-02-21 20:58:53	<--	marxS (569703a3@gateway/web/cgi-irc/kiwiirc.com/ip.86.151.3.163) has quit (Quit: http://www.kiwiirc.com/ - A hand crafted IRC client)
+2017-02-21 20:58:56	tau	it says no such file or directory.
+2017-02-21 20:58:57	<--	joekamprad (~joekampra@pD9FAB559.dip0.t-ipconnect.de) has quit (Remote host closed the connection)
+2017-02-21 20:59:06	earnestly	tau: Now that's suspicious
+2017-02-21 20:59:11	tau	hmm
