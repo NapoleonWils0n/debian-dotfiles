@@ -1,2 +1,0 @@
-2016-02-08 17:29:44	dpkg	To install X in Debian: "aptitude update && aptitude install xorg".  You may also want to install a desktop environment - ask me about <install gnome>, <install kde>, <install xfce>, <install lxde> - or a window manager, ask me about <window manager>.  To configure your X server, ask me about <xorg config>.
-2016-02-08 17:29:50	--	irc: disconnected from server
