@@ -164,9 +164,9 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 # vim powerline
 
 # export alsa settings for ffplay
-#export SDL_AUDIODRIVER="alsa"
+export SDL_AUDIODRIVER="alsa"
 #export AUDIODEV="plughw:2,0"
-#export AUDIODEV="plughw:1,0"
+export AUDIODEV="plughw:1,0"
 #export AUDIODEV="plughw:0,0"
 
 # fix debian chromium disbaling remote extensions
