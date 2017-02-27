@@ -1,11 +1,17 @@
 ; melpa rackages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 (package-initialize)
-;(elpy-enable)
+(elpy-enable)
 ; fixing elpy keybinding
-; (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-; (define-key global-map (kbd "C-c o") 'iedit-mode)
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+(define-key global-map (kbd "C-c o") 'iedit-mode)
+;; For elpy
+(setq elpy-rpc-python-command "python3")
+;; For interactive shell
+(setq python-shell-interpreter "python3")
+
 
 ;Tell emacs where is your personal elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/lisp/")
@@ -41,7 +47,7 @@
 (setq markdown-asymmetric-header t)
 
 ; markdown preview using pandoc
-(setq markdown-command "pandoc -f markdown -t html -s -S --mathjax --highlight-style=pygments")
+(setq markdown-command "pandoc -f markdown -t html -s -S --mathjax --highlight-style=pygments -c ~/git/pandoc-css/pandoc.css")
 
 ; gfm mode
 (setq auto-mode-alist (cons '("\\.mdt$" . gfm-mode) auto-mode-alist))
