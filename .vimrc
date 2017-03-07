@@ -65,6 +65,7 @@ set formatoptions=qrn1
 " vim-airline
 set encoding=utf-8
 set guifont=Inconsolata\ for\ Powerline\ 13
+"set guifont=Hack-Regular\ 13
 "set guifont=Inconsolata\ 13
 let g:airline_powerline_fonts = 1
 set laststatus=2
