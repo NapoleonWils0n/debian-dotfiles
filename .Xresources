@@ -292,8 +292,11 @@ URxvt*scrollBar: False
 URxvt*perl-ext-common: default,clipboard,selection-to-clipboard
 
 ! copy and paste
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+!URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+!URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+URxvt.keysym.C-c: eval:selection_to_clipboard 
+URxvt.keysym.C-v: eval:paste_clipboard  
 
 ! shift
 !URxvt.keysym.Shift-Up:          \033[1;2A
@@ -345,5 +348,3 @@ URxvt*iso14755: False
 
 ! Turn on/off ISO 14755 5.2 mode (default enabled).
 !URxvt*iso14755_52: boolean
-
-
