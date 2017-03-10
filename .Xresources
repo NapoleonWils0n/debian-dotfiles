@@ -295,8 +295,8 @@ URxvt*perl-ext-common: default,clipboard,selection-to-clipboard
 !URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 !URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
-URxvt.keysym.C-c: eval:selection_to_clipboard 
-URxvt.keysym.C-v: eval:paste_clipboard  
+URxvt.keysym.Alt-C-c: eval:selection_to_clipboard 
+URxvt.keysym.Alt-C-v: eval:paste_clipboard  
 
 ! shift
 !URxvt.keysym.Shift-Up:          \033[1;2A
