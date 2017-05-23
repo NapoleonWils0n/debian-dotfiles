@@ -12,7 +12,6 @@
 ;; For interactive shell
 (setq python-shell-interpreter "python3")
 
-
 ;Tell emacs where is your personal elisp lib dir
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (load "org-protocol-capture-html")
@@ -96,6 +95,13 @@
 (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
 (setq org-refile-use-outline-path t)                  ; Show full paths for refiling
 
+; powerline-evil
+(require 'powerline)
+(powerline-default-theme)
+
+; dont display time in mode line
+(display-time-mode 0)
+
 ; custom faces
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -103,6 +109,28 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+; mode line
+; remove mail from mode line
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(display-time-mail-string "")
+ '(package-selected-packages
+   (quote
+    (elpy powerline ox-pandoc markdown-mode magit git-auto-commit-mode evil-surround evil-leader emmet-mode))))
+
+(set-face-attribute 'mode-line nil
+                    :foreground "Black"
+                    :background "yellow1"
+                    :box nil)
+
+(set-face-attribute 'mode-line-inactive nil
+                    :foreground "Black"
+                    :background "yellow1"
+                    :box nil)
 
 ; Prepare stuff for org-export-backends
 (setq org-export-backends '(org md html latex icalendar odt ascii))
@@ -132,11 +160,6 @@
 'org-babel-load-languages
 '((dot . t))) ; this line activates dot
 
-; powerline-evil
-(require 'powerline)
-(powerline-default-theme)
-(display-time-mode t)
-
 ; magit 
 (global-set-key (kbd "C-x g") 'magit-status)
 
@@ -150,11 +173,4 @@
 ; ox-pandoc export
 (setq org-pandoc-options-for-markdown '((atx-headers . t)))
 (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (elpy powerline ox-pandoc markdown-mode magit git-auto-commit-mode evil-surround evil-leader emmet-mode))))
+
