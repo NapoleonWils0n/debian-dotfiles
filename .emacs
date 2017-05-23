@@ -124,12 +124,12 @@
 
 (set-face-attribute 'mode-line nil
                     :foreground "Black"
-                    :background "DeepSkyBlue4"
+                    :background "yellow2"
                     :box nil)
 
 (set-face-attribute 'mode-line-inactive nil
                     :foreground "Black"
-                    :background "DeepSkyBlue4"
+                    :background "yellow2"
                     :box nil)
 
 ; Prepare stuff for org-export-backends
