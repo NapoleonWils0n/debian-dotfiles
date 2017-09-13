@@ -141,6 +141,10 @@ if [ -f /home/djwilcox/.pandoc-completion.bash ]; then
 	. /home/djwilcox/.pandoc-completion.bash
 fi
 
+# python bin
+if [ -d "$HOME/.local/bin" ]; then
+   PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Shell prompt
 GIT_PS1_SHOWDIRTYSTATE=true
