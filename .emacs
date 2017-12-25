@@ -129,7 +129,7 @@
  '(display-time-mail-string "")
  '(package-selected-packages
    (quote
-    (elpy powerline ox-pandoc markdown-mode magit git-auto-commit-mode evil-surround evil-leader emmet-mode))))
+    (graphviz-dot-mode elpy powerline ox-pandoc markdown-mode magit git-auto-commit-mode evil-surround evil-leader emmet-mode))))
 
 (set-face-attribute 'mode-line nil
                     :foreground "Black"
