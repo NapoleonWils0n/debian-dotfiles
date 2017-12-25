@@ -167,7 +167,8 @@
 ; org-babel graphviz
 (org-babel-do-load-languages
 'org-babel-load-languages
-'((dot . t))) ; this line activates dot
+'((dot . t)
+  (shell . t))) ; this line activates bash shell script
 
 ; magit 
 (global-set-key (kbd "C-x g") 'magit-status)
