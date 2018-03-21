@@ -185,4 +185,4 @@
 (setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
 
 ; ranger
-(ranger-override-dired-mode t)
+;(ranger-override-dired-mode t)
