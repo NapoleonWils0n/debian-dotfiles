@@ -40,3 +40,6 @@ export KEYTIMEOUT=1
 
 # mpd host variable for mpc
 export MPD_HOST="/home/djwilcox/.config/mpd/socket"
+
+# gnome
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
