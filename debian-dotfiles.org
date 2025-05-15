@@ -1,0 +1,5616 @@
+#TITLE: debian dotfiles
+#+STARTUP: overview hideblocks
+#+OPTIONS: num:nil author:nil
+#+PROPERTY: header-args :mkdirp yes
+* tangle dotfiles
+** tangle document
+
+C-c C-v t
+
+** tangle only one code block
+
+C-u C-c C-v t
+
+** tangle from the command line
+
+#+begin_src sh
+emacs --batch -l org --eval '(org-babel-tangle-file "~/git/ubuntu-dotfiles/ubuntu-dotfiles.org")'
+#+end_src
+
+#+RESULTS:
+
+* ubuntu dotfiles
+:PROPERTIES:
+:VISIBILITY: children
+:END!:
+** emacs
+*** emacs config
+**** init.el
+
+#+NAME: init.el
+#+BEGIN_SRC emacs-lisp
+;; ----------------------------------------------------------------------------------
+;; emacs init.el - also using early-init.el
+;; ----------------------------------------------------------------------------------
+
+;; Use a hook so the message doesn't get clobbered by other messages.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+
+
+;; ----------------------------------------------------------------------------------
+;; melpa packages
+;; ----------------------------------------------------------------------------------
+
+;; package-selected-packages
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
+ '(custom-safe-themes '("" default))
+ '(package-selected-packages
+   '(async consult doom-modeline doom-modeline-now-playing doom-themes
+           ednc elfeed elfeed-org elfeed-tube elfeed-tube-mpv embark
+           embark-consult emmet-mode evil evil-collection evil-leader
+           fd-dired git-auto-commit-mode google-translate hydra
+           iedit magit marginalia mpv nerd-icons ob-async orderless
+           org-tree-slide rg s shrink-path undo-tree vertico wgrep
+           which-key yaml-mode))
+ '(warning-suppress-types '((comp))))
+
+
+;; require package
+(require 'package)
+
+;; package archive
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+;; package initialize
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
+
+
+;; ----------------------------------------------------------------------------------
+;; load-theme
+;; ----------------------------------------------------------------------------------
+
+(load-theme 'modus-vivendi-tinted t)
+
+
+;; ----------------------------------------------------------------------------------
+;; general settings
+;; ----------------------------------------------------------------------------------
+
+;; Save all tempfiles in ~/.config/emacs/backups
+(setq backup-directory-alist '(("." . "~/.config/emacs/backups")))
+(with-eval-after-load 'tramp
+  (add-to-list 'tramp-backup-directory-alist
+               (cons tramp-file-name-regexp nil)))
+
+
+;; auto save list
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq auto-save-file-name-transforms '((".*" "~/.config/emacs/auto-save-list/" t)))
+
+
+;; history
+(setq savehist-file "~/.config/emacs/savehist")
+(savehist-mode 1)
+(setq history-length t)
+(setq history-delete-duplicates t)
+(setq savehist-save-minibuffer-history 1)
+(setq savehist-additional-variables
+      '(kill-ring
+        search-ring
+        regexp-search-ring))
+
+
+;; dont backup files opened by sudo or doas
+(setq backup-enable-predicate
+      (lambda (name)
+        (and (normal-backup-enable-predicate name)
+             (not
+              (let ((method (file-remote-p name 'method)))
+                (when (stringp method)
+                  (member method '("su" "sudo" "doas"))))))))
+
+
+;; save
+(save-place-mode 1)         ;; save cursor position
+(desktop-save-mode 0)       ;; dont save the desktop session
+(global-auto-revert-mode 1) ;; revert buffers when the underlying file has changed
+
+;; scrolling
+(pixel-scroll-precision-mode 1)
+
+
+;; xkb fix for alt and super
+(setq x-alt-keysym 'meta)
+(setq x-super-keysym 'meta)
+;;(setq x-ctrl-keysym 'ctrl)
+
+;; ----------------------------------------------------------------------------------
+;; fonts
+;; ----------------------------------------------------------------------------------
+
+(defvar efs/default-font-size 180)
+(defvar efs/default-variable-font-size 180)
+
+
+;; ----------------------------------------------------------------------------------
+;; set-face-attribute
+;; ----------------------------------------------------------------------------------
+
+;; Set the default pitch face
+(set-face-attribute 'default nil :font "Fira Code" :height efs/default-font-size)
+
+;; Set the fixed pitch face
+(set-face-attribute 'fixed-pitch nil :font "Fira Code" :height efs/default-font-size)
+
+;; Set the variable pitch face
+(set-face-attribute 'variable-pitch nil :font "Iosevka Aile" :height efs/default-variable-font-size :weight 'regular)
+
+;; tab bar background
+(set-face-attribute 'tab-bar nil
+                    :foreground "#93a1a1")
+
+;; active tab
+(set-face-attribute 'tab-bar-tab nil
+                    :foreground "#51AFEF")
+
+;; inactive tab
+(set-face-attribute 'tab-bar-tab-inactive nil
+                    :foreground "grey50")
+
+
+;; ----------------------------------------------------------------------------------
+;; doom-modeline 
+;; ----------------------------------------------------------------------------------
+
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+
+;; M-x nerd-icons-install-fonts
+(setq doom-modeline-icon t)
+
+;; doom modeline truncate text
+(setq doom-modeline-buffer-file-name-style 'truncate-except-project)
+
+;; hide the time icon
+(setq doom-modeline-time-icon nil)
+
+;; dont display the buffer encoding.
+(setq doom-modeline-buffer-encoding nil)
+
+
+;; ----------------------------------------------------------------------------------
+;; doom modeline now playing
+;; ----------------------------------------------------------------------------------
+
+;; now playing
+(require 'doom-modeline-now-playing)
+
+;; max length
+(setq doom-modeline-now-playing-max-length 35)
+
+;; update interval 1 second
+(setq doom-modeline-now-playing-interval 1)
+
+;; ignored players
+(setq doom-modeline-now-playing-ignored-players '("firefox"))
+
+;; playerctl format
+(setq doom-modeline-now-playing-format "[{{duration(position)}}/{{duration(mpris:length)}}] {{title}}")
+
+(doom-modeline-def-modeline 'main
+'(bar matches buffer-info remote-host buffer-position parrot selection-info now-playing)
+'(misc-info minor-modes input-method buffer-encoding major-mode process vcs check time))
+
+;; modeline
+(with-eval-after-load 'doom-modeline-now-playing
+(doom-modeline-def-segment now-playing
+  "Current status of playerctl. Configurable via
+variables for update interval, output format, etc."
+  (when (and doom-modeline-now-playing
+             (doom-modeline--active)
+             doom-modeline-now-playing-status
+             (not (string= (now-playing-status-player doom-modeline-now-playing-status) "No players found")))
+    (let ((player (now-playing-status-player doom-modeline-now-playing-status))
+          (status (now-playing-status-status doom-modeline-now-playing-status))
+          (text   (now-playing-status-text   doom-modeline-now-playing-status)))
+      (concat
+       (propertize (if (equal status "playing")
+                       (doom-modeline-icon 'faicon "nf-fa-circle_play" "" ">"
+                                           :v-adjust -0)
+                     (doom-modeline-icon 'faicon "nf-fa-circle_pause" "" "||"
+                                         :v-adjust -0))
+                   'mouse-face 'mode-line-highlight
+                   'help-echo "mouse-1: Toggle player status"
+                   'local-map (let ((map (make-sparse-keymap)))
+                                (define-key map [mode-line mouse-1] 'doom-modeline-now-playing-toggle-status)
+                                map))
+       (doom-modeline-spc)
+       (propertize
+        (truncate-string-to-width text doom-modeline-now-playing-max-length nil nil "...")
+        'face 'doom-modeline-now-playing-text))))))
+
+;; doom-modeline-now-playing-timer - keep at bottom
+(doom-modeline-now-playing-timer)
+
+
+;; ----------------------------------------------------------------------------------
+;; TAB bar mode 
+;; ----------------------------------------------------------------------------------
+
+(setq tab-bar-show 1)                     ;; hide bar if <= 1 tabs open
+(setq tab-bar-close-button-show nil)      ;; hide close tab button
+(setq tab-bar-new-button-show nil)        ;; hide new tab button
+(setq tab-bar-new-tab-choice "*scratch*") ;; default tab scratch
+(setq tab-bar-close-last-tab-choice 'tab-bar-mode-disable) 
+(setq tab-bar-close-tab-select 'recent)
+(setq tab-bar-new-tab-to 'right)
+(setq tab-bar-tab-hints nil)
+(setq tab-bar-separator " ")
+(setq tab-bar-auto-width-max '((100) 20))
+(setq tab-bar-auto-width t)
+
+;; Customize the tab bar format to add the global mode line string
+(setq tab-bar-format '(tab-bar-format-tabs tab-bar-separator tab-bar-format-align-right tab-bar-format-global))
+
+;; menubar in tab bar
+(add-to-list 'tab-bar-format #'tab-bar-format-menu-bar)
+
+;; Turn on tab bar mode after startup
+(tab-bar-mode 1)
+
+;; tab bar menu bar button
+(setq tab-bar-menu-bar-button "👿")
+
+;; ----------------------------------------------------------------------------------
+;; evil
+;; ----------------------------------------------------------------------------------
+
+;; evil
+(setq evil-want-keybinding nil)
+
+;; fix tab in evil for org mode
+(setq evil-want-C-i-jump nil)
+
+;; evil
+(require 'evil)
+(evil-collection-init)
+(evil-mode 1)
+
+;; dired use h and l
+(evil-collection-define-key 'normal 'dired-mode-map
+    "e" 'dired-find-file
+    "h" 'dired-up-directory
+    "l" 'dired-find-file-mpv)
+
+
+;; ----------------------------------------------------------------------------------
+;; require
+;; ----------------------------------------------------------------------------------
+
+;; tree-sitter
+(require 'treesit)
+
+;; ob-async
+(require 'ob-async)
+
+;; which key
+(require 'which-key)
+(which-key-mode)
+
+;; undo tree
+(require 'undo-tree)
+(global-undo-tree-mode 1)
+(setq undo-tree-visualizer-timestamps t)
+(setq undo-tree-visualizer-diff t)
+
+
+;; ----------------------------------------------------------------------------------
+;; tree-sitter
+;; ----------------------------------------------------------------------------------
+
+;; M-x treesit-install-language-grammar bash
+(add-to-list
+ 'treesit-language-source-alist
+ '(bash "https://github.com/tree-sitter/tree-sitter-bash.git"))
+
+;; sh-mode use bash-ts-mode
+(add-to-list 'major-mode-remap-alist
+             '(sh-mode . bash-ts-mode))
+
+
+;; treesitter explore open in side window
+(add-to-list 'display-buffer-alist
+   '("^*tree-sitter explorer *" display-buffer-in-side-window
+     (side . right)
+     (window-width . 0.40)))
+
+
+;; ----------------------------------------------------------------------------------
+;; buffer list
+;; ----------------------------------------------------------------------------------
+
+;; display Buffer List in same window
+(add-to-list 'display-buffer-alist
+   '("^*Buffer List*" display-buffer-same-window))
+
+
+;; ----------------------------------------------------------------------------------
+;; setq
+;; ----------------------------------------------------------------------------------
+
+;; general
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq backup-by-copying t)
+(setq delete-old-versions t)
+(setq kept-new-versions 6)
+(setq kept-old-versions 2)
+(setq create-lockfiles nil)
+(setq undo-tree-auto-save-history nil)
+
+;; pinentry
+(defvar epa-pinentry-mode)
+(setq epa-pinentry-mode 'loopback)
+
+;; display time in mode line, hide load average
+(setq display-time-format "%H:%M")
+(setq display-time-default-load-average nil)
+(display-time-mode 1)       ;; display time
+
+;; change prompt from yes or no, to y or n
+(setq use-short-answers t)
+
+;; turn off blinking cursor
+(setq blink-cursor-mode nil)
+
+;; suppress large file prompt
+(setq large-file-warning-threshold nil)
+
+;; always follow symlinks
+(setq vc-follow-symlinks t)
+
+;; case insensitive search
+(setq read-file-name-completion-ignore-case t)
+(setq completion-ignore-case t)
+
+;; M-n, M-p recall previous mini buffer commands
+(setq history-length 25)
+
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)
+
+;; revert dired and other buffers
+(setq global-auto-revert-non-file-buffers t)
+
+;; eww browser text width
+(setq shr-width 80)
+
+;; ediff
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq ediff-split-window-function 'split-window-horizontally)
+
+;; disable ring bell
+(setq ring-bell-function 'ignore)
+
+;; side windows
+(setq switch-to-buffer-obey-display-actions t)
+
+;; hippie expand
+(setq save-abbrevs 'silently)
+(setq hippie-expand-try-functions-list
+      '(try-expand-all-abbrevs
+        try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
+        try-expand-dabbrev-from-kill
+        try-expand-dabbrev-all-buffers
+        try-expand-list
+        try-expand-line
+        try-complete-lisp-symbol-partially
+        try-complete-lisp-symbol))
+
+;; ----------------------------------------------------------------------------------
+;; emacs 28 - dictionary server
+;; ----------------------------------------------------------------------------------
+
+(setq dictionary-server "dict.org")
+
+;; mandatory, as the dictionary misbehaves!
+(add-to-list 'display-buffer-alist
+   '("^\\*Dictionary\\*" display-buffer-in-side-window
+     (side . right)
+     (window-width . 0.50)))
+
+
+;; ----------------------------------------------------------------------------------
+;; functions
+;; ----------------------------------------------------------------------------------
+
+;; clear the kill ring
+(defun clear-kill-ring ()
+  "Clear the results on the kill ring."
+  (interactive)
+  (setq kill-ring nil))
+
+;; reload init.el
+(defun my-reload-init ()
+  "reload init.el"
+  (interactive)
+  (load-file "~/.config/emacs/init.el"))
+
+
+;; ----------------------------------------------------------------------------------
+;; Vertico
+;; ----------------------------------------------------------------------------------
+
+(require 'vertico)
+(require 'vertico-directory)
+
+(with-eval-after-load 'evil
+  (define-key vertico-map (kbd "C-j") 'vertico-next)
+  (define-key vertico-map (kbd "C-k") 'vertico-previous)
+  (define-key vertico-map (kbd "M-h") 'vertico-directory-up))
+
+;; Cycle back to top/bottom result when the edge is reached
+(customize-set-variable 'vertico-cycle t)
+
+;; Start Vertico
+(vertico-mode 1)
+
+
+;; ----------------------------------------------------------------------------------
+;; Marginalia
+;; ----------------------------------------------------------------------------------
+
+(require 'marginalia)
+(customize-set-variable 'marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+(marginalia-mode 1)
+
+
+;; ----------------------------------------------------------------------------------
+;; Consult
+;; ----------------------------------------------------------------------------------
+
+(global-set-key (kbd "C-s") 'consult-line)
+(define-key minibuffer-local-map (kbd "C-r") 'consult-history)
+
+;; remap switch-to-buffer "C-x b" to consult-buffer
+(global-set-key [remap switch-to-buffer] 'consult-buffer)
+
+(setq completion-in-region-function #'consult-completion-in-region)
+
+;; consult-yank-pop
+(global-set-key (kbd "M-y") 'consult-yank-pop)
+
+;; It lets you use a new minibuffer when you're in the minibuffer
+(setq enable-recursive-minibuffers t)
+
+
+;; ----------------------------------------------------------------------------------
+;; Orderless
+;; ----------------------------------------------------------------------------------
+
+;; Set up Orderless for better fuzzy matching
+(require 'orderless)
+(customize-set-variable 'completion-styles '(orderless basic))
+(customize-set-variable 'completion-category-overrides '((file (styles . (partial-completion)))))
+
+
+;; ----------------------------------------------------------------------------------
+;; Embark
+;; ----------------------------------------------------------------------------------
+
+(require 'embark)
+(require 'embark-consult)
+
+(global-set-key [remap describe-bindings] #'embark-bindings)
+(global-set-key (kbd "C-,") 'embark-act)
+
+;; Use Embark to show bindings in a key prefix with `C-h`
+(setq prefix-help-command #'embark-prefix-help-command)
+
+(with-eval-after-load 'embark-consult
+  (add-hook 'embark-collect-mode-hook #'consult-preview-at-point-mode))
+
+;; embark and which-key
+(defun embark-which-key-indicator ()
+  "An embark indicator that displays keymaps using which-key.
+The which-key help message will show the type and value of the
+current target followed by an ellipsis if there are further
+targets."
+  (lambda (&optional keymap targets prefix)
+    (if (null keymap)
+        (which-key--hide-popup-ignore-command)
+      (which-key--show-keymap
+       (if (eq (plist-get (car targets) :type) 'embark-become)
+           "Become"
+         (format "Act on %s '%s'%s"
+                 (plist-get (car targets) :type)
+                 (embark--truncate-target (plist-get (car targets) :target))
+                 (if (cdr targets) "…" "")))
+       (if prefix
+           (pcase (lookup-key keymap prefix 'accept-default)
+             ((and (pred keymapp) km) km)
+             (_ (key-binding prefix 'accept-default)))
+         keymap)
+       nil nil t (lambda (binding)
+                   (not (string-suffix-p "-argument" (cdr binding))))))))
+
+(setq embark-indicators
+  '(embark-which-key-indicator
+    embark-highlight-indicator
+    embark-isearch-highlight-indicator))
+
+(defun embark-hide-which-key-indicator (fn &rest args)
+  "Hide the which-key indicator immediately when using the completing-read prompter."
+  (which-key--hide-popup-ignore-command)
+  (let ((embark-indicators
+         (remq #'embark-which-key-indicator embark-indicators)))
+      (apply fn args)))
+
+(advice-add #'embark-completing-read-prompter
+            :around #'embark-hide-which-key-indicator)
+
+
+;; ----------------------------------------------------------------------------------
+;; keymap-global-set
+;; ----------------------------------------------------------------------------------
+
+;; org-capture
+(keymap-global-set "C-c c" 'org-capture)
+
+;; press M-/ and invoke hippie-expand
+(keymap-global-set "M-/" 'hippie-expand)
+
+;; window-toggle-side-windows
+(keymap-global-set "C-x x w" 'window-toggle-side-windows)
+
+;; complete-symbol
+(keymap-global-set "C-." 'complete-symbol)
+
+
+;; ----------------------------------------------------------------------------------
+;; keymap-set
+;; ----------------------------------------------------------------------------------
+
+(keymap-set global-map "C-c h" 'iedit-mode)
+(keymap-set global-map "C-c l" 'org-store-link)
+(keymap-set global-map "C-c a" 'org-agenda)
+
+
+;; ----------------------------------------------------------------------------------
+;; dired 
+;; ----------------------------------------------------------------------------------
+
+;; Toggle Hidden Files in Emacs dired with C-x M-o
+(require 'dired-x)
+
+;; dired-async
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode 1)
+
+;; kill the current buffer when selecting a new directory to display
+(setq dired-kill-when-opening-new-dired-buffer t)
+
+;; dired directory listing options for ls
+(setq dired-use-ls-dired t)
+(setq dired-listing-switches "-ahlv")
+
+;; hide dotfiles
+(setq dired-omit-mode t)
+
+;; recursive delete and copy
+(setq dired-recursive-copies 'always)
+(setq dired-recursive-deletes 'always)
+
+;; dired hide free space
+(setq dired-free-space nil)
+
+;; dired dwim
+(setq dired-dwim-target t)
+
+;; hide dotfiles
+(setq dired-omit-files
+      (concat dired-omit-files "\\|^\\..+$"))
+
+
+;; dired hide long listing by default
+(defun my-dired-mode-setup ()
+  "show less information in dired buffers"
+  (dired-hide-details-mode 1))
+(add-hook 'dired-mode-hook 'my-dired-mode-setup)
+
+;; dired omit
+(add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
+
+;; dired hide aync output buffer
+(add-to-list 'display-buffer-alist (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+
+;; ob-async sentinel fix
+(defun no-hide-overlays (orig-fun &rest args)
+(setq org-babel-hide-result-overlays nil))
+(advice-add 'ob-async-org-babel-execute-src-block :before #'no-hide-overlays)
+
+;; & open pdf's with zatuhra
+(setq dired-guess-shell-alist-user
+      '(("\\.pdf$" "zathura")))
+
+;; ----------------------------------------------------------------------------------
+;; dired-fd
+;; ----------------------------------------------------------------------------------
+
+;; switch to buffer results automatically
+
+(defcustom fd-dired-display-in-current-window nil
+  "Whether display result"
+  :type 'boolean
+  :safe #'booleanp
+  :group 'fd-dired)
+
+
+;; ----------------------------------------------------------------------------------
+;; rip-grep
+;; ----------------------------------------------------------------------------------
+
+;; rip-grep automatically switch to results buffer
+;; https://github.com/dajva/rg.el/issues/142
+
+(with-eval-after-load 'rg
+  (advice-add 'rg-run :after
+              #'(lambda (_pattern _files _dir &optional _literal _confirm _flags) (pop-to-buffer (rg-buffer-name)))))
+
+
+;; ----------------------------------------------------------------------------------
+;; tramp
+;; ----------------------------------------------------------------------------------
+
+;; tramp
+(require 'tramp)
+
+;; tramp setq
+(setq tramp-default-method "ssh")
+
+;; tramp ssh
+(tramp-set-completion-function "ssh"
+                               '((tramp-parse-sconfig "/etc/ssh_config")
+                                 (tramp-parse-sconfig "~/.ssh/config")))
+
+;; set tramp shell to bash to avoid zsh problems
+(setenv "SHELL" "/bin/sh")
+(setq tramp-allow-unsafe-temporary-files t)
+
+;; tramp backup directory
+(add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
+
+
+;; ----------------------------------------------------------------------------------
+;; org mode
+;; ----------------------------------------------------------------------------------
+
+;; org mode
+(require 'org)
+(require 'org-tempo)
+(require 'org-protocol)
+(require 'org-capture)
+(setq org-agenda-files '("~/git/personal/org/"))
+
+;; resize org headings
+(require 'org-faces)
+(dolist (face '((org-level-1 . 1.2)
+                (org-level-2 . 1.1)
+                (org-level-3 . 1.05)
+                (org-level-4 . 1.0)
+                (org-level-5 . 1.1)
+                (org-level-6 . 1.1)
+                (org-level-7 . 1.1)
+                (org-level-8 . 1.1)))
+  (set-face-attribute (car face) nil :font "Iosevka Aile" :weight 'medium :height (cdr face)))
+
+;; org babel supress do you want to execute code message
+(setq org-confirm-babel-evaluate nil
+      org-src-fontify-natively t
+      org-src-tab-acts-natively t)
+
+;; org hide markup
+(setq org-hide-emphasis-markers t)
+
+;; org column spacing for tags
+(setq org-tags-column 0)
+
+;; dont indent src block for export
+(setq org-src-preserve-indentation t)
+
+;; org src to use the current window
+(setq org-src-window-setup 'current-window)
+
+;; dont show images full size
+(setq org-image-actual-width nil)
+
+;; prevent demoting heading also shifting text inside sections
+(setq org-adapt-indentation nil)
+
+;; asynchronous tangle
+(setq org-export-async-debug t)
+
+
+(setq org-capture-templates
+    '(("w" "web site" entry
+      (file+olp "~/git/personal/bookmarks/bookmarks.org" "sites")
+      "** [[%c][%^{link-description}]]"
+       :empty-lines-after 1)
+      ("v" "video url" entry
+       (file+olp "~/git/personal/bookmarks/video.org" "links")
+       "** [[video:%c][%^{link-description}]]"
+        :empty-lines-after 1)))
+
+;; refile
+(setq org-refile-targets '((nil :maxlevel . 2)
+                                (org-agenda-files :maxlevel . 2)))
+(setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
+(setq org-refile-use-outline-path t)                  ; Show full paths for refiling
+
+;; ox-pandoc export
+(setq org-pandoc-options-for-latex-pdf '((latex-engine . "xelatex")))
+
+;; Prepare stuff for org-export-backends
+(setq org-export-backends '(org md html latex icalendar odt ascii))
+
+;; todo keywords
+(setq org-todo-keywords
+      '((sequence "TODO(t@/!)" "IN-PROGRESS(p/!)" "WAITING(w@/!)" "|" "DONE(d@)")))
+(setq org-log-done t)
+
+;; Fast Todo Selection - Changing a task state is done with C-c C-t KEY
+(setq org-use-fast-todo-selection t)
+
+;; org todo logbook
+(setq org-log-into-drawer t)
+
+;; org open files
+(setq org-file-apps
+     (quote
+     ((auto-mode . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.mkv\\'" . "mpv %s")
+     ("\\.mp4\\'" . "mpv %s")
+     ("\\.mov\\'" . "mpv %s")
+     ("\\.pdf\\'" . default))))
+
+  
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-link ((t (:inherit link :underline nil)))))
+
+(defadvice org-capture
+    (after make-full-window-frame activate)
+  "Advise capture to be the only window when used as a popup"
+  (if (equal "emacs-capture" (frame-parameter nil 'name))
+      (delete-other-windows)))
+
+(defadvice org-capture-finalize
+    (after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame"
+  (if (equal "emacs-capture" (frame-parameter nil 'name))
+      (delete-frame)))
+
+; org-babel shell script
+(org-babel-do-load-languages
+'org-babel-load-languages
+'((shell . t))) 
+
+;; yank-media--registered-handlers org mode
+(with-eval-after-load 'org
+  (setq yank-media--registered-handlers '(("image/.*" . #'org-mode--image-yank-handler))))
+
+;; org mode image yank handler
+(yank-media-handler "image/.*" #'org-mode--image-yank-handler)
+
+;; org-mode insert image as file link from the clipboard
+(defun org-mode--image-yank-handler (type image)
+  (let ((file (read-file-name (format "Save %s image to: " type))))
+    (when (file-directory-p file)
+      (user-error "%s is a directory"))
+    (when (and (file-exists-p file)
+               (not (yes-or-no-p (format "%s exists; overwrite?" file))))
+      (user-error "%s exists"))
+    (with-temp-buffer
+      (set-buffer-multibyte nil)
+      (insert image)
+      (write-region (point-min) (point-max) file))
+    (insert (format "[[file:%s]]\n" (file-relative-name file)))))
+
+;; ----------------------------------------------------------------------------------
+;; org tree slide
+;; ----------------------------------------------------------------------------------
+
+;; presentation start
+(defun my/presentation-setup ()
+(setq-local mode-line-format nil) 
+(setq-local face-remapping-alist '((default (:height 1.5) variable-pitch)
+                                   (header-line (:height 4.0) variable-pitch)
+                                   (org-document-title (:height 1.75) org-document-title)
+                                   (org-code (:height 1.55) org-code)
+                                   (org-verbatim (:height 1.55) org-verbatim)
+                                   (org-block (:height 1.25) org-block)
+                                   (org-block-begin-line (:height 0.7) org-block))))
+
+;; presentation end
+(defun my/presentation-end ()
+(doom-modeline-set-modeline 'main)
+  (setq-local face-remapping-alist '((default fixed-pitch default)))
+  (setq-local face-remapping-alist '((default variable-pitch default))))
+
+;; Make sure certain org faces use the fixed-pitch face when variable-pitch-mode is on
+(set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+(set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+(set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+(set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+(set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch)
+
+;; presentation hooks
+(add-hook 'org-tree-slide-play-hook 'my/presentation-setup)
+(add-hook 'org-tree-slide-stop-hook 'my/presentation-end)
+
+;; org tree slide settings
+(setq org-tree-slide-header nil)
+(setq org-tree-slide-activate-message "Presentation started")
+(setq org-tree-slide-deactivate-message "Presentation finished")
+(setq org-tree-slide-slide-in-effect t)
+(setq org-tree-slide-breakcrumbs " // ")
+(setq org-tree-slide-heading-emphasis nil)
+(setq org-tree-slide-slide-in-blank-lines 2)
+(setq org-tree-slide-indicator nil)
+
+;; make #+ lines invisible during presentation
+(with-eval-after-load "org-tree-slide"
+  (defvar my-hide-org-meta-line-p nil)
+  (defun my-hide-org-meta-line ()
+    (interactive)
+    (setq my-hide-org-meta-line-p t)
+    (set-face-attribute 'org-meta-line nil
+			                  :foreground (face-attribute 'default :background)))
+  (defun my-show-org-meta-line ()
+    (interactive)
+    (setq my-hide-org-meta-line-p nil)
+    (set-face-attribute 'org-meta-line nil :foreground nil))
+
+  (defun my-toggle-org-meta-line ()
+    (interactive)
+    (if my-hide-org-meta-line-p
+	      (my-show-org-meta-line) (my-hide-org-meta-line)))
+
+  (add-hook 'org-tree-slide-play-hook #'my-hide-org-meta-line)
+  (add-hook 'org-tree-slide-stop-hook #'my-show-org-meta-line))
+
+
+;; ----------------------------------------------------------------------------------
+;; mutt
+;; ----------------------------------------------------------------------------------
+
+(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+
+
+;; ----------------------------------------------------------------------------------
+;; add-hook
+;; ----------------------------------------------------------------------------------
+
+;; Make shebang (#!) file executable when saved
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+;; visual line mode
+(add-hook 'text-mode-hook 'visual-line-mode)
+
+;; h1 line mode
+(add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'text-mode-hook #'hl-line-mode)
+
+;; flycheck syntax linting
+(add-hook 'sh-mode-hook 'flycheck-mode)
+
+
+;; ----------------------------------------------------------------------------------
+;; wayland clipboard
+;; ----------------------------------------------------------------------------------
+
+;; credit: yorickvP on Github
+(setq wl-copy-process nil)
+(defun wl-copy (text)
+  (setq wl-copy-process (make-process :name "wl-copy"
+                                      :buffer nil
+                                      :command '("wl-copy" "-f" "-n")
+                                      :connection-type 'pipe
+                                      :noquery t))
+  (process-send-string wl-copy-process text)
+  (process-send-eof wl-copy-process))
+(defun wl-paste ()
+  (if (and wl-copy-process (process-live-p wl-copy-process))
+      nil ; should return nil if we're the current paste owner
+      (shell-command-to-string "wl-paste -n")))
+(setq interprogram-cut-function 'wl-copy)
+(setq interprogram-paste-function 'wl-paste)
+
+
+;; ----------------------------------------------------------------------------------
+;; mpv.el
+;; ----------------------------------------------------------------------------------
+
+;; mpv-default-options play fullscreen on second display
+(setq mpv-default-options '("--fs" "--fs-screen-name=DP-3"))
+
+
+;; create a video: link type that opens a url using mpv-play-remote-video
+(org-link-set-parameters "video"
+                         :follow #'mpv-play-remote-video
+                         :store #'org-video-store-link)
+
+
+;; org video store link
+(defun org-video-store-link ()
+  "Store a link to a video url."
+      (org-link-store-props
+       :type "video"
+       :link link
+       :description description))
+
+
+;; mpv-play-remote-video
+(defun mpv-play-remote-video (url &rest args)
+  "Start an mpv process playing the video stream at URL."
+  (interactive)
+  (unless (mpv--url-p url)
+    (user-error "Invalid argument: `%s' (must be a valid URL)" url))
+  (if (not mpv--process)
+      ;; mpv isnt running play file
+      (mpv-start url)
+      ;; mpv running append file to playlist
+    (mpv--playlist-append url)))
+
+
+;; mpv-play-clipboard - play url from clipboard
+(defun mpv-play-clipboard ()
+  "Start an mpv process playing the video stream at URL."
+  (interactive)
+  (let ((url (current-kill 0 t)))
+  (unless (mpv--url-p url)
+    (user-error "Invalid argument: `%s' (must be a valid URL)" url))
+  (if (not mpv--process)
+      ;; mpv isnt running play file
+      (mpv-start url)
+      ;; mpv running append file to playlist
+    (mpv--playlist-append url))))
+
+
+;; create a mpv: link type that opens a file using mpv-play
+(defun org-mpv-complete-link (&optional arg)
+  (replace-regexp-in-string
+   "file:" "mpv:"
+   (org-link-complete-file arg)
+   t t))
+(org-link-set-parameters "mpv"
+  :follow #'mpv-play :complete #'org-mpv-complete-link)
+
+;; M-RET will insert a new item with the timestamp of the current playback position
+(defun my:mpv/org-metareturn-insert-playback-position ()
+  (when-let ((item-beg (org-in-item-p)))
+    (when (and (not org-timer-start-time)
+               (mpv-live-p)
+               (save-excursion
+                 (goto-char item-beg)
+                 (and (not (org-invisible-p)) (org-at-item-timer-p))))
+      (my/mpv-insert-playback-position t))))
+(add-hook 'org-metareturn-hook #'my:mpv/org-metareturn-insert-playback-position)
+
+;; mpv insert playback position
+(with-eval-after-load 'mpv
+  (defun my/mpv-insert-playback-position (&optional arg)
+    "Insert the current playback position at point.
+
+  When called with a non-nil ARG, insert a timer list item like `org-timer-item'."
+    (interactive "P")
+    (let ((time (mpv-get-playback-position)))
+      (funcall
+       (if arg #'mpv--position-insert-as-org-item #'insert)
+       (my/org-timer-secs-to-hms (float time))))))
+
+
+;; seek to position
+(with-eval-after-load 'mpv
+  (defun my/mpv-seek-to-position-at-point ()
+    "Jump to playback position as inserted by `mpv-insert-playback-position'.
+
+  This can be used with the `org-open-at-point-functions' hook."
+    (interactive)
+    (save-excursion
+      (skip-chars-backward ":[:digit:]" (point-at-bol))
+      (when (looking-at "[0-9]+:[0-9]\\{2\\}:[0-9]\\{2\\}\\([.]?[0-9]\\{0,3\\}\\)"))
+        (let ((secs (my/org-timer-hms-to-secs (match-string 0))))
+          (when (>= secs 0)
+            (mpv-seek secs))))))
+
+;; mpv seek to position at point
+(keymap-set global-map "C-x ," 'my/mpv-seek-to-position-at-point)
+
+
+;; ----------------------------------------------------------------------------------
+;; org-timer milliseconds for mpv
+;; ----------------------------------------------------------------------------------
+
+;; org-timer covert seconds and milliseconds to hours, minutes, seconds, milliseconds
+(with-eval-after-load 'org-timer
+  (defun my/org-timer-secs-to-hms (s)
+    "Convert integer S into hh:mm:ss.m
+  If the integer is negative, the string will start with \"-\"."
+    (let (sign m h)
+      (setq x (number-to-string s)
+            seconds (car (split-string x "[.]"))
+            milliseconds (cadr (split-string x "[.]"))
+            sec (string-to-number seconds)
+            ms (string-to-number milliseconds))
+      (setq sign (if (< sec 0) "-" "")
+          sec (abs sec)
+          m (/ sec 60) sec (- sec (* 60 m))
+          h (/ m 60) m (- m (* 60 h)))
+      (format "%s%02d:%02d:%02d.%02d" sign h m sec ms))))
+
+;; org-timer covert hours, minutes, seconds, milliseconds to seconds, milliseconds
+(with-eval-after-load 'org-timer
+  (defun my/org-timer-hms-to-secs (hms)
+    "Convert h:mm:ss string to an integer time.
+  If the string starts with a minus sign, the integer will be negative."
+    (if (not (string-match
+            "\\([-+]?[0-9]+\\):\\([0-9]\\{2\\}\\):\\([0-9]\\{2\\}\\)\\([.]?[0-9]\\{0,3\\}\\)"
+            hms))
+        0
+      (let* ((h (string-to-number (match-string 1 hms)))
+           (m (string-to-number (match-string 2 hms)))
+           (s (string-to-number (match-string 3 hms)))
+           (ms (string-to-number (match-string 4 hms)))
+           (sign (equal (substring (match-string 1 hms) 0 1) "-")))
+        (setq h (abs h))
+        (* (if sign -1 1) (+ s (+ ms (* 60 (+ m (* 60 h))))))))))
+
+
+;; ----------------------------------------------------------------------------------
+;; mpv commands
+;; ----------------------------------------------------------------------------------
+
+;; frame step forward
+(with-eval-after-load 'mpv
+  (defun mpv-frame-step ()
+    "Step one frame forward."
+    (interactive)
+    (mpv--enqueue '("frame-step") #'ignore)))
+
+
+;; frame step backward
+(with-eval-after-load 'mpv
+  (defun mpv-frame-back-step ()
+    "Step one frame backward."
+    (interactive)
+    (mpv--enqueue '("frame-back-step") #'ignore)))
+
+
+;; mpv take a screenshot
+(with-eval-after-load 'mpv
+  (defun mpv-screenshot ()
+    "Take a screenshot"
+    (interactive)
+    (mpv--enqueue '("screenshot") #'ignore)))
+
+
+;; mpv show osd
+(with-eval-after-load 'mpv
+  (defun mpv-osd ()
+    "Show the osd"
+    (interactive)
+    (mpv--enqueue '("set_property" "osd-level" "3") #'ignore)))
+
+
+;; add a newline in the current document
+(defun end-of-line-and-indented-new-line ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
+
+;; ----------------------------------------------------------------------------------
+;; mpv dired
+;; ----------------------------------------------------------------------------------
+
+;; video and audio mime types
+(defvar supported-mime-types
+  '("video/quicktime"
+    "video/x-matroska"
+    "video/mp4"
+    "video/webm"
+    "video/x-m4v"
+    "video/x-msvideo"
+    "audio/x-wav"
+    "audio/mpeg"
+    "audio/x-hx-aac-adts"
+    "audio/mp4"
+    "audio/flac"
+    "audio/ogg"))
+
+;; subr-x
+(load "subr-x")
+
+;; get files mime type
+(defun get-mimetype (filepath)
+  (string-trim
+   (shell-command-to-string (concat "file -b --mime-type "
+                                    (shell-quote-argument filepath)))))
+
+;; dired-find-file-mpv
+(defun dired-find-file-mpv ()
+  "Start an mpv process playing the file at PATH append subsequent files to the playlist"
+  (interactive)
+  (let ((file (dired-get-file-for-visit)))
+    (if (member (get-mimetype file) supported-mime-types)
+        (mpv-play-dired file)
+      (dired-find-file))))
+
+
+;; mpv-play-dired
+(with-eval-after-load 'mpv
+  (defun mpv-play-dired (path)
+  "Start an mpv process playing the file at PATH append subsequent files to the playlist"
+    (if (not mpv--process)
+        ;; mpv isnt running play file
+        (mpv-start (expand-file-name path))
+        ;; mpv running append file to playlist
+      (mpv--playlist-append (expand-file-name path)))))
+
+
+;; mpv play dired marked files
+(defun mpv-play-marked-files ()
+  "Play marked files with mpv"
+  (interactive)
+  (mapc 'mpv-play-dired (dired-get-marked-files nil nil nil t)))
+
+;; mpv dired embark
+(with-eval-after-load 'embark
+  (define-key embark-file-map "l" #'mpv-play-marked-files))
+
+
+;; ----------------------------------------------------------------------------------
+;; mpv eww
+;; ----------------------------------------------------------------------------------
+
+(defun mpv-play-eww ()
+  "Start an mpv process playing the video stream at URL."
+  (interactive)
+  (let ((url (shr-url-at-point current-prefix-arg)))
+  (unless (mpv--url-p url)
+    (user-error "Invalid argument: `%s' (must be a valid URL)" url))
+  (if (not mpv--process)
+      ;; mpv isnt running play file
+      (mpv-start url)
+      ;; mpv running append file to playlist
+    (mpv--playlist-append url))))
+
+
+(evil-collection-define-key 'normal 'eww-mode-map
+    "l" 'mpv-play-eww)
+
+
+;; ----------------------------------------------------------------------------------
+;; pinch - play urls with mpd
+;; ----------------------------------------------------------------------------------
+
+;; eww-pinch
+(defun eww-pinch ()
+  "Send the url under the point to mpd with pinch"
+  (interactive)
+  (let ((url (shr-url-at-point current-prefix-arg)))
+  (start-process "pinch" nil "pinch" "-i" url)))
+
+(evil-collection-define-key 'normal 'eww-mode-map
+    "n" 'eww-pinch)
+
+;; pinch-clipboard - play url from clipboard
+(defun pinch-clipboard ()
+  "Send a url from the clipboard to mpd with pinch"
+  (interactive)
+  (let ((url (current-kill 0 t)))
+  (start-process "pinch" nil "pinch" "-i" url)))
+
+
+;; ----------------------------------------------------------------------------------
+;; eww taskspooler yt-dlp
+;; ----------------------------------------------------------------------------------
+
+(defun eww-yt-dlp ()
+  "Send the url under the point to taskspooler and yt-dlp"
+  (interactive)
+  (let ((url (shr-url-at-point current-prefix-arg)))
+    (start-process "eww-yt-dlp" nil "ts" "yt-dlp" "-o" "'%(title)s.%(ext)s'" "-P" (expand-file-name "~/downloads") url)))
+
+(evil-collection-define-key 'normal 'eww-mode-map
+    "x" 'eww-yt-dlp)
+
+
+;; ----------------------------------------------------------------------------------
+;; eww taskspooler aria2c
+;; ----------------------------------------------------------------------------------
+
+(defun eww-aria2c ()
+  "Send the url under the point to taskspooler and aria2c"
+  (interactive)
+  (let ((url (shr-url-at-point current-prefix-arg)))
+    (start-process "eww-aria2c" nil "ts" "aria2c" "-d" (expand-file-name "~/downloads") url)))
+
+(evil-collection-define-key 'normal 'eww-mode-map
+    "b" 'eww-aria2c)
+
+
+;; ----------------------------------------------------------------------------------
+;; hydra-mpv
+;; ----------------------------------------------------------------------------------
+
+(defhydra hydra-mpv (:hint nil)
+  "
+  ^Seek^                    ^Actions^                ^General^                       ^Playlists^
+  ^^^^^^^^-----------------------------------------------------------------------------------------------------------
+  _h_: seek back -5         _,_: back frame          _i_: insert playback position   _n_: next item in playlist
+  _j_: seek back -60        _._: forward frame       _m_: insert a newline           _p_: previous item in playlist
+  _k_: seek forward 60      _SPC_: pause             _s_: take a screenshot          _e_: jump to playlist entry
+  _l_: seek forward 5       _q_: quit mpv            _o_: show the osd               _r_: remove playlist entry
+  ^
+  "
+  ("h" mpv-seek-backward "-5")
+  ("j" mpv-seek-backward "-60")
+  ("k" mpv-seek-forward "60")
+  ("l" mpv-seek-forward "5")
+  ("," mpv-frame-back-step)
+  ("." mpv-frame-step)
+  ("SPC" mpv-pause)
+  ("q" mpv-kill)
+  ("i" my/mpv-insert-playback-position)
+  ("m" end-of-line-and-indented-new-line)
+  ("s" mpv-screenshot)
+  ("o" mpv-osd)
+  ("n" mpv-playlist-next)
+  ("p" mpv-playlist-prev)
+  ("e" mpv-jump-to-playlist-entry)
+  ("r" mpv-remove-playlist-entry))
+
+
+;; ----------------------------------------------------------------------------------
+;; kocontrol - kodi
+;; ----------------------------------------------------------------------------------
+
+;; toggle play/pause
+(defun kodi-play ()
+  "Kodi toggle play/pause"
+  (interactive)
+  (start-process "kodi-play" nil "kocontrol" "-p play"))
+
+;; stop playback
+(defun kodi-stop ()
+  "Kodi stop playback"
+  (interactive)
+  (start-process "kodi-stop" nil "kocontrol" "-x stop"))
+
+;; seek forward 5 seconds
+(defun kodi-seek-forward-5 ()
+  "Kodi seek forward 5 seconds"
+  (interactive)
+  (start-process "kodi-seek-forward-5" nil "kocontrol" "-s 5"))
+
+;; seek forward 60 seconds
+(defun kodi-seek-forward-60 ()
+  "Kodi seek forward 60 seconds"
+  (interactive)
+  (start-process "kodi-seek-forward-60" nil "kocontrol" "-s 60"))
+
+;; seek backward 5 seconds
+(defun kodi-seek-backward-5 ()
+  "Kodi seek backward 5 seconds"
+  (interactive)
+  (start-process "kodi-seek-backward-5" nil "kocontrol" "-s -5"))
+
+;; seek backward 60 seconds
+(defun kodi-seek-backward-60 ()
+  "Kodi seek backward 60 seconds"
+  (interactive)
+  (start-process "kodi-seek-backward-60" nil "kocontrol" "-s -60"))
+
+;; kodi-forward kodi forward 2x speed
+(defun kodi-forward ()
+  "Kodi forward 2x speed"
+  (interactive)
+  (start-process "kodi-forward" nil "kocontrol" "-f 2"))
+
+;; kodi-rewind kodi rewind 2x speed
+(defun kodi-rewind ()
+  "Kodi rewind 2x speed"
+  (interactive)
+  (start-process "kodi-rewind" nil "kocontrol" "-r 2"))
+
+
+;; ----------------------------------------------------------------------------------
+;; hydra-kodi
+;; ----------------------------------------------------------------------------------
+
+(defhydra hydra-kodi (:hint nil)
+  "
+  ^Seek^                    ^Actions^          
+  ^^^^^^^^----------------------------------------------
+  _h_: seek back -5         _SPC_: toggle play pause
+  _j_: seek back -60        _x_: stop playback
+  _k_: seek forward 60      _f_: forward       
+  _l_: seek forward 5       _r_: rewind
+  ^
+  "
+  ("h" kodi-seek-backward-5)
+  ("j" kodi-seek-backward-60)
+  ("k" kodi-seek-forward-60)
+  ("l" kodi-seek-forward-5)
+  ("SPC" kodi-play)
+  ("x" kodi-stop)
+  ("f" kodi-forward)
+  ("r" kodi-rewind))
+
+
+;; ----------------------------------------------------------------------------------
+;; hydra-emacs
+;; ----------------------------------------------------------------------------------
+
+;; auto exit
+(defhydra hydra-emacs (:hint nil :exit t)
+  "
+  ^Actions^             
+  ^^^^^^^^--------------
+  _m_: mpv clipboard
+  _p_: pinch url
+  ^
+  "
+  ("m" mpv-play-clipboard)
+  ("p" pinch-clipboard))
+
+
+;; ----------------------------------------------------------------------------------
+;; hydra-nested
+;; ----------------------------------------------------------------------------------
+
+(defvar hydra-stack nil)
+
+(defhydra hydra-nested (:exit t)
+  ("e" hydra-emacs/body "emacs" :column "hydra")
+  ("m" hydra-mpv/body "mpv" :column "hydra")
+  ("k" hydra-kodi/body "kodi" :column "hydra")
+  ("q" nil "quit"))
+
+(global-set-key (kbd "C-a") 'hydra-nested/body)
+
+
+;; ----------------------------------------------------------------------------------
+;; emacs desktop notification center
+;; ----------------------------------------------------------------------------------
+
+;; start ednc-mode
+(ednc-mode 1)
+
+(defun show-notification-in-buffer (old new)
+  (let ((name (format "Notification %d" (ednc-notification-id (or old new)))))
+    (with-current-buffer (get-buffer-create name)
+      (if new (let ((inhibit-read-only t))
+                (if old (erase-buffer) (ednc-view-mode))
+                (insert (ednc-format-notification new t))
+                (pop-to-buffer (current-buffer)))
+        (kill-buffer)))))
+
+
+;; notifications hook
+(add-hook 'ednc-notification-presentation-functions
+          #'show-notification-in-buffer)
+
+;; open notifications in side window
+(add-to-list 'display-buffer-alist
+   '("^Notification *" display-buffer-in-side-window
+     (side . right)
+     (window-width . 0.50)))
+
+;; ednc evil - normal mode
+(defun noevil ()
+  (evil-define-key 'normal ednc-view-mode-map "d" 'ednc-dismiss-notification)
+  (evil-define-key 'normal ednc-view-mode-map (kbd "RET") 'ednc-invoke-action)
+)
+
+(add-hook 'ednc-view-mode-hook 'noevil)
+
+; ----------------------------------------------------------------------------------
+;; elfeed
+;; ----------------------------------------------------------------------------------
+
+; elfeed
+(require 'elfeed)
+(require 'elfeed-org)
+(elfeed-org)
+(setq elfeed-db-directory "~/.config/emacs/elfeed") ;; elfeed db location
+(setq rmh-elfeed-org-files (list "~/git/personal/feeds/feeds.org"))
+(global-set-key (kbd "C-x w") 'elfeed)
+
+(require 'elfeed-tube)
+(elfeed-tube-setup)
+(define-key elfeed-show-mode-map (kbd "F") 'elfeed-tube-fetch)
+(define-key elfeed-show-mode-map [remap save-buffer] 'elfeed-tube-save)
+(define-key elfeed-search-mode-map (kbd "F") 'elfeed-tube-fetch)
+(define-key elfeed-search-mode-map [remap save-buffer] 'elfeed-tube-save)
+
+(require 'elfeed-tube-mpv)
+(define-key elfeed-show-mode-map (kbd "C-c C-f") 'elfeed-tube-mpv-follow-mode)
+(define-key elfeed-show-mode-map (kbd "C-c C-w") 'elfeed-tube-mpv-where)
+
+;; play video with mpv
+(define-key elfeed-show-mode-map (kbd "C-c C-d") 'elfeed-tube-mpv)
+
+;; mpv play fullscreen on second display
+(setq elfeed-tube-mpv-options
+  '("--force-window=yes" "--fs" "--fs-screen-name=DP-3"))
+
+; elfeed evil
+(add-to-list 'evil-motion-state-modes 'elfeed-search-mode)
+(add-to-list 'evil-motion-state-modes 'elfeed-show-mode)
+
+;; evil elfeed-search-mode-map
+(evil-collection-define-key 'normal 'elfeed-search-mode-map
+     "l" 'elfeed-search-show-entry        ;; l opens entry
+     "s" #'prot-elfeed-search-tag-filter  ;; s prot search tags
+     "R" 'elfeed-mark-all-as-read         ;; R mark all as read
+     "u" 'elfeed-update                   ;; u elfeed update
+     "b" #'elfeed-search-browse-url       ;; b open in browser
+     "r" 'elfeed-search-untag-all-unread) ;; r mark as read
+
+
+;; evil elfeed-show-mode-map
+(evil-collection-define-key 'normal 'elfeed-show-mode-map
+     "b" #'shr-browse-url)                ;; b open in browser
+
+; elfeed search filter 
+(setq-default elfeed-search-filter "@1-week-ago +unread")
+
+; mark all as read
+(defun elfeed-mark-all-as-read ()
+      (interactive)
+      (mark-whole-buffer)
+      (elfeed-search-untag-all-unread))
+
+;; elfeed-send-to-kodi
+(defun elfeed-send-to-kodi (&optional link)
+  "Send the current entry link URL to Kodi."
+  (interactive "P")
+  (let ((link (elfeed-entry-link elfeed-show-entry)))
+    (when link
+      (start-process "kyt-send" nil "kyt-send" "-i" link))))
+
+;; elfeed-send-to-kodi keymap
+(define-key elfeed-show-mode-map (kbd "C-c C-s") 'elfeed-send-to-kodi)
+
+
+;; ----------------------------------------------------------------------------------
+;; prot elfeed - requires ~/.config/emacs/lisp/prot-common.el
+;; ----------------------------------------------------------------------------------
+
+(eval-when-compile (require 'subr-x))
+;;(require 'elfeed nil t)
+(require 'url-util)
+(require 'prot-common)
+
+(defgroup prot-elfeed ()
+  "Personal extensions for Elfeed."
+  :group 'elfeed)
+
+;;;; Utilities
+(defvar prot-elfeed--tag-hist '()
+  "History of inputs for `prot-elfeed-toggle-tag'.")
+
+(defun prot-elfeed--character-prompt (tags)
+  "Helper of `prot-elfeed-toggle-tag' to read TAGS."
+  (let ((def (car prot-elfeed--tag-hist)))
+    (completing-read
+     (format "Toggle tag [%s]: " def)
+     tags nil t nil 'prot-elfeed--tag-hist def)))
+
+(defvar elfeed-show-entry)
+(declare-function elfeed-tagged-p "elfeed")
+(declare-function elfeed-search-toggle-all "elfeed")
+(declare-function elfeed-show-tag "elfeed")
+(declare-function elfeed-show-untag "elfeed")
+
+;;;###autoload
+(defun prot-elfeed-toggle-tag (tag)
+  "Toggle TAG for the current item.
+
+When the region is active in the `elfeed-search-mode' buffer, all
+entries encompassed by it are affected.  Otherwise the item at
+point is the target.  For `elfeed-show-mode', the current entry
+is always the target.
+
+The list of tags is provided by `prot-elfeed-search-tags'."
+  (interactive
+   (list
+    (intern
+     (prot-elfeed--character-prompt prot-elfeed-search-tags))))
+  (if (derived-mode-p 'elfeed-show-mode)
+      (if (elfeed-tagged-p tag elfeed-show-entry)
+          (elfeed-show-untag tag)
+        (elfeed-show-tag tag))
+    (elfeed-search-toggle-all tag)))
+
+(defvar elfeed-show-truncate-long-urls)
+(declare-function elfeed-entry-title "elfeed")
+(declare-function elfeed-show-refresh "elfeed")
+
+;;;; General commands
+(defvar elfeed-search-filter-active)
+(defvar elfeed-search-filter)
+(declare-function elfeed-db-get-all-tags "elfeed")
+(declare-function elfeed-search-update "elfeed")
+(declare-function elfeed-search-clear-filter "elfeed")
+
+(defun prot-elfeed--format-tags (tags sign)
+  "Prefix SIGN to each tag in TAGS."
+  (mapcar (lambda (tag)
+            (format "%s%s" sign tag))
+          tags))
+
+;;;###autoload
+(defun prot-elfeed-search-tag-filter ()
+  "Filter Elfeed search buffer by tags using completion.
+
+Completion accepts multiple inputs, delimited by `crm-separator'.
+Arbitrary input is also possible, but you may have to exit the
+minibuffer with something like `exit-minibuffer'."
+  (interactive)
+  (unwind-protect
+      (elfeed-search-clear-filter)
+    (let* ((elfeed-search-filter-active :live)
+           (db-tags (elfeed-db-get-all-tags))
+           (plus-tags (prot-elfeed--format-tags db-tags "+"))
+           (minus-tags (prot-elfeed--format-tags db-tags "-"))
+           (all-tags (delete-dups (append plus-tags minus-tags)))
+           (tags (completing-read-multiple
+                  "Apply one or more tags: "
+                  all-tags #'prot-common-crm-exclude-selected-p t))
+           (input (string-join `(,elfeed-search-filter ,@tags) " ")))
+      (setq elfeed-search-filter input))
+    (elfeed-search-update :force)))
+
+(provide 'prot-elfeed)
+
+;; ----------------------------------------------------------------------------------
+;; mpc
+;; ----------------------------------------------------------------------------------
+
+;; mpd host
+(setq mpc-host "/home/djwilcox/.config/mpd/socket")
+
+
+;; ----------------------------------------------------------------------------------
+;; magit
+;; ----------------------------------------------------------------------------------
+
+;; ssh auth sock
+(defun my-ssh-refresh ()
+  "Reset the environment variable SSH_AUTH_SOCK"
+  (interactive)
+  (let (ssh-auth-sock-old (getenv "SSH_AUTH_SOCK"))
+    (setenv "SSH_AUTH_SOCK"
+            (car (split-string
+                  (shell-command-to-string
+                   "ls -t $(find /tmp/ssh-* -user $USER -name 'agent.*' 2> /dev/null)"))))
+    (message
+     (format "SSH_AUTH_SOCK %s --> %s"
+             ssh-auth-sock-old (getenv "SSH_AUTH_SOCK")))))
+(my-ssh-refresh)
+
+
+;; ----------------------------------------------------------------------------------
+;; garbage collection
+;; ----------------------------------------------------------------------------------
+
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))
+#+END_SRC
+
+**** early-init.el
+
+#+NAME: early-init.el
+#+begin_src emacs-lisp
+;;; early-init.el -*- lexical-binding: t; -*-
+
+;;; Garbage collection
+;; Increase the GC threshold for faster startup
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+
+;;; UI configuration
+;; Remove some unneeded UI elements (the user can turn back on anything they wish)
+(setq inhibit-startup-message t)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
+
+;; general settings
+(setq initial-scratch-message nil)
+
+;; Don’t compact font caches during GC.
+(setq inhibit-compacting-font-caches t)
+
+;; start the initial frame maximized
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+;; start every frame maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; no title bar
+(add-to-list 'default-frame-alist '(undecorated . t))
+
+;; opacity
+(add-hook 'after-make-frame-functions
+          (lambda (frame)
+            (set-frame-parameter frame 'alpha-background 90)))
+
+;; You might also want to set it for the initial frame if the hook doesn't catch it
+(when (and (boundp 'initial-frame) initial-frame)
+  (set-frame-parameter initial-frame 'alpha-background 90))
+
+;;Tell emacs where is your personal elisp lib dir
+(add-to-list 'load-path "~/.config/emacs/lisp/")
+
+;; Make the initial buffer load faster by setting its mode to fundamental-mode
+(customize-set-variable 'initial-major-mode 'fundamental-mode)
+#+end_src
+
+**** bookmarks config
+
+#+NAME: emacs-bookmarks
+#+BEGIN_SRC emacs-lisp
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("Desktop" (filename . "~/Desktop/") (front-context-string)
+  (rear-context-string . "wilcox/Desktop:\n") (position . 27)
+  (last-modified 26467 1247 366394 327000))
+("dotfiles"
+ (filename . "~/git/ubuntu/ubuntu-dotfiles/ubuntu-dotfiles.org")
+ (front-context-string . "#TITLE: ubuntu d") (rear-context-string)
+ (position . 1) (last-modified 26456 40789 50206 790000))
+("video" (filename . "~/git/personal/bookmarks/video.org")
+ (front-context-string . "* links\n** [[vid")
+ (rear-context-string . "ARTUP: overview\n") (position . 42)
+ (last-modified 26024 3044 81012 2000))
+("bookmarks" (filename . "~/git/personal/bookmarks/bookmarks.org")
+ (front-context-string . "#+STARTUP: overv") (rear-context-string)
+ (position . 1) (last-modified 25703 35089 410375 479000))
+("feeds" (filename . "~/git/personal/feeds/feeds.org")
+ (front-context-string . "* elfeed :elfeed")
+ (rear-context-string . "TARTUP: content\n") (position . 20)
+ (last-modified 25692 54791 894815 365000))
+("org-refile-last-stored" (filename . "~/git/personal/org/web.org")
+ (front-context-string . "** [[https://its")
+ (rear-context-string . "lview\" program.\n") (position . 173198))
+("root" (filename . "/") (front-context-string . "bin -> usr/bin\n ")
+ (rear-context-string . " 7 Oct 30 23:23 ") (position . 197))
+("home" (filename . "~/") (front-context-string . "..\n  drwxr-xr-x ")
+ (rear-context-string . " 3 Oct 30 23:26 ") (position . 178))
+("cerberus" (filename . "~/git/cerberus/")
+ (front-context-string . "7zip\n  drwxr-xr-")
+ (rear-context-string . "96 Jan  4  2016 ") (position . 249))
+)
+#+END_SRC
+
+**** lisp
+***** prot-common
+
+#+NAME: prot-common
+#+BEGIN_SRC emacs-lisp
+;;; prot-common.el --- Common functions for my dotemacs -*- lexical-binding: t -*-
+
+;; Copyright (C) 2020-2023  Protesilaos Stavrou
+
+;; Author: Protesilaos Stavrou <info@protesilaos.com>
+;; URL: https://protesilaos.com/emacs/dotemacs
+;; Version: 0.1.0
+;; Package-Requires: ((emacs "30.1"))
+
+;; This file is NOT part of GNU Emacs.
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+;;
+;; Common functions for my Emacs: <https://protesilaos.com/emacs/dotemacs/>.
+;;
+;; Remember that every piece of Elisp that I write is for my own
+;; educational and recreational purposes.  I am not a programmer and I
+;; do not recommend that you copy any of this if you are not certain of
+;; what it does.
+
+;;; Code:
+
+(eval-when-compile
+  (require 'subr-x))
+
+(defgroup prot-common ()
+  "Auxiliary functions for my dotemacs."
+  :group 'editing)
+
+;;;###autoload
+(defun prot-common-number-even-p (n)
+  "Test if N is an even number."
+  (if (numberp n)
+      (= (% n 2) 0)
+    (error "%s is not a number" n)))
+
+;;;###autoload
+(defun prot-common-number-integer-p (n)
+  "Test if N is an integer."
+  (if (integerp n)
+      n
+    (error "%s is not an integer" n)))
+
+;;;###autoload
+(defun prot-common-number-integer-positive-p (n)
+  "Test if N is a positive integer."
+  (if (prot-common-number-integer-p n)
+      (> n 0)
+    (error "%s is not a positive integer" n)))
+
+;; Thanks to Gabriel for providing a cleaner version of
+;; `prot-common-number-negative': <https://github.com/gabriel376>.
+;;;###autoload
+(defun prot-common-number-negative (n)
+  "Make N negative."
+  (if (and (numberp n) (> n 0))
+      (* -1 n)
+    (error "%s is not a valid positive number" n)))
+
+;;;###autoload
+(defun prot-common-reverse-percentage (number percent change-p)
+  "Determine the original value of NUMBER given PERCENT.
+
+CHANGE-P should specify the increase or decrease.  For simplicity,
+nil means decrease while non-nil stands for an increase.
+
+NUMBER must satisfy `numberp', while PERCENT must be `natnump'."
+  (unless (numberp number)
+    (user-error "NUMBER must satisfy numberp"))
+  (unless (natnump percent)
+    (user-error "PERCENT must satisfy natnump"))
+  (let* ((pc (/ (float percent) 100))
+         (pc-change (if change-p (+ 1 pc) pc))
+         (n (if change-p pc-change (float (- 1 pc-change)))))
+    ;; FIXME 2021-12-21: If float, round to 4 decimal points.
+    (/ number n)))
+
+;;;###autoload
+(defun prot-common-percentage-change (n-original n-final)
+  "Find percentage change between N-ORIGINAL and N-FINAL numbers.
+
+When the percentage is not an integer, it is rounded to 4
+floating points: 16.666666666666664 => 16.667."
+  (unless (numberp n-original)
+    (user-error "N-ORIGINAL must satisfy numberp"))
+  (unless (numberp n-final)
+    (user-error "N-FINAL must satisfy numberp"))
+  (let* ((difference (float (abs (- n-original n-final))))
+         (n (* (/ difference n-original) 100))
+         (round (floor n)))
+    ;; FIXME 2021-12-21: Any way to avoid the `string-to-number'?
+    (if (> n round) (string-to-number (format "%0.4f" n)) round)))
+
+;; REVIEW 2023-04-07 07:43 +0300: I just wrote the conversions from
+;; seconds.  Hopefully they are correct, but I need to double check.
+(defun prot-common-seconds-to-minutes (seconds)
+  "Convert a number representing SECONDS to MM:SS notation."
+  (let ((minutes (/ seconds 60))
+        (seconds (% seconds 60)))
+    (format "%.2d:%.2d" minutes seconds)))
+
+(defun prot-common-seconds-to-hours (seconds)
+  "Convert a number representing SECONDS to HH:MM:SS notation."
+  (let* ((hours (/ seconds 3600))
+         (minutes (/ (% seconds 3600) 60))
+         (seconds (% seconds 60)))
+    (format "%.2d:%.2d:%.2d" hours minutes seconds)))
+
+;;;###autoload
+(defun prot-common-seconds-to-minutes-or-hours (seconds)
+  "Convert SECONDS to either minutes or hours, depending on the value."
+  (if (> seconds 3599)
+      (prot-common-seconds-to-hours seconds)
+    (prot-common-seconds-to-minutes seconds)))
+
+;;;###autoload
+(defun prot-common-rotate-list-of-symbol (symbol)
+  "Rotate list value of SYMBOL by moving its car to the end.
+Return the first element before performing the rotation.
+
+This means that if `sample-list' has an initial value of `(one
+two three)', this function will first return `one' and update the
+value of `sample-list' to `(two three one)'.  Subsequent calls
+will continue rotating accordingly."
+  (unless (symbolp symbol)
+    (user-error "%s is not a symbol" symbol))
+  (when-let* ((value (symbol-value symbol))
+              (list (and (listp value) value))
+              (first (car list)))
+    (set symbol (append (cdr list) (list first)))
+    first))
+
+;;;###autoload
+(defun prot-common-empty-buffer-p ()
+  "Test whether the buffer is empty."
+  (or (= (point-min) (point-max))
+      (save-excursion
+        (goto-char (point-min))
+        (while (and (looking-at "^\\([a-zA-Z]+: ?\\)?$")
+                    (zerop (forward-line 1))))
+        (eobp))))
+
+;;;###autoload
+(defun prot-common-minor-modes-active ()
+  "Return list of active minor modes for the current buffer."
+  (let ((active-modes))
+    (mapc (lambda (m)
+            (when (and (boundp m) (symbol-value m))
+              (push m active-modes)))
+          minor-mode-list)
+    active-modes))
+
+;;;###autoload
+(defun prot-common-truncate-lines-silently ()
+  "Toggle line truncation without printing messages."
+  (let ((inhibit-message t))
+    (toggle-truncate-lines t)))
+
+;;;###autoload
+(defun prot-common-disable-hl-line ()
+  "Disable Hl-Line-Mode (for hooks)."
+  (hl-line-mode -1))
+
+;;;###autoload
+(defun prot-common-window-bounds ()
+  "Determine start and end points in the window."
+  (list (window-start) (window-end)))
+
+;;;###autoload
+(defun prot-common-page-p ()
+  "Return non-nil if there is a `page-delimiter' in the buffer."
+  (or (save-excursion (re-search-forward page-delimiter nil t))
+      (save-excursion (re-search-backward page-delimiter nil t))))
+
+;;;###autoload
+(defun prot-common-read-data (file)
+  "Read Elisp data from FILE."
+  (with-temp-buffer
+    (insert-file-contents file)
+    (read (current-buffer))))
+
+;; Thanks to Omar Antolín Camarena for providing this snippet!
+;;;###autoload
+(defun prot-common-completion-table (category candidates)
+  "Pass appropriate metadata CATEGORY to completion CANDIDATES.
+
+This is intended for bespoke functions that need to pass
+completion metadata that can then be parsed by other
+tools (e.g. `embark')."
+  (lambda (string pred action)
+    (if (eq action 'metadata)
+        `(metadata (category . ,category))
+      (complete-with-action action candidates string pred))))
+
+;; Thanks to Igor Lima for the `prot-common-crm-exclude-selected-p':
+;; <https://github.com/0x462e41>.
+;; This is used as a filter predicate in the relevant prompts.
+(defvar crm-separator)
+
+;;;###autoload
+(defun prot-common-crm-exclude-selected-p (input)
+  "Filter out INPUT from `completing-read-multiple'.
+Hide non-destructively the selected entries from the completion
+table, thus avoiding the risk of inputting the same match twice.
+
+To be used as the PREDICATE of `completing-read-multiple'."
+  (if-let* ((pos (string-match-p crm-separator input))
+            (rev-input (reverse input))
+            (element (reverse
+                      (substring rev-input 0
+                                 (string-match-p crm-separator rev-input))))
+            (flag t))
+      (progn
+        (while pos
+          (if (string= (substring input 0 pos) element)
+              (setq pos nil)
+            (setq input (substring input (1+ pos))
+                  pos (string-match-p crm-separator input)
+                  flag (when pos t))))
+        (not flag))
+    t))
+
+;; The `prot-common-line-regexp-p' and `prot-common--line-regexp-alist'
+;; are contributed by Gabriel: <https://github.com/gabriel376>.  They
+;; provide a more elegant approach to using a macro, as shown further
+;; below.
+(defvar prot-common--line-regexp-alist
+  '((empty . "[\s\t]*$")
+    (indent . "^[\s\t]+")
+    (non-empty . "^.+$")
+    (list . "^\\([\s\t#*+]+\\|[0-9]+[^\s]?[).]+\\)")
+    (heading . "^[=-]+"))
+  "Alist of regexp types used by `prot-common-line-regexp-p'.")
+
+(defun prot-common-line-regexp-p (type &optional n)
+  "Test for TYPE on line.
+TYPE is the car of a cons cell in
+`prot-common--line-regexp-alist'.  It matches a regular
+expression.
+
+With optional N, search in the Nth line from point."
+  (save-excursion
+    (goto-char (line-beginning-position))
+    (and (not (bobp))
+         (or (beginning-of-line n) t)
+         (save-match-data
+           (looking-at
+            (alist-get type prot-common--line-regexp-alist))))))
+
+;; The `prot-common-shell-command-with-exit-code-and-output' function is
+;; courtesy of Harold Carr, who also sent a patch that improved
+;; `prot-eww-download-html' (from the `prot-eww.el' library).
+;;
+;; More about Harold: <http://haroldcarr.com/about/>.
+(defun prot-common-shell-command-with-exit-code-and-output (command &rest args)
+  "Run COMMAND with ARGS.
+Return the exit code and output in a list."
+  (with-temp-buffer
+    (list (apply 'call-process command nil (current-buffer) nil args)
+          (buffer-string))))
+
+(defvar prot-common-url-regexp
+  (concat
+   "~?\\<\\([-a-zA-Z0-9+&@#/%?=~_|!:,.;]*\\)"
+   "[.@]"
+   "\\([-a-zA-Z0-9+&@#/%?=~_|!:,.;]+\\)\\>/?")
+  "Regular expression to match (most?) URLs or email addresses.")
+
+(autoload 'auth-source-search "auth-source")
+
+;;;###autoload
+(defun prot-common-auth-get-field (host prop)
+  "Find PROP in `auth-sources' for HOST entry."
+  (when-let ((source (auth-source-search :host host)))
+    (if (eq prop :secret)
+        (funcall (plist-get (car source) prop))
+      (plist-get (flatten-list source) prop))))
+
+;;;###autoload
+(defun prot-common-parse-file-as-list (file)
+  "Return the contents of FILE as a list of strings.
+Strings are split at newline characters and are then trimmed for
+negative space.
+
+Use this function to provide a list of candidates for
+completion (per `completing-read')."
+  (split-string
+   (with-temp-buffer
+     (insert-file-contents file)
+     (buffer-substring-no-properties (point-min) (point-max)))
+   "\n" :omit-nulls "[\s\f\t\n\r\v]+"))
+
+(provide 'prot-common)
+;;; prot-common.el ends here
+
+#+end_src
+
+*** emacs tangle
+**** init.el
+
++ home dir
+
+#+NAME: emacs-init.el-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/emacs/init.el"
+<<init.el>>
+#+END_SRC
+
++ current dir
+
+#+NAME: emacs-init.el-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/emacs/init.el"
+<<init.el>>
+#+END_SRC
+
+**** early-init.el
+
++ home dir
+
+#+NAME: emacs-early-init.el-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/emacs/early-init.el"
+<<early-init.el>>
+#+END_SRC
+
++ current dir
+
+#+NAME: emacs-early-init.el-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/emacs/early-init.el"
+<<early-init.el>>
+#+END_SRC
+
+**** bookmark tangle
+
++ home dir
+
+#+NAME: emacs-bookmarks-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/emacs/bookmarks"
+<<emacs-bookmarks>>
+#+END_SRC
+
++ current dir
+
+#+NAME: emacs-bookmarks-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/emacs/bookmarks"
+<<emacs-bookmarks>>
+#+END_SRC
+
+**** lisp
+***** prot-common
+
++ home dir
+
+#+NAME: prot-common-home-dir
+#+BEGIN_SRC emacs-lisp :noweb yes :tangle "~/.config/emacs/lisp/prot-common.el"
+<<prot-common>>
+#+END_SRC
+
++ current dir
+
+#+NAME: prot-common-current-dir
+#+BEGIN_SRC emacs-lisp :noweb yes :tangle ".config/emacs/lisp/prot-common.el"
+<<prot-common>>
+#+END_SRC
+
+** alacritty
+*** alacritty config
+
+#+NAME: alacritty
+#+BEGIN_SRC toml
+[colors.bright]
+black = "#000000"
+blue = "#79a8ff"
+cyan = "#4ae2f0"
+green = "#70b900"
+magenta = "#f78fe7"
+red = "#ff6b55"
+white = "#ffffff"
+yellow = "#fec43f"
+
+[colors.normal]
+black = "#000000"
+blue = "#2fafff"
+cyan = "#00d3d0"
+green = "#44bc44"
+magenta = "#feacd0"
+red = "#ff5f59"
+white = "#989898"
+yellow = "#d0bc00"
+
+[colors.primary]
+background = "#0D0E1C"
+foreground = "#989898"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 16.0
+
+[font.bold]
+family = "Fira Code"
+style = "Bold"
+
+[font.bold_italic]
+family = "Fira Code"
+style = "Bold Italic"
+
+[font.italic]
+family = "Fira Code"
+style = "Italic"
+
+[font.normal]
+family = "Fira Code"
+style = "Regular"
+
+[window]
+decorations = "none"
+decorations_theme_variant = "Dark"
+startup_mode = "Maximized"
+opacity = 0.90
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 4
+y = 4
+#+END_SRC
+
+*** alacritty tangle
+
++ home dir
+
+#+NAME: alacritty-home-dir
+#+BEGIN_SRC toml :noweb yes :tangle "~/.config/alacritty/alacritty.toml"
+<<alacritty>>
+#+END_SRC
+
++ current dir
+
+#+NAME: alacritty-current-dir
+#+BEGIN_SRC toml :noweb yes :tangle ".config/alacritty/alacritty.toml"
+<<alacritty>>
+#+END_SRC
+
+** zsh
+*** zsh config
+**** zshrc
+
+#+NAME: zshrc
+#+BEGIN_SRC conf
+# ~/.zshrc
+
+# ssh zsh fix
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+
+# variables for PS3 prompt
+newline=$'\n'
+yesmaster='Yes Master ? '
+
+# PS3 prompt function
+function zle-line-init zle-keymap-select {
+    PS1="[%n@%M %~]${newline}${yesmaster}"
+    zle reset-prompt
+}
+
+# run PS3 prompt function
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# set terminal window title to program name
+case $TERM in
+  (*xterm* | rxvt | rxvt-unicode-256color)
+    function precmd {
+      print -Pn "\e]0;%(1j,%j job%(2j|s|); ,)%~\a"
+    }
+    function preexec {
+      printf "\033]0;%s\a" "$1"
+    }
+  ;;
+esac
+
+# Fix bugs when switching modes
+bindkey -v # vi mode
+bindkey "^?" backward-delete-char
+bindkey "^u" backward-kill-line
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+bindkey "^k" kill-line
+
+# Use modern completion system
+autoload -Uz compinit
+compinit
+
+# Set/unset  shell options
+setopt notify globdots pushdtohome cdablevars autolist
+setopt recexact longlistjobs
+setopt autoresume histignoredups pushdsilent noclobber
+setopt autopushd pushdminus extendedglob rcquotes mailwarning
+setopt histignorealldups sharehistory
+#setopt auto_cd
+cdpath=($HOME)
+unsetopt bgnice autoparamslash
+
+# Completion Styles
+
+# list of completers to use
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+
+# allow one error for every three characters typed in approximate completer
+zstyle -e ':completion:*:approximate:*' max-errors \
+    'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+    
+# insert all expansions for expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
+# formatting and messages
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+
+#eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+
+# match uppercase from lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+# Filename suffixes to ignore during completion (except after rm command)
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
+    '*?.old' '*?.pro' '.hidden'
+
+# ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# kill - red, green, blue
+zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=22=31=34'
+
+# list optiones colour, white + cyan
+zstyle ':completion:*:options' list-colors '=(#b) #(-[a-zA-Z0-9,]#)*(-- *)=36=37'
+
+# zsh autocompletion for sudo and doas
+zstyle ":completion:*:(sudo|su|doas):*" command-path /usr/local/bin /home/djwilcox/bin
+
+# rehash commands
+zstyle ':completion:*' rehash true
+
+# highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=cyan
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
+
+# namespace autocomplete
+compdef _precommand namespace
+
+# transmission autocomplete
+compdef _gnu_generic transmission-daemon
+compdef _gnu_generic transmission-remote
+compdef _gnu_generic transmission-show
+compdef _gnu_generic transmission-cli
+compdef _gnu_generic transmission-create
+compdef _gnu_generic transmission-edit
+compdef _gnu_generic transmission-pwgen
+
+# aliases
+# mpc host and socket
+alias mpc='mpc --host="${HOME}/.config/mpd/socket"'
+#+END_SRC
+
+**** zshenv
+
+#+NAME: zshenv
+#+begin_src conf
+# ~/.zshenv
+
+# Path
+typeset -U PATH path
+path=("$HOME/bin" "/usr/bin" "$path[@]")
+export PATH
+
+# xdg directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# ssh-add
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# less
+export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
+export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
+
+# wget
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+
+# libdvdcss
+export DVDCSS_CACHE="${XDG_DATA_HOME}/dvdcss"
+
+# set emacsclient as editor
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -a emacs"
+export VISUAL="emacsclient -a emacs"
+
+# tell ls to be colourfull
+export LSCOLORS=ExFxCxDxBxegedabagacad
+export CLICOLOR=1
+
+# qt5
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# vi mode
+export KEYTIMEOUT=1
+
+# mpd host variable for mpc
+export MPD_HOST="/home/djwilcox/.config/mpd/socket"
+#+end_src
+
+*** zsh tangle
+**** zshrc tangle
+
++ home dir
+
+#+NAME: zshrc-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.zshrc"
+<<zshrc>>
+#+END_SRC
+
++ current dir
+
+#+NAME: zshrc-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".zshrc"
+<<zshrc>>
+#+END_SRC
+
+**** zshenv tangle
+
++ home dir
+
+#+NAME: zshenv-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.zshenv"
+<<zshenv>>
+#+END_SRC
+
++ current dir
+
+#+NAME: zshenv-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".zshenv"
+<<zshenv>>
+#+END_SRC
+
+** tmux
+*** tmux config
+
+#+NAME: tmux
+#+BEGIN_SRC conf
+# .tmux.conf
+
+# vi mode
+set-window-option -g mode-keys vi
+
+# Some tweaks to the status line
+set -g status-right "%H:%M"
+set -g status-right-style fg=color245
+
+# If running inside tmux ($TMUX is set), then change the status line to red
+%if #{TMUX}
+set -g status-bg red
+%endif
+
+# Enable RGB colour if running in xterm(1)
+set-option -sa terminal-overrides ",xterm*:Tc"
+
+# Change the default $TERM to screen
+set -g default-terminal "xterm-256color"
+
+# No bells at all
+set -g bell-action none
+
+# close panes after command has finished
+set -g remain-on-exit off
+
+# Change the prefix key to C-a
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+
+# Turn the mouse on, but without copy mode dragging
+set -g mouse on
+
+# multiple places
+bind F set -w window-size
+
+# Keys to toggle monitoring activity in a window and the synchronize-panes option
+bind m set monitor-activity
+bind y set synchronize-panes\; display 'synchronize-panes #{?synchronize-panes,on,off}'
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# reload ~/.tmux.conf using PREFIX r
+bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+
+# default statusbar colors
+set -g status-style bg=default,fg=yellow #yellow
+
+# default window title colors
+set -g window-status-style fg=brightblue,bg=default
+
+# active window title colors
+set -g window-status-current-style fg=black,bg=blue
+
+# pane border
+set -g pane-border-style fg=black #base02
+set -g pane-active-border-style fg=black #base01
+
+# message text
+set -g message-style bg=black,fg=brightred #orange
+
+# pane number display
+set-option -g display-panes-active-colour blue #blue
+set-option -g display-panes-colour brightred #orange
+
+# clock
+set-window-option -g clock-mode-colour green #green
+
+# vim key bindings
+setw -g mode-keys vi
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+bind-key -r C-h select-window -t :-
+bind-key -r C-l select-window -t :+
+
+# resize panes using PREFIX H, J, K, L
+bind H resize-pane -L 5
+bind J resize-pane -D 5
+bind K resize-pane -U 5
+bind L resize-pane -R 5
+
+# copy and paste
+set-window-option -g automatic-rename on
+
+# toggle statusbar
+bind-key s set -g status
+
+# copying selection vim style
+# requires xsel and xclip
+bind-key Escape copy-mode			# enter copy mode; default [
+bind-key p paste-buffer				# paste; (default hotkey: ] )
+bind-key P choose-buffer 			# tmux clipboard history
+bind-key + delete-buffer \; display-message "Deleted current Tmux Clipboard History"
+
+# Send To Tmux Clipboard or System Clipboard
+bind-key < run-shell "tmux set-buffer -- \"$(xsel -o -b)\"" \; display-message "Copy To Tmux Clipboard"
+bind-key > run-shell 'tmux show-buffer | xsel -i -b' \; display-message "Copy To System Clipboard"
+
+# Note: rectangle-toggle (aka Visual Block Mode) > hit v then C-v to trigger it
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi V send-keys -X select-line
+bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+bind-key -T choice-mode-vi h send-keys -X tree-collapse
+bind-key -T choice-mode-vi l send-keys -X tree-expand
+bind-key -T choice-mode-vi H send-keys -X tree-collapse-all
+bind-key -T choice-mode-vi L send-keys -X tree-expand-all
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe "xclip -in -selection clipboard"
+bind-key -T copy-mode-vi y send-keys -X copy-pipe "xclip -in -selection clipboard"
+
+# urlscan as context and url view
+bind-key u capture-pane \; save-buffer /tmp/tmux-buffer \; \
+new-window -n "urlscan" '$SHELL -c "urlscan < /tmp/tmux-buffer"'
+
+# copy mode - emulate right click "search google for {text}" like you do in GUI web browsers. 
+bind-key -T copy-mode-vi 'o' send-keys -X copy-selection \; \
+new-window -n google \; send-keys -t google 'sr -browser=w3m google "$(tmux show-buffer)" && tmux kill-window' 'Enter'
+
+# tmux auto rename pane 
+set-option -g status-interval 1
+set-option -g automatic-rename on
+set-option -g automatic-rename-format "#{?#{==:#{pane_current_command},zsh},#{b:pane_current_path},#{pane_current_command}}"
+#+END_SRC
+
+*** tmux tangle
+
++ home dir
+
+#+NAME: tmux-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/tmux/tmux.conf"
+<<tmux>>
+#+END_SRC
+
++ current dir
+
+#+NAME: tmux-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/tmux/tmux.conf"
+<<tmux>>
+#+END_SRC
+
+** mpv
+*** mpv config
+**** input.conf
+
+#+NAME: input.conf
+#+BEGIN_SRC conf
+# vim keybindings
+l seek  5
+h seek -5
+k seek  60
+j seek -60
+
+# subtitles
+J cycle sub 
+K cycle sub down
+
+# Audio filters:
+F1 show-text "F2: loudnorm | F3: dynaudnorm | F4: low Bass | F5: low Treble" 2000
+
+# loudnorm:
+F2 af toggle lavfi=[loudnorm=I=-16:TP=-3:LRA=4]
+
+# dynaudnorm:
+F3 af toggle lavfi=[dynaudnorm=g=5:f=250:r=0.9:p=0.5]
+
+# lowered bass:
+F4  af toggle "superequalizer=6b=2:7b=2:8b=2:9b=2:10b=2:11b=2:12b=2:13b=2:14b=2:15b=2:16b=2:17b=2:18b=2"
+
+# lowered treble:
+F5  af toggle "superequalizer=1b=2:2b=2:3b=2:4b=2:5b=2:6b=2:7b=2:8b=2:9b=2:10b=2:11b=2:12b=2"
+#+END_SRC
+
+**** mpv.conf
+
+#+NAME: mpv.conf
+#+BEGIN_SRC conf
+# mpv.conf
+
+# list profiles with: mpv --profile=help
+
+# load hwdec profile automatically
+profile=hwdec 
+
+# hardware acceleration profile
+[hwdec]
+profile-desc="hardware acceleration, no cache, yt-dlp 1080 or less"
+vo=gpu
+hwdec=vaapi
+
+# hide: GNOME's wayland compositor lacks support for the idle inhibit protocol. 
+#msg-level=ffmpeg=fatal,vo/gpu/wayland=no
+msg-level=ffmpeg=fatal
+
+# cache no for internet streams
+cache=no
+
+# yt-dlp best format 1080 or less
+ytdl-format="bestvideo[height<=?1080]+bestaudio/best"
+
+# show milliseconds in the on screen display
+osd-fractions
+
+# alsa pipewire audio device
+audio-device=alsa/pipewire
+
+# youtube subs - J to switch to subs
+sub-auto=fuzzy
+ytdl-raw-options=sub-lang="en",write-sub=,write-auto-sub=
+sub-font='Noto Color Emoji'
+
+# screenshot timecode
+screenshot-template="%F-[%P]v%#01n"
+
+
+# cache profile: mpv --profile=cache
+[cache]
+profile-desc="hardware acceleration, cache, yt-dlp 1080 or less"
+# include hwdec profile 
+profile=hwdec
+# override hwdec profile cache setting
+cache=auto
+
+
+# youtube conditional auto profile match any youtube url
+[youtube]
+profile-desc="youtube hardware acceleration, cache"
+profile-cond=path:find('youtu%.?be') ~= nil
+# include hwdec profile 
+profile=hwdec
+# override hwdec profile cache setting
+cache=yes
+# fullscreen 2nd display
+fs
+fs-screen=1
+
+# archive.org conditional auto profile match any archive.org url
+[archive]
+profile-desc="archive hardware acceleration, cache"
+profile-cond=path:find('archive.org') ~= nil
+# include hwdec profile 
+profile=hwdec
+# override hwdec profile cache setting
+cache=auto
+# fullscreen 2nd display
+fs
+fs-screen=1
+
+
+# bbc iplayer conditional auto profile match any bbc iplayer url
+[iplayer]
+profile-desc="archive hardware acceleration, cache"
+profile-cond=path:find('bbc.co.uk/iplayer') ~= nil
+# include hwdec profile 
+profile=hwdec
+# override hwdec profile cache setting
+cache=no
+# fullscreen 2nd display
+fs
+fs-screen=1
+
+
+# bbc iplayer conditional auto profile match any bbc iplayer url
+[bbc]
+profile-desc="bbc hardware acceleration, cache"
+profile-cond=path:find('bbc:pips:service') ~= nil
+# include hwdec profile 
+profile=hwdec
+# override hwdec profile cache setting
+cache=no
+# fullscreen 2nd display
+fs
+fs-screen=1
+#+END_SRC
+
+*** mpv tangle
+**** input.conf tangle
+
++ home dir
+
+#+NAME: input.conf-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/mpv/input.conf"
+<<input.conf>>
+#+END_SRC
+
++ current dir
+
+#+NAME: input.conf-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/mpv/input.conf"
+<<input.conf>>
+#+END_SRC
+
+**** mpv.conf tangle
+
++ home dir
+
+#+NAME: mpv.conf-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/mpv/mpv.conf"
+<<mpv.conf>>
+#+END_SRC
+
++ current dir
+
+#+NAME: mpv.conf-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/mpv/mpv.conf"
+<<mpv.conf>>
+#+END_SRC
+
+** yt-dlp
+*** yt-dlp config
+
+#+NAME: yt-dlp
+#+BEGIN_SRC conf
+# download 1080p video in mp4 format
+#-f 'bestvideo[height<=1080][vcodec!=?vp9]+bestaudio[acodec!=?opus]'
+
+# external downloader aria2
+#--downloader aria2c --downloader-args aria2c:'-c -j 3 -x 3 -s 3 -k 1M'
+
+# native downloader for dash and m3u8
+--downloader 'dash,m3u8:native'
+
+# restrict filenames
+--restrict-filenames
+
+# merge output format mkv
+--merge-output-format mkv
+
+# ouput template
+-o '%(title)s-[%(id)s]-%(upload_date>%Y-%m-%d)s.%(ext)s'
+#+END_SRC
+
+*** yt-dlp tangle
+
++ home dir
+
+#+NAME: yt-dlp-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/yt-dlp/config"
+<<yt-dlp>>
+#+END_SRC
+
++ current dir
+
+#+NAME: yt-dlp-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/yt-dlp/config"
+<<yt-dlp>>
+#+END_SRC
+
+** kodi
+*** kodi config
+**** playercorefactory.xml
+
+#+NAME: playercorefactory.xml
+#+BEGIN_SRC xml
+<playercorefactory>
+ <players>
+   <player name="save url" type="ExternalPlayer" audio="true" video="true">
+	<filename>printf</filename>
+     <args>"%s\n" "{0}" > "$HOME/desktop/url-$(date +"%Y-%m-%d-%H-%M-%S").txt"</args>
+     <hidexbmc>false</hidexbmc>
+   </player>
+   <player name="play" type="ExternalPlayer" audio="false" video="true">
+	<filename>"$HOME/.venv/pilfer/bin/pilferplay"</filename>
+     <args>-i "{0}"</args>
+     <hidexbmc>true</hidexbmc>
+   </player>  
+   <player name="mpv" type="ExternalPlayer" audio="false" video="true">
+	<filename>mpv</filename>
+     <args>"{0}"</args>
+     <hidexbmc>true</hidexbmc>
+   </player>  
+   <player name="emacs" type="ExternalPlayer" audio="false" video="true">
+	<filename>emacsclient</filename>
+     <args>-u -e "(mpv-play-remote-video \"{0}\")"</args>
+     <hidexbmc>true</hidexbmc>
+   </player>  
+   <player name="record video" type="ExternalPlayer" audio="false" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-i "{0}" &</args>
+     <hidexbmc>false</hidexbmc>
+   </player>  
+   <player name="record video - 30 minutes" type="ExternalPlayer" audio="false" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-i "{0}" -t 00:30:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+   <player name="record video - 1 hour" type="ExternalPlayer" audio="false" video="true">
+	<filename>"ts $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-i "{0}" -t 01:00:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+   <player name="record video - 2 hours" type="ExternalPlayer" audio="false" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-i "{0}" -t 02:00:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+   <player name="record video - 3 hours" type="ExternalPlayer" audio="false" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-i "{0}" -t 03:00:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+   <player name="record audio" type="ExternalPlayer" audio="true" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-a "{0}" &</args>
+     <hidexbmc>false</hidexbmc>
+   </player>  
+   <player name="record audio - 30 minutes" type="ExternalPlayer" audio="true" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-a "{0}" -t 00:30:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+   <player name="record audio - 1 hour" type="ExternalPlayer" audio="true" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-a "{0}" -t 01:00:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+   <player name="record audio - 2 hours" type="ExternalPlayer" audio="true" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-a "{0}" -t 02:00:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+   <player name="record audio - 3 hours" type="ExternalPlayer" audio="true" video="true">
+	<filename>"tsp $HOME/.venv/pilfer/bin/pilfer"</filename>
+     <args>-a "{0}" -t 03:00:00 &</args>
+     <hidexbmc>false</hidexbmc>
+   </player> 
+ </players>
+ <rules action="overwrite">
+   <rule internetstream="true" player="mpv"></rule>
+   <rule video="true" player="mpv"></rule>
+   <!-- <rule internetstream="true" player="play"></rule> -->
+
+   <!-- change the default player below -->
+
+   <!-- <rule protocols="nfs|smb" player="dvdplayer"></rule> -->
+   <!-- uncomment to make play the default player
+    <rule video="true" player="play"></rule>
+   -->
+   
+   <!-- uncomment to make record the default player
+    <rule video="true" player="record"></rule>
+   -->
+   
+ </rules>
+</playercorefactory>
+#+END_SRC
+
+*** kodi tangle
+**** playercorefactory.xml tangle
+
++ home dir
+
+#+NAME: playercorefactory.xml-home-dir
+#+BEGIN_SRC xml :noweb yes :tangle "~/.kodi/userdata/playercorefactory.xml"
+<<playercorefactory.xml>>
+#+END_SRC
+
++ current dir
+
+#+NAME: playercorefactory.xml-current-dir
+#+BEGIN_SRC xml :noweb yes :tangle ".kodi/userdata/playercorefactory.xml"
+<<playercorefactory.xml>>
+#+END_SRC
+
+** aria2c
+*** aria2c config
+
+#+NAME: aria2c
+#+begin_src conf
+# aria2 config
+ bt-max-peers=0
+ bt-request-peer-speed-limit=0
+ max-overall-upload-limit=128k
+ bt-external-ip=127.0.0.1
+ dht-listen-port=6882
+ enable-dht=true
+ enable-peer-exchange=true
+ listen-port=6881
+ bt-force-encryption=true
+ bt-min-crypto-level=arc4
+ bt-require-crypto=true
+ follow-torrent=mem
+ seed-ratio=100
+ seed-time=0
+ socket-recv-buffer-size=1M
+ event-poll=epoll
+ realtime-chunk-checksum=true
+ allow-overwrite=true
+ always-resume=true
+ auto-file-renaming=false
+ continue=true
+ remote-time=true
+ peer-id-prefix=""
+ user-agent=""
+ summary-interval=0
+ ftp-pasv=true
+ ftp-reuse-connection=true
+ metalink-language=en-US
+ metalink-location=us
+ metalink-preferred-protocol=https
+ lowest-speed-limit=50K
+ max-concurrent-downloads=10
+ max-connection-per-server=3
+ min-split-size=5M
+ split=10
+ check-certificate=true
+ conditional-get=true
+ disable-ipv6=true
+ http-accept-gzip=true
+#+end_src
+
+*** aria2c tangle
+
++ home dir
+  
+#+NAME: aria2c-home-dir
+#+begin_src conf :noweb yes :tangle "~/.config/aria2/aria2.conf"
+<<aria2c>>
+#+end_src
+
++ current dir
+
+#+NAME: aria2c-current-dir
+#+begin_src conf :noweb yes :tangle ".config/aria2/aria2.conf"
+<<aria2c>>
+#+end_src
+
+** mpd
+*** mpd config
+**** mpd.conf config
+
+#+NAME: mpd
+#+BEGIN_SRC conf
+music_directory		"~/Music"
+playlist_directory	"~/.config/mpd/playlists"
+db_file			"~/.config/mpd/mpd.db"
+log_file		"~/.config/mpd/mpd.log"
+pid_file		"~/.config/mpd/mpd.pid"
+state_file		"~/.config/mpd/mpdstate"
+sticker_file		"~/.config/mpd/sticker.sql"
+bind_to_address		"/home/djwilcox/.config/mpd/socket"
+auto_update    "yes"
+decoder {
+        plugin                  "hybrid_dsd"
+        enabled                 "no"
+#       gapless                 "no"
+}
+#audio_output {
+#	type		"alsa"
+#	name		"My ALSA Device"
+#}
+
+#audio_output {
+#        type            "pulse"
+#        name            "pulse audio"
+#}
+
+
+audio_output {
+        type            "pipewire"
+        name            "pipewire"
+}
+
+filesystem_charset		"UTF-8"
+#+END_SRC
+
+**** playlists config
+
+#+NAME: mpd-playlists
+#+begin_src conf
+#EXTM3U
+#EXTINF:0,Talk Sport
+https://radio.talksport.com/stream
+
+#EXTINF:0,LBC London
+http://icecast.thisisdax.com/LBCLondon
+#+end_src
+
+*** mpd tangle
+**** mpd.conf tangle
+
++ home dir
+
+#+NAME: mpd-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/mpd/mpd.conf"
+<<mpd>>
+#+END_SRC
+
++ current dir
+
+#+NAME: mpd-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/mpd/mpd.conf"
+<<mpd>>
+#+END_SRC
+
+**** playlists tangle
+
++ home dir
+
+#+NAME: mpd-playlists-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/mpd/playlists/radio.m3u"
+<<mpd-playlists>>
+#+END_SRC
+
++ current dir
+
+#+NAME: mpd-playlists-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/mpd/playlists/radio.m3u"
+<<mpd-playlists>>
+#+END_SRC
+
+** ncmpc
+*** ncmpc config
+
+#+NAME: ncmpc
+#+BEGIN_SRC conf
+##
+## Configuration file for ncmpc (~/.ncmpc/config)
+##
+
+############## Connection ###################
+## Connect to mpd running on a specified host
+#host = "localhost"
+#host = "127.0.0.1"
+host = "/home/djwilcox/.config/mpd/socket"
+
+## Connect to mpd on the specified port.
+#port = 6600
+
+## Connect to mpd using the specified password.
+#password = "mpd"
+
+############## Interface ####################
+## Enable mouse support (if enabled at compile time).
+#enable-mouse = no
+
+## A list of screens to cycle through when using
+## the previous/next screen commands (tab and shift+tab).
+## names: playlist browse help artist search song keydef lyrics outputs
+screen-list = playlist browse
+
+## Default search mode for the search screen. The mode is an
+## integer index, with  0  for title, 1 for artist, 2 for album,
+## 3 for filename, and 4 for artist+title.
+#search-mode = 0
+
+## Auto center (center the playing track in the playlist)
+#auto-center = no
+
+## Show the most recent query when using find.
+#find-show-last = no
+
+## Wrapped find mode.
+#find-wrap = yes
+
+## Wrapped cursor movement.
+wrap-around = yes
+
+## Ring bell when find wraps around.
+#bell-on-wrap = yes
+
+## Sound audible bell on alerts.
+#audible-bell = yes
+
+## Enable visible bell on alerts.
+#visible-bell = no
+
+## Default crossfade time in seconds.
+#crossfade-time = 10
+
+## Seek forward/backward by NUM seconds.
+seek-time = 30
+
+############## Display ######################
+## Show a list of the screens in the top line on startup.
+#welcome-screen-list = yes
+
+## Make the cursor as wide as the screen.
+#wide-cursor = yes
+
+## Use the terminal's hardware cursor instead of inverse colors
+#hardware-cursor = yes
+
+## Hide playlist cursor after x seconds (0 disables this feature).
+#hide-cursor = 5
+
+## Scroll the title if it is too long for the screen.
+#scroll = yes
+
+## The separator to show at the end of the scrolling title.
+#scroll-sep = " *** "
+
+## list-format
+## The format used to display songs in the main window.
+list-format = "%name%|[%artist% - ]%title%|%file%"
+
+## The format used to display songs on the status line.
+status-format = "[%artist% - ]%title%|%shortfile%"
+
+## The time, in seconds, for which status messages will be displayed.
+#status-message-time = 3
+
+## Display the time in the status bar when idle.
+#display-time = yes
+
+## Sets whether to display remaining or elapsed time in
+## the status window. Default is elapsed.
+#timedisplay-type = elapsed
+
+## Show the bitrate in the status bar when playing a stream.
+visible-bitrate = yes
+
+## Change the XTerm title (ncmpc will not restore the title).
+#set-xterm-title = no
+
+## The format used to for the xterm title when ncmpc is playing.
+#xterm-title-format = "ncmpc: [ %name%|[%artist% - ]%title%|%file%]"
+
+## Automatically save the lyrics after receiving them.
+#lyrics-autosave = no
+
+## Display song length in second column
+#second-column = yes
+
+############## Colors #######################
+## colors: none, black, red, green, yellow, blue, magenta, cyan, white
+## attributes: standout, underline, reverse, blink, dim, bold
+##
+## Colors can also be given as an integer representing a terminal specific
+## color code. The special color, none, represents the terminals default color.
+
+## Enable/disable colors.
+#enable-colors = yes
+enable-colors = no
+
+## Set the background color.
+color background = none
+
+## Set the text color for the title row.
+color title = none,black
+
+## Set the text color for the title row (the bold part).
+color title-bold = blue,bold
+
+## Set the color of the line on the second row.
+color line = black
+
+## Set the text color used to indicate mpd flags on the second row.
+color line-flags = black,bold
+
+## Set the text color in the main area of ncmpc.
+color list = none
+
+## Set the bold text color in the main area of ncmpc.
+color list-bold = none,bold
+
+## Sets the text color of directories in the browser
+color browser-directory = none
+
+## Sets the text color of playlists in the browser
+color browser-playlist = none
+
+## Set the color of the progress indicator.
+color progressbar = black
+
+## Set the text color used to display mpd status in the status window.
+color status-state = black,bold
+
+## Set the text color used to display song names in the status window.
+color status-song  = black
+
+## Set the text color used to display time the status window.
+color status-time  = black
+
+## Text color used to display alerts in the status window.
+color alert = black,bold
+
+## Redefine any of the base colors.
+## The RGB values must be an integer value between 0 and 1000.
+## Note: Only some terminals allow redefinitions of colors!
+#colordef yellow = 255, 140, 0
+#+END_SRC
+
+*** ncmpc tangle
+
++ home dir
+
+#+NAME: ncmpc-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/ncmpc/config"
+<<ncmpc>>
+#+END_SRC
+
++ current dir
+
+#+NAME: ncmpc-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/ncmpc/config"
+<<ncmpc>>
+#+END_SRC
+
+** systemd
+*** systemd config
+**** ssh-agent.service
+
+#+NAME: ssh-agent.service
+#+BEGIN_SRC conf
+[Unit]
+Description=SSH key agent
+
+[Service]
+Type=forking
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=/usr/bin/ssh-agent -a $SSH_AUTH_SOCK
+
+[Install]
+WantedBy=default.target
+#+END_SRC
+
+**** emacs.service
+
+#+NAME: emacs.service
+#+BEGIN_SRC conf
+[Unit]
+Description=Emacs: the extensible, self-documenting text editor
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Restart=always
+
+[Install]
+WantedBy=default.target
+#+END_SRC
+
+**** mpd.service
+
+#+NAME: mpd.service
+#+BEGIN_SRC conf
+[Unit]
+Description=Music Player Daemon
+After=network.target sound.target
+
+[Service]
+ExecStart=/usr/bin/mpd --no-daemon /home/djwilcox/.config/mpd/mpd.conf
+
+[Install]
+WantedBy=default.target
+#+END_SRC
+
+*** systemd tangle
+**** ssh-agent.service
+
++ home dir
+
+#+NAME: ssh-agent.service-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/systemd/user/ssh-agent.service"
+<<ssh-agent.service>>
+#+END_SRC
+
++ current dir
+
+#+NAME: ssh-agent.service-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/systemd/user/ssh-agent.service"
+<<ssh-agent.service>>
+#+END_SRC
+
+**** emacs.service
+
++ home dir
+
+#+NAME: emacs.service-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/systemd/user/emacs.service"
+<<emacs.service>>
+#+END_SRC
+
++ current dir
+
+#+NAME: emacs.service-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/systemd/user/emacs.service"
+<<emacs.service>>
+#+END_SRC
+
+**** mpd.service
+
++ home dir
+
+#+NAME: mpd.service-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/systemd/user/mpd.service"
+<<mpd.service>>
+#+END_SRC
+
++ current dir
+
+#+NAME: mpd.service-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/systemd/user/mpd.service"
+<<mpd.service>>
+#+END_SRC
+
+** user-dirs.dirs
+*** user-dirs.dirs config
+
+#+NAME: user-dirs.dirs
+#+BEGIN_SRC conf
+XDG_DESKTOP_DIR="$HOME/Desktop"
+XDG_DOCUMENTS_DIR="$HOME/Documents"
+XDG_DOWNLOAD_DIR="$HOME/Downloads"
+XDG_MUSIC_DIR="$HOME/Music"
+XDG_PICTURES_DIR="$HOME/Pictures"
+XDG_VIDEOS_DIR="$HOME/Video"
+#+END_SRC
+
+*** user-dirs.conf config
+
+#+NAME: user-dirs.conf
+#+BEGIN_SRC conf
+enabled=False
+#+END_SRC
+
+*** user-dirs.dirs tangle
+
++ home dir
+  
+#+NAME: user-dirs.dirs-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/user-dirs.dirs"
+<<user-dirs.dirs>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: user-dirs.dirs-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/user-dirs.dirs"
+<<user-dirs.dirs>>
+#+END_SRC
+
+*** user-dirs.conf tangle
+
++ home dir
+  
+#+NAME: user-dirs.conf-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/user-dirs.conf"
+<<user-dirs.conf>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: user-dirs.conf-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/user-dirs.conf"
+<<user-dirs.conf>>
+#+END_SRC
+
+** autostart
+*** autostart config
+**** nognome_notications config
+
+#+NAME: nognome_notications
+#+BEGIN_SRC conf
+[Desktop Entry]
+Type=Application
+Exec=/usr/local/bin/nognome_notifications
+Hidden=True
+NoDisplay=True
+X-GNOME-Autostart-enabled=true
+Name=nognome_notifications
+Comment=nognome_notifications
+#+END_SRC
+
+*** autostart tangle
+**** nognome_notications tangle
+
++ home dir
+
+#+NAME: nognome_notications-autostart-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/autostart/nognome_notications.desktop"
+<<nognome_notications>>
+#+END_SRC
+
++ current dir
+
+#+NAME: nognome_notications-autostart-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/autostart/nognome_notications.desktop"
+<<nognome_notications>>
+#+END_SRC
+
+** gitconfig
+*** gitconfig config
+
+#+NAME: gitconfig
+#+BEGIN_SRC conf
+[user]
+name = Daniel J Wilcox
+email = danieljwilcox@gmail.com
+[color]
+ui = true
+#+END_SRC
+
+*** gitconfig tangle
+
++ home dir
+
+#+NAME: gitconfig-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/git/config"
+<<gitconfig>>
+#+END_SRC
+
++ current dir
+
+#+NAME: gitconfig-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/git/gitconfig"
+<<gitconfig>>
+#+END_SRC
+
+** gtk
+*** gtk.css config 
+
+#+NAME: gtk.css
+#+BEGIN_SRC conf
+vte-terminal,
+terminal-window {
+    padding: 4px 4px 4px 4px;
+    -vte-terminal-inner-border: 4px 4px 4px 4px;
+}
+#+END_SRC
+
+*** gtk-3.0 config 
+
+#+NAME: gtk-3
+#+BEGIN_SRC conf
+[Settings]
+gtk-theme-name=Yaru-blue-dark
+gtk-icon-theme-name=Yaru-blue-dark
+gtk-application-prefer-dark-theme=true
+#+END_SRC
+
+*** gtk-4.0 config 
+
+#+NAME: gtk-4
+#+BEGIN_SRC conf
+[Settings]
+gtk-theme-name=Yaru-blue-dark
+gtk-icon-theme-name=Yaru-blue-dark
+gtk-application-prefer-dark-theme=true
+#+END_SRC
+
+*** gtk.css tangle
+
++ home dir
+
+#+NAME: gtk.css-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/gtk-3.0/gtk.css"
+<<gtk.css>>
+#+END_SRC
+
++ current dir
+
+#+NAME: gtk.css-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/gtk-3.0/gtk.css"
+<<gtk.css>>
+#+END_SRC
+
+*** gtk-3.0 tangle
+
++ home dir
+
+#+NAME: gtk-3-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/gtk-3.0/settings.ini"
+<<gtk-3>>
+#+END_SRC
+
++ current dir
+
+#+NAME: gtk-3-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/gtk-3.0/settings.ini"
+<<gtk-3>>
+#+END_SRC
+
+*** gtk-4.0 tangle
+
++ home dir
+
+#+NAME: gtk-4-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/gtk-4.0/settings.ini"
+<<gtk-4>>
+#+END_SRC
+
++ current dir
+
+#+NAME: gtk-4-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/gtk-4.0/settings.ini"
+<<gtk-4>>
+#+END_SRC
+
+** urlscan
+*** urlscan config
+
+#+NAME: urlscan
+#+BEGIN_SRC conf
+{
+    "palettes": {
+        "default": [
+            [
+                "header",
+                "black",
+                "dark blue",
+                "standout"
+            ],
+            [
+                "footer",
+                "white",
+                "default",
+                "standout"
+            ],
+            [
+                "search",
+                "white",
+                "default",
+                "standout"
+            ],
+            [
+                "msgtext",
+                "",
+                ""
+            ],
+            [
+                "msgtext:ellipses",
+                "light gray",
+                "default"
+            ],
+            [
+                "urlref:number:braces",
+                "light gray",
+                "default"
+            ],
+            [
+                "urlref:number",
+                "default",
+                "default",
+                "standout"
+            ],
+            [
+                "urlref:url",
+                "white",
+                "default",
+                "standout"
+            ],
+            [
+                "url:sel",
+                "default",
+                "dark blue",
+                "bold"
+            ]
+        ],
+        "bw": [
+            [
+                "header",
+                "black",
+                "light gray",
+                "standout"
+            ],
+            [
+                "footer",
+                "black",
+                "light gray",
+                "standout"
+            ],
+            [
+                "search",
+                "black",
+                "light gray",
+                "standout"
+            ],
+            [
+                "msgtext",
+                "",
+                ""
+            ],
+            [
+                "msgtext:ellipses",
+                "white",
+                "black"
+            ],
+            [
+                "urlref:number:braces",
+                "white",
+                "black"
+            ],
+            [
+                "urlref:number",
+                "white",
+                "black",
+                "standout"
+            ],
+            [
+                "urlref:url",
+                "white",
+                "black",
+                "standout"
+            ],
+            [
+                "url:sel",
+                "black",
+                "light gray",
+                "bold"
+            ]
+        ]
+    },
+    "keys": {
+        "/": "search_key",
+        "0": "digits",
+        "1": "digits",
+        "2": "digits",
+        "3": "digits",
+        "4": "digits",
+        "5": "digits",
+        "6": "digits",
+        "7": "digits",
+        "8": "digits",
+        "9": "digits",
+        "C": "clipboard",
+        "c": "context",
+        "ctrl l": "clear_screen",
+        "f1": "help_menu",
+        "G": "bottom",
+        "g": "top",
+        "j": "down",
+        "k": "up",
+        "P": "clipboard_pri",
+        "l": "link_handler",
+        "p": "palette",
+        "Q": "quit",
+        "q": "quit",
+        "S": "all_shorten",
+        "s": "shorten",
+        "u": "all_escape"
+    }
+}
+#+END_SRC
+
+*** urlscan tangle
+
++ home dir
+
+#+NAME: urlscan-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/urlscan/config.json"
+<<urlscan>>
+#+END_SRC
+
++ current dir
+
+#+NAME: urlscan-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/urlscan/config.json"
+<<urlscan>>
+#+END_SRC
+
+** wget
+*** wget config
+
+#+NAME: wget
+#+BEGIN_SRC conf
+hsts-file=/home/djwilcox/.cache/wget-hsts
+#+END_SRC
+
+*** wget tangle
+
++ home dir
+
+#+NAME: wget-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/wget/wgetrc"
+<<wget>>
+#+END_SRC
+
++ current dir
+
+#+NAME: wget-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/wget/wgetrc"
+<<wget>>
+#+END_SRC
+
+** muttrc
+*** muttrc config
+
+#+NAME: muttrc
+#+BEGIN_SRC conf
+set from = "danieljwilcox@gmail.com"
+set realname = "Daniel J Wilcox"
+
+# mutt colours
+#color normal default default
+#color hdrdefault black green
+#color quoted default default
+#color signature default default
+#color attachment default default
+#color message default default
+#color error default default
+#color indicator black green
+#color status black green
+#color tree default default
+#color normal default default
+#color markers default default
+#color search default default
+#color tilde default default
+#color index default default ~F
+#color index default default "~N|~O"
+
+# mutt colours
+color normal default default
+color hdrdefault black blue
+color quoted default default
+color signature default default
+color attachment default default
+color message default default
+color error default default
+#color indicator black blue
+color status black blue
+color tree default default
+color normal default default
+color markers default default
+color search default default
+color tilde default default
+color index default default ~F
+color index default default "~N|~O"
+
+
+set imap_user = "danieljwilcox@gmail.com"
+set smtp_url = "smtps://danieljwilcox@smtp.gmail.com:465/"
+source "gpg -d ~/.config/mutt/mutt-passwords.gpg |"
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+Inbox"
+set postponed = "+Drafts"
+#set trash = "imaps://imap.gmail.com/Trash"
+set record = "+Sent Mail"
+
+set header_cache = ~/.config/mutt/cache/headers
+set message_cachedir = ~/.config/mutt/cache/bodies
+set certificate_file = ~/.config/mutt/certificates
+set mailcap_path = ~/.config/mutt/mailcap       
+
+set sort=threads
+set sort_browser=reverse-date
+set sort_aux=reverse-last-date-received
+
+set move = "no" 
+set imap_idle = "yes"
+set mail_check = "60"
+set imap_keepalive = "900"
+set editor = "emacsclient"
+#set pager = "emacsclient"
+set beep_new
+
+# Ctrl-R to mark all as read
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+#set query_command="goobook query '%s'"
+#macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+
+set query_command = "abook --mutt-query '%s'"
+macro generic,index,pager \ca "<shell-escape>abook<return>" "launch abook"
+macro index,pager A "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+bind editor <Tab> complete-query
+
+bind index "^" imap-fetch-mail
+bind compose p pgp-menu
+macro compose Y pfy "send mail without GPG"
+
+bind index gg first-entry
+bind index G  last-entry
+
+bind pager k  previous-line
+bind pager j  next-line
+bind pager gg top
+bind pager G  bottom
+
+# View URLs inside Mutt with urlscan, ctrl b
+macro index \cb "|urlscan\n"
+macro pager \cb "|urlscan\n"
+
+
+# Note that we explicitly set the comment armor header since GnuPG, when used
+# in some localiaztion environments, generates 8bit data in that header, thereby
+# breaking PGP/MIME.
+
+# decode application/pgp
+set pgp_decode_command="gpg --status-fd=2 --no-verbose --quiet --batch --output - %f"
+
+# verify a pgp/mime signature
+set pgp_verify_command="gpg --status-fd=2 --no-verbose --quiet --batch --output - --verify %s %f"
+
+# decrypt a pgp/mime attachment
+set pgp_decrypt_command="gpg --status-fd=2 --no-verbose --quiet --batch --output - %f"
+
+# create a pgp/mime signed attachment
+# set pgp_sign_command="gpg-2comp --comment '' --no-verbose --batch --output - %?p?--passphrase-fd 0? --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_sign_command="gpg --no-verbose --batch --quiet --output - --armor --detach-sign --textmode %?a?-u %a? %f"
+
+# create a application/pgp signed (old-style) message
+# set pgp_clearsign_command="gpg-2comp --comment '' --no-verbose --batch --output - %?p?--passphrase-fd 0? --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --textmode --clearsign %?a?-u %a? %f"
+
+# create a pgp/mime encrypted attachment
+# set pgp_encrypt_only_command="pgpewrap gpg-2comp -v --batch --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_only_command="/usr/bin/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+
+# create a pgp/mime encrypted and signed attachment
+# set pgp_encrypt_sign_command="pgpewrap gpg-2comp %?p?--passphrase-fd 0? -v --batch --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/bin/pgpewrap gpg --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+
+# import a key into the public key ring
+set pgp_import_command="gpg --no-verbose --import %f"
+
+# export a key from the public key ring
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+
+# verify a key
+set pgp_verify_key_command="gpg --verbose --batch --fingerprint --check-sigs %r"
+
+# read in the public key ring
+set pgp_list_pubring_command="gpg --no-verbose --batch --quiet --with-colons --list-keys %r" 
+
+# read in the secret key ring
+set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --list-secret-keys %r" 
+
+# fetch keys
+# set pgp_getkeys_command="pkspxycwrap %r"
+# This will work when #172960 will be fixed upstream
+# set pgp_getkeys_command="gpg --recv-keys %r"
+
+# pattern for good signature - may need to be adapted to locale!
+
+# set pgp_good_sign="^gpgv?: Good signature from "
+
+# OK, here's a version which uses gnupg's message catalog:
+# set pgp_good_sign="`gettext -d gnupg -s 'Good signature from "' | tr -d '"'`"
+
+# This version uses --status-fd messages
+set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
+
+# daniel j wilcox pgp
+set pgp_use_gpg_agent="yes"
+set my_pgp_id="3B2C8BA1"
+#+END_SRC
+
+*** muttrc tangle
+
++ home dir
+
+#+NAME: muttrc-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/mutt/muttrc"
+<<muttrc>>
+#+END_SRC
+
++ current dir
+
+#+NAME: muttrc-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/mutt/muttrc"
+<<muttrc>>
+#+END_SRC
+
+** weechat
+*** weechat config 
+
+#+NAME: weechat.conf
+#+BEGIN_SRC conf
+#
+# weechat -- weechat.conf
+#
+# WARNING: It is NOT recommended to edit this file by hand,
+# especially if WeeChat is running.
+#
+# Use /set or similar command to change settings in WeeChat.
+#
+# For more info, see: https://weechat.org/doc/quickstart
+#
+
+[debug]
+
+[startup]
+command_after_plugins = ""
+command_before_plugins = ""
+display_logo = off
+display_version = on
+sys_rlimit = ""
+
+[look]
+align_end_of_lines = message
+align_multiline_words = on
+bar_more_down = "++"
+bar_more_left = "<<"
+bar_more_right = ">>"
+bar_more_up = "--"
+bare_display_exit_on_input = on
+bare_display_time_format = "%H:%M"
+buffer_auto_renumber = on
+buffer_notify_default = all
+buffer_position = end
+buffer_search_case_sensitive = off
+buffer_search_force_default = off
+buffer_search_regex = off
+buffer_search_where = prefix_message
+buffer_time_format = "[%H:%M]"
+color_basic_force_bold = off
+color_inactive_buffer = on
+color_inactive_message = on
+color_inactive_prefix = on
+color_inactive_prefix_buffer = on
+color_inactive_time = off
+color_inactive_window = on
+color_nick_offline = off
+color_pairs_auto_reset = 5
+color_real_white = off
+command_chars = ""
+command_incomplete = off
+confirm_quit = off
+confirm_upgrade = off
+day_change = on
+day_change_message_1date = "-- %a, %d %b %Y --"
+day_change_message_2dates = "-- %%a, %%d %%b %%Y (%a, %d %b %Y) --"
+eat_newline_glitch = off
+emphasized_attributes = ""
+highlight = ""
+highlight_regex = ""
+highlight_tags = ""
+hotlist_add_conditions = "${away} || ${buffer.num_displayed} == 0"
+hotlist_buffer_separator = ", "
+hotlist_count_max = 2
+hotlist_count_min_msg = 2
+hotlist_names_count = 3
+hotlist_names_length = 0
+hotlist_names_level = 12
+hotlist_names_merged_buffers = off
+hotlist_prefix = "H: "
+hotlist_remove = merged
+hotlist_short_names = on
+hotlist_sort = group_time_asc
+hotlist_suffix = ""
+hotlist_unique_numbers = on
+input_cursor_scroll = 20
+input_share = none
+input_share_overwrite = off
+input_undo_max = 32
+item_away_message = on
+item_buffer_filter = "*"
+item_buffer_zoom = "!"
+item_mouse_status = "M"
+item_time_format = "%H:%M"
+jump_current_to_previous_buffer = on
+jump_previous_buffer_when_closing = on
+jump_smart_back_to_buffer = on
+key_bind_safe = on
+key_grab_delay = 800
+mouse = off
+mouse_timer_delay = 100
+nick_color_force = ""
+nick_color_hash = djb2
+nick_color_stop_chars = "_|["
+nick_prefix = ""
+nick_suffix = ""
+paste_auto_add_newline = on
+paste_bracketed = on
+paste_bracketed_timer_delay = 10
+paste_max_lines = 1
+prefix_action = " *"
+prefix_align = none
+prefix_align_max = 15
+prefix_align_min = 0
+prefix_align_more = "+"
+prefix_align_more_after = on
+prefix_buffer_align = right
+prefix_buffer_align_max = 0
+prefix_buffer_align_more = "+"
+prefix_buffer_align_more_after = on
+prefix_error = "=!="
+prefix_join = "-->"
+prefix_network = "--"
+prefix_quit = "<--"
+prefix_same_nick = ""
+prefix_suffix = "|"
+quote_nick_prefix = "<"
+quote_nick_suffix = ">"
+quote_time_format = "%H:%M:%S"
+read_marker = line
+read_marker_always_show = off
+read_marker_string = "- "
+save_config_on_exit = on
+save_layout_on_exit = none
+scroll_amount = 3
+scroll_bottom_after_switch = off
+scroll_page_percent = 100
+search_text_not_found_alert = on
+separator_horizontal = "-"
+separator_vertical = ""
+tab_width = 1
+time_format = "%a, %d %b %Y %T"
+window_auto_zoom = off
+window_separator_horizontal = on
+window_separator_vertical = on
+window_title = "WeeChat ${info:version}"
+word_chars_highlight = "!\u00A0,-,_,|,alnum"
+word_chars_input = "!\u00A0,-,_,|,alnum"
+
+[palette]
+
+[color]
+bar_more = lightmagenta
+chat = default
+chat_bg = default
+chat_buffer = default
+chat_channel = white
+chat_day_change = cyan
+chat_delimiters = 2
+chat_highlight = default
+chat_highlight_bg = 1
+chat_host = cyan
+chat_inactive_buffer = default
+chat_inactive_window = default
+chat_nick = default
+chat_nick_colors = "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue"
+chat_nick_offline = default
+chat_nick_offline_highlight = default
+chat_nick_offline_highlight_bg = blue
+chat_nick_other = cyan
+chat_nick_prefix = green
+chat_nick_self = default
+chat_nick_suffix = green
+chat_prefix_action = white
+chat_prefix_buffer = brown
+chat_prefix_buffer_inactive_buffer = default
+chat_prefix_error = yellow
+chat_prefix_join = lightgreen
+chat_prefix_more = lightmagenta
+chat_prefix_network = magenta
+chat_prefix_quit = lightred
+chat_prefix_suffix = green
+chat_read_marker = default
+chat_read_marker_bg = default
+chat_server = brown
+chat_tags = red
+chat_text_found = yellow
+chat_text_found_bg = default
+chat_time = default
+chat_time_delimiters = 2
+chat_value = cyan
+chat_value_null = blue
+emphasized = default
+emphasized_bg = default
+input_actions = lightgreen
+input_text_not_found = red
+item_away = yellow
+nicklist_away = cyan
+nicklist_group = green
+separator = darkgray
+status_count_highlight = magenta
+status_count_msg = brown
+status_count_other = default
+status_count_private = green
+status_data_highlight = default
+status_data_msg = yellow
+status_data_other = default
+status_data_private = default
+status_filter = green
+status_more = yellow
+status_mouse = green
+status_name = white
+status_name_ssl = lightgreen
+status_nicklist_count = default
+status_number = yellow
+status_time = default
+
+[completion]
+base_word_until_cursor = on
+command_inline = on
+default_template = "%(nicks)|%(irc_channels)"
+nick_add_space = on
+nick_case_sensitive = off
+nick_completer = ":"
+nick_first_only = off
+nick_ignore_chars = "[]`_-^"
+partial_completion_alert = on
+partial_completion_command = off
+partial_completion_command_arg = off
+partial_completion_count = on
+partial_completion_other = off
+
+[history]
+display_default = 5
+max_buffer_lines_minutes = 0
+max_buffer_lines_number = 4096
+max_commands = 100
+max_visited_buffers = 50
+
+[proxy]
+
+[network]
+connection_timeout = 60
+gnutls_ca_file = "/etc/ssl/certs/ca-certificates.crt"
+gnutls_handshake_timeout = 30
+proxy_curl = ""
+
+[plugin]
+autoload = "*,!tcl,!ruby,!python2,!lua,!aspell"
+debug = off
+extension = ".so,.dll"
+path = "%h/plugins"
+save_config_on_unload = on
+
+[bar]
+buflist.color_bg = default
+buflist.color_delim = default
+buflist.color_fg = default
+buflist.conditions = ""
+buflist.filling_left_right = vertical
+buflist.filling_top_bottom = columns_vertical
+buflist.hidden = off
+buflist.items = "buflist"
+buflist.position = left
+buflist.priority = 0
+buflist.separator = on
+buflist.size = 0
+buflist.size_max = 0
+buflist.type = root
+fset.color_bg = default
+fset.color_delim = cyan
+fset.color_fg = default
+fset.conditions = "${buffer.full_name} == fset.fset"
+fset.filling_left_right = vertical
+fset.filling_top_bottom = horizontal
+fset.hidden = off
+fset.items = "fset"
+fset.position = top
+fset.priority = 0
+fset.separator = on
+fset.size = 3
+fset.size_max = 3
+fset.type = window
+input.color_bg = default
+input.color_delim = cyan
+input.color_fg = default
+input.conditions = ""
+input.filling_left_right = vertical
+input.filling_top_bottom = horizontal
+input.hidden = off
+input.items = "[input_prompt]+(away),[input_search],[input_paste],input_text"
+input.position = bottom
+input.priority = 1000
+input.separator = off
+input.size = 1
+input.size_max = 0
+input.type = window
+isetbar.color_bg = default
+isetbar.color_delim = cyan
+isetbar.color_fg = default
+isetbar.conditions = ""
+isetbar.filling_left_right = vertical
+isetbar.filling_top_bottom = horizontal
+isetbar.hidden = on
+isetbar.items = "isetbar_help"
+isetbar.position = top
+isetbar.priority = 0
+isetbar.separator = on
+isetbar.size = 3
+isetbar.size_max = 3
+isetbar.type = window
+nicklist.color_bg = default
+nicklist.color_delim = cyan
+nicklist.color_fg = default
+nicklist.conditions = "${nicklist}"
+nicklist.filling_left_right = vertical
+nicklist.filling_top_bottom = columns_vertical
+nicklist.hidden = off
+nicklist.items = "buffer_nicklist"
+nicklist.position = right
+nicklist.priority = 200
+nicklist.separator = on
+nicklist.size = 0
+nicklist.size_max = 0
+nicklist.type = window
+status.color_bg = 0
+status.color_delim = cyan
+status.color_fg = default
+status.conditions = ""
+status.filling_left_right = vertical
+status.filling_top_bottom = horizontal
+status.hidden = off
+status.items = "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],completion"
+status.position = bottom
+status.priority = 500
+status.separator = off
+status.size = 1
+status.size_max = 0
+status.type = window
+title.color_bg = 0
+title.color_delim = cyan
+title.color_fg = default
+title.conditions = ""
+title.filling_left_right = vertical
+title.filling_top_bottom = horizontal
+title.hidden = off
+title.items = "buffer_title"
+title.position = top
+title.priority = 500
+title.separator = off
+title.size = 1
+title.size_max = 0
+title.type = window
+
+[layout]
+
+[notify]
+
+[filter]
+
+[key]
+ctrl-? = "/input delete_previous_char"
+ctrl-A = "/input move_beginning_of_line"
+ctrl-B = "/input move_previous_char"
+ctrl-C_ = "/input insert \x1F"
+ctrl-Cb = "/input insert \x02"
+ctrl-Cc = "/input insert \x03"
+ctrl-Ci = "/input insert \x1D"
+ctrl-Co = "/input insert \x0F"
+ctrl-Cv = "/input insert \x16"
+ctrl-D = "/input delete_next_char"
+ctrl-E = "/input move_end_of_line"
+ctrl-F = "/input move_next_char"
+ctrl-H = "/input delete_previous_char"
+ctrl-I = "/input complete_next"
+ctrl-J = "/input return"
+ctrl-K = "/input delete_end_of_line"
+ctrl-L = "/window refresh"
+ctrl-M = "/input return"
+ctrl-N = "/buffer +1"
+ctrl-P = "/buffer -1"
+ctrl-R = "/input search_text_here"
+ctrl-Sctrl-U = "/input set_unread"
+ctrl-T = "/input transpose_chars"
+ctrl-U = "/input delete_beginning_of_line"
+ctrl-W = "/input delete_previous_word"
+ctrl-X = "/input switch_active_buffer"
+ctrl-Y = "/input clipboard_paste"
+meta-meta-OP = "/bar scroll buflist * b"
+meta-meta-OQ = "/bar scroll buflist * e"
+meta-meta2-1~ = "/window scroll_top"
+meta-meta2-23~ = "/bar scroll nicklist * b"
+meta-meta2-24~ = "/bar scroll nicklist * e"
+meta-meta2-4~ = "/window scroll_bottom"
+meta-meta2-5~ = "/window scroll_up"
+meta-meta2-6~ = "/window scroll_down"
+meta-meta2-7~ = "/window scroll_top"
+meta-meta2-8~ = "/window scroll_bottom"
+meta-meta2-A = "/buffer -1"
+meta-meta2-B = "/buffer +1"
+meta-meta2-C = "/buffer +1"
+meta-meta2-D = "/buffer -1"
+meta-- = "/filter toggle @"
+meta-/ = "/input jump_last_buffer_displayed"
+meta-0 = "/buffer *10"
+meta-1 = "/buffer *1"
+meta-2 = "/buffer *2"
+meta-3 = "/buffer *3"
+meta-4 = "/buffer *4"
+meta-5 = "/buffer *5"
+meta-6 = "/buffer *6"
+meta-7 = "/buffer *7"
+meta-8 = "/buffer *8"
+meta-9 = "/buffer *9"
+meta-< = "/input jump_previously_visited_buffer"
+meta-= = "/filter toggle"
+meta-> = "/input jump_next_visited_buffer"
+meta-OA = "/input history_global_previous"
+meta-OB = "/input history_global_next"
+meta-OC = "/input move_next_word"
+meta-OD = "/input move_previous_word"
+meta-OF = "/input move_end_of_line"
+meta-OH = "/input move_beginning_of_line"
+meta-OP = "/bar scroll buflist * -100%"
+meta-OQ = "/bar scroll buflist * +100%"
+meta-Oa = "/input history_global_previous"
+meta-Ob = "/input history_global_next"
+meta-Oc = "/input move_next_word"
+meta-Od = "/input move_previous_word"
+meta2-15~ = "/buffer -1"
+meta2-17~ = "/buffer +1"
+meta2-18~ = "/window -1"
+meta2-19~ = "/window +1"
+meta2-1;3A = "/buffer -1"
+meta2-1;3B = "/buffer +1"
+meta2-1;3C = "/buffer +1"
+meta2-1;3D = "/buffer -1"
+meta2-1;3F = "/window scroll_bottom"
+meta2-1;3H = "/window scroll_top"
+meta2-1;5A = "/input history_global_previous"
+meta2-1;5B = "/input history_global_next"
+meta2-1;5C = "/input move_next_word"
+meta2-1;5D = "/input move_previous_word"
+meta2-1~ = "/input move_beginning_of_line"
+meta2-200~ = "/input paste_start"
+meta2-201~ = "/input paste_stop"
+meta2-20~ = "/bar scroll title * -30%"
+meta2-21~ = "/bar scroll title * +30%"
+meta2-23;3~ = "/bar scroll nicklist * b"
+meta2-23~ = "/bar scroll nicklist * -100%"
+meta2-24;3~ = "/bar scroll nicklist * e"
+meta2-24~ = "/bar scroll nicklist * +100%"
+meta2-3~ = "/input delete_next_char"
+meta2-4~ = "/input move_end_of_line"
+meta2-5;3~ = "/window scroll_up"
+meta2-5~ = "/window page_up"
+meta2-6;3~ = "/window scroll_down"
+meta2-6~ = "/window page_down"
+meta2-7~ = "/input move_beginning_of_line"
+meta2-8~ = "/input move_end_of_line"
+meta2-A = "/input history_previous"
+meta2-B = "/input history_next"
+meta2-C = "/input move_next_char"
+meta2-D = "/input move_previous_char"
+meta2-F = "/input move_end_of_line"
+meta2-G = "/window page_down"
+meta2-H = "/input move_beginning_of_line"
+meta2-I = "/window page_up"
+meta2-Z = "/input complete_previous"
+meta2-[E = "/buffer -1"
+meta-_ = "/input redo"
+meta-a = "/input jump_smart"
+meta-b = "/input move_previous_word"
+meta-d = "/input delete_next_word"
+meta-f = "/input move_next_word"
+meta-h = "/input hotlist_clear"
+meta-jmeta-f = "/buffer -"
+meta-jmeta-l = "/buffer +"
+meta-jmeta-r = "/server raw"
+meta-jmeta-s = "/server jump"
+meta-j01 = "/buffer *1"
+meta-j02 = "/buffer *2"
+meta-j03 = "/buffer *3"
+meta-j04 = "/buffer *4"
+meta-j05 = "/buffer *5"
+meta-j06 = "/buffer *6"
+meta-j07 = "/buffer *7"
+meta-j08 = "/buffer *8"
+meta-j09 = "/buffer *9"
+meta-j10 = "/buffer *10"
+meta-j11 = "/buffer *11"
+meta-j12 = "/buffer *12"
+meta-j13 = "/buffer *13"
+meta-j14 = "/buffer *14"
+meta-j15 = "/buffer *15"
+meta-j16 = "/buffer *16"
+meta-j17 = "/buffer *17"
+meta-j18 = "/buffer *18"
+meta-j19 = "/buffer *19"
+meta-j20 = "/buffer *20"
+meta-j21 = "/buffer *21"
+meta-j22 = "/buffer *22"
+meta-j23 = "/buffer *23"
+meta-j24 = "/buffer *24"
+meta-j25 = "/buffer *25"
+meta-j26 = "/buffer *26"
+meta-j27 = "/buffer *27"
+meta-j28 = "/buffer *28"
+meta-j29 = "/buffer *29"
+meta-j30 = "/buffer *30"
+meta-j31 = "/buffer *31"
+meta-j32 = "/buffer *32"
+meta-j33 = "/buffer *33"
+meta-j34 = "/buffer *34"
+meta-j35 = "/buffer *35"
+meta-j36 = "/buffer *36"
+meta-j37 = "/buffer *37"
+meta-j38 = "/buffer *38"
+meta-j39 = "/buffer *39"
+meta-j40 = "/buffer *40"
+meta-j41 = "/buffer *41"
+meta-j42 = "/buffer *42"
+meta-j43 = "/buffer *43"
+meta-j44 = "/buffer *44"
+meta-j45 = "/buffer *45"
+meta-j46 = "/buffer *46"
+meta-j47 = "/buffer *47"
+meta-j48 = "/buffer *48"
+meta-j49 = "/buffer *49"
+meta-j50 = "/buffer *50"
+meta-j51 = "/buffer *51"
+meta-j52 = "/buffer *52"
+meta-j53 = "/buffer *53"
+meta-j54 = "/buffer *54"
+meta-j55 = "/buffer *55"
+meta-j56 = "/buffer *56"
+meta-j57 = "/buffer *57"
+meta-j58 = "/buffer *58"
+meta-j59 = "/buffer *59"
+meta-j60 = "/buffer *60"
+meta-j61 = "/buffer *61"
+meta-j62 = "/buffer *62"
+meta-j63 = "/buffer *63"
+meta-j64 = "/buffer *64"
+meta-j65 = "/buffer *65"
+meta-j66 = "/buffer *66"
+meta-j67 = "/buffer *67"
+meta-j68 = "/buffer *68"
+meta-j69 = "/buffer *69"
+meta-j70 = "/buffer *70"
+meta-j71 = "/buffer *71"
+meta-j72 = "/buffer *72"
+meta-j73 = "/buffer *73"
+meta-j74 = "/buffer *74"
+meta-j75 = "/buffer *75"
+meta-j76 = "/buffer *76"
+meta-j77 = "/buffer *77"
+meta-j78 = "/buffer *78"
+meta-j79 = "/buffer *79"
+meta-j80 = "/buffer *80"
+meta-j81 = "/buffer *81"
+meta-j82 = "/buffer *82"
+meta-j83 = "/buffer *83"
+meta-j84 = "/buffer *84"
+meta-j85 = "/buffer *85"
+meta-j86 = "/buffer *86"
+meta-j87 = "/buffer *87"
+meta-j88 = "/buffer *88"
+meta-j89 = "/buffer *89"
+meta-j90 = "/buffer *90"
+meta-j91 = "/buffer *91"
+meta-j92 = "/buffer *92"
+meta-j93 = "/buffer *93"
+meta-j94 = "/buffer *94"
+meta-j95 = "/buffer *95"
+meta-j96 = "/buffer *96"
+meta-j97 = "/buffer *97"
+meta-j98 = "/buffer *98"
+meta-j99 = "/buffer *99"
+meta-k = "/input grab_key_command"
+meta-l = "/window bare"
+meta-m = "/mute mouse toggle"
+meta-n = "/window scroll_next_highlight"
+meta-p = "/window scroll_previous_highlight"
+meta-r = "/input delete_line"
+meta-s = "/mute aspell toggle"
+meta-u = "/window scroll_unread"
+meta-wmeta-meta2-A = "/window up"
+meta-wmeta-meta2-B = "/window down"
+meta-wmeta-meta2-C = "/window right"
+meta-wmeta-meta2-D = "/window left"
+meta-wmeta2-1;3A = "/window up"
+meta-wmeta2-1;3B = "/window down"
+meta-wmeta2-1;3C = "/window right"
+meta-wmeta2-1;3D = "/window left"
+meta-wmeta-b = "/window balance"
+meta-wmeta-s = "/window swap"
+meta-x = "/input zoom_merged_buffer"
+meta-z = "/window zoom"
+ctrl-_ = "/input undo"
+
+[key_search]
+ctrl-I = "/input search_switch_where"
+ctrl-J = "/input search_stop_here"
+ctrl-M = "/input search_stop_here"
+ctrl-Q = "/input search_stop"
+ctrl-R = "/input search_switch_regex"
+meta2-A = "/input search_previous"
+meta2-B = "/input search_next"
+meta-c = "/input search_switch_case"
+
+[key_cursor]
+ctrl-J = "/cursor stop"
+ctrl-M = "/cursor stop"
+meta-meta2-A = "/cursor move area_up"
+meta-meta2-B = "/cursor move area_down"
+meta-meta2-C = "/cursor move area_right"
+meta-meta2-D = "/cursor move area_left"
+meta2-1;3A = "/cursor move area_up"
+meta2-1;3B = "/cursor move area_down"
+meta2-1;3C = "/cursor move area_right"
+meta2-1;3D = "/cursor move area_left"
+meta2-A = "/cursor move up"
+meta2-B = "/cursor move down"
+meta2-C = "/cursor move right"
+meta2-D = "/cursor move left"
+@item(buffer_nicklist):K = "/window ${_window_number};/kickban ${nick}"
+@item(buffer_nicklist):b = "/window ${_window_number};/ban ${nick}"
+@item(buffer_nicklist):k = "/window ${_window_number};/kick ${nick}"
+@item(buffer_nicklist):q = "/window ${_window_number};/query ${nick};/cursor stop"
+@item(buffer_nicklist):w = "/window ${_window_number};/whois ${nick}"
+@chat:Q = "hsignal:chat_quote_time_prefix_message;/cursor stop"
+@chat:m = "hsignal:chat_quote_message;/cursor stop"
+@chat:q = "hsignal:chat_quote_prefix_message;/cursor stop"
+
+[key_mouse]
+@bar(buflist):ctrl-wheeldown = "hsignal:buflist_mouse"
+@bar(buflist):ctrl-wheelup = "hsignal:buflist_mouse"
+@bar(input):button2 = "/input grab_mouse_area"
+@bar(nicklist):button1-gesture-down = "/bar scroll nicklist ${_window_number} +100%"
+@bar(nicklist):button1-gesture-down-long = "/bar scroll nicklist ${_window_number} e"
+@bar(nicklist):button1-gesture-up = "/bar scroll nicklist ${_window_number} -100%"
+@bar(nicklist):button1-gesture-up-long = "/bar scroll nicklist ${_window_number} b"
+@chat(fset.fset):button1 = "/window ${_window_number};/fset -go ${_chat_line_y}"
+@chat(fset.fset):button2* = "hsignal:fset_mouse"
+@chat(fset.fset):wheeldown = "/fset -down 5"
+@chat(fset.fset):wheelup = "/fset -up 5"
+@chat(perl.iset):button1 = "hsignal:iset_mouse"
+@chat(perl.iset):button2* = "hsignal:iset_mouse"
+@chat(perl.iset):wheeldown = "/repeat 5 /iset **down"
+@chat(perl.iset):wheelup = "/repeat 5 /iset **up"
+@chat(script.scripts):button1 = "/window ${_window_number};/script go ${_chat_line_y}"
+@chat(script.scripts):button2 = "/window ${_window_number};/script go ${_chat_line_y};/script installremove -q ${script_name_with_extension}"
+@chat(script.scripts):wheeldown = "/script down 5"
+@chat(script.scripts):wheelup = "/script up 5"
+@item(buffer_nicklist):button1 = "/window ${_window_number};/query ${nick}"
+@item(buffer_nicklist):button1-gesture-left = "/window ${_window_number};/kick ${nick}"
+@item(buffer_nicklist):button1-gesture-left-long = "/window ${_window_number};/kickban ${nick}"
+@item(buffer_nicklist):button2 = "/window ${_window_number};/whois ${nick}"
+@item(buffer_nicklist):button2-gesture-left = "/window ${_window_number};/ban ${nick}"
+@item(buflist):button1* = "hsignal:buflist_mouse"
+@item(buflist):button2* = "hsignal:buflist_mouse"
+@item(buflist2):button1* = "hsignal:buflist_mouse"
+@item(buflist2):button2* = "hsignal:buflist_mouse"
+@item(buflist3):button1* = "hsignal:buflist_mouse"
+@item(buflist3):button2* = "hsignal:buflist_mouse"
+@bar:wheeldown = "/bar scroll ${_bar_name} ${_window_number} +20%"
+@bar:wheelup = "/bar scroll ${_bar_name} ${_window_number} -20%"
+@chat:button1 = "/window ${_window_number}"
+@chat:button1-gesture-left = "/window ${_window_number};/buffer -1"
+@chat:button1-gesture-left-long = "/window ${_window_number};/buffer 1"
+@chat:button1-gesture-right = "/window ${_window_number};/buffer +1"
+@chat:button1-gesture-right-long = "/window ${_window_number};/input jump_last_buffer"
+@chat:ctrl-wheeldown = "/window scroll_horiz -window ${_window_number} +10%"
+@chat:ctrl-wheelup = "/window scroll_horiz -window ${_window_number} -10%"
+@chat:wheeldown = "/window scroll_down -window ${_window_number}"
+@chat:wheelup = "/window scroll_up -window ${_window_number}"
+@*:button3 = "/cursor go ${_x},${_y}"
+#+END_SRC
+
+*** weechat tangle
+
++ home dir
+
+#+NAME: weechat.conf-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/weechat/weechat.conf"
+<<weechat.conf>>
+#+END_SRC
+
++ current dir
+
+#+NAME: weechat.conf-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/weechat/weechat.conf"
+<<weechat.conf>>
+#+END_SRC
+
+** w3m
+*** w3m config
+**** bookmark.html
+
+#+NAME: w3m-bookmark.html
+#+BEGIN_SRC conf
+<html><head><title>Bookmarks</title></head>
+<META http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<body>
+<h1>Bookmarks</h1>
+<ul>
+<li><a href="https://duckduckgo.com/">DuckDuckgo</a></li>
+<li><a href="https://google.com/">Google</a></li>
+<li><a href="https://www.bbc.co.uk/iplayer">BBC iPlayer</a>
+<li><a href="https://www.itv.com">ITV Player</a>
+<li><a href="https://ixirc.com/">ixirc</a></li>
+<li><a href="http://www.xdcc.eu/">xdcc</a></li>
+</ul>
+<!--End of section (do not delete this comment)-->
+</ul>
+</body>
+</html>
+#+END_SRC
+
+**** config
+
+#+NAME: w3m-config
+#+BEGIN_SRC conf
+tabstop 8
+indent_incr 4
+pixel_per_char 12
+pixel_per_line 27
+frame 1
+target_self 0
+open_tab_blank 0
+open_tab_dl_list 0
+display_link 1
+display_link_number 0
+decode_url 0
+display_lineinfo 0
+ext_dirlist 1
+dirlist_cmd file:///$LIB/dirlist.cgi
+use_dictcommand 1
+dictcommand file:///$LIB/w3mdict.cgi
+multicol 0
+alt_entity 0
+graphic_char 0
+display_borders 1
+fold_textarea 0
+display_ins_del 1
+ignore_null_img_alt 0
+view_unseenobject 0
+display_image 1
+pseudo_inlines 1
+auto_image 1
+max_load_image 4
+ext_image_viewer 1
+image_scale 100
+imgdisplay w3mimgdisplay
+image_map_list 0
+fold_line 0
+show_lnum 0
+show_srch_str 1
+label_topline 0
+nextpage_topline 0
+color 1
+basic_color terminal
+anchor_color terminal
+image_color terminal
+form_color red
+mark_color terminal
+bg_color terminal
+active_style 1
+active_color cyan
+visited_anchor 0
+visited_color magenta
+pagerline 10000
+use_history 1
+history 100
+save_hist 0
+confirm_qq 0
+close_tab_back 0
+mark 0
+emacs_like_lineedit 0
+vi_prec_num 0
+mark_all_pages 1
+wrap_search 0
+ignorecase_search 1
+use_migemo 1
+migemo_command cmigemo -q -d /usr/share/cmigemo/utf-8/migemo-dict
+use_mouse 0
+reverse_mouse 0
+relative_wheel_scroll 0
+relative_wheel_scroll_ratio 30
+fixed_wheel_scroll_count 5
+clear_buffer 1
+decode_cte 0
+auto_uncompress 0
+preserve_timestamp 1
+keymap_file keymap
+document_root 
+personal_document_root 
+cgi_bin ~/.w3m/cgi-bin:/usr/lib/w3m/cgi-bin
+index_file 
+mime_types ~/.mime.types, /usr/local/etc/mime.types
+mailcap ~/.w3m/mailcap, /usr/local/etc/w3m/mailcap
+urimethodmap ~/.w3m/urimethodmap, /usr/local/etc/w3m/urimethodmap
+editor /home/djwilcox/.nix-profile/bin/emacsclient
+mailto_options 1
+mailer 
+extbrowser /usr/bin/xdg-open
+extbrowser2 
+extbrowser3 
+extbrowser4 
+extbrowser5 
+extbrowser6 
+extbrowser7 
+extbrowser8 
+extbrowser9 
+bgextviewer 1
+use_lessopen 0
+passwd_file ~/.w3m/passwd
+disable_secret_security_check 0
+ftppasswd 
+ftppass_hostnamegen 1
+pre_form_file ~/.w3m/pre_form
+siteconf_file /home/djwilcox/.w3m/siteconf
+user_agent Lynx/2.9.0dev.5 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/3.6.13
+no_referer 1
+accept_language en;q=1.0
+accept_encoding gzip, compress, bzip, bzip2, deflate
+accept_media text/html, text/*;q=0.5, image/*
+argv_is_url 1
+retry_http 1
+default_url 1
+follow_redirection 10
+meta_refresh 1
+dns_order 0
+nntpserver 
+nntpmode 
+max_news 50
+use_proxy 0
+http_proxy 
+https_proxy 
+gopher_proxy 
+ftp_proxy 
+no_proxy 
+noproxy_netaddr 1
+no_cache 0
+ssl_forbid_method 2, 3
+ssl_verify_server 1
+ssl_cert_file 
+ssl_key_file 
+ssl_ca_path 
+ssl_ca_file 
+use_cookie 0
+show_cookie 0
+accept_cookie 0
+accept_bad_cookie 0
+cookie_reject_domains 
+cookie_accept_domains 
+cookie_avoid_wrong_number_of_dots 
+display_charset US-ASCII
+document_charset UTF-8
+auto_detect 2
+system_charset US-ASCII
+follow_locale 1
+ext_halfdump 0
+use_wide 1
+use_combining 1
+east_asian_width 0
+use_language_tag 1
+ucs_conv 1
+pre_conv 1
+search_conv 1
+fix_width_conv 0
+use_gb12345_map 0
+use_jisx0201 0
+use_jisc6226 0
+use_jisx0201k 0
+use_jisx0212 0
+use_jisx0213 0
+strict_iso2022 1
+gb18030_as_ucs 0
+simple_preserve_space 0
+#+END_SRC
+
+**** cgi-bin
+***** functions-w3m
+
+#+NAME: functions-w3m
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# fzf prompt to specify function to run from readme.func
+file='/usr/share/doc/w3m/README.func'
+selection=$(awk '{ print $0 }' "${file}" | fzf --delimiter='\n' --prompt='Run w3m function: ' --info=inline --layout=reverse --no-multi | awk '{ print $1 }')
+
+# variables
+browser='/usr/bin/xdg-open'
+
+# default function
+default() {
+echo "${selection}" | xsel -ipsb
+}
+
+# open current page with external browser
+extern() {
+EXTERN="EXTERN ${browser}"
+echo "${EXTERN}" | xsel -ipsb
+}
+
+# open link with external browser
+extern_link() {
+EXTERN="EXTERN_LINK ${browser}"
+echo "${EXTERN_LINK}" | xsel -ipsb
+}
+
+# quit w3m and w3mimgdisplay with pkill -15
+quit() {
+pkill -15 w3m
+}
+
+# case statement match selection and run function
+case "${selection}" in
+   EXTERN) extern;;
+   EXTERN_LINK) extern_link;;
+   EXIT|ABORT) quit;;
+   ,*) default;;
+esac
+#+END_SRC
+
+***** fzf-surfraw
+
+#+NAME: fzf-surfraw
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# w3m and surfraw
+
+# clear screen
+printf "\033c"
+
+# select your elvi
+prefix=$(surfraw -elvi | grep -v 'LOCAL\|GLOBAL'| fzf -e --prompt='Search with: ' --info=inline --layout=reverse | awk '{print $1}')
+
+# exit script if no elvi is selected (e.g hit ESC)
+if [ "$prefix" = "" ]; then exit; fi
+
+# get user input using echo and fzf with the prompt set to the elvi name
+input=$(echo | fzf --print-query --prompt="${prefix}: " --info=inline --layout=reverse)
+
+# dont quote the input variable and copy the url to primary clipboard
+surfraw -p "$prefix" $input | xsel -p
+
+#+END_SRC
+
+***** google-redirector
+
+#+NAME: google-redirector
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# current link under cursor in w3m
+url="${W3M_CURRENT_LINK}"   
+
+# if the current link contains a url pipe it into grep,
+# remove the google redirect and decode the url
+#if the current link is empty set the url to the page url
+if [ ! -z "${url}" ]; then
+   result=$(echo "${url}" | \
+            grep -oP '(?<=google.com\/url\?q=)[^&]*(?=&)' \
+            | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));")
+   [ ! -z "${result}" ] && url="${result}" || url="${url}"
+else
+    url="${W3M_URL}"
+fi
+
+# W3m-control GOTO url without google redirect
+printf "%s\r\n" "W3m-control: GOTO ${url}";
+# delete previous buffer
+printf "%s\r\n" "W3m-control: DELETE_PREVBUF";
+#+END_SRC
+
+***** goto-clipboard-primary
+
+#+NAME: goto-clipboard-primary
+#+BEGIN_SRC conf
+#!/usr/bin/env sh
+# AUTHOR: gotbletu (@gmail|twitter|youtube|github|lbry)
+#         https://www.youtube.com/user/gotbletu
+# DESC:   paste and go feature for w3m web browser using primary clipboard (aka shift+insert)
+# DEMO:   https://youtu.be/p5NZb8f8AHA | updated https://youtu.be/0j3pUfZjCeQ
+# DEPEND: w3m  xsel
+# RQMTS:  1. allow permissions and put this script in /usr/lib/w3m/cgi-bin/
+#
+#         2. $EDITOR ~/.w3m/keymap
+#                       # paste url and go (current tab)
+#                       keymap  pp      GOTO        /usr/lib/w3m/cgi-bin/goto_clipboard_primary.cgi
+#
+#                       # paste url and go (new tab)
+#                       keymap  PP      TAB_GOTO    /usr/lib/w3m/cgi-bin/goto_clipboard_primary.cgi
+#
+#         3. set the default open-url to current url
+#               sed -i 's:default_url.*:default_url 1:g' ~/.w3m/config
+#
+# REFF:   https://github.com/felipesaa/A-vim-like-firefox-like-configuration-for-w3m
+# CLOG:   2021-02-05 version 0.2 reset url back to 1 (aka edit current url)
+#         2020-04-26 version 0.1
+
+
+# set open-url value to zero (aka empty url line)
+printf "%s\r\n" "W3m-control: SET_OPTION default_url=0";
+
+#GOTO url in clipboard in current page. If the clipboard has a 
+#"non url string/nothing" an blank page is shown.
+printf "%s\r\n" "W3m-control: GOTO $(xsel -op)";
+
+#delete the buffer (element in history) created between the current page and 
+#the searched page by calling this script.
+printf "W3m-control: DELETE_PREVBUF\r\n"
+
+# set default open-url value to one (aka current url)
+printf "%s\r\n" "W3m-control: SET_OPTION default_url=1";
+#+END_SRC
+
+***** magnet-cgi
+
+#+NAME: magnet-cgi
+#+BEGIN_SRC conf
+#!/bin/sh
+# AUTHOR: gotbletu (@gmail|twitter|youtube|github|lbry)
+#         https://www.youtube.com/user/gotbletu
+# DESC:   send magnet links to your torrent client (for W3M Web Browser)
+# DEMO:   https://youtu.be/T74FqHMHjN0
+# REQD:   1. touch ~/.w3m/urimethodmap
+#         2. echo "magnet: file:/cgi-bin/magnet.cgi?%s" >> ~/.w3m/urimethodmap
+#         3. chmod +x ~/.w3m/cgi-bin/magnet.cgi
+#         4. sed -i 's@cgi_bin.*@cgi_bin ~/.w3m/cgi-bin:/usr/lib/w3m/cgi-bin:/usr/local/libexec/w3m/cgi-bin@g' ~/.w3m/config
+#         5. sed -i 's@urimethodmap.*@urimethodmap ~/.w3m/urimethodmap, /usr/etc/w3m/urimethodmap@g' ~/.w3m/config
+
+
+if [ -d "/etc/netns/vpn" ]; then
+    printf "%s\r\n" "W3m-control: READ_SHELL namespace transmission-remote --add '$QUERY_STRING'"
+    printf "%s\r\n" "W3m-control: DELETE_PREVBUF"
+    printf "%s\r\n" "W3m-control: BACK"
+else
+    printf "%s\r\n" "W3m-control: READ_SHELL transmission-remote --add '$QUERY_STRING'"
+    printf "%s\r\n" "W3m-control: DELETE_PREVBUF"
+    printf "%s\r\n" "W3m-control: BACK"
+fi
+
+#+END_SRC
+
+***** run-command
+
+#+NAME: run-command
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# run w3m command from clipboard
+printf "%s\r\n" "W3m-control: $(xsel -opsb)";
+#+END_SRC
+
+***** sauron-w3m
+
+#+NAME: sauron-w3m
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# sauron - w3m
+
+# current link under cursor in w3m
+url="${W3M_CURRENT_LINK}"   
+
+# if the current link contains a url pipe it into grep,
+# remove the google redirect and decode the url
+# if the current link is empty set the url to the page url
+if [ ! -z "${url}" ]; then
+   result=$(echo "${url}" | \
+            grep -oP '(?<=google.com\/url\?q=)[^&]*(?=&)' \
+            | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));")
+   [ ! -z "${result}" ] && url="${result}" || url="${url}"
+else
+    url="${W3M_URL}"
+fi
+
+# mpd and taskspooler
+audio() {
+      tsp pinch -i "${url}" 1>/dev/null 
+}
+
+copy_link() {
+      echo -n "${url}" | xsel -b 1>/dev/null 
+}
+
+# youtube-dl and taskspooler
+download() {
+      tsp \
+      youtube-dl -f 'bestvideo[height<=?1080][fps<=?30][vcodec!=?vp9]+bestaudio/best' \
+      --restrict-filenames \
+      --no-playlist \
+      --ignore-config \
+       -o "~/Downloads/%(title)s.%(ext)s" \
+      "${url}" 1>/dev/null
+}
+
+# mpv fullscreen on second display and taskspooler
+fullscreen() {
+      tsp mpv --fs --screen=1 "${url}" 1>/dev/null 
+}
+
+# mpv and taskspooler
+video() {
+      tsp mpv --no-terminal "${url}" 1>/dev/null
+}
+
+# fzf prompt variables spaces to line up menu options
+audio_tsp='audio      - mpd play audio'
+copy_tsp='copy       - xsel copy url under the cusor to the clipboard'
+download_tsp='download   - youtube-dl download links'
+fullscreen_tsp='fullscreen - mpv play fullscreen on second display'
+video_tsp='video      - mpv play video on current display'
+
+# fzf prompt to specify function to run on links from ytfzf
+menu=$(printf "%s\n" \
+	      "${audio_tsp}" \
+	      "${copy_tsp}" \
+	      "${download_tsp}" \
+	      "${fullscreen_tsp}" \
+	      "${video_tsp}" \
+	      | fzf-tmux -d 15% --delimiter='\n' --prompt='Pipe links to: ' --info=inline --layout=reverse --no-multi)
+
+# case statement to run function based on fzf prompt output
+case "${menu}" in
+   audio*) audio;;
+   copy*) copy_link;;
+   download*) download;;
+   fullscreen*) fullscreen;;
+   video*) video;;
+   ,*) exit;;
+esac
+#+END_SRC
+
+***** video-cgi
+
+#+NAME: video-cgi
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# video.cgi
+
+# current link under cursor in w3m
+url="${W3M_CURRENT_LINK}"   
+
+# if the current link contains a url pipe it into grep,
+# remove the google redirect and decode the url
+# if the current link is empty set the url to the page url
+if [ ! -z "${url}" ]; then
+   result=$(echo "${url}" | \
+            grep -oP '(?<=google.com\/url\?q=)[^&]*(?=&)' \
+            | python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()));")
+   [ ! -z "${result}" ] && url="${result}" || url="${url}"
+else
+    url="${W3M_URL}"
+fi
+
+# queue the video with taskpooler and play the url with mpv on the current display
+#tsp mpv --no-terminal "${url}"
+
+# queue the video with taskpooler and play the url with mpv full screen on the second display
+tsp mpv --fs --screen=1 "${url}"
+
+# remove http prefix for notify-send to fix issue with (U) in the notification title
+#title=$(echo "${url}" | sed -e 's#https\?://\([www.]*\)##g')
+#notify-send "Queuing ♫" "${title}"
+
+# delete previous buffer
+printf "%s\r\n" "W3m-control: BACK";
+#+END_SRC
+
+***** bbc-search
+
+#+NAME: bbc-search
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# bbc search
+
+# base url and query string
+baseurl='https://www.bbc.co.uk/iplayer/search?'
+query="${QUERY_STRING}"
+url="${baseurl}${query}"
+
+# css selector
+css='div.list.search-list'
+
+# css exclude
+search='search-list__header'
+
+# outfile
+outfile='/tmp/bbc-search.html'
+
+# hxselect and sed
+curl "${url}" | hxnormalize -x \
+| hxselect -s '\n' -c "${css}" \
+| hxprune -c "${search}" \
+| sed -e 's#/iplayer/#https://www.bbc.co.uk/iplayer/#g' \
+-e "/<a/ { /href/ s/.*href=['\"]https:\/\/www.bbc.co.uk\/iplayer\/episode\/.*['\"]\([^<]*\)/&play/g }" \
+-e 's#?q=#https://www.bbc.co.uk/iplayer/search?q=#g' \
+> "${outfile}"
+
+# W3m-control
+printf "%s\r\n" "W3m-control: GOTO ${outfile}";
+# delete previous buffer
+printf "%s\r\n" "W3m-control: DELETE_PREVBUF";
+
+# clear screen
+printf "\033c"
+#+END_SRC
+
+***** bbc-episodes
+
+#+NAME: bbc-episodes
+#+BEGIN_SRC conf
+#!/bin/sh
+
+# bbc episodes
+
+# current link under cursor in w3m
+url="${W3M_CURRENT_LINK}"   
+
+# if the current link contains a url pipe it into grep,
+# remove the google redirect and decode the url
+#if the current link is empty set the url to the page url
+if [ ! -z "${url}" ]; then
+   url="${url}"
+else
+    url="${W3M_URL}"
+fi
+
+# css selector
+css='div.tleo-list'
+
+# css exclude
+secondary='content-item__info__secondary'
+
+# outfile
+outfile='/tmp/bbc-episodes.html'
+
+# hxselect and sed
+curl "${url}" | hxnormalize -x \
+| hxselect -s '\n' -c "${css}" \
+| hxprune -c "${secondary}" \
+| sed -e 's#/iplayer/#https://www.bbc.co.uk/iplayer/#g' \
+-e "/<a/ { /href/ s/.*href=['\"]https:\/\/www.bbc.co.uk\/iplayer\/episode\/.*['\"]\([^<]*\)/&play/g }" \
+> "${outfile}"
+
+# W3m-control
+printf "%s\r\n" "W3m-control: GOTO ${outfile}";
+# delete previous buffer
+printf "%s\r\n" "W3m-control: DELETE_PREVBUF";
+
+# clear screen
+printf "\033c"
+#+END_SRC
+
+**** keymap
+
+#+NAME: w3m-keymap
+#+BEGIN_SRC conf
+# surfraw prompt
+keymap xs COMMAND  "READ_SHELL ~/.w3m/cgi-bin/fzf_surfraw.cgi ; GOTO file:/cgi-bin/goto_clipboard_primary.cgi"
+
+# sauron-w3m prompt
+keymap ,-. COMMAND "READ_SHELL ~/.w3m/cgi-bin/sauron-w3m.cgi; BACK"
+
+# readability mode
+keymap ,-/ COMMAND "READ_SHELL 'python3 -m readability.readability -u $W3M_URL 2> /dev/null' ; VIEW ; DELETE_PREVBUF"
+
+# toggle borders
+keymap ,-t COMMAND "SET_OPTION display_borders=toggle ; RESHAPE"
+
+# toggle line numbers
+keymap ,-l COMMAND "SET_OPTION display_link_number=toggle ; RESHAPE"
+
+# w3m function prompt
+keymap .-, COMMAND "READ_SHELL ~/.w3m/cgi-bin/functions.cgi ; BACK ; GOTO file:/cgi-bin/run_command.cgi ; BACK"
+#+END_SRC
+
+**** mailcap
+
+#+NAME: w3m-mailcap
+#+BEGIN_SRC conf
+image/*; nsxiv %s
+#+END_SRC
+
+**** siteconf
+
+#+NAME: w3m-siteconf
+#+BEGIN_SRC conf
+# google set user agent to lynx
+url m@^https?://(.*\.)google\.com/@
+user_agent "Lynx/2.9.0dev.5 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/3.6.1"
+no_referer_from on
+
+# remove google redirect from search links
+url "http://www.google.com/url?" exact
+substitute_url "file:/cgi-bin/google-redirector.cgi?"
+
+# youtube open video links with mpv
+url "https://www.youtube.com/watch?" exact
+substitute_url "file:/cgi-bin/video.cgi?"
+
+# dailymotion open video links with mpv
+url "https://www.dailymotion.com/video"
+substitute_url "file:/cgi-bin/video.cgi?"
+
+# bbc iplayer open video links with mpv
+url "https://www.bbc.co.uk/iplayer/episode"
+substitute_url "file:/cgi-bin/video.cgi?"
+
+# bbc iplayer search
+url "https://www.bbc.co.uk/iplayer/search?"
+substitute_url "file:/cgi-bin/bbc-search.cgi?"
+
+# bbc iplayer episodes
+url "https://www.bbc.co.uk/iplayer/episodes"
+substitute_url "file:/cgi-bin/bbc-episodes.cgi?"
+#+END_SRC
+
+**** urimethodmap
+
+#+NAME: urimethodmap
+#+begin_src conf
+magnet: file:/cgi-bin/magnet.cgi?%s
+#+end_src
+
+*** w3m tangle
+**** bookmark.html
+
++ home dir
+
+#+NAME: w3m-bookmark.html-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/bookmark.html"
+<<w3m-bookmark.html>>
+#+END_SRC
+
++ current dir
+  
+#+NAME: w3m-bookmark.html-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/bookmark.html"
+<<w3m-bookmark.html>>
+#+END_SRC
+
+**** config
+
++ home dir
+
+#+NAME: w3m-config-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/config"
+<<w3m-config>>
+#+END_SRC
+
++ current dir
+
+#+NAME: w3m-config-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/config"
+<<w3m-config>>
+#+END_SRC
+
+**** cgi-bin
+***** functions-w3m
+
++ home dir
+
+#+NAME: functions-w3m-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/functions.cgi" :tangle-mode (identity #o755)
+<<functions-w3m>>
+#+END_SRC
+
++ current dir
+
+#+NAME: functions-w3m-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/functions.cgi" :tangle-mode (identity #o755)
+<<functions-w3m>>
+#+END_SRC
+
+***** fzf-surfraw
+
++ home dir
+
+#+NAME: fzf-surfraw-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/fzf_surfraw.cgi" :tangle-mode (identity #o755)
+<<fzf-surfraw>>
+#+END_SRC
+
++ current dir
+
+#+NAME: fzf-surfraw-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/fzf_surfraw.cgi" :tangle-mode (identity #o755)
+<<fzf-surfraw>>
+#+END_SRC
+
+***** google-redirector
+
++ home dir
+
+#+NAME: google-redirector-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/google-redirector.cgi" :tangle-mode (identity #o755)
+<<google-redirector>>
+#+END_SRC
+
++ current dir
+
+#+NAME: google-redirector-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/google-redirector.cgi" :tangle-mode (identity #o755)
+<<google-redirector>>
+#+END_SRC
+
+***** goto-clipboard-primary
+
++ home dir
+
+#+NAME: goto-clipboard-primary-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/goto_clipboard_primary.cgi" :tangle-mode (identity #o755)
+<<goto-clipboard-primary>>
+#+END_SRC
+
++ current dir
+
+#+NAME: goto-clipboard-primary-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/goto_clipboard_primary.cgi" :tangle-mode (identity #o755)
+<<goto-clipboard-primary>>
+#+END_SRC
+
+***** magnet-cgi
+
++ home dir
+
+#+NAME: magnet-cgi-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/magnet.cgi" :tangle-mode (identity #o755)
+<<magnet-cgi>>
+#+END_SRC
+
++ current dir
+
+#+NAME: magnet-cgi-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/magnet.cgi" :tangle-mode (identity #o755)
+<<magnet-cgi>>
+#+END_SRC
+
+***** run-command
+
++ home dir
+
+#+NAME: run-command-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/run_command.cgi" :tangle-mode (identity #o755)
+<<run-command>>
+#+END_SRC
+
++ current dir
+
+#+NAME: run-command-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/run_command.cgi" :tangle-mode (identity #o755)
+<<run-command>>
+#+END_SRC
+
+***** sauron-w3m
+
++ home dir
+
+#+NAME: sauron-w3m-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/sauron-w3m.cgi" :tangle-mode (identity #o755)
+<<sauron-w3m>>
+#+END_SRC
+
++ current dir
+
+#+NAME: sauron-w3m-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/sauron-w3m.cgi" :tangle-mode (identity #o755)
+<<sauron-w3m>>
+#+END_SRC
+
+***** video-cgi
+
++ home dir
+
+#+NAME: video-cgi-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/video.cgi" :tangle-mode (identity #o755)
+<<video-cgi>>
+#+END_SRC
+
++ current dir
+
+#+NAME: video-cgi-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/video.cgi" :tangle-mode (identity #o755)
+<<video-cgi>>
+#+END_SRC
+
+***** bbc-search
+
++ home dir
+
+#+NAME: bbc-search-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/bbc-search.cgi" :tangle-mode (identity #o755)
+<<bbc-search>>
+#+END_SRC
+
++ current dir
+
+#+NAME: bbc-search-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/bbc-search.cgi" :tangle-mode (identity #o755)
+<<bbc-search>>
+#+END_SRC
+
+***** bbc-episodes
+
++ home dir
+
+#+NAME: bbc-episodes-home-dir 
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/cgi-bin/bbc-episodes.cgi" :tangle-mode (identity #o755)
+<<bbc-episodes>>
+#+END_SRC
+
++ current dir
+
+#+NAME: bbc-episodes-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/cgi-bin/bbc-episodes.cgi" :tangle-mode (identity #o755)
+<<bbc-episodes>>
+#+END_SRC
+
+**** keymap
+
++ home dir
+
+#+NAME: w3m-keymap-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/keymap"
+<<w3m-keymap>>
+#+END_SRC
+
++ current dir
+
+#+NAME: w3m-keymap-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/keymap"
+<<w3m-keymap>>
+#+END_SRC
+
+**** mailcap
+
++ home dir
+
+#+NAME: w3m-mailcap-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/mailcap"
+<<w3m-mailcap>>
+#+END_SRC
+
++ current dir
+
+#+NAME: w3m-mailcap-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/mailcap"
+<<w3m-mailcap>>
+#+END_SRC
+
+**** siteconf
+
++ home dir
+
+#+NAME: w3m-siteconf-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/siteconf"
+<<w3m-siteconf>>
+#+END_SRC
+
++ current dir
+
+#+NAME: w3m-siteconf-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/siteconf"
+<<w3m-siteconf>>
+#+END_SRC
+
+**** urimethodmap
+
++ home dir
+
+#+NAME: w3m-urimethodmap-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.w3m/urimethodmap"
+<<urimethodmap>>
+#+END_SRC
+
++ current dir
+
+#+NAME: w3m-urimethodmap-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".w3m/urimethodmap"
+<<urimethodmap>>
+#+END_SRC
+
+** xkb
+*** xkb config
+**** rules
+***** evdev
+
+#+NAME: evdev
+#+begin_src conf
+! option = symbols
+  custom:alt_win_ctrl = +custom(alt_win_ctrl)
+
+! include %S/evdev
+#+end_src
+
+***** evdev.xml
+
+#+NAME: evdev.xml
+#+begin_src xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+<xkbConfigRegistry version="1.1">
+  <layoutList>
+    <layout>
+      <configItem>
+        <name>gb</name>
+      </configItem>
+      <variantList>
+        <variant>
+          <configItem>
+            <name>alt_win_ctrl</name>
+            <shortDescription>alt_win_ctrl</shortDescription>
+            <description>GB(alt_win_ctrl)</description>
+          </configItem>
+        </variant>
+      </variantList>
+    </layout>
+  </layoutList>
+  <optionList>
+    <group allowMultipleSelection="true">
+      <configItem>
+        <name>custom</name>
+        <description>custom options</description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>custom:alt_win_ctrl</name>
+          <description>Ctrl is mapped to Alt, Alt to Win, and Win to the Ctrl key.</description>
+        </configItem>
+      </option>
+    </group>
+  </optionList>
+</xkbConfigRegistry>
+#+end_src
+
+**** symbols
+***** custom
+
+#+NAME: xkb-custom
+#+BEGIN_SRC conf
+// Ctrl is mapped to Alt, Alt to Win, and Win to the Ctrl key.
+partial modifier_keys
+xkb_symbols "alt_win_ctrl" {
+    key <LALT> { [ Super_L ] };
+    key <LWIN> { [ Control_L, Control_L ] };
+    key <LCTL> { [ Alt_L, Meta_L ] };
+    key <AE03> { [ 3, numbersign, sterling ] };
+};
+#+END_SRC
+
+***** gb
+
+#+NAME: xkb-gb
+#+BEGIN_SRC conf
+default partial alphanumeric_keys 
+xkb_symbols "alt_win_ctrl" {
+
+    // mac swap alt_win_ctrl
+
+    // include "macintosh_vndr/gb"
+
+    name[Group1]= "alt_win_ctrl - Mac";
+
+    key <LALT> { [ Super_L ] };
+    key <LWIN> { [ Control_L, Control_L ] };
+    key <LCTL> { [ Alt_L, Meta_L ] };
+    key <AE03> { [ 3, numbersign, sterling ] };
+};
+#+END_SRC
+
+*** xkb tangle
+**** rules
+***** evdev
+
++ home dir
+
+#+NAME: evdev-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/xkb/rules/evdev"
+<<evdev>>
+#+END_SRC
+
++ current dir
+
+#+NAME: evdev-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/xkb/rules/evdev"
+<<evdev>>
+#+END_SRC
+
+***** evdev.xml
+
++ home dir
+
+#+NAME: evdev-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/xkb/rules/evdev.xml"
+<<evdev.xml>>
+#+END_SRC
+
++ current dir
+
+#+NAME: evdev-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/xkb/rules/evdev.xml"
+<<evdev.xml>>
+#+END_SRC
+**** symbols
+***** custom
+
++ home dir
+
+#+NAME: xkb-custom-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/xkb/symbols/custom"
+<<xkb-custom>>
+#+END_SRC
+
++ current dir
+
+#+NAME: xkb-custom-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/xkb/symbols/custom"
+<<xkb-custom>>
+#+END_SRC
+
+***** gb
+
++ home dir
+
+#+NAME: xkb-gb-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/xkb/symbols/gb"
+<<xkb-gb>>
+#+END_SRC
+
++ current dir
+
+#+NAME: xkb-gb-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/xkb/symbols/gb"
+<<xkb-gb>>
+#+END_SRC
+
