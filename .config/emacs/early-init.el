@@ -25,7 +25,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; no title bar
-(add-to-list 'default-frame-alist '(undecorated . t))
+;;(add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; opacity
 (add-hook 'after-make-frame-functions

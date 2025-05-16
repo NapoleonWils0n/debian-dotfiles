@@ -1660,7 +1660,7 @@ minibuffer with something like `exit-minibuffer'."
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; no title bar
-(add-to-list 'default-frame-alist '(undecorated . t))
+;;(add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; opacity
 (add-hook 'after-make-frame-functions
@@ -3224,39 +3224,6 @@ color alert = black,bold
 
 ** systemd
 *** systemd config
-**** ssh-agent.service
-
-#+NAME: ssh-agent.service
-#+BEGIN_SRC conf
-[Unit]
-Description=SSH key agent
-
-[Service]
-Type=forking
-Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
-ExecStart=/usr/bin/ssh-agent -a $SSH_AUTH_SOCK
-
-[Install]
-WantedBy=default.target
-#+END_SRC
-
-**** emacs.service
-
-#+NAME: emacs.service
-#+BEGIN_SRC conf
-[Unit]
-Description=Emacs: the extensible, self-documenting text editor
-
-[Service]
-Type=forking
-ExecStart=/usr/bin/emacs --daemon
-ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
-Restart=always
-
-[Install]
-WantedBy=default.target
-#+END_SRC
-
 **** mpd.service
 
 #+NAME: mpd.service
@@ -3273,38 +3240,6 @@ WantedBy=default.target
 #+END_SRC
 
 *** systemd tangle
-**** ssh-agent.service
-
-+ home dir
-
-#+NAME: ssh-agent.service-home-dir
-#+BEGIN_SRC conf :noweb yes :tangle "~/.config/systemd/user/ssh-agent.service"
-<<ssh-agent.service>>
-#+END_SRC
-
-+ current dir
-
-#+NAME: ssh-agent.service-current-dir
-#+BEGIN_SRC conf :noweb yes :tangle ".config/systemd/user/ssh-agent.service"
-<<ssh-agent.service>>
-#+END_SRC
-
-**** emacs.service
-
-+ home dir
-
-#+NAME: emacs.service-home-dir
-#+BEGIN_SRC conf :noweb yes :tangle "~/.config/systemd/user/emacs.service"
-<<emacs.service>>
-#+END_SRC
-
-+ current dir
-
-#+NAME: emacs.service-current-dir
-#+BEGIN_SRC conf :noweb yes :tangle ".config/systemd/user/emacs.service"
-<<emacs.service>>
-#+END_SRC
-
 **** mpd.service
 
 + home dir
