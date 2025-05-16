@@ -3381,7 +3381,7 @@ enabled=False
 #+BEGIN_SRC conf
 [Desktop Entry]
 Type=Application
-Exec=/usr/local/bin/nognome_notifications
+Exec=/home/djwilcox/bin/nognome_notifications
 Hidden=True
 NoDisplay=True
 X-GNOME-Autostart-enabled=true
