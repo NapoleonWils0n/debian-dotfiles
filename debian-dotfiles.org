@@ -2465,7 +2465,11 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 set-window-option -g mode-keys vi
 
 # Some tweaks to the status line
-set -g status-right "%H:%M"
+# set -g status-right "%H:%M" # date and time
+
+# volume, date and time
+set -g status-right "[#(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '/Volume/{print $2}')|%H:%M]"
+set -g status-interval 1 # Update every 1 second
 set -g status-right-style fg=color245
 
 # If running inside tmux ($TMUX is set), then change the status line to red
@@ -2808,6 +2812,79 @@ fs-screen=1
 #+NAME: yt-dlp-current-dir
 #+BEGIN_SRC conf :noweb yes :tangle ".config/yt-dlp/config"
 <<yt-dlp>>
+#+END_SRC
+
+** wireplumber
+*** wireplumber config
+
+#+NAME: wireplumber
+#+BEGIN_SRC conf
+monitor.alsa.rules = [
+  {
+    matches = [
+      {
+        object.path = "alsa:acp:PCH:6:playback"
+      }
+    ]
+    actions = {
+      update-props = {
+        node.description = "laptop"
+      }
+    }
+  },
+  {
+    matches = [
+      {
+        object.path = "alsa:acp:PCH:0:capture"
+      }
+    ]
+    actions = {
+      update-props = {
+        node.description = "mic"
+      }
+    }
+  },
+  {
+    matches = [
+      {
+        object.path = "alsa:acp:SoundSticks:1:playback"
+      }
+    ]
+    actions = {
+      update-props = {
+        node.description = "speakers"
+      }
+    }
+  },
+  {
+    matches = [
+      {
+        object.path = "alsa:acp:Snowball:0:capture"
+      }
+    ]
+    actions = {
+      update-props = {
+        node.description = "yeti"
+      }
+    }
+  }
+]
+#+END_SRC
+
+*** wireplumber tangle
+
++ home dir
+
+#+NAME: wireplumber-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/wireplumber/wireplumber.conf.d/device-rename.conf"
+<<wireplumber>>
+#+END_SRC
+
++ current dir
+
+#+NAME: wireplumber-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/wireplumber/wireplumber.conf.d/device-rename.conf"
+<<wireplumber>>
 #+END_SRC
 
 ** kodi
