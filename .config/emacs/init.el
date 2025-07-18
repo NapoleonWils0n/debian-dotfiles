@@ -884,7 +884,7 @@ targets."
 (add-hook 'text-mode-hook #'hl-line-mode)
 
 ;; flycheck syntax linting
-(add-hook 'sh-mode-hook 'flycheck-mode)
+;;(add-hook 'sh-mode-hook 'flycheck-mode)
 
 
 ;; ----------------------------------------------------------------------------------
