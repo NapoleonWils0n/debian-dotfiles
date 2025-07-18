@@ -2489,7 +2489,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 set-window-option -g mode-keys vi
 
 # Some tweaks to the status line
-set -g status-right "%H:%M" # date and time
+#set -g status-right "%H:%M" # date and time
+set -g status-right "" # date and time
 set -g status-right-style fg=color245
 
 # If running inside tmux ($TMUX is set), then change the status line to red
