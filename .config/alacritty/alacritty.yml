@@ -7,7 +7,6 @@ window:
     y: 4
 
   decorations: full
-  opacity: 0.90
   title: Alacritty
 
   class:
