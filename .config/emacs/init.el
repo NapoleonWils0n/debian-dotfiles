@@ -180,6 +180,9 @@
 ;; mpd host
 (setq mpc-host "/home/djwilcox/.config/mpd/socket")
 
+;; xkb fix for alt and super
+(setq x-alt-keysym 'meta)
+(setq x-super-keysym 'meta)
 
 ;; ----------------------------------------------------------------------------------
 ;; TAB bar mode
