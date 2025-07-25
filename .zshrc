@@ -1,36 +1,69 @@
+#===============================================================================
 # ~/.zshrc
+#===============================================================================
 
+#===============================================================================
 # ssh zsh fix
+#===============================================================================
+
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
+
+#===============================================================================
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+#===============================================================================
+
 HISTSIZE=1000
 
+
+#===============================================================================
 # variables for PS3 prompt
+#===============================================================================
+
 newline=$'\n'
 yesmaster='Yes Master ? '
 
+
+#===============================================================================
 # Source the git-prompt.sh script on Debian
+#===============================================================================
+
 source /usr/lib/git-core/git-sh-prompt
 
+
+#===============================================================================
 # export git status options
+#===============================================================================
+
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto"
 export GIT_PS1_SHOWCOLORHINTS=true
 
+
+#===============================================================================
 # PS3 prompt function
+#===============================================================================
+
 function zle-line-init zle-keymap-select {
     PS1="[%n@%M %~]$(__git_ps1 "(%s) ")${newline}${yesmaster}"
     zle reset-prompt
 }
 
+
+#===============================================================================
 # run PS3 prompt function
+#===============================================================================
+
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+
+#===============================================================================
 # set terminal window title to program name
+#===============================================================================
+
 case $TERM in
   (*xterm* | rxvt | rxvt-unicode-256color)
     function precmd {
@@ -42,7 +75,11 @@ case $TERM in
   ;;
 esac
 
+
+#===============================================================================
 # Fix bugs when switching modes
+#===============================================================================
+
 bindkey -v # vi mode
 bindkey "^?" backward-delete-char
 bindkey "^u" backward-kill-line
@@ -50,11 +87,19 @@ bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
 bindkey "^k" kill-line
 
+
+#===============================================================================
 # Use modern completion system
+#===============================================================================
+
 autoload -Uz compinit
 compinit
 
+
+#===============================================================================
 # Set/unset  shell options
+#===============================================================================
+
 setopt notify globdots pushdtohome cdablevars autolist
 setopt recexact longlistjobs
 setopt autoresume histignoredups pushdsilent noclobber
@@ -64,7 +109,10 @@ setopt histignorealldups sharehistory
 cdpath=($HOME)
 unsetopt bgnice autoparamslash
 
+
+#===============================================================================
 # Completion Styles
+#===============================================================================
 
 # list of completers to use
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
@@ -113,7 +161,11 @@ zstyle ":completion:*:(sudo|su|doas):*" command-path /usr/local/bin /home/djwilc
 # rehash commands
 zstyle ':completion:*' rehash true
 
+
+#===============================================================================
 # highlighting
+#===============================================================================
+
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=cyan,underline
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=cyan,underline
@@ -121,10 +173,18 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=cyan
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 
+
+#===============================================================================
 # namespace autocomplete
+#===============================================================================
+
 compdef _precommand namespace
 
+
+#===============================================================================
 # transmission autocomplete
+#===============================================================================
+
 compdef _gnu_generic transmission-daemon
 compdef _gnu_generic transmission-remote
 compdef _gnu_generic transmission-show
@@ -133,6 +193,10 @@ compdef _gnu_generic transmission-create
 compdef _gnu_generic transmission-edit
 compdef _gnu_generic transmission-pwgen
 
+
+#===============================================================================
 # aliases
+#===============================================================================
+
 # mpc host and socket
 alias mpc='mpc --host="${HOME}/.config/mpd/socket"'
