@@ -175,30 +175,6 @@ ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 
 
 #===============================================================================
-# namespace autocomplete
-#===============================================================================
-
-compdef _precommand namespace
-
-
-#===============================================================================
-# vpn-netns
-#===============================================================================
-
-_vpn-netns() {
-  local curcontext="$curcontext" state line
-  typeset -A opt_args
-
-  _arguments -s \
-    '-c[OpenVPN configuration file]:config file:_files -g "*.ovpn"' \
-    '-a[Authentication file]:auth file:_files -g "*.txt"' \
-    '-h[Show help]'
-}
-
-compdef _vpn-netns vpn-netns
-
-
-#===============================================================================
 # vpn-route
 #===============================================================================
 
