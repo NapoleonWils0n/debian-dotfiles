@@ -25,7 +25,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; no title bar
-;;(add-to-list 'default-frame-alist '(undecorated . t))
+(add-to-list 'default-frame-alist '(undecorated . t))
 
 ;;Tell emacs where is your personal elisp lib dir
 (add-to-list 'load-path "~/.config/emacs/lisp/")
