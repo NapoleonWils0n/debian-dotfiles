@@ -1207,12 +1207,28 @@
         gptel-backend (gptel-make-gemini "Gemini"
                                          :key (gptel-api-key-from-auth-source "generativelanguage.googleapis.com")
                                          :stream t))
+  
 
-  ;; display the Gemini buffer in same window
+;; ----------------------------------------------------------------------------------
+;; display the Ollama buffer in same window
+;; ----------------------------------------------------------------------------------
+
+  (add-to-list 'display-buffer-alist
+     '("^*Ollama*" display-buffer-same-window))
+
+
+;; ----------------------------------------------------------------------------------
+;; display the Gemini buffer in same window
+;; ----------------------------------------------------------------------------------
+
   (add-to-list 'display-buffer-alist
                '("^*Gemini*" display-buffer-same-window))
 
-  ;; gptel set org source blocks to use sh and not bash
+
+;; ----------------------------------------------------------------------------------
+;; gptel set org source blocks to use sh and not bash
+;; ----------------------------------------------------------------------------------
+
   (defun my/gptel-fix-src-header (beg end)
     (save-excursion
       (goto-char beg)
@@ -1220,8 +1236,10 @@
         (replace-match "#+begin_src sh"))))
 
 
-  ;; gptel-tools
-  ;; create file
+;; ----------------------------------------------------------------------------------
+;; gptel-tools create file
+;; ----------------------------------------------------------------------------------
+
     (gptel-make-tool
      :function (lambda (path filename content)
                  (let ((full-path (expand-file-name filename path)))
@@ -1242,7 +1260,11 @@
                    :description "The content to write to the file"))
      :category "filesystem")
 
-  ;; read file
+
+;; ----------------------------------------------------------------------------------
+;; gptel-tools read file
+;; ----------------------------------------------------------------------------------
+
   (gptel-make-tool
    :function (lambda (filepath)
                (with-temp-buffer
@@ -1255,7 +1277,11 @@
                  :description "Path to the file to read. Supports relative paths and ~."))
    :category "filesystem")
 
-  ;; edit file
+
+;; ----------------------------------------------------------------------------------
+;; gptel-tools edit file
+;; ----------------------------------------------------------------------------------
+
   (defun my-gptel--edit_file (file-path file-edits)
     "In FILE-PATH, apply FILE-EDITS with pattern matching and replacing."
     (if (and file-path (not (string= file-path "")) file-edits)
@@ -1307,7 +1333,48 @@
                          :description "The list of edits to apply on the file"))
      :category "filesystem")
 
-  (add-hook 'gptel-post-response-functions #'my/gptel-fix-src-header))
+
+;; ----------------------------------------------------------------------------------
+;; gptel-tools read buffer
+;; ----------------------------------------------------------------------------------
+
+    (gptel-make-tool
+     :function (lambda (buffer)
+                 (unless (buffer-live-p (get-buffer buffer))
+                   (error "Error: buffer %s is not live." buffer))
+                 (with-current-buffer buffer
+                   (buffer-substring-no-properties (point-min) (point-max))))
+     :name "read_buffer"
+     :description "Return the contents of an Emacs buffer"
+     :args (list '(:name "buffer"
+                   :type string
+                   :description "The name of the buffer whose contents are to be retrieved"))
+     :category "emacs")
+
+
+;; ----------------------------------------------------------------------------------
+;; gptel-tools read url
+;; ----------------------------------------------------------------------------------
+
+    (gptel-make-tool
+     :function (lambda (url)
+                 (with-current-buffer (url-retrieve-synchronously url)
+                   (goto-char (point-min))
+                   (forward-paragraph)
+                   (let ((dom (libxml-parse-html-region (point) (point-max))))
+                     (run-at-time 0 nil #'kill-buffer (current-buffer))
+                     (with-temp-buffer
+                       (shr-insert-document dom)
+                       (buffer-substring-no-properties (point-min) (point-max))))))
+     :name "read_url"
+     :description "Fetch and read the contents of a URL"
+     :args (list '(:name "url"
+                   :type string
+                   :description "The URL to read"))
+     :category "web")
+
+    ;; end of gptel use-package config
+    (add-hook 'gptel-post-response-functions #'my/gptel-fix-src-header)) 
 
 
 ;; ----------------------------------------------------------------------------------
