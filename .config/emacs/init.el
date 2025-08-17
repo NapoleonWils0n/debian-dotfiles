@@ -431,28 +431,6 @@
 (use-package yaml-mode)
 
 
-;; ----------------------------------------------------------------------------------
-;; treesitter
-;; ----------------------------------------------------------------------------------
-
-(require 'treesit)
-
-;; Use `major-mode-remap-alist` for languages that have a Treesitter major mode.
-;; M-x treesit-install-language-grammar bash
-(add-to-list
- 'treesit-language-source-alist
- '(bash "https://github.com/tree-sitter/tree-sitter-bash.git" "v0.20.1"))
-
-(setq major-mode-remap-alist
-      '((sh-mode . bash-ts-mode)))
-
-;; treesitter explore open in side window
-(add-to-list 'display-buffer-alist
-   '("^*tree-sitter explorer *" display-buffer-in-side-window
-     (side . right)
-     (window-width . 0.50)))
-
-
 ;;----------------------------------------------------------------------------------
 ;; ob-sync
 ;;----------------------------------------------------------------------------------
