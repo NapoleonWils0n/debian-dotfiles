@@ -2211,8 +2211,8 @@ profile=hwdec
 # hardware acceleration profile
 [hwdec]
 profile-desc="hardware acceleration, no cache, yt-dlp 1080 or less"
-vo=gpu
-hwdec=vaapi
+#vo=gpu
+#hwdec=vaapi
 
 # hide: GNOME's wayland compositor lacks support for the idle inhibit protocol. 
 #msg-level=ffmpeg=fatal,vo/gpu/wayland=no
@@ -2256,9 +2256,6 @@ profile-cond=path:find('youtu%.?be') ~= nil
 profile=hwdec
 # override hwdec profile cache setting
 cache=yes
-# fullscreen 2nd display
-fs
-fs-screen=1
 
 # archive.org conditional auto profile match any archive.org url
 [archive]
@@ -2268,10 +2265,6 @@ profile-cond=path:find('archive.org') ~= nil
 profile=hwdec
 # override hwdec profile cache setting
 cache=auto
-# fullscreen 2nd display
-fs
-fs-screen=1
-
 
 # bbc iplayer conditional auto profile match any bbc iplayer url
 [iplayer]
@@ -2281,10 +2274,6 @@ profile-cond=path:find('bbc.co.uk/iplayer') ~= nil
 profile=hwdec
 # override hwdec profile cache setting
 cache=no
-# fullscreen 2nd display
-fs
-fs-screen=1
-
 
 # bbc iplayer conditional auto profile match any bbc iplayer url
 [bbc]
@@ -2294,9 +2283,6 @@ profile-cond=path:find('bbc:pips:service') ~= nil
 profile=hwdec
 # override hwdec profile cache setting
 cache=no
-# fullscreen 2nd display
-fs
-fs-screen=1
 #+END_SRC
 
 *** mpv tangle
