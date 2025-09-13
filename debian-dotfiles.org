@@ -450,6 +450,7 @@ emacs --batch -l org --eval '(org-babel-tangle-file "~/git/ubuntu-dotfiles/ubunt
 ;; general packages : use-package
 ;; ----------------------------------------------------------------------------------
 
+(use-package csv-mode)
 (use-package evil-leader)
 (use-package git-auto-commit-mode)
 (use-package iedit)
