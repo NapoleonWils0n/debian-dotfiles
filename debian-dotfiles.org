@@ -2359,6 +2359,469 @@ cache=no
 <<yt-dlp>>
 #+END_SRC
 
+** podman
+*** invidious
+**** invidious set up
+
+create the invidious-podman directory
+
+#+begin_src sh
+mkdir -p invidious-podman
+#+end_src
+
+change into the invidious-podman directory
+
+#+begin_src sh
+cd invidious-podman
+#+end_src
+
+clone the invidious git repo
+
+#+begin_src sh
+git clone https://github.com/iv-org/invidious.git
+#+end_src
+
+***** start invidious
+
+change directory into the invidious-podman directory
+
+make sure the start-invidious is executable
+
+#+begin_src sh
+chmod +x start-invidious
+#+end_src
+
+and run the start-invidious script
+
+#+begin_src sh 
+./start-invidious
+#+end_src
+
+***** stop invidious
+
+change directory into the invidious-podman directory
+
+and run podman-compose down
+
+#+begin_src sh 
+podman-compose down
+#+end_src
+
+**** invidious config
+***** compose.yml
+
+#+NAME: invidious-compose.yaml
+#+begin_src yaml
+version: "3"
+services:
+
+  invidious:
+    image: quay.io/invidious/invidious:latest
+    # image: quay.io/invidious/invidious:latest-arm64 # ARM64/AArch64 devices
+    restart: unless-stopped
+    # Remove "127.0.0.1:" if used from an external IP
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      # Please read the following file for a comprehensive list of all available
+      # configuration options and their associated syntax:
+      # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
+      INVIDIOUS_CONFIG: |
+        db:
+          dbname: invidious
+          user: kemal
+          password: kemal
+          host: invidious-db
+          port: 5432
+        check_tables: true
+        invidious_companion:
+        # URL used for the internal communication between invidious and invidious companion
+        # There is no need to change that except if Invidious companion does not run on the same docker compose file.
+        - private_url: "http://companion:8282/companion"
+        # IT is NOT recommended to use the same key as HMAC KEY. Generate a new key!
+        # Use the key generated in the 2nd step
+        invidious_companion_key: ${INVIDIOUS_COMPANION_KEY}
+        # external_port:
+        # domain:
+        # https_only: false
+        # statistics_enabled: false
+        # Use the key generated in the 2nd step
+        hmac_key: ${INVIDIOUS_HMAC_KEY}
+    healthcheck:
+      test: wget -nv --tries=1 --spider http://127.0.0.1:3000/api/v1/trending || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 2
+    logging:
+      options:
+        max-size: "1G"
+        max-file: "4"
+    depends_on:
+      - invidious-db
+
+  companion:
+    image: quay.io/invidious/invidious-companion:latest
+    environment:
+    # Use the key generated in the 2nd step
+       SERVER_SECRET_KEY=${INVIDIOUS_COMPANION_KEY}
+    restart: unless-stopped
+    # Uncomment only if you have configured "public_url" for Invidious companion
+    # Or if you want to use Invidious companion as an API in your program.
+    # Remove "127.0.0.1:" if used from an external IP
+    #ports:
+    #  - "127.0.0.1:8282:8282"
+    logging:
+      options:
+        max-size: "1G"
+        max-file: "4"
+    cap_drop:
+      - ALL
+    read_only: true
+    # cache for youtube library
+    volumes:
+      - companioncache:/var/tmp/youtubei.js:rw
+    security_opt:
+      - no-new-privileges:true
+
+  invidious-db:
+    image: docker.io/library/postgres:14
+    restart: unless-stopped
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+      - ./invidious/config/sql:/config/sql
+      - ./invidious/docker/init-invidious-db.sh:/docker-entrypoint-initdb.d/init-invidious-db.sh
+    environment:
+      POSTGRES_DB: invidious
+      POSTGRES_USER: kemal
+      POSTGRES_PASSWORD: kemal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+
+volumes:
+  postgresdata:
+  companioncache:
+#+end_src
+
+***** start-invidious
+
+#+NAME: start-invidious
+#+begin_src sh
+#!/bin/sh
+
+# This script generates a new secret key and starts invidious
+
+# Generate a new random secret key.
+SECRET_COMPANION_KEY=$(pwgen 16 1)
+SECRET_HMAC_KEY=$(pwgen 16 1)
+
+# Start the services, passing the generated secret key as an environment variable.
+# The `podman-compose up -d` command will read this variable and apply it.
+INVIDIOUS_COMPANION_KEY=$SECRET_COMPANION_KEY INVIDIOUS_HMAC_KEY=$SECRET_HMAC_KEY \
+podman-compose up -d
+#+end_src
+
+**** invidious tangle
+***** compose.yml
+
++ home dir
+
+#+NAME: invidious-compose.yaml-home-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "~/podman/invidious-podman/compose.yml"
+<<invidious-compose.yaml>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: invidious-compose.yaml-current-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "podman/invidious-podman/compose.yml"
+<<invidious-compose.yaml>>
+#+END_SRC
+
+***** start-invidious
+
++ home dir
+
+#+NAME: start-invidious-home-dir
+#+BEGIN_SRC sh :noweb yes :tangle "~/podman/invidious-podman/start-invidious" :tangle-mode (identity #o755)
+<<start-invidious>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: start-invidious-current-dir
+#+BEGIN_SRC sh :noweb yes :tangle "podman/invidious-podman/start-invidious" :tangle-mode (identity #o755)
+<<start-invidious>>
+#+END_SRC
+
+*** searxng
+**** run searxng
+
+start searxng by running
+
+#+begin_src sh
+./searxng-start
+#+end_src
+
+stop searxng by running 
+
+#+begin_src sh
+podman-compose down
+#+end_src
+
+**** searxng-config
+***** compose.yaml
+
+#+NAME: searxng-compose.yaml 
+#+begin_src yaml
+version: "3.8"
+
+services:
+  redis:
+    container_name: redis
+    image: docker.io/valkey/valkey:8-alpine
+    command: valkey-server --save 30 1 --loglevel warning
+    restart: unless-stopped
+    networks:
+      - searxng
+    volumes:
+      - valkey-data2:/data
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+  searxng:
+    container_name: searxng
+    image: docker.io/searxng/searxng:latest
+    restart: unless-stopped
+    networks:
+      - searxng
+    ports:
+      - "0.0.0.0:8080:8080"
+    volumes:
+      - /home/djwilcox/podman/searxng:/etc/searxng:rw
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080
+      - SEARXNG_REDIS_URL=redis://redis:6379/0
+      - SEARXNG_SECRET=${SEARXNG_SECRET}
+      - UWSGI_WORKERS=${SEARXNG_UWSGI_WORKERS:-4}
+      - UWSGI_THREADS=${SEARXNG_UWSGI_THREADS:-4}
+    user: "1000:1000"
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+
+networks:
+  searxng:
+
+volumes:
+  searxng_config:
+  valkey-data2:
+#+end_src
+
+***** limiter.toml
+
+#+NAME: searxng-limiter.toml
+#+begin_src toml
+# This configuration file updates the default configuration file
+# See https://github.com/searxng/searxng/blob/master/searx/limiter.toml
+
+[botdetection.ip_limit]
+# activate link_token method in the ip_limit method
+link_token = true
+#+end_src
+
+***** settings.yml
+
+#+NAME: searxng-settings.yml
+#+begin_src yaml
+# see https://docs.searxng.org/admin/settings/settings.html#settings-use-default-settings
+use_default_settings: true
+server:
+  # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
+  secret_key: ""
+  limiter: false  # changed to false for open-webui
+  image_proxy: true
+ui:
+  static_use_hash: true
+valkey:
+  url: redis://redis:6379/0
+general:
+  # Debug mode, only for development. Is overwritten by ${SEARXNG_DEBUG}
+  debug: false
+  # displayed name
+  instance_name: "Searxng"
+  # For example: https://example.com/privacy
+  privacypolicy_url: false
+  # use true to use your own donation page written in searx/info/en/donate.md
+  # use false to disable the donation link
+  donation_url: false
+  # mailto:contact@example.com
+  contact_url: false
+  # record stats
+  enable_metrics: true
+  # expose stats in open metrics format at /metrics
+  # leave empty to disable (no password set)
+  # open_metrics: <password>
+  open_metrics: ''
+
+search:
+  # Filter results. 0: None, 1: Moderate, 2: Strict
+  safe_search: 0
+  # Existing autocomplete backends: "360search", "baidu", "brave", "dbpedia", "duckduckgo", "google", "yandex",
+  # "mwmbl", "seznam", "sogou", "stract", "swisscows", "qwant", "wikipedia" -
+  # leave blank to turn it off by default.
+  autocomplete: ""
+  # minimun characters to type before autocompleter starts
+  autocomplete_min: 4
+  # backend for the favicon near URL in search results.
+  # Available resolvers: "allesedv", "duckduckgo", "google", "yandex" - leave blank to turn it off by default.
+  favicon_resolver: ""
+  # Default search language - leave blank to detect from browser information or
+  # use codes from 'languages.py'
+  default_lang: "auto"
+  # max_page: 0  # if engine supports paging, 0 means unlimited numbers of pages
+  # Available languages
+  # languages:
+  #   - all
+  #   - en
+  #   - en-US
+  #   - de
+  #   - it-IT
+  #   - fr
+  #   - fr-BE
+  # ban time in seconds after engine errors
+  ban_time_on_fail: 5
+  # max ban time in seconds after engine errors
+  max_ban_time_on_fail: 120
+  suspended_times:
+    # Engine suspension time after error (in seconds; set to 0 to disable)
+    # For error "Access denied" and "HTTP error [402, 403]"
+    SearxEngineAccessDenied: 86400
+    # For error "CAPTCHA"
+    SearxEngineCaptcha: 86400
+    # For error "Too many request" and "HTTP error 429"
+    SearxEngineTooManyRequests: 3600
+    # Cloudflare CAPTCHA
+    cf_SearxEngineCaptcha: 1296000
+    cf_SearxEngineAccessDenied: 86400
+    # ReCAPTCHA
+    recaptcha_SearxEngineCaptcha: 604800
+
+  # remove format to deny access, use lower case.
+  # formats: [html, csv, json, rss]
+  formats:
+    - html
+    - csv
+    - json
+    - rss
+categories_as_tabs:
+  general:
+  images:
+  videos:
+  news:
+  it:
+  files:
+  map:
+  social media:
+#+end_src
+
+***** searxng-start
+
+#+NAME: searxng-start
+#+begin_src sh
+#!/bin/sh
+
+# This script generates a new secret key and starts the SearXNG containers.
+
+# Generate a new random 32-byte hex secret key.
+SECRET_KEY=$(openssl rand -hex 32)
+
+# Start the services, passing the generated secret key as an environment variable.
+# The `podman-compose up -d` command will read this variable and apply it.
+SEARXNG_SECRET=$SECRET_KEY podman-compose up -d
+#+end_src
+
+**** searxng-tangle
+***** compose.yaml
+
++ home dir
+
+#+NAME: searxng-compose.yaml-home-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "~/podman/searxng/compose.yaml"
+<<searxng-compose.yaml>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: searxng-compose.yaml-current-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "podman/searxng/compose.yaml"
+<<searxng-compose.yaml>>
+#+END_SRC
+
+***** limiter.toml
+
++ home dir
+
+#+NAME: searxng-limiter.toml-home-dir
+#+BEGIN_SRC toml :noweb yes :tangle "~/podman/searxng/limiter.toml"
+<<searxng-limiter.toml>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: searxng-limiter.toml-current-dir
+#+BEGIN_SRC toml :noweb yes :tangle "podman/searxng/limiter.toml"
+<<searxng-limiter.toml>>
+#+END_SRC
+
+***** settings.yml
+
++ home dir
+
+#+NAME: searxng-settings.yml-home-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "~/podman/searxng/settings.yml"
+<<searxng-settings.yml>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: searxng-settings.yml-current-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "podman/searxng/settings.yml"
+<<searxng-settings.yml>>
+#+END_SRC
+
+***** searxng-start
+
++ home dir
+
+#+NAME: searxng-start-home-dir
+#+BEGIN_SRC sh :noweb yes :tangle "~/podman/searxng/searxng-start" :tangle-mode (identity #o755)
+<<searxng-start>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: searxng-start-current-dir
+#+BEGIN_SRC sh :noweb yes :tangle "podman/searxng/searxng-start" :tangle-mode (identity #o755)
+<<searxng-start>>
+#+END_SRC
+
 ** wireplumber
 *** wireplumber config
 
