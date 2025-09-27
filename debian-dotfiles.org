@@ -2554,83 +2554,154 @@ podman-compose up -d
 #+END_SRC
 
 *** n8n
-**** run n8n
+**** n8n set up
 
-start n8n by running
+[[https://github.com/NapoleonWils0n/cerberus/blob/master/n8n/n8n-podman.org]]
+
+***** start n8n
+
+change directory into the n8n directory
 
 #+begin_src sh
 podman-compose up -d
 #+end_src
 
-after running podman compose up
+***** stop n8n
 
-you will need to change the permission back to your user
+change directory into the n8n directory
 
-using either doas or sudo
+and run podman-compose down
 
-#+begin_src sh
-doas chown "${USER}":"${USER}" "${HOME}"/Desktop
-#+end_src
-
-stop n8n by running 
-
-#+begin_src sh
+#+begin_src sh 
 podman-compose down
 #+end_src
 
-**** n8n-config
-***** compose.yaml
+**** n8n config
+***** docker-compose.yml
 
-#+NAME: n8n-compose.yaml 
+#+NAME: n8n-docker-compose.yml
 #+begin_src yaml
 version: '3.8'
 
 volumes:
-  # Volume for n8n's internal data
-  n8n_data:
-  # Volume to access the desktop on Linux/Mac
-  desktop_access:
-    driver_opts:
-      # This is the standard path for the desktop on most Linux/Mac setups
-      # You might need to adjust this path if your setup is different!
-      o: bind
-      type: none
-      device: ${HOME}/Desktop
+  db_storage:
+  n8n_storage:
 
 services:
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_NON_ROOT_USER
+      - POSTGRES_NON_ROOT_PASSWORD
+    volumes:
+      - db_storage:/var/lib/postgresql/data
+      - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   n8n:
     image: docker.n8n.io/n8nio/n8n
-    container_name: n8n
-    restart: unless-stopped
-    ports:
-      - "5678:5678"
+    restart: always
     environment:
-      # Use the main volume for internal data
-      N8N_DATA_FOLDER: /home/node/.n8n
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB}
+      - DB_POSTGRESDB_USER=${POSTGRES_NON_ROOT_USER}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_NON_ROOT_PASSWORD}
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      - WEBHOOK_URL=http://localhost:5678/
+      - N8N_EDITOR_BASE_URL=http://localhost:5678/
+    ports:
+      - 5678:5678
+    links:
+      - postgres
     volumes:
-      # 1. Volume for internal n8n data
-      - n8n_data:/home/node/.n8n
-      # 2. Volume to access the desktop (e.g., for file operations in n8n workflows)
-      # This maps your desktop to /mnt/desktop inside the container
-      - desktop_access:/mnt/desktop
-    user: "1000:1000" # Recommended for better file permissions when mounting host volumes
+      - n8n_storage:/home/node/.n8n
+    depends_on:
+      postgres:
+        condition: service_healthy
 #+end_src
 
-**** n8n-tangle
-***** compose.yaml
+***** init-data.sh
+
+#+NAME: n8n-init-data.sh
+#+begin_src bash
+#!/bin/bash
+set -e;
+
+
+if [ -n "${POSTGRES_NON_ROOT_USER:-}" ] && [ -n "${POSTGRES_NON_ROOT_PASSWORD:-}" ]; then
+	psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+		CREATE USER ${POSTGRES_NON_ROOT_USER} WITH PASSWORD '${POSTGRES_NON_ROOT_PASSWORD}';
+		GRANT ALL PRIVILEGES ON DATABASE ${POSTGRES_DB} TO ${POSTGRES_NON_ROOT_USER};
+		GRANT CREATE ON SCHEMA public TO ${POSTGRES_NON_ROOT_USER};
+	EOSQL
+else
+	echo "SETUP INFO: No Environment variables given!"
+fi
+#+end_src
+
+***** .env
+
+#+NAME: n8n-env
+#+begin_src sh
+POSTGRES_USER=changeUser
+POSTGRES_PASSWORD=changePassword
+POSTGRES_DB=n8n
+
+POSTGRES_NON_ROOT_USER=changeUser
+POSTGRES_NON_ROOT_PASSWORD=changePassword
+#+end_src
+
+**** n8n tangle
+***** docker-compose.yml
 
 + home dir
 
-#+NAME: n8n-compose.yaml-home-dir
-#+BEGIN_SRC yaml :noweb yes :tangle "~/podman/n8n/compose.yaml"
-<<n8n-compose.yaml>>
+#+NAME: n8n-docker-compose.yml-home-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "~/podman/n8n/docker-compose.yml"
+<<n8n-docker-compose.yml>>
 #+END_SRC
   
 + current dir
 
-#+NAME: n8n-compose.yaml-current-dir
-#+BEGIN_SRC yaml :noweb yes :tangle "podman/n8n/compose.yaml"
-<<n8n-compose.yaml>>
+#+NAME: n8n-docker-compose.yml-current-dir
+#+BEGIN_SRC yaml :noweb yes :tangle "podman/n8n/docker-compose.yml"
+<<n8n-docker-compose.yml>>
+#+END_SRC
+
+***** init-data.sh
+
++ home dir
+
+#+NAME: n8n-init-data.sh-home-dir
+#+BEGIN_SRC bash :noweb yes :tangle "~/podman/n8n/init-data.sh" :tangle-mode (identity #o755)
+<<n8n-init-data.sh>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: n8n-init-data.sh-current-dir
+#+BEGIN_SRC bash :noweb yes :tangle "podman/n8n/init-data.sh" :tangle-mode (identity #o755)
+<<n8n-init-data.sh>>
+#+END_SRC
+
+***** .env
+
++ current dir
+
+#+NAME: n8n-env-current-dir
+#+BEGIN_SRC sh :noweb yes :tangle "podman/n8n/.env"
+<<n8n-env>>
 #+END_SRC
 
 *** searxng
