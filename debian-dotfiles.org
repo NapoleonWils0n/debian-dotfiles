@@ -2360,6 +2360,31 @@ cache=no
 #+END_SRC
 
 ** podman
+*** registries.conf
+**** registries.conf config
+
+#+NAME: podman-registries.conf
+#+begin_src conf
+[registries.search]
+registries = ['docker.io', 'quay.io']
+#+end_src
+
+**** registries.conf tangle
+
++ home dir
+
+#+NAME: podman-registries.conf-home-dir
+#+BEGIN_SRC conf :noweb yes :tangle "~/.config/containers/registries.conf"
+<<podman-registries.conf>>
+#+END_SRC
+  
++ current dir
+
+#+NAME: podman-registries.conf-current-dir
+#+BEGIN_SRC conf :noweb yes :tangle ".config/containers/registries.conf"
+<<podman-registries.conf>>
+#+END_SRC
+
 *** invidious
 **** invidious set up
 
