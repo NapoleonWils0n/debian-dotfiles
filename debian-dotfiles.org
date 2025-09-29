@@ -2616,6 +2616,7 @@ services:
   postgres:
     image: postgres:16
     restart: always
+    env_file: .env
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
@@ -2635,8 +2636,8 @@ services:
     image: docker.n8n.io/n8nio/n8n
     restart: always
     # run id on the command line to check your uid and gid
-    # and change user: "1000:1000" below to match if needed
-    user: "1000:1000"
+    # and change user: "1000:100" below to match if needed
+    user: "1000:100"
     environment:
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=postgres
