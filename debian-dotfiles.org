@@ -2387,6 +2387,7 @@ registries = ['docker.io', 'quay.io']
 
 *** invidious
 **** invidious set up
+***** clone the git repo
 
 create the invidious-podman directory
 
@@ -2406,20 +2407,52 @@ clone the invidious git repo
 git clone https://github.com/iv-org/invidious.git
 #+end_src
 
+***** create passwords
+
+create the password for the
+
+INVIDIOUS_COMPANION_KEY
+
+#+begin_src sh
+pwgen 16 1
+#+end_src
+
+create the password for the
+
+INVIDIOUS_HMAC_KEY
+
+#+begin_src sh
+pwgen 16 1
+#+end_src
+
+edit the compose.yaml
+
+replace INVIDIOUS_COMPANION_KEY with password you created
+
+#+begin_src yaml
+invidious_companion_key: INVIDIOUS_COMPANION_KEY
+#+end_src
+
+replace INVIDIOUS_HMAC_KEY with password you created
+
+#+begin_src yaml
+hmac_key: INVIDIOUS_HMAC_KEY
+#+end_src
+
+replace INVIDIOUS_COMPANION_KEY with password you created
+
+#+begin_src yaml
+SERVER_SECRET_KEY=INVIDIOUS_COMPANION_KEY
+#+end_src
+
 ***** start invidious
 
 change directory into the invidious-podman directory
 
-make sure the start-invidious is executable
+and run podman-compose up -d
 
 #+begin_src sh
-chmod +x start-invidious
-#+end_src
-
-and run the start-invidious script
-
-#+begin_src sh 
-./start-invidious
+podman-compose up -d
 #+end_src
 
 ***** stop invidious
@@ -2433,7 +2466,7 @@ podman-compose down
 #+end_src
 
 **** invidious config
-***** compose.yml
+***** compose.yaml
 
 #+NAME: invidious-compose.yaml
 #+begin_src yaml
@@ -2465,13 +2498,13 @@ services:
         - private_url: "http://companion:8282/companion"
         # IT is NOT recommended to use the same key as HMAC KEY. Generate a new key!
         # Use the key generated in the 2nd step
-        invidious_companion_key: ${INVIDIOUS_COMPANION_KEY}
+        invidious_companion_key: INVIDIOUS_COMPANION_KEY
         # external_port:
         # domain:
         # https_only: false
         # statistics_enabled: false
         # Use the key generated in the 2nd step
-        hmac_key: ${INVIDIOUS_HMAC_KEY}
+        hmac_key: INVIDIOUS_HMAC_KEY
     healthcheck:
       test: wget -nv --tries=1 --spider http://127.0.0.1:3000/api/v1/trending || exit 1
       interval: 30s
@@ -2488,7 +2521,7 @@ services:
     image: quay.io/invidious/invidious-companion:latest
     environment:
     # Use the key generated in the 2nd step
-       SERVER_SECRET_KEY=${INVIDIOUS_COMPANION_KEY}
+       SERVER_SECRET_KEY=INVIDIOUS_COMPANION_KEY
     restart: unless-stopped
     # Uncomment only if you have configured "public_url" for Invidious companion
     # Or if you want to use Invidious companion as an API in your program.
@@ -2527,55 +2560,14 @@ volumes:
   companioncache:
 #+end_src
 
-***** start-invidious
-
-#+NAME: start-invidious
-#+begin_src sh
-#!/bin/sh
-
-# This script generates a new secret key and starts invidious
-
-# Generate a new random secret key.
-SECRET_COMPANION_KEY=$(pwgen 16 1)
-SECRET_HMAC_KEY=$(pwgen 16 1)
-
-# Start the services, passing the generated secret key as an environment variable.
-# The `podman-compose up -d` command will read this variable and apply it.
-INVIDIOUS_COMPANION_KEY=$SECRET_COMPANION_KEY INVIDIOUS_HMAC_KEY=$SECRET_HMAC_KEY \
-podman-compose up -d
-#+end_src
-
 **** invidious tangle
-***** compose.yml
+***** compose.yaml
 
-+ home dir
-
-#+NAME: invidious-compose.yaml-home-dir
-#+BEGIN_SRC yaml :noweb yes :tangle "~/podman/invidious-podman/compose.yml"
-<<invidious-compose.yaml>>
-#+END_SRC
-  
 + current dir
 
 #+NAME: invidious-compose.yaml-current-dir
-#+BEGIN_SRC yaml :noweb yes :tangle "podman/invidious-podman/compose.yml"
+#+BEGIN_SRC yaml :noweb yes :tangle "podman/invidious-podman/compose.yaml"
 <<invidious-compose.yaml>>
-#+END_SRC
-
-***** start-invidious
-
-+ home dir
-
-#+NAME: start-invidious-home-dir
-#+BEGIN_SRC sh :noweb yes :tangle "~/podman/invidious-podman/start-invidious" :tangle-mode (identity #o755)
-<<start-invidious>>
-#+END_SRC
-  
-+ current dir
-
-#+NAME: start-invidious-current-dir
-#+BEGIN_SRC sh :noweb yes :tangle "podman/invidious-podman/start-invidious" :tangle-mode (identity #o755)
-<<start-invidious>>
 #+END_SRC
 
 *** n8n

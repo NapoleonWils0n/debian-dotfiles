@@ -26,13 +26,13 @@ services:
         - private_url: "http://companion:8282/companion"
         # IT is NOT recommended to use the same key as HMAC KEY. Generate a new key!
         # Use the key generated in the 2nd step
-        invidious_companion_key: ${INVIDIOUS_COMPANION_KEY}
+        invidious_companion_key: INVIDIOUS_COMPANION_KEY
         # external_port:
         # domain:
         # https_only: false
         # statistics_enabled: false
         # Use the key generated in the 2nd step
-        hmac_key: ${INVIDIOUS_HMAC_KEY}
+        hmac_key: INVIDIOUS_HMAC_KEY
     healthcheck:
       test: wget -nv --tries=1 --spider http://127.0.0.1:3000/api/v1/trending || exit 1
       interval: 30s
@@ -49,7 +49,7 @@ services:
     image: quay.io/invidious/invidious-companion:latest
     environment:
     # Use the key generated in the 2nd step
-       SERVER_SECRET_KEY=${INVIDIOUS_COMPANION_KEY}
+       SERVER_SECRET_KEY=INVIDIOUS_COMPANION_KEY
     restart: unless-stopped
     # Uncomment only if you have configured "public_url" for Invidious companion
     # Or if you want to use Invidious companion as an API in your program.
