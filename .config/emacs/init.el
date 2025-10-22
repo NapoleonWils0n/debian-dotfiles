@@ -1201,6 +1201,124 @@
 
 
 ;; ----------------------------------------------------------------------------------
+;; treesitter
+;; ----------------------------------------------------------------------------------
+
+(require 'treesit)
+
+;; Use `major-mode-remap-alist` for languages that have a Treesitter major mode.
+;; M-x treesit-install-language-grammar bash
+(add-to-list
+ 'treesit-language-source-alist
+ '(bash "https://github.com/tree-sitter/tree-sitter-bash.git" "v0.20.1"))
+
+(setq major-mode-remap-alist
+      '((sh-mode . bash-ts-mode)))
+
+;; treesitter explore open in side window
+(add-to-list 'display-buffer-alist
+   '("^*tree-sitter explorer *" display-buffer-in-side-window
+     (side . right)
+     (window-width . 0.50)))
+
+
+;; ----------------------------------------------------------------------------------
+;; Snippets (YASnippet)
+;; ----------------------------------------------------------------------------------
+
+(use-package yasnippet
+  :init
+  ;; Enable YASnippet globally for all modes.
+  (yas-global-mode 1)
+  :config
+  ;; Load the built-in snippets after the package is ready.
+  (yas-reload-all)
+
+  ;; Optional: Set the key for manually expanding a snippet (if TAB is taken)
+  ;; By default, TAB usually works unless another minor mode takes it.
+  ;; If you need a separate key, uncomment the line below.
+  ;; (define-key yas-minor-mode-map (kbd "C-c y") 'yas-expand)
+  )
+
+;; Install the massive collection of community snippets
+(use-package yasnippet-snippets
+  :after yasnippet)
+
+
+;; ----------------------------------------------------------------------------------
+;; YASnippet Completion-At-Point Function (CAPF)
+;; ----------------------------------------------------------------------------------
+
+(use-package yasnippet-capf
+  ;; Ensure it loads after YASnippet and Cape (if Cape is being used to combine CAPFs)
+  :after (yasnippet cape)
+  :config
+  ;; This function is the one that actually works!
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+
+
+;; ----------------------------------------------------------------------------------
+;; corfu
+;; ----------------------------------------------------------------------------------
+
+(use-package corfu
+  ;; Install the package if not found
+  :init
+  ;; Enable Corfu globally.
+  (global-corfu-mode)
+
+  :custom
+  ;; Optional: Enable auto-completion after typing 0 characters (as-you-type)
+  (corfu-auto t)
+  ;; Optional: Set the delay before the popup appears to 0.1 seconds
+  (corfu-auto-delay 0.1))
+
+;; corfu complete
+(with-eval-after-load 'evil
+  ;; Bind C-. to the standard Emacs completion command, which Corfu is designed to use.
+  (define-key evil-normal-state-map (kbd "C-.") 'completion-at-point)
+  (define-key evil-insert-state-map (kbd "C-.") 'completion-at-point)
+  (define-key evil-visual-state-map (kbd "C-.") 'completion-at-point)
+  (define-key evil-motion-state-map (kbd "C-.") 'completion-at-point))
+
+;; Set the global binding as well for non-Evil buffers
+(keymap-global-set "C-." 'completion-at-point)
+
+;; ----------------------------------------------------------------------------------
+;; cape
+;; ----------------------------------------------------------------------------------
+
+(use-package cape
+  :demand t 
+  :config
+  ;; Add a list of cape completion functions to the standard Emacs CAPF
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  )
+
+
+;; ----------------------------------------------------------------------------------
+;; eglot
+;; ----------------------------------------------------------------------------------
+
+;; Configure Eglot to recognize and start the language servers.
+(with-eval-after-load 'eglot
+  ;; sh-mode (for shell scripts) uses 'bash-language-server' with a 'start' argument
+  (add-to-list 'eglot-server-programs
+               '(sh-mode "bash-language-server" "start"))
+
+  ;; python-mode uses 'python-lsp-server', whose executable is typically 'pylsp'
+  (add-to-list 'eglot-server-programs
+               '(python-mode "pylsp")))
+
+;; Automatically start Eglot when opening a relevant file
+(add-hook 'nix-mode-hook 'eglot-ensure)
+(add-hook 'sh-mode-hook 'eglot-ensure)
+(add-hook 'python-mode-hook 'eglot-ensure)
+
+
+;; ----------------------------------------------------------------------------------
 ;; auth-source
 ;; ----------------------------------------------------------------------------------
 
