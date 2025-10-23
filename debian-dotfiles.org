@@ -1405,6 +1405,42 @@ emacs --batch -l org --eval '(org-babel-tangle-file "~/git/ubuntu-dotfiles/ubunt
 ;; end of gptel use-package config
 (add-hook 'gptel-post-response-functions #'my/gptel-fix-src-header)) 
 
+
+;; ----------------------------------------------------------------------------------
+;; mcp server
+;; ----------------------------------------------------------------------------------
+
+(use-package mcp
+  :after gptel
+  :custom
+  (mcp-hub-servers `(("mcp-nixos" . (
+                                      :command "podman" ; <-- Use your container runtime
+                                      :args ("run" "--rm" "-i" "ghcr.io/utensils/mcp-nixos")))
+                     )) ;; closing parentheses
+
+  :config
+  (require 'mcp-hub))
+
+
+;; ----------------------------------------------------------------------------------
+;; docker
+;; ----------------------------------------------------------------------------------
+
+(use-package docker
+  :bind ("C-c d" . docker)
+  :custom
+  (docker-command "podman"))
+
+
+;; ----------------------------------------------------------------------------------
+;; dockerfile-mode
+;; ----------------------------------------------------------------------------------
+
+(use-package dockerfile-mode
+  :custom
+  (dockerfile-mode-command "podman"))
+
+
 ;; ----------------------------------------------------------------------------------
 ;; garbage collection
 ;; ----------------------------------------------------------------------------------
