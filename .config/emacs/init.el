@@ -228,6 +228,9 @@
      (side . right)
      (window-width . 0.50)))
 
+;; Man display in current buffer
+(setq Man-notify-method 'bully)
+
 
 ;; ----------------------------------------------------------------------------------
 ;; functions

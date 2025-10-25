@@ -259,6 +259,9 @@ emacs --batch -l org --eval '(org-babel-tangle-file "~/git/ubuntu-dotfiles/ubunt
      (side . right)
      (window-width . 0.50)))
 
+;; Man display in current buffer
+(setq Man-notify-method 'bully)
+
 
 ;; ----------------------------------------------------------------------------------
 ;; functions
