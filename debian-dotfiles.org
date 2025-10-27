@@ -842,7 +842,10 @@ emacs --batch -l org --eval '(org-babel-tangle-file "~/git/ubuntu-dotfiles/ubunt
   ;; org-babel shell script
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((shell . t)))
+   '((shell . t)
+     (emacs-lisp . t)
+     (python . t)
+     (dot . t)))
 
   ;; yank-media--registered-handlers org mode
   (setq yank-media--registered-handlers '(("image/.*" . #'org-mode--image-yank-handler)))
