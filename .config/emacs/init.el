@@ -611,7 +611,10 @@
 
   ;; Dired hooks (moved here to ensure my-dired-mode-setup is defined)
   (add-hook 'dired-mode-hook 'my-dired-mode-setup)
-  (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1))))
+  (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1)))
+  ;; media-thumbnail-dired-mode
+  (define-key dired-mode-map (kbd "C-x m") 'media-thumbnail-dired-mode))
+
 
 
 ;; ------------------------------------------------------------------------------------------------
