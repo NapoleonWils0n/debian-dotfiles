@@ -616,7 +616,6 @@
   (define-key dired-mode-map (kbd "C-x m") 'media-thumbnail-dired-mode))
 
 
-
 ;; ------------------------------------------------------------------------------------------------
 ;; side-windows
 ;; ------------------------------------------------------------------------------------------------
@@ -636,6 +635,22 @@
            (window-width . 0.20)
            (window-parameters . ((no-delete-other-windows . t)
                                  (mode-line-format . (""))))))))
+
+
+;; ----------------------------------------------------------------------------------
+;; media-thumbnail
+;; ----------------------------------------------------------------------------------
+
+;; use ffmpegthumbnailer to create thumbnails for videos
+
+(use-package media-thumbnail
+  :diminish media-thumbnail-dired-mode
+  :commands (media-thumbnail-dired-mode)
+  :config
+  (setq media-thumbnail-image-width 480)
+  (setq media-thumbnail-cache-dir 
+        (file-name-concat temporary-file-directory "ffmpegthumbnailer/"))
+  (setq media-thumbnail-dired-should-hide-details-fn #'ignore))
 
 
 ;; ----------------------------------------------------------------------------------
