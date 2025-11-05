@@ -14,7 +14,7 @@ C-u C-c C-v t
 ** tangle from the command line
 
 #+begin_src sh
-emacs --batch -l org --eval '(org-babel-tangle-file "~/git/various-systems/debian/debian-dotfiles/debian-dotfiles.org")'
+emacs --batch -l org --eval '(org-babel-tangle-file "~/git/debian/debian-dotfiles/debian-dotfiles.org")'
 #+end_src
 
 #+RESULTS:
