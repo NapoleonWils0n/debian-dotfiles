@@ -4,7 +4,7 @@
 #+PROPERTY: header-args :mkdirp yes
 * dotfiles update
 
-dotfiles for nixos on a dell xps 15 2019
+dotfiles for debian on a macbook pro retina
 
 [[https://github.com/NapoleonWils0n/changelog?tab=readme-ov-file#debian-dotfiles][debian dotfiles changelog]]
 
