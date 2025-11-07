@@ -2903,10 +2903,10 @@ Adds syntax highlighting as well as the ability to build the image directly usin
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("dotfiles"
  (filename . "~/git/debian/debian-dotfiles/debian-dotfiles.org")
- (front-context-string . "#TITLE: debian d")
+ (front-context-string . "#+TITLE: debian ")
  (rear-context-string)
  (position . 1)
- (last-modified 26662 23848 389578 829000))
+ (last-modified 26894 460 323387 672000))
 ("Desktop"
  (filename . "~/Desktop/")
  (front-context-string)
