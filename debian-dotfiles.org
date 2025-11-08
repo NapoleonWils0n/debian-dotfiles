@@ -107,7 +107,6 @@ tree -aI .git
 32 directories, 45 files
 #+end_example
 
-
 ** tangle dotfiles
 
 tangle document
