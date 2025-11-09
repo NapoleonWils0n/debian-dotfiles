@@ -8,7 +8,7 @@ dotfiles for debian on a macbook pro retina
 
 [[https://github.com/NapoleonWils0n/changelog?tab=readme-ov-file#debian-dotfiles][debian dotfiles changelog]]
 
-** tree
+** tree :tree:
 
 tree listing of the dotfiles
 
@@ -107,7 +107,7 @@ tree -aI .git
 32 directories, 45 files
 #+end_example
 
-** tangle dotfiles
+** tangle dotfiles :dotfiles:
 
 tangle document
 
@@ -127,10 +127,42 @@ tangle from the command line
 emacs --batch -l org --eval '(org-babel-tangle-file "~/git/debian/debian-dotfiles/debian-dotfiles.org")'
 #+end_src
 
+** tags :tags:
+
+#+begin_quote
+Tags can simply be typed into the buffer at the end of a headline. After a colon, M-TAB offers completion on tags. There is also a special command for inserting tags: 
+#+end_quote
+
+#+begin_example
+C-c C-q 
+#+end_example
+
+#+begin_src emacs-lisp
+(org-set-tags-command)
+#+end_src
+
+Once a system of tags has been set up, it can be used to collect related information into special lists.
+
+#+begin_example
+C-c / m
+#+end_example
+
+or
+
+#+begin_example
+C-c \
+#+end_example
+
+#+begin_src emacs-lisp
+(org-match-sparse-tree)
+#+end_src
+
+Create a sparse tree with all headlines matching a tags search.
+
 * debian dotfiles
-** emacs
-*** emacs config
-**** init.el
+** emacs :emacs:
+*** emacs config :config:
+**** init.el :init:
 :PROPERTIES:
 :header-args: :noweb-ref init.el :noweb-sep "\n\n"
 :END:
@@ -2027,7 +2059,7 @@ Adds syntax highlighting as well as the ability to build the image directly usin
  '(org-link ((t (:inherit link :underline nil)))))
 #+end_src
 
-**** early-init.el
+**** early-init.el :earlyinit:
 :PROPERTIES:
 :header-args: :noweb-ref early-init.el :noweb-sep "\n\n"
 :END:
@@ -2105,7 +2137,7 @@ Adds syntax highlighting as well as the ability to build the image directly usin
 (add-to-list 'load-path "~/.config/emacs/lisp/")
 #+end_src
 
-**** lisp
+**** lisp :lisp:
 ***** gptel-custom-tools.el
 :PROPERTIES:
 :header-args: :noweb-ref gptel-custom-tools.el :noweb-sep "\n\n"
@@ -3004,7 +3036,7 @@ a old-string and a new-string, new-string will replace the old-string at the spe
  :category "emacs")
 #+end_src
 
-**** bookmarks config
+**** bookmarks config :bookmarks:
 
 #+NAME: emacs-bookmarks
 #+BEGIN_SRC emacs-lisp
@@ -3065,8 +3097,8 @@ a old-string and a new-string, new-string will replace the old-string at the spe
 )
 #+END_SRC
 
-*** emacs tangle
-**** init.el
+*** emacs tangle :tangle:
+**** init.el :init:
 
 + home dir
 
@@ -3082,7 +3114,7 @@ a old-string and a new-string, new-string will replace the old-string at the spe
 <<init.el>>
 #+END_SRC
 
-**** early-init.el
+**** early-init.el :earlyinit:
 
 + home dir
 
@@ -3098,7 +3130,7 @@ a old-string and a new-string, new-string will replace the old-string at the spe
 <<early-init.el>>
 #+END_SRC
 
-**** lisp
+**** lisp :lisp:
 ***** gptel-custom-tools.el
 
 + home dir
@@ -3115,7 +3147,7 @@ a old-string and a new-string, new-string will replace the old-string at the spe
 <<gptel-custom-tools.el>>
 #+END_SRC
 
-**** bookmark tangle
+**** bookmark tangle :bookmarks:
 
 + home dir
 
@@ -3131,8 +3163,8 @@ a old-string and a new-string, new-string will replace the old-string at the spe
 <<emacs-bookmarks>>
 #+END_SRC
 
-** alacritty
-*** alacritty config
+** alacritty :alacritty:
+*** alacritty config :config:
 
 #+NAME: alacritty
 #+BEGIN_SRC toml
@@ -3199,7 +3231,7 @@ y = 4
 hide_when_typing = false
 #+END_SRC
 
-*** alacritty tangle
+*** alacritty tangle :tangle:
 
 + home dir
 
@@ -3215,9 +3247,9 @@ hide_when_typing = false
 <<alacritty>>
 #+END_SRC
 
-** zsh
-*** zsh config
-**** zshrc
+** zsh :zsh:
+*** zsh config :config:
+**** zshrc :zshrc:
 
 #+NAME: zshrc
 #+BEGIN_SRC conf
@@ -3451,7 +3483,7 @@ compdef _gnu_generic transmission-pwgen
 alias mpc='mpc --host="${HOME}/.config/mpd/socket"'
 #+END_SRC
 
-**** zshenv
+**** zshenv :zshenv:
 
 #+NAME: zshenv
 #+begin_src conf
@@ -3551,8 +3583,8 @@ export MPD_HOST="/home/djwilcox/.config/mpd/socket"
 eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 #+end_src
 
-*** zsh tangle
-**** zshrc tangle
+*** zsh tangle :tangle:
+**** zshrc tangle :zshrc:
 
 + home dir
 
@@ -3568,7 +3600,7 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 <<zshrc>>
 #+END_SRC
 
-**** zshenv tangle
+**** zshenv tangle :zshenv:
 
 + home dir
 
@@ -3584,8 +3616,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 <<zshenv>>
 #+END_SRC
 
-** tmux
-*** tmux config
+** tmux :tmux:
+*** tmux config :config:
 
 #+NAME: tmux
 #+BEGIN_SRC conf
@@ -3718,7 +3750,7 @@ set-option -g automatic-rename on
 set-option -g automatic-rename-format "#{?#{==:#{pane_current_command},zsh},#{b:pane_current_path},#{pane_current_command}}"
 #+END_SRC
 
-*** tmux tangle
+*** tmux tangle :tangle:
 
 + home dir
 
@@ -3734,8 +3766,8 @@ set-option -g automatic-rename-format "#{?#{==:#{pane_current_command},zsh},#{b:
 <<tmux>>
 #+END_SRC
 
-** mpv
-*** mpv config
+** mpv :mpv:
+*** mpv config :config:
 **** input.conf
 
 #+NAME: input.conf
@@ -3854,7 +3886,7 @@ profile=hwdec
 cache=no
 #+END_SRC
 
-*** mpv tangle
+*** mpv tangle :tangle:
 **** input.conf tangle
 
 + home dir
@@ -3887,8 +3919,8 @@ cache=no
 <<mpv.conf>>
 #+END_SRC
 
-** yt-dlp
-*** yt-dlp config
+** yt-dlp :ytdlp:
+*** yt-dlp config :config:
 
 #+NAME: yt-dlp
 #+BEGIN_SRC conf
@@ -3911,7 +3943,7 @@ cache=no
 -o '%(title)s-[%(id)s]-%(upload_date>%Y-%m-%d)s.%(ext)s'
 #+END_SRC
 
-*** yt-dlp tangle
+*** yt-dlp tangle :tangle:
 
 + home dir
 
@@ -3927,9 +3959,9 @@ cache=no
 <<yt-dlp>>
 #+END_SRC
 
-** podman
-*** registries.conf
-**** registries.conf config
+** podman :podman:
+*** registries.conf :registries:
+**** registries.conf config :config:
 
 #+NAME: podman-registries.conf
 #+begin_src conf
@@ -3937,7 +3969,7 @@ cache=no
 registries = ['docker.io', 'quay.io']
 #+end_src
 
-**** registries.conf tangle
+**** registries.conf tangle :tangle:
 
 + home dir
 
@@ -3953,7 +3985,7 @@ registries = ['docker.io', 'quay.io']
 <<podman-registries.conf>>
 #+END_SRC
 
-*** crawl4ai
+*** crawl4ai :crawl4ai:
 **** crawl4ai set up
 
 [[https://github.com/NapoleonWils0n/cerberus/blob/master/crawl4ai/crawl4ai-podman.org]]
@@ -3994,7 +4026,7 @@ podman-compose up -d
 podman-compose down
 #+end_src
 
-**** crawl4ai config
+**** crawl4ai config :config:
 ***** docker-compose.yml
 
 #+NAME: crawl4ai-docker-compose.yml
@@ -4303,7 +4335,7 @@ GEMINI_API_TOKEN=your_gemini_key_here
 LLM_PROVIDER=google/gemini-2.5-flash
 #+end_src
 
-**** crawl4ai tangle
+**** crawl4ai tangle :tangle:
 ***** docker-compose.yml
 
 + home dir
@@ -4362,7 +4394,7 @@ LLM_PROVIDER=google/gemini-2.5-flash
 <<crawl4ai-llm.env>>
 #+END_SRC
 
-*** invidious
+*** invidious :invidious:
 **** invidious set up
 ***** clone the git repo
 
@@ -4442,7 +4474,7 @@ and run podman-compose down
 podman-compose down
 #+end_src
 
-**** invidious config
+**** invidious config :config:
 ***** compose.yaml
 
 #+NAME: invidious-compose.yaml
@@ -4537,7 +4569,7 @@ volumes:
   companioncache:
 #+end_src
 
-**** invidious tangle
+**** invidious tangle :tangle:
 ***** compose.yaml
 
 + current dir
@@ -4547,7 +4579,7 @@ volumes:
 <<invidious-compose.yaml>>
 #+END_SRC
 
-*** n8n
+*** n8n :n8n:
 **** n8n set up
 
 [[https://github.com/NapoleonWils0n/cerberus/blob/master/n8n/n8n-podman.org]]
@@ -4570,7 +4602,7 @@ and run podman-compose down
 podman-compose down
 #+end_src
 
-**** n8n config
+**** n8n config :config:
 ***** docker-compose.yml
 
 #+NAME: n8n-docker-compose.yml
@@ -4696,7 +4728,7 @@ podman unshare setfacl -d -m g::rwx "$N8N_DATA_DIR"
 
 #+end_src
 
-**** n8n tangle
+**** n8n tangle :tangle:
 ***** docker-compose.yml
 
 + home dir
@@ -4754,7 +4786,7 @@ podman unshare setfacl -d -m g::rwx "$N8N_DATA_DIR"
 <<setup-n8n>>
 #+END_SRC
 
-*** searxng
+*** searxng :searxng:
 **** run searxng
 
 start searxng by running
@@ -4769,7 +4801,7 @@ stop searxng by running
 podman-compose down
 #+end_src
 
-**** searxng-config
+**** searxng-config :config:
 ***** compose.yaml
 
 #+NAME: searxng-compose.yaml 
@@ -4955,7 +4987,7 @@ categories_as_tabs:
 SEARXNG_SECRET=$(openssl rand -hex 32)
 #+end_src
 
-**** searxng-tangle
+**** searxng-tangle :tangle:
 ***** compose.yaml
 
 + home dir
@@ -5020,8 +5052,8 @@ SEARXNG_SECRET=$(openssl rand -hex 32)
 <<searxng-genkey>>
 #+END_SRC
 
-** wireplumber
-*** wireplumber config
+** wireplumber :wireplumber:
+*** wireplumber config :config:
 
 #+NAME: wireplumber
 #+BEGIN_SRC conf
@@ -5077,7 +5109,7 @@ monitor.alsa.rules = [
 ]
 #+END_SRC
 
-*** wireplumber tangle
+*** wireplumber tangle :tangle:
 
 + home dir
 
@@ -5093,8 +5125,8 @@ monitor.alsa.rules = [
 <<wireplumber>>
 #+END_SRC
 
-** kodi
-*** kodi config
+** kodi :kodi:
+*** kodi config :config:
 **** playercorefactory.xml
 
 #+NAME: playercorefactory.xml
@@ -5192,7 +5224,7 @@ monitor.alsa.rules = [
 </playercorefactory>
 #+END_SRC
 
-*** kodi tangle
+*** kodi tangle :tangle:
 **** playercorefactory.xml tangle
 
 + home dir
@@ -5209,8 +5241,8 @@ monitor.alsa.rules = [
 <<playercorefactory.xml>>
 #+END_SRC
 
-** aria2c
-*** aria2c config
+** aria2c :aria2c:
+*** aria2c config :config:
 
 #+NAME: aria2c
 #+begin_src conf
@@ -5256,7 +5288,7 @@ monitor.alsa.rules = [
  http-accept-gzip=true
 #+end_src
 
-*** aria2c tangle
+*** aria2c tangle :tangle:
 
 + home dir
   
@@ -5272,8 +5304,8 @@ monitor.alsa.rules = [
 <<aria2c>>
 #+end_src
 
-** mpd
-*** mpd config
+** mpd :mpd:
+*** mpd config :config:
 **** mpd.conf config
 
 #+NAME: mpd
@@ -5311,7 +5343,7 @@ audio_output {
 filesystem_charset		"UTF-8"
 #+END_SRC
 
-*** mpd tangle
+*** mpd tangle :tangle:
 **** mpd.conf tangle
 
 + home dir
@@ -5344,8 +5376,8 @@ filesystem_charset		"UTF-8"
 <<mpd-playlists>>
 #+END_SRC
 
-** ncmpc
-*** ncmpc config
+** ncmpc :ncmpc:
+*** ncmpc config :config:
 
 #+NAME: ncmpc
 #+BEGIN_SRC conf
@@ -5516,7 +5548,7 @@ color alert = black,bold
 #colordef yellow = 255, 140, 0
 #+END_SRC
 
-*** ncmpc tangle
+*** ncmpc tangle :tangle:
 
 + home dir
 
@@ -5532,9 +5564,9 @@ color alert = black,bold
 <<ncmpc>>
 #+END_SRC
 
-** systemd
-*** systemd config
-**** mpd.service
+** systemd :systemd:
+*** systemd config :config:
+**** mpd.service :mpdservice:
 
 #+NAME: mpd.service
 #+BEGIN_SRC conf
@@ -5549,8 +5581,8 @@ ExecStart=/usr/bin/mpd --no-daemon /home/djwilcox/.config/mpd/mpd.conf
 WantedBy=default.target
 #+END_SRC
 
-*** systemd tangle
-**** mpd.service
+*** systemd tangle :tangle:
+**** mpd.service :mpdservice:
 
 + home dir
 
@@ -5566,8 +5598,8 @@ WantedBy=default.target
 <<mpd.service>>
 #+END_SRC
 
-** user-dirs.dirs
-*** user-dirs.dirs config
+** user-dirs.dirs :userdirs:
+*** user-dirs.dirs config :config:
 
 #+NAME: user-dirs.dirs
 #+BEGIN_SRC conf
@@ -5579,14 +5611,14 @@ XDG_PICTURES_DIR="$HOME/Pictures"
 XDG_VIDEOS_DIR="$HOME/Video"
 #+END_SRC
 
-*** user-dirs.conf config
+*** user-dirs.conf config :config:
 
 #+NAME: user-dirs.conf
 #+BEGIN_SRC conf
 enabled=False
 #+END_SRC
 
-*** user-dirs.dirs tangle
+*** user-dirs.dirs tangle :tangle:
 
 + home dir
   
@@ -5602,7 +5634,7 @@ enabled=False
 <<user-dirs.dirs>>
 #+END_SRC
 
-*** user-dirs.conf tangle
+*** user-dirs.conf tangle :tangle:
 
 + home dir
   
@@ -5618,8 +5650,8 @@ enabled=False
 <<user-dirs.conf>>
 #+END_SRC
 
-** autostart
-*** autostart config
+** autostart :autostart:
+*** autostart config :config:
 **** nognome_notications config
 
 #+NAME: nognome_notications
@@ -5634,7 +5666,7 @@ Name=nognome_notifications
 Comment=nognome_notifications
 #+END_SRC
 
-*** autostart tangle
+*** autostart tangle :tangle:
 **** nognome_notications tangle
 
 + home dir
@@ -5651,8 +5683,8 @@ Comment=nognome_notifications
 <<nognome_notications>>
 #+END_SRC
 
-** gitconfig
-*** gitconfig config
+** gitconfig :gitconfig:
+*** gitconfig config :config:
 
 #+NAME: gitconfig
 #+BEGIN_SRC conf
@@ -5663,7 +5695,7 @@ email = danieljwilcox@gmail.com
 ui = true
 #+END_SRC
 
-*** gitconfig tangle
+*** gitconfig tangle :tangle:
 
 + home dir
 
@@ -5679,8 +5711,8 @@ ui = true
 <<gitconfig>>
 #+END_SRC
 
-** gtk
-*** gtk-3.0 config 
+** gtk :gtk:
+*** gtk-3.0 config :config:
 
 #+NAME: gtk-3
 #+BEGIN_SRC conf
@@ -5690,7 +5722,7 @@ gtk-icon-theme-name=Yaru-blue-dark
 gtk-application-prefer-dark-theme=true
 #+END_SRC
 
-*** gtk-4.0 config 
+*** gtk-4.0 config :config:
 
 #+NAME: gtk-4
 #+BEGIN_SRC conf
@@ -5700,7 +5732,7 @@ gtk-icon-theme-name=Yaru-blue-dark
 gtk-application-prefer-dark-theme=true
 #+END_SRC
 
-*** gtk-3.0 tangle
+*** gtk-3.0 tangle :tangle:
 
 + home dir
 
@@ -5716,7 +5748,7 @@ gtk-application-prefer-dark-theme=true
 <<gtk-3>>
 #+END_SRC
 
-*** gtk-4.0 tangle
+*** gtk-4.0 tangle :tangle:
 
 + home dir
 
@@ -5732,15 +5764,15 @@ gtk-application-prefer-dark-theme=true
 <<gtk-4>>
 #+END_SRC
 
-** wget
-*** wget config
+** wget :wget:
+*** wget config :config:
 
 #+NAME: wget
 #+BEGIN_SRC conf
 hsts-file=/home/djwilcox/.cache/wget-hsts
 #+END_SRC
 
-*** wget tangle
+*** wget tangle :tangle:
 
 + home dir
 
@@ -5756,8 +5788,8 @@ hsts-file=/home/djwilcox/.cache/wget-hsts
 <<wget>>
 #+END_SRC
 
-** weechat
-*** weechat config 
+** weechat :weechat:
+*** weechat config :config:
 
 #+NAME: weechat.conf
 #+BEGIN_SRC conf
@@ -6429,7 +6461,7 @@ meta2-D = "/cursor move left"
 @*:button3 = "/cursor go ${_x},${_y}"
 #+END_SRC
 
-*** weechat tangle
+*** weechat tangle :tangle:
 
 + home dir
 
@@ -6445,10 +6477,10 @@ meta2-D = "/cursor move left"
 <<weechat.conf>>
 #+END_SRC
 
-** xkb
-*** xkb config
-**** rules
-***** evdev
+** xkb :xkb:
+*** xkb config :config:
+**** rules :rules:
+***** evdev :evdev:
 
 #+NAME: evdev
 #+begin_src conf
@@ -6458,7 +6490,7 @@ meta2-D = "/cursor move left"
 ! include %S/evdev
 #+end_src
 
-***** evdev.xml
+***** evdev.xml :evdevxml:
 
 #+NAME: evdev.xml
 #+begin_src xml
@@ -6498,8 +6530,8 @@ meta2-D = "/cursor move left"
 </xkbConfigRegistry>
 #+end_src
 
-**** symbols
-***** custom
+**** symbols :symbols:
+***** custom :custom:
 
 #+NAME: xkb-custom
 #+BEGIN_SRC conf
@@ -6513,7 +6545,7 @@ xkb_symbols "alt_win_ctrl" {
 };
 #+END_SRC
 
-***** gb
+***** gb :gb:
 
 #+NAME: xkb-gb
 #+BEGIN_SRC conf
@@ -6533,9 +6565,9 @@ xkb_symbols "alt_win_ctrl" {
 };
 #+END_SRC
 
-*** xkb tangle
-**** rules
-***** evdev
+*** xkb tangle :tangle:
+**** rules :rules:
+***** evdev :evdev:
 
 + home dir
 
@@ -6551,7 +6583,7 @@ xkb_symbols "alt_win_ctrl" {
 <<evdev>>
 #+END_SRC
 
-***** evdev.xml
+***** evdev.xml :evdevxml:
 
 + home dir
 
@@ -6567,7 +6599,7 @@ xkb_symbols "alt_win_ctrl" {
 <<evdev.xml>>
 #+END_SRC
 **** symbols
-***** custom
+***** custom :custom:
 
 + home dir
 
@@ -6583,7 +6615,7 @@ xkb_symbols "alt_win_ctrl" {
 <<xkb-custom>>
 #+END_SRC
 
-***** gb
+***** gb :gb:
 
 + home dir
 
