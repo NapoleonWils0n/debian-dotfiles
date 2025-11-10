@@ -4076,15 +4076,14 @@ registries = ['docker.io', 'quay.io']
 #+end_src
 
 **** registries.conf tangle :tangle:
-
-+ home dir
+***** home dir
 
 #+NAME: podman-registries.conf-home-dir
 #+BEGIN_SRC conf :tangle "~/.config/containers/registries.conf"
 <<podman-registries.conf>>
 #+END_SRC
-  
-+ current dir
+
+***** current dir
 
 #+NAME: podman-registries.conf-current-dir
 #+BEGIN_SRC conf :tangle ".config/containers/registries.conf"
@@ -4443,15 +4442,14 @@ LLM_PROVIDER=google/gemini-2.5-flash
 
 **** crawl4ai tangle :tangle:
 ***** docker-compose.yml
-
-+ home dir
+****** home dir
 
 #+NAME: crawl4ai-docker-compose.yml-home-dir
 #+BEGIN_SRC yaml :tangle "~/podman/crawl4ai-podman/docker-compose.yml"
 <<crawl4ai-docker-compose.yml>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: crawl4ai-docker-compose.yaml-current-dir
 #+BEGIN_SRC yaml :tangle "podman/crawl4ai-podman/docker-compose.yml"
@@ -4459,15 +4457,14 @@ LLM_PROVIDER=google/gemini-2.5-flash
 #+END_SRC
 
 ***** setup-crawl4ai
-
-+ home dir
+****** home dir
 
 #+NAME: setup-crawl4ai-home-dir
 #+BEGIN_SRC sh :tangle "~/podman/crawl4ai-podman/setup-crawl4ai" :tangle-mode (identity #o755)
 <<setup-crawl4ai>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: setup-crawl4ai-current-dir
 #+BEGIN_SRC sh :tangle "podman/crawl4ai-podman/setup-crawl4ai" :tangle-mode (identity #o755)
@@ -4476,15 +4473,14 @@ LLM_PROVIDER=google/gemini-2.5-flash
 
 ***** scripts
 ****** screenshot
-
-+ home dir
+******* home dir
 
 #+NAME: crawl4ai-screenshot.py-home-dir
 #+BEGIN_SRC python :tangle "~/podman/crawl4ai-podman/scripts/screenshot.py"
 <<crawl4ai-screenshot.py>>
 #+END_SRC
-  
-+ current dir
+
+******* current dir
 
 #+NAME: crawl4ai-screenshot.py-current-dir
 #+BEGIN_SRC sh :tangle "podman/crawl4ai-podman/scripts/screenshot.py"
@@ -4492,8 +4488,7 @@ LLM_PROVIDER=google/gemini-2.5-flash
 #+END_SRC
 
 ***** .llm.env
-
-+ current dir
+****** current dir
 
 #+NAME: crawl4ai-llm.env-current-dir
 #+BEGIN_SRC sh :tangle "podman/crawl4ai-podman/.llm.env"
@@ -4677,8 +4672,7 @@ volumes:
 
 **** invidious tangle :tangle:
 ***** compose.yaml
-
-+ current dir
+****** current dir
 
 #+NAME: invidious-compose.yaml-current-dir
 #+BEGIN_SRC yaml :tangle "podman/invidious-podman/compose.yaml"
@@ -4836,15 +4830,14 @@ podman unshare setfacl -d -m g::rwx "$N8N_DATA_DIR"
 
 **** n8n tangle :tangle:
 ***** docker-compose.yml
-
-+ home dir
+****** home dir
 
 #+NAME: n8n-docker-compose.yml-home-dir
 #+BEGIN_SRC yaml :tangle "~/podman/n8n/docker-compose.yml"
 <<n8n-docker-compose.yml>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: n8n-docker-compose.yml-current-dir
 #+BEGIN_SRC yaml :tangle "podman/n8n/docker-compose.yml"
@@ -4852,15 +4845,14 @@ podman unshare setfacl -d -m g::rwx "$N8N_DATA_DIR"
 #+END_SRC
 
 ***** init-data.sh
-
-+ home dir
+****** home dir
 
 #+NAME: n8n-init-data.sh-home-dir
 #+BEGIN_SRC bash :tangle "~/podman/n8n/init-data.sh" :tangle-mode (identity #o755)
 <<n8n-init-data.sh>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: n8n-init-data.sh-current-dir
 #+BEGIN_SRC bash :tangle "podman/n8n/init-data.sh" :tangle-mode (identity #o755)
@@ -4868,8 +4860,7 @@ podman unshare setfacl -d -m g::rwx "$N8N_DATA_DIR"
 #+END_SRC
 
 ***** .env
-
-+ current dir
+****** current dir
 
 #+NAME: n8n-env-current-dir
 #+BEGIN_SRC sh :tangle "podman/n8n/.env"
@@ -4877,15 +4868,14 @@ podman unshare setfacl -d -m g::rwx "$N8N_DATA_DIR"
 #+END_SRC
 
 ***** setup-n8n
-
-+ home dir
+****** home dir
 
 #+NAME: setup-n8n-home-dir
 #+BEGIN_SRC bash :tangle "~/podman/n8n/setup-n8n" :tangle-mode (identity #o755)
 <<setup-n8n>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: setup-n8n-current-dir
 #+BEGIN_SRC bash :tangle "podman/n8n/setup-n8n" :tangle-mode (identity #o755)
@@ -5095,15 +5085,14 @@ SEARXNG_SECRET=$(openssl rand -hex 32)
 
 **** searxng-tangle :tangle:
 ***** compose.yaml
-
-+ home dir
+****** home dir
 
 #+NAME: searxng-compose.yaml-home-dir
 #+BEGIN_SRC yaml :tangle "~/podman/searxng/compose.yaml"
 <<searxng-compose.yaml>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: searxng-compose.yaml-current-dir
 #+BEGIN_SRC yaml :tangle "podman/searxng/compose.yaml"
@@ -5111,15 +5100,14 @@ SEARXNG_SECRET=$(openssl rand -hex 32)
 #+END_SRC
 
 ***** limiter.toml
-
-+ home dir
+****** home dir
 
 #+NAME: searxng-limiter.toml-home-dir
 #+BEGIN_SRC toml :tangle "~/podman/searxng/limiter.toml"
 <<searxng-limiter.toml>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: searxng-limiter.toml-current-dir
 #+BEGIN_SRC toml :tangle "podman/searxng/limiter.toml"
@@ -5127,15 +5115,14 @@ SEARXNG_SECRET=$(openssl rand -hex 32)
 #+END_SRC
 
 ***** settings.yml
-
-+ home dir
+****** home dir
 
 #+NAME: searxng-settings.yml-home-dir
 #+BEGIN_SRC yaml :tangle "~/podman/searxng/settings.yml"
 <<searxng-settings.yml>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: searxng-settings.yml-current-dir
 #+BEGIN_SRC yaml :tangle "podman/searxng/settings.yml"
@@ -5143,15 +5130,14 @@ SEARXNG_SECRET=$(openssl rand -hex 32)
 #+END_SRC
 
 ***** searxng-genkey
-
-+ home dir
+****** home dir
 
 #+NAME: searxng-genkey-home-dir
 #+BEGIN_SRC sh :tangle "~/podman/searxng/searxng-genkey" :tangle-mode (identity #o755)
 <<searxng-genkey>>
 #+END_SRC
-  
-+ current dir
+
+****** current dir
 
 #+NAME: searxng-genkey-current-dir
 #+BEGIN_SRC sh :tangle "podman/searxng/searxng-genkey" :tangle-mode (identity #o755)
