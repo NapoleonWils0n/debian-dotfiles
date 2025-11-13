@@ -2,13 +2,14 @@
 #+STARTUP: overview hideblocks
 #+OPTIONS: num:nil author:nil
 #+PROPERTY: header-args :mkdirp yes :noweb yes 
-* dotfiles update
+* debian dotfiles
+** update
 
 dotfiles for debian on a macbook pro retina
 
 [[https://github.com/NapoleonWils0n/changelog?tab=readme-ov-file#debian-dotfiles][debian dotfiles changelog]]
 
-** tangle dotfiles
+*** tangle dotfiles
 
 tangle document
 
@@ -28,7 +29,6 @@ tangle from the command line
 emacs --batch -l org --eval '(org-babel-tangle-file "~/git/debian/debian-dotfiles/debian-dotfiles.org")'
 #+end_src
 
-* debian dotfiles
 ** emacs
 *** emacs config
 **** init.el
