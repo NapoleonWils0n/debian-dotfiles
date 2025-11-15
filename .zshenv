@@ -7,7 +7,7 @@
 #===============================================================================
 
 typeset -U PATH path
-path=("$HOME/bin" "/usr/bin" "$path[@]")
+path=("$HOME/bin" "${HOME}/.deno/bin" "/usr/bin" "$path[@]")
 export PATH
 
 
