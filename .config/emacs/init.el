@@ -1320,6 +1320,16 @@
         gptel-expert-commands t)
   (require 'gptel-integrations) 
   :config
+  (setq gptel-backend (gptel-make-ollama "OllamaCloud"
+                        :host "api.ollama.com" ;; Note: Check the official API endpoint in your dashboard
+                        :key (gptel-api-key-from-auth-source "ollama.com")
+                        :stream t
+                        :models '(deepseek-v3.1:671b-cloud
+                                  qwen3-coder:480b-cloud
+                                  llama3.3:70b-cloud
+                                  gemini-3-pro-preview)))
+  
+
   (setq gptel-model 'gemini-3-flash-preview)
   (setq gptel-backend (gptel-make-gemini "Gemini"
                         :key (gptel-api-key-from-auth-source "generativelanguage.googleapis.com")
