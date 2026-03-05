@@ -3958,6 +3958,45 @@ cache=no
 <<yt-dlp>>
 #+END_SRC
 
+** uxplay
+*** uxplay config
+
+#+NAME: uxplay
+#+BEGIN_SRC conf
+# Intel Hardware Decoding (VA-API)
+vd vah264dec
+
+# Native Wayland Video Sink
+vs waylandsink
+
+# Start in Fullscreen
+fs
+
+# Disable timestamp sync (Fixes "invalid ntp_time" error)
+vsync no
+
+# Network timeout fix (Prevents "raop_ntp" drops)
+reset 0
+
+# Use legacy firewall ports
+p
+#+END_SRC
+
+*** uxplay tangle
+**** home dir
+
+#+NAME: uxplay-home-dir
+#+BEGIN_SRC conf :tangle "~/.config/uxplayrc"
+<<uxplay>>
+#+END_SRC
+
+**** current dir
+
+#+NAME: uxplay-current-dir
+#+BEGIN_SRC conf :tangle ".config/uxplayrc"
+<<uxplay>>
+#+END_SRC
+
 ** podman
 *** registries.conf
 **** registries.conf config

@@ -1,0 +1,17 @@
+# Intel Hardware Decoding (VA-API)
+vd vah264dec
+
+# Native Wayland Video Sink
+vs waylandsink
+
+# Start in Fullscreen
+fs
+
+# Disable timestamp sync (Fixes "invalid ntp_time" error)
+vsync no
+
+# Network timeout fix (Prevents "raop_ntp" drops)
+reset 0
+
+# Use legacy firewall ports
+p
