@@ -168,6 +168,16 @@
 ;; mpd host
 (setq mpc-host "/home/djwilcox/.config/mpd/socket")
 
+;; kill ring
+(setq save-interprogram-paste-before-kill t)
+(setq kill-do-not-save-duplicates t)
+
+;; windows
+(setq window-combination-resize t)
+
+;; help window
+(setq help-window-select t)
+
 ;; ----------------------------------------------------------------------------------
 ;; xkb fix for alt and super on mac osx
 ;; ----------------------------------------------------------------------------------
@@ -1320,6 +1330,11 @@
         gptel-expert-commands t)
   (require 'gptel-integrations) 
   :config
+  ;; gptel auto scroll
+  (setq gptel-auto-scroll t)
+  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
+
+  ;; ollama cloud
   (setq gptel-backend (gptel-make-ollama "OllamaCloud"
                         :host "ollama.com"       ;; Use ollama.com instead of api.ollama.com
                         :protocol "https"        ;; MUST be https for cloud
@@ -1331,6 +1346,7 @@
                                   gemini-3-pro-preview)))
   
 
+  ;; gemini
   (setq gptel-model 'gemini-3-flash-preview)
   (setq gptel-backend (gptel-make-gemini "Gemini"
                         :key (gptel-api-key-from-auth-source "generativelanguage.googleapis.com")
@@ -1358,6 +1374,29 @@
         (replace-match "#+begin_src sh"))))
 
   (add-hook 'gptel-post-response-functions #'my/gptel-fix-src-header)
+
+
+;; ----------------------------------------------------------------------------------
+;; gptel silence tool output
+;; ----------------------------------------------------------------------------------
+
+  ;; 1. Define the silence toggle
+  (defvar my/gptel-is-busy nil "Flag to track if gptel is waiting for a tool/response.")
+
+  ;; 2. Create the "Silence" Advice
+  (defun my/gptel-echo-area-silencer (orig-fun &rest args)
+    "Prevent messages from appearing in the echo area if gptel is busy."
+    (if my/gptel-is-busy
+        (let ((inhibit-message t))
+          (apply orig-fun args))
+      (apply orig-fun args)))
+
+  ;; 3. Attach it to the 'message' function itself
+  (advice-add 'message :around #'my/gptel-echo-area-silencer)
+
+  ;; 4. Set the flags when gptel starts and ends
+  (add-hook 'gptel-pre-response-hook (lambda (&rest _) (setq my/gptel-is-busy t)))
+  (add-hook 'gptel-post-response-functions (lambda (&rest _) (setq my/gptel-is-busy nil)))
 
 
 ;; ----------------------------------------------------------------------------------
