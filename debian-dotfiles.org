@@ -564,9 +564,13 @@ A fancy and fast mode-line inspired by minimalism design.
 (use-package evil
   :init
   (setq evil-want-keybinding nil
-        evil-want-C-i-jump nil)
+        evil-want-C-i-jump nil
+        evil-backspace-join-lines t)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  ;; Force Evil to use the 'hungry' method you set in your general settings
+  (define-key evil-insert-state-map (kbd "DEL") 'backward-delete-char-untabify))
+
 
 
 ;; ----------------------------------------------------------------------------------
