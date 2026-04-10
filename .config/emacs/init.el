@@ -1344,6 +1344,9 @@
   (setq gptel-auto-scroll t)
   (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
 
+  ;; gptel temprature for factual accuracy
+  (setq-default gptel-temperature 0.1)
+
   ;; ollama cloud
   (setq gptel-backend (gptel-make-ollama "OllamaCloud"
                         :host "ollama.com"       ;; Use ollama.com instead of api.ollama.com
