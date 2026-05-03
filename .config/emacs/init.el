@@ -1347,25 +1347,14 @@
   ;; gptel temprature for factual accuracy
   (setq-default gptel-temperature 0.1)
 
-  ;; ollama cloud
-  (setq gptel-backend (gptel-make-ollama "OllamaCloud"
-                        :host "ollama.com"       ;; Use ollama.com instead of api.ollama.com
-                        :protocol "https"        ;; MUST be https for cloud
-                        :key (gptel-api-key-from-auth-source "ollama.com")
-                        :stream t
-                        :models '(deepseek-v3.1:671b-cloud
-                                  qwen3-coder:480b-cloud
-                                  llama3.3:70b-cloud
-                                  gemini-3-pro-preview)))
-  
-
   ;; gemini
-  (setq gptel-model 'gemini-3-flash-preview)
   (setq gptel-backend (gptel-make-gemini "Gemini"
                         :key (gptel-api-key-from-auth-source "generativelanguage.googleapis.com")
                         :stream t
                         :models '(gemini-2.5-flash
-                                  gemini-3-flash-preview)))
+                                  gemini-3-flash-preview
+                                  gemma-4-31b-it 
+                                  gemma-4-26b-a4b-it)))
 
 
 ;; ----------------------------------------------------------------------------------
