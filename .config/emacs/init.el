@@ -1347,14 +1347,16 @@
   ;; gptel temprature for factual accuracy
   (setq-default gptel-temperature 0.1)
 
+
   ;; gemini
+  (setq-default gptel-model 'gemma-4-31b-it)
   (setq gptel-backend (gptel-make-gemini "Gemini"
                         :key (gptel-api-key-from-auth-source "generativelanguage.googleapis.com")
                         :stream t
-                        :models '(gemini-2.5-flash
+                        :models '(gemma-4-31b-it
+                                  gemma-4-26b-a4b-it
                                   gemini-3-flash-preview
-                                  gemma-4-31b-it 
-                                  gemma-4-26b-a4b-it)))
+                                  gemini-2.5-flash)))
 
 
 ;; ----------------------------------------------------------------------------------
