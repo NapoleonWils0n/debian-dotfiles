@@ -98,4 +98,4 @@ export MPD_HOST="/home/djwilcox/.config/mpd/socket"
 # gnome keyring
 #===============================================================================
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh 2>/dev/null)

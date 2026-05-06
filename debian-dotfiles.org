@@ -1,4 +1,4 @@
-#+TITLE: debian dotfiles macbook pro retina
+#+TITLE: debian dotfiles macbook
 #+STARTUP: show2levels hideblocks
 #+OPTIONS: num:nil author:nil
 #+PROPERTY: header-args :mkdirp yes :noweb yes 
@@ -3662,7 +3662,7 @@ export MPD_HOST="/home/djwilcox/.config/mpd/socket"
 # gnome keyring
 #===============================================================================
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh 2>/dev/null)
 #+end_src
 
 *** zsh tangle
