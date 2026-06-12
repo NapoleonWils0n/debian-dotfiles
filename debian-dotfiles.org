@@ -329,6 +329,15 @@ On graphical displays and on text terminals, Emacs can optionally display a Tab 
                (side . right)
                (window-width . 0.50)))
 
+
+;; compilation switch to buffer
+(add-to-list 'display-buffer-alist
+             '("\\*compilation\\*"
+               (display-buffer-reuse-window display-buffer-pop-up-window)
+               (reusable-frames . visible)
+               (body-function . select-window)))
+
+
 ;; Man display in current buffer
 (setq Man-notify-method 'bully)
 #+end_src
@@ -2110,6 +2119,37 @@ Adds syntax highlighting as well as the ability to build the image directly usin
 #+end_quote
 
 [[https://github.com/spotify/dockerfile-mode]]
+
+***** compile
+
+#+NAME: emacs-compile
+#+begin_src emacs-lisp
+;; ----------------------------------------------------------------------------------
+;; compile make files
+;; ----------------------------------------------------------------------------------
+
+(setq compilation-scroll-output t)
+
+;; Quick compilation binding
+(keymap-global-set "C-c m" 'compile)
+#+end_src
+
+***** tramp
+
+#+NAME: emacs-tramp
+#+begin_src sh
+(defun my-find-file-as-doas ()
+  "Get the full absolute path of the current file (or file under cursor in Dired) and open with /doas::"
+  (interactive)
+  (let ((full-path (expand-file-name 
+                    (cond
+                     ((derived-mode-p 'dired-mode) (dired-get-filename))
+                     (buffer-file-name buffer-file-name)
+                     (t default-directory)))))
+    (find-file (concat "/doas::" full-path))))
+
+(global-set-key (kbd "C-c o") 'my-find-file-as-doas)
+#+end_src
 
 ***** garbage collection
 
