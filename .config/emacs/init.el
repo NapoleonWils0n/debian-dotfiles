@@ -1555,6 +1555,19 @@
   (define-key eww-mode-map (kbd "C-c l") #'mpv-eww))
 
 ;; ----------------------------------------------------------------------------------
+;; emamux
+;; ----------------------------------------------------------------------------------
+
+(use-package emamux
+  :demand t
+  :config
+  ;; Remap send-region to C-a inside emamux:keymap
+  (define-key emamux:keymap (kbd "C-a") 'emamux:send-region)
+
+  ;; Single global binding handles all modes
+  (global-set-key (kbd "C-`") emamux:keymap))
+
+;; ----------------------------------------------------------------------------------
 ;; garbage collection
 ;; ----------------------------------------------------------------------------------
 
