@@ -2,33 +2,22 @@
 #+STARTUP: show2levels hideblocks
 #+OPTIONS: num:nil author:nil
 #+PROPERTY: header-args :mkdirp yes :noweb yes 
-* debian dotfiles
-** update
+* tangle dotfiles
+** tangle document
 
-dotfiles for debian on a macbook pro retina
-
-[[https://github.com/NapoleonWils0n/changelog?tab=readme-ov-file#debian-dotfiles][debian dotfiles changelog]]
-
-*** tangle dotfiles
-
-tangle document
-
-#+begin_example
 C-c C-v t
-#+end_example
 
-tangle only one code block
+** tangle only one code block
 
-#+begin_example
 C-u C-c C-v t
-#+end_example
 
-tangle from the command line
+** tangle from the command line
 
-#+begin_src sh
-emacs --batch -l org --eval '(org-babel-tangle-file "~/git/debian/debian-dotfiles/debian-dotfiles.org")'
-#+end_src
+#+BEGIN_SRC sh
+emacs --batch -l org --eval '(org-babel-tangle-file "~/git/freebsd-dotfiles/freebsd-dotfiles.org")'
+#+END_SRC
 
+* debian dotfiles
 ** emacs
 *** emacs config
 **** init.el
