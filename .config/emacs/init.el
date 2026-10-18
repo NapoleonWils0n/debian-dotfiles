@@ -1406,6 +1406,100 @@
 (add-to-list 'auth-sources (expand-file-name ".authinfo" user-emacs-directory))
 
 ;; ----------------------------------------------------------------------------------
+;; gptel
+;; ----------------------------------------------------------------------------------
+
+(use-package gptel
+  :init
+  ;; Enable tool use
+  (setq gptel-use-tools t)
+  ;; track media
+  (setq gptel-track-media t)
+  (setq gptel-default-mode 'org-mode
+        gptel-post-response-functions #'gptel-end-of-response
+        gptel-expert-commands t)
+  (require 'gptel-integrations) 
+  :config
+  ;; gptel auto scroll
+  (setq gptel-auto-scroll t)
+  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
+
+  ;; gptel temprature for factual accuracy
+  (setq-default gptel-temperature 0.1)
+
+  ;; gemini config for gptel (Free Tier Optimized)
+  (setq-default gptel-model 'gemini-3.6-flash)
+  (setq gptel-model 'gemini-3.8-flash
+        gptel-backend (gptel-make-gemini "Gemini"
+                        :key (gptel-api-key-from-auth-source "generativelanguage.googleapis.com")
+                        :stream t
+                        :models '(gemini-3.8-flash
+                                  gemini-3.6-flash
+                                  gemini-2.5-flash
+                                  gemma-4-31b-it)))
+
+
+;; ----------------------------------------------------------------------------------
+;; display the Gemini buffer in same window
+;; ----------------------------------------------------------------------------------
+
+  (add-to-list 'display-buffer-alist
+     '("^*Gemini*" display-buffer-same-window))
+
+
+;; ----------------------------------------------------------------------------------
+;; gptel set org source blocks to use sh and not bash
+;; ----------------------------------------------------------------------------------
+
+  (defun my/gptel-fix-src-header (beg end)
+    (save-excursion
+      (goto-char beg)
+      (while (re-search-forward "^#\\+begin_src bash" end t)
+        (replace-match "#+begin_src sh"))))
+
+  (add-hook 'gptel-post-response-functions #'my/gptel-fix-src-header)
+
+
+;; ----------------------------------------------------------------------------------
+;; gptel silence tool output
+;; ----------------------------------------------------------------------------------
+
+  ;; 1. Define the silence toggle
+  (defvar my/gptel-is-busy nil "Flag to track if gptel is waiting for a tool/response.")
+
+  ;; 2. Create the "Silence" Advice
+  (defun my/gptel-echo-area-silencer (orig-fun &rest args)
+    "Prevent messages from appearing in the echo area if gptel is busy."
+    (if my/gptel-is-busy
+        (let ((inhibit-message t))
+          (apply orig-fun args))
+      (apply orig-fun args)))
+
+  ;; 3. Attach it to the 'message' function itself
+  (advice-add 'message :around #'my/gptel-echo-area-silencer)
+
+  ;; 4. Set the flags when gptel starts and ends
+  (add-hook 'gptel-pre-response-hook (lambda (&rest _) (setq my/gptel-is-busy t)))
+  (add-hook 'gptel-post-response-functions (lambda (&rest _) (setq my/gptel-is-busy nil)))
+
+
+;; ----------------------------------------------------------------------------------
+;; gptel mcp-searxng
+;; ----------------------------------------------------------------------------------
+
+(with-eval-after-load 'gptel
+  (add-to-list 'gptel-directives
+               '(web-search . "Use the mcp-searxng tools to answer the prompt.")))
+
+
+;; ----------------------------------------------------------------------------------
+;; gptel-custom-tools.el loaded from ~/.config/emacs/lisp/gptel-custom-tools.el
+;; ----------------------------------------------------------------------------------
+
+  (load "gptel-custom-tools")) ;; gptel use-package config closing parentheses
+
+
+;; ----------------------------------------------------------------------------------
 ;; mcp server
 ;; ----------------------------------------------------------------------------------
 
