@@ -1953,6 +1953,29 @@ Emacs Polyglot is the Emacs LSP client that stays out of your way:
 
 [[https://github.com/joaotavora/eglot]]
 
+***** rust-mode
+
+#+NAME: rust-mode
+#+begin_src emacs-lisp
+;; ----------------------------------------------------------------------------------
+;; Rust and LSP (Eglot)
+;; ----------------------------------------------------------------------------------
+
+(use-package rust-mode
+  :mode ("\\.rs\\'" . rust-mode)
+  :hook (rust-mode . eglot-ensure)
+  :config
+  (setq rust-format-on-save t))
+#+end_src
+
+****** info
+
+#+begin_quote
+rust-mode makes editing Rust code with Emacs enjoyable.
+#+end_quote
+
+[[https://github.com/rust-lang/rust-mode]]
+
 ***** auth source
 
 #+NAME: emacs-auth-source
